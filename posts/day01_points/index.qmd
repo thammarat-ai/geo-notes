@@ -6,7 +6,7 @@ categories: [30DayMapChallenge, cartography, colab]
 image: day01_points_darksky_thailand.png
 ---
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day01_points_colab.ipynb) 
+<!-- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/ใส่-file-id-ตรงนี้) -->
 
 อยากทำแผนที่แต่ไม่อยากติดตั้ง Python? โพสต์นี้พาทำแผนที่วันแรกของ
 [#30DayMapChallenge 2026](https://30daymapchallenge.com/) ในหัวข้อ **Points**
@@ -72,11 +72,17 @@ plt.rcParams["font.family"] = "Noto Sans Thai"
 
 ### ขั้นที่ 2: โหลดข้อมูลและขอบประเทศ
 
-จุดดูดาวโหลดจากไฟล์ CSV — ถ้า push ไฟล์ไว้บน GitHub ก็ `pd.read_csv()` จาก URL ตรง ๆ
-ถ้ายังไม่มี ใช้ปุ่มอัปโหลดไฟล์ของ Colab แทน
+จุดดูดาวโหลดจากไฟล์ CSV บน GitHub — ถ้าโหลดไม่ได้ (เช่นยังไม่ได้ push ไฟล์)
+โน้ตบุ๊กจะให้อัปโหลดไฟล์เองแทน:
 
 ```python
-pts = pd.read_csv("https://raw.githubusercontent.com/.../darksky_thailand.csv")
+CSV_URL = "https://raw.githubusercontent.com/thammarat-ai/geo-notes/main/data/darksky_thailand.csv"
+try:
+    pts = pd.read_csv(CSV_URL)
+except Exception:
+    from google.colab import files
+    up = files.upload()  # กดปุ่ม Choose Files แล้วเลือกไฟล์ darksky_thailand.csv
+    pts = pd.read_csv(next(iter(up)))
 ```
 
 ขอบประเทศไทยโหลดจาก **GADM v4.1** (ฐานข้อมูลขอบเขตการปกครองทั่วโลก เปิดให้ใช้ฟรี)
@@ -85,7 +91,8 @@ pts = pd.read_csv("https://raw.githubusercontent.com/.../darksky_thailand.csv")
 
 ```python
 with urllib.request.urlopen(
-    "https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_THA_0.json"
+    "https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_THA_0.json",
+    timeout=60,
 ) as r:
     gj = json.load(r)
 geom = gj["features"][0]["geometry"]
@@ -100,7 +107,8 @@ polys = [geom["coordinates"]] if geom["type"] == "Polygon" else geom["coordinate
 from matplotlib.patches import Polygon as MplPolygon
 for poly in polys:
     ax.add_patch(MplPolygon(np.asarray(poly[0]), closed=True,
-                            facecolor="#101a3a", edgecolor="#8ea2ff"))
+                            facecolor="#101a3a", edgecolor="#8ea2ff",
+                            lw=0.7, alpha=0.9, zorder=2))
 ```
 
 ### ขั้นที่ 3: วาดแผนที่ธีมท้องฟ้ายามค่ำคืน
@@ -120,7 +128,7 @@ ax.scatter(x, y, s=46, c=color, edgecolors="white", linewidths=0.6) # core
 ### ขั้นที่ 4: ดาวน์โหลดภาพ
 
 ```python
-fig.savefig("day01_points_darksky_thailand.png", dpi=200)
+fig.savefig("day01_points_darksky_thailand.png", dpi=200, facecolor="#070b18")
 from google.colab import files
 files.download("day01_points_darksky_thailand.png")
 ```
