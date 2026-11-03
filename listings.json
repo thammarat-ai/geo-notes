@@ -3,7 +3,8 @@
     "listing": "/index.html",
     "items": [
       "/posts/day01_points/index.html",
-      "/posts/day02-lines/index.html"
+      "/posts/day02-lines/index.html",
+      "/posts/day03-polygons/index.html"
     ]
   }
 ]

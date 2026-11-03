@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="วิธีทำแผนที่ #30DayMapChallenge 2026 วันที่ 1 ด้วย Python + matplotlib ล้วน ๆ ไม่ต้องใช้ geopandas">
+<meta name="description" content="ต่อจาก Day 1–2: ใช้ H3 ตัดประเทศไทยเป็นตารางหกเหลี่ยมแล้วระบายสีตามระยะทางถึงจุดฟ้ามืดที่ใกล้ที่สุด ได้คำตอบแบบที่จุดกับเส้นให้ไม่ได้ คือ ‘พื้นที่กี่ตารางกิโลเมตร’">
 
-<title>Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน – Geo Notes</title>
+<title>Day 3 · Polygons — ประเทศไทยถูกตัดเป็นหกเหลี่ยม 1,738 บล็อก – Geo Notes</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -157,8 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#ทมาของแผนท" id="toc-ทมาของแผนท" class="nav-link active" data-scroll-target="#ทมาของแผนท">ที่มาของแผนที่</a></li>
   <li><a href="#ผลลพธ" id="toc-ผลลพธ" class="nav-link" data-scroll-target="#ผลลพธ">ผลลัพธ์</a></li>
-  <li><a href="#เครองมอ" id="toc-เครองมอ" class="nav-link" data-scroll-target="#เครองมอ">เครื่องมือ</a></li>
-  <li><a href="#ขนตอนสำคญ" id="toc-ขนตอนสำคญ" class="nav-link" data-scroll-target="#ขนตอนสำคญ">ขั้นตอนสำคัญ</a></li>
+  <li><a href="#วธทำแบบยอ" id="toc-วธทำแบบยอ" class="nav-link" data-scroll-target="#วธทำแบบยอ">วิธีทำแบบย่อ</a></li>
   <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
   </ul>
 </nav>
@@ -168,17 +167,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน</h1>
+<h1 class="title">Day 3 · Polygons — ประเทศไทยถูกตัดเป็นหกเหลี่ยม 1,738 บล็อก</h1>
   <div class="quarto-categories">
     <div class="quarto-category">30DayMapChallenge</div>
     <div class="quarto-category">cartography</div>
-    <div class="quarto-category">python</div>
+    <div class="quarto-category">h3</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    วิธีทำแผนที่ #30DayMapChallenge 2026 วันที่ 1 ด้วย Python + matplotlib ล้วน ๆ ไม่ต้องใช้ geopandas
+    ต่อจาก Day 1–2: ใช้ H3 ตัดประเทศไทยเป็นตารางหกเหลี่ยมแล้วระบายสีตามระยะทางถึงจุดฟ้ามืดที่ใกล้ที่สุด ได้คำตอบแบบที่จุดกับเส้นให้ไม่ได้ คือ ‘พื้นที่กี่ตารางกิโลเมตร’
   </div>
 </div>
 
@@ -201,59 +200,146 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day03_polygons.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>Day 1 เราปัก<strong>จุด</strong> 83 แห่ง · Day 2 เราลาก<strong>เส้น</strong> 15 สาย แต่วันนี้มีคำถามที่จุดกับเส้นตอบไม่ได้เด็ดขาด — <strong>“พื้นที่ของไทยกี่ตารางกิโลเมตร ที่ใกล้พอจะดูดาวยัง”</strong></p>
+<p>คำถามที่มีคำว่า “กี่ตารางกิโลเมตร” ต้องใช้ <strong>polygon</strong> เท่านั้นครับ</p>
 <section id="ทมาของแผนท" class="level2">
 <h2 class="anchored" data-anchor-id="ทมาของแผนท">ที่มาของแผนที่</h2>
-<p><a href="https://30daymapchallenge.com/">#30DayMapChallenge</a> คืองานท้าทายประจำเดือนพฤศจิกายน — ทำแผนที่วันละหนึ่งใบตามธีมหัวข้อที่กำหนด แล้วแชร์ด้วยแฮชแท็ก <code>#30DayMapChallenge</code> ปี 2026 ธีมวันแรกคือ <strong>Points</strong> (จุด) ผมเลยหยิบข้อมูลที่คุ้นมือที่สุดมาทำ</p>
-<p>ข้อมูลที่ใช้คือ <strong>83 เขตอนุรักษ์ท้องฟ้ามืด (Dark Sky Thailand)</strong> ของ <a href="https://darksky.narit.or.th/">สถาบันวิจัยดาราศาสตร์แห่งชาติ (NARIT)</a> ที่ผมเคยดึงผ่าน WP API เก็บไว้เป็นไฟล์ CSV/GeoJSON แล้ว — มีพิกัด ชื่อสถานที่ จังหวัด ภาค และค่า SQM (ความมืดของท้องฟ้า) ครบทั้ง 83 แห่ง</p>
+<p>ไอเดียคือแทนที่ประเทศทั้งประเทศด้วย “หน่วยนับ” ที่เท่ากันทุกจุด ผมเลือกใช้ <strong>H3</strong> (ระบบ grid หกเหลี่ยมของ Uber) ระดับที่ 5 ซึ่งบล็อกละประมาณ 289 ตร.กม. แล้วตอบคำถามสองชั้น:</p>
+<ol type="1">
+<li><strong>เต็มประเทศด้วยหกเหลี่ยม</strong> — <code>polygon_to_cells</code> รับ polygon ของไทย แล้วคืนทุกบล็อกที่อยู่ข้างใน (1,738 บล็อก)</li>
+<li><strong>ระบายสีแต่ละบล็อก</strong> ตามระยะทาง (เส้นตรง) ถึงจุดอนุรักษ์ท้องฟ้ามืดของ NARIT ที่ใกล้ที่สุด</li>
+</ol>
+<p>ทำไมต้องหกเหลี่ยม ไม่ใช้ตารางสี่เหลี่ยม? เพราะสี่เหลี่ยมมีเพื่อนบ้านสองแบบ — ติดด้านห่าง 1 หน่วย ติดมุมห่าง 1.41 หน่วย ทำให้ “ระยะทาง” บน grid เพี้ยน หกเหลี่ยมมีเพื่อนบ้าน 6 ตัวห่างเท่ากันหมด เหมาะกับงานวัดระยะแบบนี้มากกว่า</p>
+<p>ส่วน<strong>ขอบประเทศ</strong> ผมอยากใช้ของ Mapbox ให้สมกับที่เขาเป็นสปอนเซอร์ชาเลนจ์ปีนี้ (รายละเอียดด้านล่าง — มีดราม่าเรื่องฟรี/เสียเงินนิดหน่อย)</p>
 </section>
 <section id="ผลลพธ" class="level2">
 <h2 class="anchored" data-anchor-id="ผลลพธ">ผลลัพธ์</h2>
-<p><img src="day01_points_darksky_thailand.png" class="img-fluid"></p>
-<p>คอนเซปต์คือ “จุดดูดาว = ดวงดาวบนแผนที่” เลยใช้พื้นหลังสีน้ำเงินเข้มแบบท้องฟ้ายามค่ำคืน วาดขอบประเทศไทยด้วยเส้นสีฟ้าอ่อน แล้วให้แต่ละจุดเรืองแสงเหมือนดาว แยกสีตามภาค 6 ภาค — ภาคอีสานมากสุด 37 จุด รองลงมาภาคเหนือ 23 จุด</p>
-</section>
-<section id="เครองมอ" class="level2">
-<h2 class="anchored" data-anchor-id="เครองมอ">เครื่องมือ</h2>
+<p><img src="day03_polygons_preview.png" class="img-fluid"></p>
+<p>ตัวเลขจาก 1,738 บล็อก:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ระยะถึงจุดฟ้ามืด</th>
+<th>จำนวนบล็อก</th>
+<th>พื้นที่</th>
+<th>สัดส่วน</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&lt; 25 กม.</td>
+<td>307</td>
+<td>90,718 ตร.กม.</td>
+<td>17.6%</td>
+</tr>
+<tr class="even">
+<td>25–50 กม.</td>
+<td>516</td>
+<td>152,418 ตร.กม.</td>
+<td>29.6%</td>
+</tr>
+<tr class="odd">
+<td>50–100 กม.</td>
+<td>717</td>
+<td>212,762 ตร.กม.</td>
+<td>41.3%</td>
+</tr>
+<tr class="even">
+<td>100–150 กม.</td>
+<td>175</td>
+<td>52,317 ตร.กม.</td>
+<td>10.2%</td>
+</tr>
+<tr class="odd">
+<td>&gt; 150 กม.</td>
+<td>23</td>
+<td>6,809 ตร.กม.</td>
+<td>1.3%</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><strong>Python + matplotlib เท่านั้น</strong> — ไม่ต้องติดตั้ง geopandas (เครื่องผม pip ติดปัญหา dependency เลยใช้วิธีนี้)</li>
-<li>ขอบประเทศไทยจาก <strong>Natural Earth 110m</strong> (ไฟล์ GeoJSON) กรองเฉพาะ <code>ISO_A3 == 'THA'</code></li>
-<li>ฟอนต์ไทย <strong>Noto Sans Thai</strong> (มีในระบบอยู่แล้ว)</li>
+<li><strong>พื้นที่เกือบครึ่งประเทศ (47.2%) อยู่ไกลจุดดูดาวไม่เกิน 50 กม.</strong> — นับเป็นตารางกิโลเมตรจะ ๆ ว่าราว 243,000 ตร.กม.</li>
+<li>ค่ามัธยฐานของประเทศคือ <strong>52 กม.</strong> แปลว่าถ้าคุณสุ่มโยนลูกเต๋าลงบนแผนที่ไทย มีโอกาสสูงที่จะอยู่ใกล้แหล่งฟ้ามืดในระดับ “ขับคืนเดียวไปกลับได้”</li>
+<li><strong>ไม่มีบล็อกไหนไกลเกิน 200 กม. เลย</strong> — 83 จุดของ NARIT กระจาย covers ประเทศ ได้ทั่วกว่าที่ผมคิดมาก</li>
+<li><strong>แต่ช่องว่างจริงมีอยู่</strong> 23 บล็อกที่ไกลเกิน 150 กม. แบ่งเป็น <strong>14 บล็อกอยู่ปลายสุด คาบสมุทรมลายู</strong> (ละติจูด 5.7–6.3 แถวนราธิวาส–ชายแดนมาเลเซีย ซึ่งจุดที่ใกล้ที่สุด คือหอดูดาวฯ สงขลา ยังห่างตั้ง 194 กม.) กับอีก <strong>7 บล็อกอยู่แอ่งที่ราบอีสาน</strong> (สกลนคร–ขอนแก่น)</li>
+<li>198 บล็อก (11.4%) ไกลเกิน 100 กม. และไม่ได้กระจุกอยู่ไหนที่เดียว — กระจาย 68 บล็อกภาคใต้ · 67 บล็อกภาคกลาง/ตะวันออก · 63 บล็อกภาคเหนือ (จุดที่พวกมันใกล้ที่สุดคือสงขลา 43 บล็อก ราชบุรี 28 สุราษฎร์ธานี 24)</li>
 </ul>
+<p>แผนที่ interactive (เปิด–ปิดดูทีละช่วงระยะ คลิกบล็อกเพื่อดูว่าใกล้จุดไหน) อยู่ใน <code>day03_polygons_map.html</code> ครับ ส่วน <code>day03_hex_polygons.geojson</code> (1,738 features พร้อม properties <code>km_nearest</code> / <code>bucket</code> / <code>nearest</code>) เปิดใน QGIS ต่อได้เลย</p>
 </section>
-<section id="ขนตอนสำคญ" class="level2">
-<h2 class="anchored" data-anchor-id="ขนตอนสำคญ">ขั้นตอนสำคัญ</h2>
-<p><strong>1. เตรียมข้อมูลจุด</strong> — อ่าน CSV ด้วย pandas มีคอลัมน์ <code>latitude</code>, <code>longitude</code>, <code>region</code> อยู่แล้ว</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pts <span class="op">=</span> pd.read_csv(<span class="st">"darksky_thailand.csv"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pts[<span class="st">"region"</span>].value_counts())</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># northeast 37, north 23, south 7, eastern 6, center 6, western 4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>2. วาดขอบประเทศไทย</strong> — โหลด GeoJSON ของ Natural Earth แล้ววาด polygon ด้วย <code>matplotlib.patches.Polygon</code> ไม่ต้องพึ่ง geopandas เลย</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Polygon <span class="im">as</span> MplPolygon</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>countries <span class="op">=</span> json.load(<span class="bu">open</span>(<span class="st">"ne_110m_admin_0_countries.geojson"</span>))</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>th <span class="op">=</span> <span class="bu">next</span>(f <span class="cf">for</span> f <span class="kw">in</span> countries[<span class="st">"features"</span>]</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> f[<span class="st">"properties"</span>].get(<span class="st">"ISO_A3"</span>) <span class="op">==</span> <span class="st">"THA"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ring <span class="kw">in</span> th[<span class="st">"geometry"</span>][<span class="st">"coordinates"</span>]:</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(MplPolygon(np.asarray(ring), closed<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                            facecolor<span class="op">=</span><span class="st">"#101a3a"</span>, edgecolor<span class="op">=</span><span class="st">"#8ea2ff"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>3. ทำจุดให้เรืองแสง</strong> — เทคนิคง่าย ๆ คือ scatter สองชั้นซ้อนกัน ชั้นล่างจุดใหญ่สีจาง (halo) ชั้นบนจุดเล็กขอบขาว (core)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y, s<span class="op">=</span><span class="dv">260</span>, c<span class="op">=</span>color, alpha<span class="op">=</span><span class="fl">0.16</span>, linewidths<span class="op">=</span><span class="dv">0</span>)          <span class="co"># halo</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y, s<span class="op">=</span><span class="dv">46</span>, c<span class="op">=</span>color, edgecolors<span class="op">=</span><span class="st">"white"</span>, linewidths<span class="op">=</span><span class="fl">0.6</span>) <span class="co"># core</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>4. ฟอนต์ไทย</strong> — จุดที่ต้องระวัง: ฟอนต์ Noto Sans Thai ใน Linux บางรุ่นมีเฉพาะ glyph ภาษาไทย (ไม่มีตัวเลข/อักษรละติน) วิธีแก้คือแยก <code>FontProperties</code> สองชุด — ชุดไทยกับชุดละติน แล้วเรียก <code>fig.text</code> แยกบรรทัดกัน</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.font_manager <span class="im">import</span> FontProperties</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>FP_TH <span class="op">=</span> FontProperties(fname<span class="op">=</span><span class="st">"/usr/share/fonts/truetype/noto/NotoSansThai-Bold.ttf"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>FP_LA <span class="op">=</span> FontProperties(family<span class="op">=</span><span class="st">"DejaVu Sans"</span>, weight<span class="op">=</span><span class="st">"bold"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>5. Legend ทำมือ</strong> — เพราะป้ายมีทั้งไทยและตัวเลข ผมเลยไม่ใช้ <code>ax.legend()</code> แต่วาดวงกลม + ข้อความเองด้วยพิกัด figure แล้วใช้ <code>get_window_extent()</code> วัดความกว้างข้อความไทยก่อนวางตัวเลขต่อท้าย จะได้ไม่ทับกัน</p>
+<section id="วธทำแบบยอ" class="level2">
+<h2 class="anchored" data-anchor-id="วธทำแบบยอ">วิธีทำแบบย่อ</h2>
+<section id="ขนท-1-ได-polygon-ของประเทศมากอน-mapbox-ใหฟรแคระดบ-ประเทศ" class="level3">
+<h3 class="anchored" data-anchor-id="ขนท-1-ได-polygon-ของประเทศมากอน-mapbox-ใหฟรแคระดบ-ประเทศ">ขั้นที่ 1: ได้ polygon ของประเทศมาก่อน — Mapbox ให้ฟรีแค่ระดับ “ประเทศ”</h3>
+<p>ผมอยากใช้ Mapbox Boundaries และไปเจอความจริง 2 ข้อใน docs:</p>
+<ul>
+<li>tileset <code>mapbox.country-boundaries-v1</code> (ขอบเขต<strong>ประเทศ</strong>) <strong>ฟรีให้ผู้ใช้ Mapbox ทุกคน</strong></li>
+<li>แต่ระดับ<strong>จังหวัด/อำเภอ</strong> คือ Mapbox Boundaries v4 ซึ่ง<strong>เสียเงิน</strong> ต้องติดต่อ sales</li>
+<li>และ tileset ทั่วไป “Raw geometries are not provided for offline use” — วาดบน Mapbox GL ได้ แต่ดูด geometry ดิบไปทำ PNG/วิเคราะห์ต่อไม่ได้</li>
+</ul>
+<p>ทางรอดคือ <strong>Tilequery API</strong> ซึ่งตอบมาเป็น GeoJSON:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://api.mapbox.com/v4/mapbox.country-boundaries-v1"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"/tilequery/</span><span class="sc">{</span>lon<span class="sc">}</span><span class="ss">,</span><span class="sc">{</span>lat<span class="sc">}</span><span class="ss">.json"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    params<span class="op">=</span>{<span class="st">"access_token"</span>: MAPBOX_TOKEN, <span class="st">"limit"</span>: <span class="dv">10</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">"layers"</span>: <span class="st">"country_boundaries"</span>}, timeout<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ft <span class="kw">in</span> r.json()[<span class="st">"features"</span>]:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> ft[<span class="st">"properties"</span>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> p[<span class="st">"iso_3166_1"</span>] <span class="op">==</span> <span class="st">"TH"</span> <span class="kw">and</span> p[<span class="st">"disputed"</span>] <span class="op">==</span> <span class="st">"false"</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        geom <span class="op">=</span> ft[<span class="st">"geometry"</span>]      <span class="co"># polygon ของไทย เป็น GeoJSON เอามาใช้ต่อได้ทันที</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>ผมยิง 5 จุดกระจายทั่วไทย (ภาคกลาง เหนือ อีสาน ตะวันออก ใต้) เพื่อเก็บ polygon ให้ครบทุกเกาะ แล้วต่อกันเป็น MultiPolygon</p>
+<p>ข้อจำกัดที่ต้องรู้: geometry จาก tileset ถูก <strong>clip ตามขอบ tile</strong> (มี buffer 4 พิกเซล) จุดที่ตกใกล้ขอบ tile อาจได้ polygon ไม่ครบทั้งประเทศ — เลยต้องยิงหลายจุดแล้ว union</p>
+<p><strong>ตามจริงของแผนที่ฉบับนี้:</strong> โน้ตบุ๊กเขียนให้เดินสองทาง — มี token ใช้ Mapbox, ไม่มี token สลับไปใช้ <strong>GADM v4.1</strong> อัตโนมัติ ตอนผมรันรอบนี้ไม่มี token ในเครื่อง (เก็บไว้ใน Colab Secrets เท่านั้น) <strong>ภาพที่เห็นจึงสร้างจาก GADM</strong> — มุมซ้ายล่างของภาพระบุแหล่งข้อมูลไว้เสมอ ส่วน endpoint ของ Mapbox ผมทดสอบแล้วว่าเขาตอบ <code>401 Not Authorized</code> ถูกต้อง (แปลว่า URL/ชั้นข้อมูลใช้ได้ แค่ต้องใส่ token จริง)</p>
+</section>
+<section id="ขนท-2-เปลยน-polygon-เปนตารางหกเหลยม" class="level3">
+<h3 class="anchored" data-anchor-id="ขนท-2-เปลยน-polygon-เปนตารางหกเหลยม">ขั้นที่ 2: เปลี่ยน polygon เป็นตารางหกเหลี่ยม</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>polys <span class="op">=</span> [h3.LatLngPoly([(la, lo) <span class="cf">for</span> lo, la <span class="kw">in</span> outer],</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                        <span class="op">*</span>[[(la, lo) <span class="cf">for</span> lo, la <span class="kw">in</span> h] <span class="cf">for</span> h <span class="kw">in</span> holes])</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="cf">for</span> outer, holes <span class="kw">in</span> rings]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>cells <span class="op">=</span> <span class="bu">sorted</span>({c <span class="cf">for</span> p <span class="kw">in</span> polys <span class="cf">for</span> c <span class="kw">in</span> h3.polygon_to_cells(p, RES)})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>กับดักที่ใหญ่ที่สุดของขั้นนี้อยู่บรรทัดเดียว: <strong>GeoJSON เก็บ <code>(lon, lat)</code> แต่ H3 รับ <code>(lat, lon)</code></strong> — สลับผิดคือแผนที่ไปโผล่ somewhere ในมหาสมุทรแอตแลนติก (ไม่ใช่เรื่องตลก เพราะมันยัง render ออกมาเป็นภาพสวย ๆ ด้วยซ้ำถ้าคุณไม่สังเกต)</p>
+<p>อีกเรื่องคือเกาะ: GADM ให้มา 595 ส่วน (แผ่นดินใหญ่ + เกาะเล็กเกาะน้อย) ผมตัดส่วนที่เล็กกว่า 300 ตร.กม. ทิ้ง เพราะเล็กกว่าหกเหลี่ยมหนึ่งบล็อก ใส่ไปก็ไม่มี cell ตกอยู่ข้างใน เหลือแผ่นดิน+เกาะใหญ่ 2 ส่วน พื้นที่ mask ที่คำนวณได้ <strong>513,732 ตร.กม.</strong> ตรงกับตัวเลขทางการ (~513,120) ต่างกัน <strong>+0.12%</strong></p>
+</section>
+<section id="ขนท-3-นบพนทดวยสตรทรงกลม-ไมตองพง-pyproj" class="level3">
+<h3 class="anchored" data-anchor-id="ขนท-3-นบพนทดวยสตรทรงกลม-ไมตองพง-pyproj">ขั้นที่ 3: นับพื้นที่ด้วยสูตรทรงกลม ไม่ต้องพึ่ง pyproj</h3>
+<p>อยากเทียบ “ผลรวมพื้นที่หกเหลี่ยม” กับ “พื้นที่ประเทศจริง” ว่าเพี้ยนแค่ไหน ใช้ spherical polygon area บน lon/lat ตรง ๆ ได้เลย 10 บรรทัด:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ring_area_km2(ring):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    tot, R <span class="op">=</span> <span class="fl">0.0</span>, <span class="fl">6371.0088</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ring) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        lon1, lat1 <span class="op">=</span> math.radians(ring[i][<span class="dv">0</span>]), math.radians(ring[i][<span class="dv">1</span>])</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        lon2, lat2 <span class="op">=</span> math.radians(ring[i<span class="op">+</span><span class="dv">1</span>][<span class="dv">0</span>]), math.radians(ring[i<span class="op">+</span><span class="dv">1</span>][<span class="dv">1</span>])</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        tot <span class="op">+=</span> (lon2 <span class="op">-</span> lon1) <span class="op">*</span> (<span class="dv">2</span> <span class="op">+</span> math.sin(lat1) <span class="op">+</span> math.sin(lat2))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">abs</span>(tot <span class="op">*</span> R <span class="op">*</span> R <span class="op">/</span> <span class="fl">2.0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>ผลคือ 1,738 บล็อก รวมเป็น <strong>515,023 ตร.กม.</strong> — เกินจริง +0.25% เพราะหกเหลี่ยมเป็นรูปหลายเหลี่ยม ไม่ใช่ขอบประเทศจริงที่หยัก ๆ <strong>ค่าคลาดเคลื่อน 0.25% รับได้กับงาน visualization แต่ต้องรายงานเป็นตัวเลขเสมอ</strong> ไม่ใช่ทำเป็นว่าพื้นที่ที่ได้คือค่าจริงเป๊ะ ๆ</p>
+</section>
+<section id="ขนท-4-ตดหกเหลยมทลนออกนอกประเทศ-polygon-clipping" class="level3">
+<h3 class="anchored" data-anchor-id="ขนท-4-ตดหกเหลยมทลนออกนอกประเทศ-polygon-clipping">ขั้นที่ 4: ตัดหกเหลี่ยมที่ล้นออกนอกประเทศ (polygon clipping)</h3>
+<p>นี่คือขั้นที่ “polygons” เป็น polygons จริง — บล็อกตรงชายแดนล้นออกทะเล ออกประเทศเพื่อนบ้าน ถ้าไม่ตัด แผนที่จะไม่เหลือรูปทรงไทย</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>MASK <span class="op">=</span> MultiPolygon([SPoly(o, h) <span class="cf">for</span> o, h <span class="kw">in</span> rings])</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> SPoly([(lo, la) <span class="cf">for</span> la, lo <span class="kw">in</span> h3.cell_to_boundary(cell)])</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> g.within(MASK):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    inter <span class="op">=</span> unary_union([s.intersection(g) <span class="cf">for</span> s <span class="kw">in</span> MASK.geoms])</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    coords <span class="op">=</span> ([<span class="bu">list</span>(inter.exterior.coords)] <span class="cf">if</span> inter.geom_type <span class="op">==</span> <span class="st">"Polygon"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>              <span class="cf">else</span> [<span class="bu">list</span>(p.exterior.coords) <span class="cf">for</span> p <span class="kw">in</span> inter.geoms])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>243 จาก 1,738 บล็อก (14.0%) ถูกตัดขอบ</strong> — 14% ของภาพนี้มาจากบล็อกที่แตะชายแดน ถ้าข้ามขั้นนี้ไปรูปทรงประเทศจะผิดทันที และบล็อกที่แตะเกาะ/อ่าวถูกตัดเป็น 2 ชิ้นจริง — ในไฟล์ GeoJSON ที่ปล่อยออกมา มี 24 features ที่เป็น <code>MultiPolygon</code> ไม่ใช่ <code>Polygon</code> (ถ้าใส่ type เป็น Polygon ทุกบล็อก 24 บล็อกนี้กลายเป็น shape เพี้ยนไปเลย polygon ที่ไม่ convex ต้องคิดกรณี “ได้หลายชิ้น” ไว้ตั้งแต่แรก)</p>
+</section>
 </section>
 <section id="บทเรยน" class="level2">
 <h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>
-<ol type="1">
-<li><strong>ไม่มี geopandas ก็ทำแผนที่ได้</strong> — ถ้ามีแค่พิกัดจุดกับ polygon ประเทศ matplotlib อย่างเดียวพอ</li>
-<li><strong>ฟอนต์ไทยบน Linux ต้องเช็ก glyph</strong> — อย่าเพิ่งเชื่อว่า “Noto Sans Thai” จะมีตัวเลข ใช้ <code>FT2Font.get_charmap()</code> เช็กก่อนได้</li>
-<li><strong>ธีมช่วยตัดสินใจเรื่องดีไซน์</strong> — พอโจทย์คือ “ท้องฟ้ามืด” โทนสีและสไตล์มันเลือกตัวเองเกือบหมด</li>
-</ol>
-<p>สคริปต์ฉบับเต็ม (<code>make_map.py</code>) รันซ้ำได้ทั้งหมด — วันต่อไปธีม <strong>Clusters</strong> ผมวางแผนจะเอา fire hotspot รายวันของ GISTDA มาทำ แล้วเจอกันครับ 🔥</p>
+<ul>
+<li><strong>polygon คือหน่วยนับของคำถามประเภท “กี่ตารางกิโลเมตร”</strong> — Day 1–2 ตอบได้แค่ “ที่ไหน” กับ “ไกลแค่ไหน” แต่พอมี polygon เราวัด <em>พื้นที่</em> ได้ ซึ่งเอาไปทำต่อได้ทั้ง choropleth ทั้ง join กับข้อมูลอื่น</li>
+<li><strong>Mapbox Boundaries ฟรีแค่ admin-0</strong> — ระดับจังหวัดต้องจ่าย ทางเลือกฟรีสำหรับ polygon ไทยคือ geoSAPI/GIST2019 (ละเอียดสุด แต่ต้องอัปโหลดไฟล์เอง) Natural Earth admin-1 (ฟรี public domain แต่เส้นหยาบ) OSM/Geofabrik (ฟรี ต้องให้เครดิต) หรือสร้าง polygon เองแบบ H3 วันนี้ที่ไม่ต้องพึ่ง data ภายนอกเลย</li>
+<li><strong>อย่าเชื่อ polygon ที่ไม่ได้ตรวจพื้นที่</strong> — ผมจับเลข mask เทียบตัวเลขทางการ ทุกครั้ง (+0.12%) เพราะ polygon จากคนละแหล่งให้ผลต่างกันได้ถึงขั้นที่ จำนวนหกเหลี่ยมเปลี่ยน ถ้าสลับแหล่งข้อมูลแล้วจำนวนบล็อกขยับเกิน ~1% แปลว่ารายละเอียดของ mask มีผลต่อการวิเคราะห์จริง</li>
+<li><strong>14% ของงานอยู่ใน clipping ไม่ใช่การวาด</strong> — งาน polygon ส่วนใหญ่ เสียเวลาตรงจัดการขอบ ไม่ใช่ตรงใส่สี</li>
+<li><strong>ระยะเส้นตรง ≠ ขับถึง</strong> — โยงกลับ Day 2: ถนนดอยทำให้ระยะจริงยาวกว่าเส้นตรง เกือบ 1.85 เท่า แผนที่นี้จึงตอบ “ใกล้แค่ไหนในเชิงพื้นที่” ไม่ใช่ “ไปได้เมื่อไหร่” ถ้าจะวางแผนทริปจริงต้องใช้เส้นทางขับรถ (Day 2) มาทับอีกชั้น</li>
+</ul>
+<p>พรุ่งนี้ธีม <strong>Clusters</strong> (ทางการของวันที่ 4 พ.ย.) — หกเหลี่ยม 1,738 บล็อกวันนี้คือวัตถุดิบชั้นดีของการหา hotspot เจอกันครับ ⬡</p>
 
 
 </section>
