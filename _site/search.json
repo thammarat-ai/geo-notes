@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "posts/day01-points/index.html",
+    "href": "posts/day01-points/index.html",
+    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน",
+    "section": "",
+    "text": "#30DayMapChallenge คืองานท้าทายประจำเดือนพฤศจิกายน — ทำแผนที่วันละหนึ่งใบตามธีมหัวข้อที่กำหนด แล้วแชร์ด้วยแฮชแท็ก #30DayMapChallenge ปี 2026 ธีมวันแรกคือ Points (จุด) ผมเลยหยิบข้อมูลที่คุ้นมือที่สุดมาทำ\nข้อมูลที่ใช้คือ 83 เขตอนุรักษ์ท้องฟ้ามืด (Dark Sky Thailand) ของ สถาบันวิจัยดาราศาสตร์แห่งชาติ (NARIT) ที่ผมเคยดึงผ่าน WP API เก็บไว้เป็นไฟล์ CSV/GeoJSON แล้ว — มีพิกัด ชื่อสถานที่ จังหวัด ภาค และค่า SQM (ความมืดของท้องฟ้า) ครบทั้ง 83 แห่ง"
+  },
+  {
+    "objectID": "posts/day01-points/index.html#ทมาของแผนท",
+    "href": "posts/day01-points/index.html#ทมาของแผนท",
+    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน",
+    "section": "",
+    "text": "#30DayMapChallenge คืองานท้าทายประจำเดือนพฤศจิกายน — ทำแผนที่วันละหนึ่งใบตามธีมหัวข้อที่กำหนด แล้วแชร์ด้วยแฮชแท็ก #30DayMapChallenge ปี 2026 ธีมวันแรกคือ Points (จุด) ผมเลยหยิบข้อมูลที่คุ้นมือที่สุดมาทำ\nข้อมูลที่ใช้คือ 83 เขตอนุรักษ์ท้องฟ้ามืด (Dark Sky Thailand) ของ สถาบันวิจัยดาราศาสตร์แห่งชาติ (NARIT) ที่ผมเคยดึงผ่าน WP API เก็บไว้เป็นไฟล์ CSV/GeoJSON แล้ว — มีพิกัด ชื่อสถานที่ จังหวัด ภาค และค่า SQM (ความมืดของท้องฟ้า) ครบทั้ง 83 แห่ง"
+  },
+  {
+    "objectID": "posts/day01-points/index.html#ผลลพธ",
+    "href": "posts/day01-points/index.html#ผลลพธ",
+    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน",
+    "section": "ผลลัพธ์",
+    "text": "ผลลัพธ์\n\nคอนเซปต์คือ “จุดดูดาว = ดวงดาวบนแผนที่” เลยใช้พื้นหลังสีน้ำเงินเข้มแบบท้องฟ้ายามค่ำคืน วาดขอบประเทศไทยด้วยเส้นสีฟ้าอ่อน แล้วให้แต่ละจุดเรืองแสงเหมือนดาว แยกสีตามภาค 6 ภาค — ภาคอีสานมากสุด 37 จุด รองลงมาภาคเหนือ 23 จุด"
+  },
+  {
+    "objectID": "posts/day01-points/index.html#เครองมอ",
+    "href": "posts/day01-points/index.html#เครองมอ",
+    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน",
+    "section": "เครื่องมือ",
+    "text": "เครื่องมือ\n\nPython + matplotlib เท่านั้น — ไม่ต้องติดตั้ง geopandas (เครื่องผม pip ติดปัญหา dependency เลยใช้วิธีนี้)\nขอบประเทศไทยจาก Natural Earth 110m (ไฟล์ GeoJSON) กรองเฉพาะ ISO_A3 == 'THA'\nฟอนต์ไทย Noto Sans Thai (มีในระบบอยู่แล้ว)"
+  },
+  {
+    "objectID": "posts/day01-points/index.html#ขนตอนสำคญ",
+    "href": "posts/day01-points/index.html#ขนตอนสำคญ",
+    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน",
+    "section": "ขั้นตอนสำคัญ",
+    "text": "ขั้นตอนสำคัญ\n1. เตรียมข้อมูลจุด — อ่าน CSV ด้วย pandas มีคอลัมน์ latitude, longitude, region อยู่แล้ว\nimport pandas as pd\npts = pd.read_csv(\"darksky_thailand.csv\")\nprint(pts[\"region\"].value_counts())\n# northeast 37, north 23, south 7, eastern 6, center 6, western 4\n2. วาดขอบประเทศไทย — โหลด GeoJSON ของ Natural Earth แล้ววาด polygon ด้วย matplotlib.patches.Polygon ไม่ต้องพึ่ง geopandas เลย\nimport json\nimport numpy as np\nfrom matplotlib.patches import Polygon as MplPolygon\n\ncountries = json.load(open(\"ne_110m_admin_0_countries.geojson\"))\nth = next(f for f in countries[\"features\"]\n          if f[\"properties\"].get(\"ISO_A3\") == \"THA\")\nfor ring in th[\"geometry\"][\"coordinates\"]:\n    ax.add_patch(MplPolygon(np.asarray(ring), closed=True,\n                            facecolor=\"#101a3a\", edgecolor=\"#8ea2ff\"))\n3. ทำจุดให้เรืองแสง — เทคนิคง่าย ๆ คือ scatter สองชั้นซ้อนกัน ชั้นล่างจุดใหญ่สีจาง (halo) ชั้นบนจุดเล็กขอบขาว (core)\nax.scatter(x, y, s=260, c=color, alpha=0.16, linewidths=0)          # halo\nax.scatter(x, y, s=46, c=color, edgecolors=\"white\", linewidths=0.6) # core\n4. ฟอนต์ไทย — จุดที่ต้องระวัง: ฟอนต์ Noto Sans Thai ใน Linux บางรุ่นมีเฉพาะ glyph ภาษาไทย (ไม่มีตัวเลข/อักษรละติน) วิธีแก้คือแยก FontProperties สองชุด — ชุดไทยกับชุดละติน แล้วเรียก fig.text แยกบรรทัดกัน\nfrom matplotlib.font_manager import FontProperties\nFP_TH = FontProperties(fname=\"/usr/share/fonts/truetype/noto/NotoSansThai-Bold.ttf\")\nFP_LA = FontProperties(family=\"DejaVu Sans\", weight=\"bold\")\n5. Legend ทำมือ — เพราะป้ายมีทั้งไทยและตัวเลข ผมเลยไม่ใช้ ax.legend() แต่วาดวงกลม + ข้อความเองด้วยพิกัด figure แล้วใช้ get_window_extent() วัดความกว้างข้อความไทยก่อนวางตัวเลขต่อท้าย จะได้ไม่ทับกัน"
+  },
+  {
+    "objectID": "posts/day01-points/index.html#บทเรยน",
+    "href": "posts/day01-points/index.html#บทเรยน",
+    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน",
+    "section": "บทเรียน",
+    "text": "บทเรียน\n\nไม่มี geopandas ก็ทำแผนที่ได้ — ถ้ามีแค่พิกัดจุดกับ polygon ประเทศ matplotlib อย่างเดียวพอ\nฟอนต์ไทยบน Linux ต้องเช็ก glyph — อย่าเพิ่งเชื่อว่า “Noto Sans Thai” จะมีตัวเลข ใช้ FT2Font.get_charmap() เช็กก่อนได้\nธีมช่วยตัดสินใจเรื่องดีไซน์ — พอโจทย์คือ “ท้องฟ้ามืด” โทนสีและสไตล์มันเลือกตัวเองเกือบหมด\n\nสคริปต์ฉบับเต็ม (make_map.py) รันซ้ำได้ทั้งหมด — วันต่อไปธีม Clusters ผมวางแผนจะเอา fire hotspot รายวันของ GISTDA มาทำ แล้วเจอกันครับ 🔥"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "เกี่ยวกับผู้เขียน",
+    "section": "",
+    "text": "สวัสดีครับ ผมเป็นนักศึกษาปริญญาเอกสาขา GIS ประยุกต์ และอาจารย์มหาวิทยาลัยพะเยา\nบล็อกนี้บันทึกสิ่งที่ผมเรียนรู้จากการทำแผนที่ในชีวิตประจำวัน — ตั้งแต่ความท้าทายทำแผนที่ 30 วัน ไปจนถึงงานวิจัยด้าน GeoAI และ Autonomous GIS Agent\n\n🌐 ธีมหลัก: cartography, GIS, GeoAI, Python\n📧 ติดต่อ: ผ่านหน้า GitHub ของบล็อกนี้"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Geo Notes",
+    "section": "",
+    "text": "ยินดีต้อนรับ — ที่นี่คือสมุดบันทึกการทำแผนที่และงานวิจัยของผม เริ่มจากซีรีส์ #30DayMapChallenge 2026 หนึ่งแผนที่ต่อหนึ่งวันตลอดเดือนพฤศจิกายน\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน\n\n\n\n30DayMapChallenge\n\ncartography\n\npython\n\n\n\n\nวิธีทำแผนที่ #30DayMapChallenge 2026 วันที่ 1 ด้วย Python + matplotlib ล้วน ๆ ไม่ต้องใช้ geopandas\n\n\n\n\n\n\n3 พ.ย. 2569\n\n\n\n\n\nNo matching items"
+  }
+]

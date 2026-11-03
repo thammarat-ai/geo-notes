@@ -28,7 +28,8 @@ image: day01_points_darksky_thailand.png
 ## เครื่องมือ
 
 - **Python + matplotlib เท่านั้น** — ไม่ต้องติดตั้ง geopandas (เครื่องผม pip ติดปัญหา dependency เลยใช้วิธีนี้)
-- ขอบประเทศไทยจาก **Natural Earth 110m** (ไฟล์ GeoJSON) กรองเฉพาะ `ISO_A3 == 'THA'`
+- ขอบประเทศไทยจาก **GADM v4.1** (ละเอียดกว่า Natural Earth มาก และมีรูปเกาะต่าง ๆ ด้วย —
+  ตอนแรกผมใช้ Natural Earth 110m แล้วจุดชายแดนกับจุดบนเกาะหลุดออกนอกขอบประเทศ)
 - ฟอนต์ไทย **Noto Sans Thai** (มีในระบบอยู่แล้ว)
 
 ## ขั้นตอนสำคัญ
@@ -42,19 +43,20 @@ print(pts["region"].value_counts())
 # northeast 37, north 23, south 7, eastern 6, center 6, western 4
 ```
 
-**2. วาดขอบประเทศไทย** — โหลด GeoJSON ของ Natural Earth แล้ววาด polygon ด้วย `matplotlib.patches.Polygon`
-ไม่ต้องพึ่ง geopandas เลย
+**2. วาดขอบประเทศไทย** — โหลด GeoJSON ของ GADM แล้ววาด polygon ด้วย `matplotlib.patches.Polygon`
+ไม่ต้องพึ่ง geopandas เลย (GADM เป็น MultiPolygon เลยต้องวนสองชั้น)
 
 ```python
 import json
 import numpy as np
 from matplotlib.patches import Polygon as MplPolygon
 
-countries = json.load(open("ne_110m_admin_0_countries.geojson"))
-th = next(f for f in countries["features"]
-          if f["properties"].get("ISO_A3") == "THA")
-for ring in th["geometry"]["coordinates"]:
-    ax.add_patch(MplPolygon(np.asarray(ring), closed=True,
+gj = json.load(open("thailand_boundary.geojson"))  # GADM v4.1
+geom = gj["features"][0]["geometry"]
+polys = [geom["coordinates"]] if geom["type"] == "Polygon" else geom["coordinates"]
+for poly in polys:                      # แต่ละเกาะ/แผ่นดิน
+    ring = np.asarray(poly[0])          # วงนอกของ polygon
+    ax.add_patch(MplPolygon(ring, closed=True,
                             facecolor="#101a3a", edgecolor="#8ea2ff"))
 ```
 
