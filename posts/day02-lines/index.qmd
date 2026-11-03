@@ -6,7 +6,7 @@ categories: [30DayMapChallenge, cartography, routing]
 image: day02_lines_preview.png
 ---
 
-<!-- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day02_lines.ipynb) -->
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day02_lines.ipynb)
 
 Day 1 เราปักหมุด 83 จุดอนุรักษ์ท้องฟ้ามืดของ NARIT ลงแผนที่ไปแล้ว
 แต่วันนี้ผมอยากตอบคำถามที่นักท่องเที่ยวถามจริง ๆ คือ
