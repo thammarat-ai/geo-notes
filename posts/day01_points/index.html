@@ -200,12 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day01_points_colab.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
-<figcaption>Open In Colab</figcaption>
-</figure>
-</div>
+<!-- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/ใส่-file-id-ตรงนี้) -->
 <p>อยากทำแผนที่แต่ไม่อยากติดตั้ง Python? โพสต์นี้พาทำแผนที่วันแรกของ <a href="https://30daymapchallenge.com/">#30DayMapChallenge 2026</a> ในหัวข้อ <strong>Points</strong> บน Google Colab ตั้งแต่ศูนย์ — เปิดลิงก์ กด Run all แล้วได้ภาพนี้เลย</p>
 <section id="ทมาของแผนท" class="level2">
 <h2 class="anchored" data-anchor-id="ทมาของแผนท">ที่มาของแผนที่</h2>
@@ -246,20 +241,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ขนท-2-โหลดขอมลและขอบประเทศ" class="level3">
 <h3 class="anchored" data-anchor-id="ขนท-2-โหลดขอมลและขอบประเทศ">ขั้นที่ 2: โหลดข้อมูลและขอบประเทศ</h3>
-<p>จุดดูดาวโหลดจากไฟล์ CSV — ถ้า push ไฟล์ไว้บน GitHub ก็ <code>pd.read_csv()</code> จาก URL ตรง ๆ ถ้ายังไม่มี ใช้ปุ่มอัปโหลดไฟล์ของ Colab แทน</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pts <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/.../darksky_thailand.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>จุดดูดาวโหลดจากไฟล์ CSV บน GitHub — ถ้าโหลดไม่ได้ (เช่นยังไม่ได้ push ไฟล์) โน้ตบุ๊กจะให้อัปโหลดไฟล์เองแทน:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>CSV_URL <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/thammarat-ai/geo-notes/main/data/darksky_thailand.csv"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    pts <span class="op">=</span> pd.read_csv(CSV_URL)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.colab <span class="im">import</span> files</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    up <span class="op">=</span> files.upload()  <span class="co"># กดปุ่ม Choose Files แล้วเลือกไฟล์ darksky_thailand.csv</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    pts <span class="op">=</span> pd.read_csv(<span class="bu">next</span>(<span class="bu">iter</span>(up)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>ขอบประเทศไทยโหลดจาก <strong>GADM v4.1</strong> (ฐานข้อมูลขอบเขตการปกครองทั่วโลก เปิดให้ใช้ฟรี) โดยตรง ผมเลือก GADM เพราะตอนแรกใช้ Natural Earth 110m แล้วเส้นขอบหยาบเกินไป จนจุดชายแดนแม่ฮ่องสอน มุกดาหาร และชายฝั่งตราดหลุดออกนอกประเทศ</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> urllib.request.urlopen(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_THA_0.json"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>) <span class="im">as</span> r:</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    gj <span class="op">=</span> json.load(r)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>geom <span class="op">=</span> gj[<span class="st">"features"</span>][<span class="dv">0</span>][<span class="st">"geometry"</span>]</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>polys <span class="op">=</span> [geom[<span class="st">"coordinates"</span>]] <span class="cf">if</span> geom[<span class="st">"type"</span>] <span class="op">==</span> <span class="st">"Polygon"</span> <span class="cf">else</span> geom[<span class="st">"coordinates"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_THA_0.json"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    timeout<span class="op">=</span><span class="dv">60</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>) <span class="im">as</span> r:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    gj <span class="op">=</span> json.load(r)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>geom <span class="op">=</span> gj[<span class="st">"features"</span>][<span class="dv">0</span>][<span class="st">"geometry"</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>polys <span class="op">=</span> [geom[<span class="st">"coordinates"</span>]] <span class="cf">if</span> geom[<span class="st">"type"</span>] <span class="op">==</span> <span class="st">"Polygon"</span> <span class="cf">else</span> geom[<span class="st">"coordinates"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>จุดที่ต้องเข้าใจคือโครงสร้าง GeoJSON: ขอบประเทศเป็น <strong>MultiPolygon</strong> (หลายแผ่นดิน/เกาะ) แต่ละ polygon มีหลายวง — <code>poly[0]</code> คือ<strong>วงนอก</strong>ของแผ่นดินนั้น จากนั้นวาดแต่ละวงด้วย <code>matplotlib.patches.Polygon</code> ไม่ต้องใช้ geopandas เลย:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Polygon <span class="im">as</span> MplPolygon</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> poly <span class="kw">in</span> polys:</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(MplPolygon(np.asarray(poly[<span class="dv">0</span>]), closed<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                            facecolor<span class="op">=</span><span class="st">"#101a3a"</span>, edgecolor<span class="op">=</span><span class="st">"#8ea2ff"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                            facecolor<span class="op">=</span><span class="st">"#101a3a"</span>, edgecolor<span class="op">=</span><span class="st">"#8ea2ff"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                            lw<span class="op">=</span><span class="fl">0.7</span>, alpha<span class="op">=</span><span class="fl">0.9</span>, zorder<span class="op">=</span><span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ขนท-3-วาดแผนทธมทองฟายามคำคน" class="level3">
 <h3 class="anchored" data-anchor-id="ขนท-3-วาดแผนทธมทองฟายามคำคน">ขั้นที่ 3: วาดแผนที่ธีมท้องฟ้ายามค่ำคืน</h3>
@@ -270,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ขนท-4-ดาวนโหลดภาพ" class="level3">
 <h3 class="anchored" data-anchor-id="ขนท-4-ดาวนโหลดภาพ">ขั้นที่ 4: ดาวน์โหลดภาพ</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"day01_points_darksky_thailand.png"</span>, dpi<span class="op">=</span><span class="dv">200</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"day01_points_darksky_thailand.png"</span>, dpi<span class="op">=</span><span class="dv">200</span>, facecolor<span class="op">=</span><span class="st">"#070b18"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> files</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>files.download(<span class="st">"day01_points_darksky_thailand.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
