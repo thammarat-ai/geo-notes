@@ -6,7 +6,7 @@ website:
   title: "Geo Notes"
   description: "บันทึกการทำแผนที่ งานวิจัย GIS และ GeoAI"
   # TODO: เปลี่ยนเป็น URL จริงหลังสร้าง GitHub repo เช่น https://giggeo.github.io/geo-notes
-  site-url: https://USERNAME.github.io/REPO-NAME
+  site-url: https://thammarat-ai.github.io/geo-notes
   navbar:
     left:
       - href: index.qmd
