@@ -6,7 +6,8 @@ categories: [30DayMapChallenge, cartography, colab]
 image: day01_points_darksky_thailand.png
 ---
 
-<!-- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/ใส่-file-id-ตรงนี้) -->
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day01_points_colab.ipynb
+)
 
 อยากทำแผนที่แต่ไม่อยากติดตั้ง Python? โพสต์นี้พาทำแผนที่วันแรกของ
 [#30DayMapChallenge 2026](https://30daymapchallenge.com/) ในหัวข้อ **Points**
