@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Geo Notes"
+  description: "บันทึกการทำแผนที่ งานวิจัย GIS และ GeoAI"
+  # TODO: เปลี่ยนเป็น URL จริงหลังสร้าง GitHub repo เช่น https://giggeo.github.io/geo-notes
+  site-url: https://USERNAME.github.io/REPO-NAME
+  navbar:
+    left:
+      - href: index.qmd
+        text: หน้าแรก
+      - href: about.qmd
+        text: เกี่ยวกับผู้เขียน
+  page-footer:
+    center: "© 2026 · สร้างด้วย [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 2
+    lang: th
+    code-copy: true

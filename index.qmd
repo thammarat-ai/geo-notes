@@ -1,0 +1,12 @@
+---
+title: "Geo Notes"
+subtitle: "บันทึกการทำแผนที่ งานวิจัย GIS และ GeoAI ของนักศึกษาปริญญาเอกสายประยุกต์"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+---
+
+ยินดีต้อนรับ — ที่นี่คือสมุดบันทึกการทำแผนที่และงานวิจัยของผม
+เริ่มจากซีรีส์ [#30DayMapChallenge 2026](https://30daymapchallenge.com/) หนึ่งแผนที่ต่อหนึ่งวันตลอดเดือนพฤศจิกายน
