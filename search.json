@@ -2,44 +2,44 @@
   {
     "objectID": "posts/day01_points/index.html",
     "href": "posts/day01_points/index.html",
-    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน",
+    "title": "Day 1 · Points — ทำแผนที่ 83 จุดดูดาวบน Google Colab โดยไม่ต้องติดตั้งอะไรเลย",
     "section": "",
-    "text": "#30DayMapChallenge คืองานท้าทายประจำเดือนพฤศจิกายน — ทำแผนที่วันละหนึ่งใบตามธีมหัวข้อที่กำหนด แล้วแชร์ด้วยแฮชแท็ก #30DayMapChallenge ปี 2026 ธีมวันแรกคือ Points (จุด) ผมเลยหยิบข้อมูลที่คุ้นมือที่สุดมาทำ\nข้อมูลที่ใช้คือ 83 เขตอนุรักษ์ท้องฟ้ามืด (Dark Sky Thailand) ของ สถาบันวิจัยดาราศาสตร์แห่งชาติ (NARIT) ที่ผมเคยดึงผ่าน WP API เก็บไว้เป็นไฟล์ CSV/GeoJSON แล้ว — มีพิกัด ชื่อสถานที่ จังหวัด ภาค และค่า SQM (ความมืดของท้องฟ้า) ครบทั้ง 83 แห่ง"
+    "text": "Open In Colab\nอยากทำแผนที่แต่ไม่อยากติดตั้ง Python? โพสต์นี้พาทำแผนที่วันแรกของ #30DayMapChallenge 2026 ในหัวข้อ Points บน Google Colab ตั้งแต่ศูนย์ — เปิดลิงก์ กด Run all แล้วได้ภาพนี้เลย"
   },
   {
     "objectID": "posts/day01_points/index.html#ทมาของแผนท",
     "href": "posts/day01_points/index.html#ทมาของแผนท",
-    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน",
-    "section": "",
-    "text": "#30DayMapChallenge คืองานท้าทายประจำเดือนพฤศจิกายน — ทำแผนที่วันละหนึ่งใบตามธีมหัวข้อที่กำหนด แล้วแชร์ด้วยแฮชแท็ก #30DayMapChallenge ปี 2026 ธีมวันแรกคือ Points (จุด) ผมเลยหยิบข้อมูลที่คุ้นมือที่สุดมาทำ\nข้อมูลที่ใช้คือ 83 เขตอนุรักษ์ท้องฟ้ามืด (Dark Sky Thailand) ของ สถาบันวิจัยดาราศาสตร์แห่งชาติ (NARIT) ที่ผมเคยดึงผ่าน WP API เก็บไว้เป็นไฟล์ CSV/GeoJSON แล้ว — มีพิกัด ชื่อสถานที่ จังหวัด ภาค และค่า SQM (ความมืดของท้องฟ้า) ครบทั้ง 83 แห่ง"
+    "title": "Day 1 · Points — ทำแผนที่ 83 จุดดูดาวบน Google Colab โดยไม่ต้องติดตั้งอะไรเลย",
+    "section": "ที่มาของแผนที่",
+    "text": "ที่มาของแผนที่\nข้อมูลที่ใช้คือ 83 เขตอนุรักษ์ท้องฟ้ามืด (Dark Sky Thailand) ของสถาบันวิจัยดาราศาสตร์แห่งชาติ (NARIT)\nเว็บของ NARIT สร้างด้วย WordPress ซึ่งมี REST API ติดมาให้โดยอัตโนมัติ ผมเลยดึงข้อมูลตรงจาก endpoint นี้แทนการ copy ทีละหน้า:\nhttps://darksky.narit.or.th/wp-json/wp/v2/darksky\nสิ่งที่ได้กลับมาเป็น JSON — รายชื่อสถานที่ทั้ง 83 แห่งพร้อมพิกัด ชื่อจังหวัด และภาค ผมแปลงเก็บเป็นไฟล์ CSV ไว้ใช้ซ้ำ ข้อควรรู้คือ API นี้เปิดสาธารณะ (ไม่มีระบบล็อกอิน) แต่เว็บมี Cloudflare กันบอท สคริปต์เลยดึงตรง ๆ ไม่ได้ — โน้ตบุ๊กนี้จึงใช้ไฟล์ CSV ที่ดึงไว้แล้วแทน\nผมเลือกทำบน Colab เพราะอยากให้โน้ตบุ๊กนี้เป็นของที่แชร์ให้นักศึกษาเปิดรันตามได้ทันที ไม่ต้องตั้ง Python ไม่ต้องตั้งฟอนต์บนเครื่องตัวเอง"
   },
   {
     "objectID": "posts/day01_points/index.html#ผลลพธ",
     "href": "posts/day01_points/index.html#ผลลพธ",
-    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน",
+    "title": "Day 1 · Points — ทำแผนที่ 83 จุดดูดาวบน Google Colab โดยไม่ต้องติดตั้งอะไรเลย",
     "section": "ผลลัพธ์",
-    "text": "ผลลัพธ์\n\nคอนเซปต์คือ “จุดดูดาว = ดวงดาวบนแผนที่” เลยใช้พื้นหลังสีน้ำเงินเข้มแบบท้องฟ้ายามค่ำคืน วาดขอบประเทศไทยด้วยเส้นสีฟ้าอ่อน แล้วให้แต่ละจุดเรืองแสงเหมือนดาว แยกสีตามภาค 6 ภาค — ภาคอีสานมากสุด 37 จุด รองลงมาภาคเหนือ 23 จุด"
+    "text": "ผลลัพธ์\n\nคอนเซปต์คือ “จุดดูดาว = ดวงดาวบนแผนที่” — พื้นหลังสีน้ำเงินเข้มแบบท้องฟ้ายามค่ำคืน ขอบประเทศไทยสีฟ้าอ่อน แล้วให้แต่ละจุดเรืองแสงเหมือนดาว แยกสีตามภาค 6 ภาค ภาคอีสานมากสุด 37 จุด รองลงมาภาคเหนือ 23 จุด"
   },
   {
-    "objectID": "posts/day01_points/index.html#เครองมอ",
-    "href": "posts/day01_points/index.html#เครองมอ",
-    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน",
-    "section": "เครื่องมือ",
-    "text": "เครื่องมือ\n\nPython + matplotlib เท่านั้น — ไม่ต้องติดตั้ง geopandas (เครื่องผม pip ติดปัญหา dependency เลยใช้วิธีนี้)\nขอบประเทศไทยจาก GADM v4.1 (ละเอียดกว่า Natural Earth มาก และมีรูปเกาะต่าง ๆ ด้วย — ตอนแรกผมใช้ Natural Earth 110m แล้วจุดชายแดนกับจุดบนเกาะหลุดออกนอกขอบประเทศ)\nฟอนต์ไทย Noto Sans Thai (มีในระบบอยู่แล้ว)"
-  },
-  {
-    "objectID": "posts/day01_points/index.html#ขนตอนสำคญ",
-    "href": "posts/day01_points/index.html#ขนตอนสำคญ",
-    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน",
-    "section": "ขั้นตอนสำคัญ",
-    "text": "ขั้นตอนสำคัญ\n1. เตรียมข้อมูลจุด — อ่าน CSV ด้วย pandas มีคอลัมน์ latitude, longitude, region อยู่แล้ว\nimport pandas as pd\npts = pd.read_csv(\"darksky_thailand.csv\")\nprint(pts[\"region\"].value_counts())\n# northeast 37, north 23, south 7, eastern 6, center 6, western 4\n2. วาดขอบประเทศไทย — โหลด GeoJSON ของ GADM แล้ววาด polygon ด้วย matplotlib.patches.Polygon ไม่ต้องพึ่ง geopandas เลย (GADM เป็น MultiPolygon เลยต้องวนสองชั้น)\nimport json\nimport numpy as np\nfrom matplotlib.patches import Polygon as MplPolygon\n\ngj = json.load(open(\"thailand_boundary.geojson\"))  # GADM v4.1\ngeom = gj[\"features\"][0][\"geometry\"]\npolys = [geom[\"coordinates\"]] if geom[\"type\"] == \"Polygon\" else geom[\"coordinates\"]\nfor poly in polys:                      # แต่ละเกาะ/แผ่นดิน\n    ring = np.asarray(poly[0])          # วงนอกของ polygon\n    ax.add_patch(MplPolygon(ring, closed=True,\n                            facecolor=\"#101a3a\", edgecolor=\"#8ea2ff\"))\n3. ทำจุดให้เรืองแสง — เทคนิคง่าย ๆ คือ scatter สองชั้นซ้อนกัน ชั้นล่างจุดใหญ่สีจาง (halo) ชั้นบนจุดเล็กขอบขาว (core)\nax.scatter(x, y, s=260, c=color, alpha=0.16, linewidths=0)          # halo\nax.scatter(x, y, s=46, c=color, edgecolors=\"white\", linewidths=0.6) # core\n4. ฟอนต์ไทย — จุดที่ต้องระวัง: ฟอนต์ Noto Sans Thai ใน Linux บางรุ่นมีเฉพาะ glyph ภาษาไทย (ไม่มีตัวเลข/อักษรละติน) วิธีแก้คือแยก FontProperties สองชุด — ชุดไทยกับชุดละติน แล้วเรียก fig.text แยกบรรทัดกัน\nfrom matplotlib.font_manager import FontProperties\nFP_TH = FontProperties(fname=\"/usr/share/fonts/truetype/noto/NotoSansThai-Bold.ttf\")\nFP_LA = FontProperties(family=\"DejaVu Sans\", weight=\"bold\")\n5. Legend ทำมือ — เพราะป้ายมีทั้งไทยและตัวเลข ผมเลยไม่ใช้ ax.legend() แต่วาดวงกลม + ข้อความเองด้วยพิกัด figure แล้วใช้ get_window_extent() วัดความกว้างข้อความไทยก่อนวางตัวเลขต่อท้าย จะได้ไม่ทับกัน"
+    "objectID": "posts/day01_points/index.html#วธทำบน-colab-แบบยอ",
+    "href": "posts/day01_points/index.html#วธทำบน-colab-แบบยอ",
+    "title": "Day 1 · Points — ทำแผนที่ 83 จุดดูดาวบน Google Colab โดยไม่ต้องติดตั้งอะไรเลย",
+    "section": "วิธีทำบน Colab แบบย่อ",
+    "text": "วิธีทำบน Colab แบบย่อ\n\nขั้นที่ 1: ติดตั้งฟอนต์ไทย\nColab ไม่มีฟอนต์ไทยมาให้ ต้องติดตั้งก่อนวาดภาพเสมอ ผมใช้ฟอนต์ Noto Sans Thai — เพราะทดสอบแล้วว่าวาดสระบน/วรรณยุกต์ที่ซ้อนกัน (เช่นคำว่า “ทั่ว” ที่มี ั ซ้อนกับ ่) ได้ถูกต้อง ส่วนฟอนต์ Sarabun ที่ลองก่อนหน้านี้วาดสระซ้อนไม่ชัด\nimport urllib.request\nfrom fontTools.ttLib import TTFont\nfrom fontTools.varLib.instancer import instantiateVariableFont\nfrom matplotlib import font_manager\n\n# โหลด variable font แล้วสร้างไฟล์ static (Regular + Bold)\nurllib.request.urlretrieve(\n    \"https://github.com/google/fonts/raw/main/ofl/notosansthai/\"\n    \"NotoSansThai%5Bwdth%2Cwght%5D.ttf\",\n    \"NotoSansThai-VF.ttf\",\n)\nfor _name, _wght in [(\"NotoSansThai-Regular\", 400), (\"NotoSansThai-Bold\", 700)]:\n    _f = TTFont(\"NotoSansThai-VF.ttf\")\n    instantiateVariableFont(_f, {\"wght\": _wght, \"wdth\": 100}, inplace=True)\n    _f.save(f\"{_name}.ttf\")\n    font_manager.fontManager.addfont(f\"{_name}.ttf\")\n\nplt.rcParams[\"font.family\"] = \"Noto Sans Thai\"\n\n\nขั้นที่ 2: โหลดข้อมูลและขอบประเทศ\nจุดดูดาวโหลดจากไฟล์ CSV — ถ้า push ไฟล์ไว้บน GitHub ก็ pd.read_csv() จาก URL ตรง ๆ ถ้ายังไม่มี ใช้ปุ่มอัปโหลดไฟล์ของ Colab แทน\npts = pd.read_csv(\"https://raw.githubusercontent.com/.../darksky_thailand.csv\")\nขอบประเทศไทยโหลดจาก GADM v4.1 (ฐานข้อมูลขอบเขตการปกครองทั่วโลก เปิดให้ใช้ฟรี) โดยตรง ผมเลือก GADM เพราะตอนแรกใช้ Natural Earth 110m แล้วเส้นขอบหยาบเกินไป จนจุดชายแดนแม่ฮ่องสอน มุกดาหาร และชายฝั่งตราดหลุดออกนอกประเทศ\nwith urllib.request.urlopen(\n    \"https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_THA_0.json\"\n) as r:\n    gj = json.load(r)\ngeom = gj[\"features\"][0][\"geometry\"]\npolys = [geom[\"coordinates\"]] if geom[\"type\"] == \"Polygon\" else geom[\"coordinates\"]\nจุดที่ต้องเข้าใจคือโครงสร้าง GeoJSON: ขอบประเทศเป็น MultiPolygon (หลายแผ่นดิน/เกาะ) แต่ละ polygon มีหลายวง — poly[0] คือวงนอกของแผ่นดินนั้น จากนั้นวาดแต่ละวงด้วย matplotlib.patches.Polygon ไม่ต้องใช้ geopandas เลย:\nfrom matplotlib.patches import Polygon as MplPolygon\nfor poly in polys:\n    ax.add_patch(MplPolygon(np.asarray(poly[0]), closed=True,\n                            facecolor=\"#101a3a\", edgecolor=\"#8ea2ff\"))\n\n\nขั้นที่ 3: วาดแผนที่ธีมท้องฟ้ายามค่ำคืน\nเทคนิคสำคัญมีอย่างเดียว: วาดจุด 2 ชั้นซ้อนกัน — ชั้นล่างจุดใหญ่สีจางเป็น halo ชั้นบนจุดเล็กขอบขาวเป็น core แค่นี้จุดก็ดูเรืองแสงเหมือนดาวแล้ว\nax.scatter(x, y, s=260, c=color, alpha=0.16, linewidths=0)          # halo\nax.scatter(x, y, s=46, c=color, edgecolors=\"white\", linewidths=0.6) # core\nที่เหลือคือการจัดองค์ประกอบ: ดาวพื้นหลังสุ่ม 700 ดวง หัวเรื่อง คำอธิบายใต้ภาพ และ legend แยกสีตามภาค\n\n\nขั้นที่ 4: ดาวน์โหลดภาพ\nfig.savefig(\"day01_points_darksky_thailand.png\", dpi=200)\nfrom google.colab import files\nfiles.download(\"day01_points_darksky_thailand.png\")"
   },
   {
     "objectID": "posts/day01_points/index.html#บทเรยน",
     "href": "posts/day01_points/index.html#บทเรยน",
-    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน",
+    "title": "Day 1 · Points — ทำแผนที่ 83 จุดดูดาวบน Google Colab โดยไม่ต้องติดตั้งอะไรเลย",
     "section": "บทเรียน",
-    "text": "บทเรียน\n\nไม่มี geopandas ก็ทำแผนที่ได้ — ถ้ามีแค่พิกัดจุดกับ polygon ประเทศ matplotlib อย่างเดียวพอ\nฟอนต์ไทยบน Linux ต้องเช็ก glyph — อย่าเพิ่งเชื่อว่า “Noto Sans Thai” จะมีตัวเลข ใช้ FT2Font.get_charmap() เช็กก่อนได้\nธีมช่วยตัดสินใจเรื่องดีไซน์ — พอโจทย์คือ “ท้องฟ้ามืด” โทนสีและสไตล์มันเลือกตัวเองเกือบหมด\n\nสคริปต์ฉบับเต็ม (make_map.py) รันซ้ำได้ทั้งหมด — วันต่อไปธีม Clusters ผมวางแผนจะเอา fire hotspot รายวันของ GISTDA มาทำ แล้วเจอกันครับ 🔥"
+    "text": "บทเรียน\n\nฟอนต์ไทยมีเรื่องซับซ้อนกว่าที่คิด — ฟอนต์ Sarabun วาดสระบน/วรรณยุกต์ที่ซ้อนกัน (เช่นคำว่า “ทั่ว”) ไม่ชัด เพราะมันต้องการ text shaping engine ที่ matplotlib ไม่มี สุดท้ายจบที่ Noto Sans Thai ซึ่งวาดสระซ้อนได้ถูกต้อง บทเรียนคือ: เห็นฟอนต์ไทยอย่าเพิ่งไว้ใจ ทดสอบคำที่มีสระซ้อนก่อนเสมอ\nความละเอียดของขอบประเทศสำคัญกว่าที่คิด — ตอนแรกใช้ Natural Earth 110m แล้วจุดชายแดนแม่ฮ่องสอน มุกดาหาร และชายฝั่งตราดหลุดออกนอกขอบประเทศ เปลี่ยนมาใช้ GADM แล้วหาย\nColab เหมาะกับงานแชร์ ไม่ใช่งานประจำ — ทำแผนที่รายวัน 30 วัน ทำบนเครื่องตัวเองลื่นกว่า แต่พออยากให้นักศึกษาเปิดรันตาม Colab คือคำตอบ\n\nพรุ่งนี้ธีม Clusters — ผมวางแผนจะเอา fire hotspot รายวันของ GISTDA มาทำแผนที่ แล้วเจอกันครับ 🔥"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Geo Notes",
+    "section": "",
+    "text": "ยินดีต้อนรับ — ที่นี่คือสมุดบันทึกการทำแผนที่และงานวิจัยของผม เริ่มจากซีรีส์ #30DayMapChallenge 2026 หนึ่งแผนที่ต่อหนึ่งวันตลอดเดือนพฤศจิกายน\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1 · Points — ทำแผนที่ 83 จุดดูดาวบน Google Colab โดยไม่ต้องติดตั้งอะไรเลย\n\n\n\n30DayMapChallenge\n\ncartography\n\ncolab\n\n\n\n\nพาทำแผนที่ #30DayMapChallenge 2026 วันแรกบน Google Colab ตั้งแต่ศูนย์ — เปิดลิงก์ กด Run all แล้วได้ภาพแผนที่ธีมท้องฟ้ายามค่ำคืน\n\n\n\n\n\n\n3 พ.ย. 2569\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -49,10 +49,24 @@
     "text": "สวัสดีครับ ผมเป็นนักศึกษาปริญญาเอกสาขา GIS ประยุกต์ และอาจารย์มหาวิทยาลัยพะเยา\nบล็อกนี้บันทึกสิ่งที่ผมเรียนรู้จากการทำแผนที่ในชีวิตประจำวัน — ตั้งแต่ความท้าทายทำแผนที่ 30 วัน ไปจนถึงงานวิจัยด้าน GeoAI และ Autonomous GIS Agent\n\n🌐 ธีมหลัก: cartography, GIS, GeoAI, Python\n📧 ติดต่อ: ผ่านหน้า GitHub ของบล็อกนี้"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Geo Notes",
-    "section": "",
-    "text": "ยินดีต้อนรับ — ที่นี่คือสมุดบันทึกการทำแผนที่และงานวิจัยของผม เริ่มจากซีรีส์ #30DayMapChallenge 2026 หนึ่งแผนที่ต่อหนึ่งวันตลอดเดือนพฤศจิกายน\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน\n\n\n\n30DayMapChallenge\n\ncartography\n\npython\n\n\n\n\nวิธีทำแผนที่ #30DayMapChallenge 2026 วันที่ 1 ด้วย Python + matplotlib ล้วน ๆ ไม่ต้องใช้ geopandas\n\n\n\n\n\n\n3 พ.ย. 2569\n\n\n\n\n\nNo matching items"
+    "objectID": "notebooks/day01_points_colab.html#โหลดขอมล",
+    "href": "notebooks/day01_points_colab.html#โหลดขอมล",
+    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทย",
+    "section": "1. โหลดข้อมูล",
+    "text": "1. โหลดข้อมูล\n\nจุดดูดาว 83 แห่ง: ลองโหลดจาก GitHub ก่อน (ต้อง push ไฟล์ darksky_thailand.csv ไว้ที่ geo-notes/data/ ก่อน) — ถ้าโหลดไม่ได้ จะมีปุ่มให้อัปโหลดไฟล์เอง\nขอบประเทศไทย: โหลดจาก GADM v4.1 โดยตรง (ละเอียด มีรูปเกาะด้วย)\n\n\n# --- จุดดูดาว 83 แห่ง ---\nCSV_URL = \"https://raw.githubusercontent.com/thammarat-ai/geo-notes/main/data/darksky_thailand.csv\"\ntry:\n    pts = pd.read_csv(CSV_URL)\n    print(f\"โหลดจาก GitHub สำเร็จ: {len(pts)} จุด\")\nexcept Exception as e:\n    print(\"โหลดจาก URL ไม่ได้:\", e)\n    print(\"→ กรุณากดปุ่ม Choose Files แล้วอัปโหลดไฟล์ darksky_thailand.csv\")\n    from google.colab import files\n    up = files.upload()\n    pts = pd.read_csv(next(iter(up)))\n    print(f\"โหลดจากไฟล์ที่อัปโหลด: {len(pts)} จุด\")\n\nprint(pts[\"region\"].value_counts().to_string())\n\n# --- ขอบประเทศไทย (GADM v4.1) ---\nwith urllib.request.urlopen(\n    \"https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_THA_0.json\",\n    timeout=60,\n) as r:\n    gj = json.load(r)\ngeom = gj[\"features\"][0][\"geometry\"]\npolys = [geom[\"coordinates\"]] if geom[\"type\"] == \"Polygon\" else geom[\"coordinates\"]\nprint(f\"โหลดขอบประเทศสำเร็จ: {len(polys)} polygon\")\n\nโหลดจาก GitHub สำเร็จ: 83 จุด\nregion\nnortheast    37\nnorth        23\nsouth         7\neastern       6\ncenter        6\nwestern       4\nโหลดขอบประเทศสำเร็จ: 595 polygon"
+  },
+  {
+    "objectID": "notebooks/day01_points_colab.html#วาดแผนท",
+    "href": "notebooks/day01_points_colab.html#วาดแผนท",
+    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทย",
+    "section": "2. วาดแผนที่",
+    "text": "2. วาดแผนที่\nเทคนิคหลัก: 1. พื้นหลังสีน้ำเงินเข้ม + จุดดาวพื้นหลังสุ่ม → บรรยากาศท้องฟ้ายามค่ำคืน 2. ขอบประเทศสีฟ้าอ่อน 3. จุดดูดาววาด 2 ชั้นซ้อนกัน — ชั้นล่างจาง ๆ เป็น halo ชั้นบนเป็น core ขอบขาว → ดูเรืองแสง 4. แยกสีตามภาค 6 ภาค\n\nREGIONS = [  # (รหัสภาค, ชื่อไทย, สี)\n    (\"northeast\", \"ภาคตะวันออกเฉียงเหนือ\", \"#ffd166\"),\n    (\"north\",     \"ภาคเหนือ\",              \"#5ee7ff\"),\n    (\"center\",    \"ภาคกลาง\",               \"#ff6bd6\"),\n    (\"eastern\",   \"ภาคตะวันออก\",            \"#a3e635\"),\n    (\"south\",     \"ภาคใต้\",                \"#c4b5fd\"),\n    (\"western\",   \"ภาคตะวันตก\",             \"#ff9f43\"),\n]\n\nW, H = 1600, 2000\nfig = plt.figure(figsize=(W / 200, H / 200), dpi=150)\nfig.patch.set_facecolor(\"#070b18\")\nax = fig.add_axes([0.04, 0.14, 0.92, 0.68])\nax.set_facecolor(\"#070b18\")\n\n# ดาวพื้นหลัง\nrng = np.random.default_rng(30)\nax.scatter(rng.uniform(96.5, 106.5, 700), rng.uniform(4.5, 21.5, 700),\n           s=rng.uniform(2, 14, 700), c=\"white\",\n           alpha=rng.uniform(0.04, 0.25, 700), linewidths=0, zorder=1)\n\n# ขอบประเทศไทย\nfor poly in polys:\n    ax.add_patch(MplPolygon(np.asarray(poly[0]), closed=True,\n                            facecolor=\"#101a3a\", edgecolor=\"#8ea2ff\",\n                            lw=0.7, alpha=0.9, zorder=2))\n\n# จุดดูดาวแยกตามภาค\nfor key, th_label, color in REGIONS:\n    g = pts[pts[\"region\"] == key]\n    x, y = g[\"longitude\"].values, g[\"latitude\"].values\n    ax.scatter(x, y, s=260, c=color, alpha=0.16, linewidths=0, zorder=3)  # halo\n    ax.scatter(x, y, s=46, c=color, edgecolors=\"white\", linewidths=0.6,\n               alpha=0.98, zorder=4)                                      # core\n\nax.set_xlim(96.8, 106.2)\nax.set_ylim(4.8, 21.3)\nax.set_aspect(\"equal\")\nax.axis(\"off\")\n\n# หัวเรื่อง\nfig.text(0.5, 0.972, \"DAY 1  -  POINTS\", ha=\"center\", va=\"center\",\n         fontproperties=FP_B, fontsize=18, color=\"#8ea2ff\")\nfig.text(0.5, 0.910, \"83\", ha=\"center\", va=\"center\",\n         fontproperties=FP_B, fontsize=46, color=\"white\")\nfig.text(0.5, 0.870, \"เขตอนุรักษ์ท้องฟ้ามืดของไทย\", ha=\"center\", va=\"center\",\n         fontproperties=FP_B, fontsize=30, color=\"white\")\nfig.text(0.5, 0.842, \"จุดดูดาวทั่วประเทศ จำแนกตามภาค\",\n         ha=\"center\", va=\"center\", fontproperties=FP_R,\n         fontsize=14, color=\"#aeb8e8\")\n\n# legend ทำมือ 2 แถว x 3 คอลัมน์\nly, lx = [0.092, 0.058], [0.14, 0.47, 0.80]\nthai_txts = []\nfor i, (key, th_label, color) in enumerate(REGIONS):\n    n = int((pts[\"region\"] == key).sum())\n    cx, cy = lx[i % 3], ly[i // 3]\n    fig.patches.extend([Circle((cx - 0.055, cy), 0.011, color=color,\n                               ec=\"white\", lw=0.8,\n                               transform=fig.transFigure, figure=fig, zorder=5)])\n    t = fig.text(cx - 0.038, cy, th_label, ha=\"left\", va=\"center\",\n                 fontproperties=FP_R, fontsize=13.5, color=\"#cfd6ff\")\n    thai_txts.append((t, n))\n\nfig.canvas.draw()\nrenderer = fig.canvas.get_renderer()\nfor t, n in thai_txts:  # วางตัวเลขต่อท้ายข้อความไทยโดยวัดความกว้างจริง\n    bb = t.get_window_extent(renderer).transformed(fig.transFigure.inverted())\n    fig.text(bb.x1 + 0.012, (bb.y0 + bb.y1) / 2, f\"{n}\",\n             ha=\"left\", va=\"center\", fontproperties=FP_R,\n             fontsize=13.5, color=\"#8b96d8\")\n\nfig.text(0.5, 0.022, \"Data: darksky.narit.or.th (NARIT)\",\n         ha=\"center\", va=\"center\", fontproperties=FP_R,\n         fontsize=11.5, color=\"#6f7ab8\")\nfig.text(0.5, 0.006, \"#30DayMapChallenge 2026\",\n         ha=\"center\", va=\"center\", fontproperties=FP_R,\n         fontsize=11.5, color=\"#6f7ab8\")\n\nplt.show()"
+  },
+  {
+    "objectID": "notebooks/day01_points_colab.html#บนทกและดาวนโหลดภาพ",
+    "href": "notebooks/day01_points_colab.html#บนทกและดาวนโหลดภาพ",
+    "title": "Day 1 · Points — 83 จุดดูดาวทั่วไทย",
+    "section": "3. บันทึกและดาวน์โหลดภาพ",
+    "text": "3. บันทึกและดาวน์โหลดภาพ\n\nfig.savefig(\"day01_points_darksky_thailand.png\", dpi=200, facecolor=\"#070b18\")\nfrom google.colab import files\nfiles.download(\"day01_points_darksky_thailand.png\")\nprint(\"ดาวน์โหลดภาพแล้ว 🎉\")\n\n\n\n\n\n\n\nดาวน์โหลดภาพแล้ว 🎉"
   }
 ]

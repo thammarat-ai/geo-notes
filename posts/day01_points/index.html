@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="วิธีทำแผนที่ #30DayMapChallenge 2026 วันที่ 1 ด้วย Python + matplotlib ล้วน ๆ ไม่ต้องใช้ geopandas">
+<meta name="description" content="พาทำแผนที่ #30DayMapChallenge 2026 วันแรกบน Google Colab ตั้งแต่ศูนย์ — เปิดลิงก์ กด Run all แล้วได้ภาพแผนที่ธีมท้องฟ้ายามค่ำคืน">
 
-<title>Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน – Geo Notes</title>
+<title>Day 1 · Points — ทำแผนที่ 83 จุดดูดาวบน Google Colab โดยไม่ต้องติดตั้งอะไรเลย – Geo Notes</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -157,8 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#ทมาของแผนท" id="toc-ทมาของแผนท" class="nav-link active" data-scroll-target="#ทมาของแผนท">ที่มาของแผนที่</a></li>
   <li><a href="#ผลลพธ" id="toc-ผลลพธ" class="nav-link" data-scroll-target="#ผลลพธ">ผลลัพธ์</a></li>
-  <li><a href="#เครองมอ" id="toc-เครองมอ" class="nav-link" data-scroll-target="#เครองมอ">เครื่องมือ</a></li>
-  <li><a href="#ขนตอนสำคญ" id="toc-ขนตอนสำคญ" class="nav-link" data-scroll-target="#ขนตอนสำคญ">ขั้นตอนสำคัญ</a></li>
+  <li><a href="#วธทำบน-colab-แบบยอ" id="toc-วธทำบน-colab-แบบยอ" class="nav-link" data-scroll-target="#วธทำบน-colab-แบบยอ">วิธีทำบน Colab แบบย่อ</a></li>
   <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
   </ul>
 </nav>
@@ -168,17 +167,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Day 1 · Points — 83 จุดดูดาวทั่วไทยบนแผนที่ธีมท้องฟ้ายามค่ำคืน</h1>
+<h1 class="title">Day 1 · Points — ทำแผนที่ 83 จุดดูดาวบน Google Colab โดยไม่ต้องติดตั้งอะไรเลย</h1>
   <div class="quarto-categories">
     <div class="quarto-category">30DayMapChallenge</div>
     <div class="quarto-category">cartography</div>
-    <div class="quarto-category">python</div>
+    <div class="quarto-category">colab</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    วิธีทำแผนที่ #30DayMapChallenge 2026 วันที่ 1 ด้วย Python + matplotlib ล้วน ๆ ไม่ต้องใช้ geopandas
+    พาทำแผนที่ #30DayMapChallenge 2026 วันแรกบน Google Colab ตั้งแต่ศูนย์ — เปิดลิงก์ กด Run all แล้วได้ภาพแผนที่ธีมท้องฟ้ายามค่ำคืน
   </div>
 </div>
 
@@ -201,60 +200,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day01_points_colab.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>อยากทำแผนที่แต่ไม่อยากติดตั้ง Python? โพสต์นี้พาทำแผนที่วันแรกของ <a href="https://30daymapchallenge.com/">#30DayMapChallenge 2026</a> ในหัวข้อ <strong>Points</strong> บน Google Colab ตั้งแต่ศูนย์ — เปิดลิงก์ กด Run all แล้วได้ภาพนี้เลย</p>
 <section id="ทมาของแผนท" class="level2">
 <h2 class="anchored" data-anchor-id="ทมาของแผนท">ที่มาของแผนที่</h2>
-<p><a href="https://30daymapchallenge.com/">#30DayMapChallenge</a> คืองานท้าทายประจำเดือนพฤศจิกายน — ทำแผนที่วันละหนึ่งใบตามธีมหัวข้อที่กำหนด แล้วแชร์ด้วยแฮชแท็ก <code>#30DayMapChallenge</code> ปี 2026 ธีมวันแรกคือ <strong>Points</strong> (จุด) ผมเลยหยิบข้อมูลที่คุ้นมือที่สุดมาทำ</p>
-<p>ข้อมูลที่ใช้คือ <strong>83 เขตอนุรักษ์ท้องฟ้ามืด (Dark Sky Thailand)</strong> ของ <a href="https://darksky.narit.or.th/">สถาบันวิจัยดาราศาสตร์แห่งชาติ (NARIT)</a> ที่ผมเคยดึงผ่าน WP API เก็บไว้เป็นไฟล์ CSV/GeoJSON แล้ว — มีพิกัด ชื่อสถานที่ จังหวัด ภาค และค่า SQM (ความมืดของท้องฟ้า) ครบทั้ง 83 แห่ง</p>
+<p>ข้อมูลที่ใช้คือ <strong>83 เขตอนุรักษ์ท้องฟ้ามืด (Dark Sky Thailand)</strong> ของ<a href="https://darksky.narit.or.th/">สถาบันวิจัยดาราศาสตร์แห่งชาติ (NARIT)</a></p>
+<p>เว็บของ NARIT สร้างด้วย WordPress ซึ่งมี <strong>REST API</strong> ติดมาให้โดยอัตโนมัติ ผมเลยดึงข้อมูลตรงจาก endpoint นี้แทนการ copy ทีละหน้า:</p>
+<pre><code>https://darksky.narit.or.th/wp-json/wp/v2/darksky</code></pre>
+<p>สิ่งที่ได้กลับมาเป็น JSON — รายชื่อสถานที่ทั้ง 83 แห่งพร้อมพิกัด ชื่อจังหวัด และภาค ผมแปลงเก็บเป็นไฟล์ CSV ไว้ใช้ซ้ำ ข้อควรรู้คือ API นี้เปิดสาธารณะ (ไม่มีระบบล็อกอิน) แต่เว็บมี Cloudflare กันบอท สคริปต์เลยดึงตรง ๆ ไม่ได้ — โน้ตบุ๊กนี้จึงใช้ไฟล์ CSV ที่ดึงไว้แล้วแทน</p>
+<p>ผมเลือกทำบน Colab เพราะอยากให้โน้ตบุ๊กนี้เป็นของที่<strong>แชร์ให้นักศึกษาเปิดรันตามได้ทันที</strong> ไม่ต้องตั้ง Python ไม่ต้องตั้งฟอนต์บนเครื่องตัวเอง</p>
 </section>
 <section id="ผลลพธ" class="level2">
 <h2 class="anchored" data-anchor-id="ผลลพธ">ผลลัพธ์</h2>
 <p><img src="day01_points_darksky_thailand.png" class="img-fluid"></p>
-<p>คอนเซปต์คือ “จุดดูดาว = ดวงดาวบนแผนที่” เลยใช้พื้นหลังสีน้ำเงินเข้มแบบท้องฟ้ายามค่ำคืน วาดขอบประเทศไทยด้วยเส้นสีฟ้าอ่อน แล้วให้แต่ละจุดเรืองแสงเหมือนดาว แยกสีตามภาค 6 ภาค — ภาคอีสานมากสุด 37 จุด รองลงมาภาคเหนือ 23 จุด</p>
+<p>คอนเซปต์คือ “จุดดูดาว = ดวงดาวบนแผนที่” — พื้นหลังสีน้ำเงินเข้มแบบท้องฟ้ายามค่ำคืน ขอบประเทศไทยสีฟ้าอ่อน แล้วให้แต่ละจุดเรืองแสงเหมือนดาว แยกสีตามภาค 6 ภาค ภาคอีสานมากสุด 37 จุด รองลงมาภาคเหนือ 23 จุด</p>
 </section>
-<section id="เครองมอ" class="level2">
-<h2 class="anchored" data-anchor-id="เครองมอ">เครื่องมือ</h2>
-<ul>
-<li><strong>Python + matplotlib เท่านั้น</strong> — ไม่ต้องติดตั้ง geopandas (เครื่องผม pip ติดปัญหา dependency เลยใช้วิธีนี้)</li>
-<li>ขอบประเทศไทยจาก <strong>GADM v4.1</strong> (ละเอียดกว่า Natural Earth มาก และมีรูปเกาะต่าง ๆ ด้วย — ตอนแรกผมใช้ Natural Earth 110m แล้วจุดชายแดนกับจุดบนเกาะหลุดออกนอกขอบประเทศ)</li>
-<li>ฟอนต์ไทย <strong>Noto Sans Thai</strong> (มีในระบบอยู่แล้ว)</li>
-</ul>
+<section id="วธทำบน-colab-แบบยอ" class="level2">
+<h2 class="anchored" data-anchor-id="วธทำบน-colab-แบบยอ">วิธีทำบน Colab แบบย่อ</h2>
+<section id="ขนท-1-ตดตงฟอนตไทย" class="level3">
+<h3 class="anchored" data-anchor-id="ขนท-1-ตดตงฟอนตไทย">ขั้นที่ 1: ติดตั้งฟอนต์ไทย</h3>
+<p>Colab ไม่มีฟอนต์ไทยมาให้ ต้องติดตั้งก่อนวาดภาพเสมอ ผมใช้ฟอนต์ <strong>Noto Sans Thai</strong> — เพราะทดสอบแล้วว่าวาดสระบน/วรรณยุกต์ที่ซ้อนกัน (เช่นคำว่า “ทั่ว” ที่มี ั ซ้อนกับ ่) ได้ถูกต้อง ส่วนฟอนต์ Sarabun ที่ลองก่อนหน้านี้วาดสระซ้อนไม่ชัด</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib.request</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fontTools.ttLib <span class="im">import</span> TTFont</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fontTools.varLib.instancer <span class="im">import</span> instantiateVariableFont</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> font_manager</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># โหลด variable font แล้วสร้างไฟล์ static (Regular + Bold)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>urllib.request.urlretrieve(</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://github.com/google/fonts/raw/main/ofl/notosansthai/"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NotoSansThai%5Bwdth%2Cwght%5D.ttf"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NotoSansThai-VF.ttf"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _name, _wght <span class="kw">in</span> [(<span class="st">"NotoSansThai-Regular"</span>, <span class="dv">400</span>), (<span class="st">"NotoSansThai-Bold"</span>, <span class="dv">700</span>)]:</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    _f <span class="op">=</span> TTFont(<span class="st">"NotoSansThai-VF.ttf"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    instantiateVariableFont(_f, {<span class="st">"wght"</span>: _wght, <span class="st">"wdth"</span>: <span class="dv">100</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    _f.save(<span class="ss">f"</span><span class="sc">{</span>_name<span class="sc">}</span><span class="ss">.ttf"</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    font_manager.fontManager.addfont(<span class="ss">f"</span><span class="sc">{</span>_name<span class="sc">}</span><span class="ss">.ttf"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"font.family"</span>] <span class="op">=</span> <span class="st">"Noto Sans Thai"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="ขนตอนสำคญ" class="level2">
-<h2 class="anchored" data-anchor-id="ขนตอนสำคญ">ขั้นตอนสำคัญ</h2>
-<p><strong>1. เตรียมข้อมูลจุด</strong> — อ่าน CSV ด้วย pandas มีคอลัมน์ <code>latitude</code>, <code>longitude</code>, <code>region</code> อยู่แล้ว</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pts <span class="op">=</span> pd.read_csv(<span class="st">"darksky_thailand.csv"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pts[<span class="st">"region"</span>].value_counts())</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># northeast 37, north 23, south 7, eastern 6, center 6, western 4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>2. วาดขอบประเทศไทย</strong> — โหลด GeoJSON ของ GADM แล้ววาด polygon ด้วย <code>matplotlib.patches.Polygon</code> ไม่ต้องพึ่ง geopandas เลย (GADM เป็น MultiPolygon เลยต้องวนสองชั้น)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Polygon <span class="im">as</span> MplPolygon</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>gj <span class="op">=</span> json.load(<span class="bu">open</span>(<span class="st">"thailand_boundary.geojson"</span>))  <span class="co"># GADM v4.1</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>geom <span class="op">=</span> gj[<span class="st">"features"</span>][<span class="dv">0</span>][<span class="st">"geometry"</span>]</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>polys <span class="op">=</span> [geom[<span class="st">"coordinates"</span>]] <span class="cf">if</span> geom[<span class="st">"type"</span>] <span class="op">==</span> <span class="st">"Polygon"</span> <span class="cf">else</span> geom[<span class="st">"coordinates"</span>]</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> poly <span class="kw">in</span> polys:                      <span class="co"># แต่ละเกาะ/แผ่นดิน</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    ring <span class="op">=</span> np.asarray(poly[<span class="dv">0</span>])          <span class="co"># วงนอกของ polygon</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(MplPolygon(ring, closed<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                            facecolor<span class="op">=</span><span class="st">"#101a3a"</span>, edgecolor<span class="op">=</span><span class="st">"#8ea2ff"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>3. ทำจุดให้เรืองแสง</strong> — เทคนิคง่าย ๆ คือ scatter สองชั้นซ้อนกัน ชั้นล่างจุดใหญ่สีจาง (halo) ชั้นบนจุดเล็กขอบขาว (core)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y, s<span class="op">=</span><span class="dv">260</span>, c<span class="op">=</span>color, alpha<span class="op">=</span><span class="fl">0.16</span>, linewidths<span class="op">=</span><span class="dv">0</span>)          <span class="co"># halo</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y, s<span class="op">=</span><span class="dv">46</span>, c<span class="op">=</span>color, edgecolors<span class="op">=</span><span class="st">"white"</span>, linewidths<span class="op">=</span><span class="fl">0.6</span>) <span class="co"># core</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>4. ฟอนต์ไทย</strong> — จุดที่ต้องระวัง: ฟอนต์ Noto Sans Thai ใน Linux บางรุ่นมีเฉพาะ glyph ภาษาไทย (ไม่มีตัวเลข/อักษรละติน) วิธีแก้คือแยก <code>FontProperties</code> สองชุด — ชุดไทยกับชุดละติน แล้วเรียก <code>fig.text</code> แยกบรรทัดกัน</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.font_manager <span class="im">import</span> FontProperties</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>FP_TH <span class="op">=</span> FontProperties(fname<span class="op">=</span><span class="st">"/usr/share/fonts/truetype/noto/NotoSansThai-Bold.ttf"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>FP_LA <span class="op">=</span> FontProperties(family<span class="op">=</span><span class="st">"DejaVu Sans"</span>, weight<span class="op">=</span><span class="st">"bold"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>5. Legend ทำมือ</strong> — เพราะป้ายมีทั้งไทยและตัวเลข ผมเลยไม่ใช้ <code>ax.legend()</code> แต่วาดวงกลม + ข้อความเองด้วยพิกัด figure แล้วใช้ <code>get_window_extent()</code> วัดความกว้างข้อความไทยก่อนวางตัวเลขต่อท้าย จะได้ไม่ทับกัน</p>
+<section id="ขนท-2-โหลดขอมลและขอบประเทศ" class="level3">
+<h3 class="anchored" data-anchor-id="ขนท-2-โหลดขอมลและขอบประเทศ">ขั้นที่ 2: โหลดข้อมูลและขอบประเทศ</h3>
+<p>จุดดูดาวโหลดจากไฟล์ CSV — ถ้า push ไฟล์ไว้บน GitHub ก็ <code>pd.read_csv()</code> จาก URL ตรง ๆ ถ้ายังไม่มี ใช้ปุ่มอัปโหลดไฟล์ของ Colab แทน</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pts <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/.../darksky_thailand.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>ขอบประเทศไทยโหลดจาก <strong>GADM v4.1</strong> (ฐานข้อมูลขอบเขตการปกครองทั่วโลก เปิดให้ใช้ฟรี) โดยตรง ผมเลือก GADM เพราะตอนแรกใช้ Natural Earth 110m แล้วเส้นขอบหยาบเกินไป จนจุดชายแดนแม่ฮ่องสอน มุกดาหาร และชายฝั่งตราดหลุดออกนอกประเทศ</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> urllib.request.urlopen(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_THA_0.json"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>) <span class="im">as</span> r:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    gj <span class="op">=</span> json.load(r)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>geom <span class="op">=</span> gj[<span class="st">"features"</span>][<span class="dv">0</span>][<span class="st">"geometry"</span>]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>polys <span class="op">=</span> [geom[<span class="st">"coordinates"</span>]] <span class="cf">if</span> geom[<span class="st">"type"</span>] <span class="op">==</span> <span class="st">"Polygon"</span> <span class="cf">else</span> geom[<span class="st">"coordinates"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>จุดที่ต้องเข้าใจคือโครงสร้าง GeoJSON: ขอบประเทศเป็น <strong>MultiPolygon</strong> (หลายแผ่นดิน/เกาะ) แต่ละ polygon มีหลายวง — <code>poly[0]</code> คือ<strong>วงนอก</strong>ของแผ่นดินนั้น จากนั้นวาดแต่ละวงด้วย <code>matplotlib.patches.Polygon</code> ไม่ต้องใช้ geopandas เลย:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Polygon <span class="im">as</span> MplPolygon</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> poly <span class="kw">in</span> polys:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(MplPolygon(np.asarray(poly[<span class="dv">0</span>]), closed<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                            facecolor<span class="op">=</span><span class="st">"#101a3a"</span>, edgecolor<span class="op">=</span><span class="st">"#8ea2ff"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ขนท-3-วาดแผนทธมทองฟายามคำคน" class="level3">
+<h3 class="anchored" data-anchor-id="ขนท-3-วาดแผนทธมทองฟายามคำคน">ขั้นที่ 3: วาดแผนที่ธีมท้องฟ้ายามค่ำคืน</h3>
+<p>เทคนิคสำคัญมีอย่างเดียว: วาดจุด <strong>2 ชั้นซ้อนกัน</strong> — ชั้นล่างจุดใหญ่สีจางเป็น halo ชั้นบนจุดเล็กขอบขาวเป็น core แค่นี้จุดก็ดูเรืองแสงเหมือนดาวแล้ว</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y, s<span class="op">=</span><span class="dv">260</span>, c<span class="op">=</span>color, alpha<span class="op">=</span><span class="fl">0.16</span>, linewidths<span class="op">=</span><span class="dv">0</span>)          <span class="co"># halo</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y, s<span class="op">=</span><span class="dv">46</span>, c<span class="op">=</span>color, edgecolors<span class="op">=</span><span class="st">"white"</span>, linewidths<span class="op">=</span><span class="fl">0.6</span>) <span class="co"># core</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>ที่เหลือคือการจัดองค์ประกอบ: ดาวพื้นหลังสุ่ม 700 ดวง หัวเรื่อง คำอธิบายใต้ภาพ และ legend แยกสีตามภาค</p>
+</section>
+<section id="ขนท-4-ดาวนโหลดภาพ" class="level3">
+<h3 class="anchored" data-anchor-id="ขนท-4-ดาวนโหลดภาพ">ขั้นที่ 4: ดาวน์โหลดภาพ</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"day01_points_darksky_thailand.png"</span>, dpi<span class="op">=</span><span class="dv">200</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> files</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>files.download(<span class="st">"day01_points_darksky_thailand.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 </section>
 <section id="บทเรยน" class="level2">
 <h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>
-<ol type="1">
-<li><strong>ไม่มี geopandas ก็ทำแผนที่ได้</strong> — ถ้ามีแค่พิกัดจุดกับ polygon ประเทศ matplotlib อย่างเดียวพอ</li>
-<li><strong>ฟอนต์ไทยบน Linux ต้องเช็ก glyph</strong> — อย่าเพิ่งเชื่อว่า “Noto Sans Thai” จะมีตัวเลข ใช้ <code>FT2Font.get_charmap()</code> เช็กก่อนได้</li>
-<li><strong>ธีมช่วยตัดสินใจเรื่องดีไซน์</strong> — พอโจทย์คือ “ท้องฟ้ามืด” โทนสีและสไตล์มันเลือกตัวเองเกือบหมด</li>
-</ol>
-<p>สคริปต์ฉบับเต็ม (<code>make_map.py</code>) รันซ้ำได้ทั้งหมด — วันต่อไปธีม <strong>Clusters</strong> ผมวางแผนจะเอา fire hotspot รายวันของ GISTDA มาทำ แล้วเจอกันครับ 🔥</p>
+<ul>
+<li><strong>ฟอนต์ไทยมีเรื่องซับซ้อนกว่าที่คิด</strong> — ฟอนต์ Sarabun วาดสระบน/วรรณยุกต์ที่ซ้อนกัน (เช่นคำว่า “ทั่ว”) ไม่ชัด เพราะมันต้องการ text shaping engine ที่ matplotlib ไม่มี สุดท้ายจบที่ <strong>Noto Sans Thai</strong> ซึ่งวาดสระซ้อนได้ถูกต้อง บทเรียนคือ: เห็นฟอนต์ไทยอย่าเพิ่งไว้ใจ ทดสอบคำที่มีสระซ้อนก่อนเสมอ</li>
+<li><strong>ความละเอียดของขอบประเทศสำคัญกว่าที่คิด</strong> — ตอนแรกใช้ Natural Earth 110m แล้วจุดชายแดนแม่ฮ่องสอน มุกดาหาร และชายฝั่งตราดหลุดออกนอกขอบประเทศ เปลี่ยนมาใช้ GADM แล้วหาย</li>
+<li><strong>Colab เหมาะกับงานแชร์ ไม่ใช่งานประจำ</strong> — ทำแผนที่รายวัน 30 วัน ทำบนเครื่องตัวเองลื่นกว่า แต่พออยากให้นักศึกษาเปิดรันตาม Colab คือคำตอบ</li>
+</ul>
+<p>พรุ่งนี้ธีม <strong>Clusters</strong> — ผมวางแผนจะเอา fire hotspot รายวันของ GISTDA มาทำแผนที่ แล้วเจอกันครับ 🔥</p>
 
 
 </section>

@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://thammarat-ai.github.io/geo-notes/posts/day01_points/index.html</loc>
-    <lastmod>2026-11-03T04:47:54.914Z</lastmod>
+    <lastmod>2026-11-03T06:07:00.395Z</lastmod>
+  </url>
+  <url>
+    <loc>https://thammarat-ai.github.io/geo-notes/index.html</loc>
+    <lastmod>2026-11-03T05:00:16.938Z</lastmod>
   </url>
   <url>
     <loc>https://thammarat-ai.github.io/geo-notes/about.html</loc>
     <lastmod>2026-11-03T04:22:55.079Z</lastmod>
   </url>
   <url>
-    <loc>https://thammarat-ai.github.io/geo-notes/index.html</loc>
-    <lastmod>2026-11-03T04:22:55.079Z</lastmod>
+    <loc>https://thammarat-ai.github.io/geo-notes/notebooks/day01_points_colab.html</loc>
+    <lastmod>2026-11-03T05:55:01.745Z</lastmod>
   </url>
 </urlset>
