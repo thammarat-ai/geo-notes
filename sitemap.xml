@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://thammarat-ai.github.io/geo-notes/posts/day03-polygons/index.html</loc>
-    <lastmod>2026-11-03T09:53:38.207Z</lastmod>
+    <loc>https://thammarat-ai.github.io/geo-notes/posts/day04-clusters/index.html</loc>
+    <lastmod>2026-11-04T10:10:55.852Z</lastmod>
   </url>
   <url>
-    <loc>https://thammarat-ai.github.io/geo-notes/posts/day01_points/index.html</loc>
-    <lastmod>2026-11-03T09:12:42.281Z</lastmod>
+    <loc>https://thammarat-ai.github.io/geo-notes/posts/day02-lines/index.html</loc>
+    <lastmod>2026-11-03T09:13:49.989Z</lastmod>
+  </url>
+  <url>
+    <loc>https://thammarat-ai.github.io/geo-notes/notebooks/day04_clusters.html</loc>
+    <lastmod>2026-11-04T10:13:54.194Z</lastmod>
   </url>
   <url>
     <loc>https://thammarat-ai.github.io/geo-notes/notebooks/day02_lines.html</loc>
@@ -29,7 +33,11 @@
     <lastmod>2026-11-03T09:44:23.303Z</lastmod>
   </url>
   <url>
-    <loc>https://thammarat-ai.github.io/geo-notes/posts/day02-lines/index.html</loc>
-    <lastmod>2026-11-03T09:13:49.989Z</lastmod>
+    <loc>https://thammarat-ai.github.io/geo-notes/posts/day01_points/index.html</loc>
+    <lastmod>2026-11-03T09:12:42.281Z</lastmod>
+  </url>
+  <url>
+    <loc>https://thammarat-ai.github.io/geo-notes/posts/day03-polygons/index.html</loc>
+    <lastmod>2026-11-03T09:53:38.207Z</lastmod>
   </url>
 </urlset>
