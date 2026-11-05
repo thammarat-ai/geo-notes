@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cf6d4e57daf21ffe6fa1717776afd8b5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_cf6d4e57daf21ffe6fa1717776afd8b5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_cf6d4e57daf21ffe6fa1717776afd8b5 = L.map(
+                "map_cf6d4e57daf21ffe6fa1717776afd8b5",
+                {
+                    center: [13.0, 100.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_303729ec84c44fcf6372b359e59b12dc = L.tileLayer(
+                "https://cartodb-basemaps-a.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "(c) OpenStreetMap contributors (c) CARTO",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_303729ec84c44fcf6372b359e59b12dc.addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+            var tile_layer_5031fa03236f22f42778e4e45754c8c3 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5031fa03236f22f42778e4e45754c8c3.addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+            var circle_marker_a49f5dfdc54f8776ec0d563c93ece1ca = L.circleMarker(
+                [14.30077119567762, 102.44956045290462],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5eead4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_6e6092b4ba9501f6cd97c711183e97a2 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_12002aea69e4e436fe39e14bc15306a8 = $(`<div id="html_12002aea69e4e436fe39e14bc15306a8" style="width: 100.0%; height: 100.0%;"><b>#1 หาดชมตะวัน อุทยานแห่งชาติทับลาน</b><br>ท้องฟ้าเปิด (open-sky): <b>97.5%</b><br>ขอบฟ้าเฉลี่ย: 2.2&deg; · สูงสุด: 4.5&deg;<br>ระดับสายตา: 266 ม.</div>`)[0];
+                popup_6e6092b4ba9501f6cd97c711183e97a2.setContent(html_12002aea69e4e436fe39e14bc15306a8);
+            
+        
+
+        circle_marker_a49f5dfdc54f8776ec0d563c93ece1ca.bindPopup(popup_6e6092b4ba9501f6cd97c711183e97a2)
+        ;
+
+        
+    
+    
+            circle_marker_a49f5dfdc54f8776ec0d563c93ece1ca.bindTooltip(
+                `<div>
+                     #1 หาดชมตะวัน อุทยานแห่งชาติทับลาน
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_519285216a995314803b8d9571e91cf4 = L.circleMarker(
+                [19.08090129973645, 98.33280608467766],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fb923c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_84d7aa8e2f58704c0a259ff55493680f = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_4e8f7c56f4657244cc84cf9621d2f4f2 = $(`<div id="html_4e8f7c56f4657244cc84cf9621d2f4f2" style="width: 100.0%; height: 100.0%;"><b>#2 ป่าสนวัดจันทร์ อ.อ.ป. กัลยาณิวัฒนา</b><br>ท้องฟ้าเปิด (open-sky): <b>92.8%</b><br>ขอบฟ้าเฉลี่ย: 6.5&deg; · สูงสุด: 19.3&deg;<br>ระดับสายตา: 1011 ม.</div>`)[0];
+                popup_84d7aa8e2f58704c0a259ff55493680f.setContent(html_4e8f7c56f4657244cc84cf9621d2f4f2);
+            
+        
+
+        circle_marker_519285216a995314803b8d9571e91cf4.bindPopup(popup_84d7aa8e2f58704c0a259ff55493680f)
+        ;
+
+        
+    
+    
+            circle_marker_519285216a995314803b8d9571e91cf4.bindTooltip(
+                `<div>
+                     #2 ป่าสนวัดจันทร์ อ.อ.ป. กัลยาณิวัฒนา
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dd8d35d8298b2bf9ba88b57658e1dcb2 = L.circleMarker(
+                [16.3868163, 101.5673505],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#facc15", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_37bd9ae0ef7ca23b4543e464de8a4f7b = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_29d8e83f893350e563f83387c7cc775b = $(`<div id="html_29d8e83f893350e563f83387c7cc775b" style="width: 100.0%; height: 100.0%;"><b>#3 เขตรักษาพันธุ์สัตว์ป่าภูเขียว</b><br>ท้องฟ้าเปิด (open-sky): <b>96.5%</b><br>ขอบฟ้าเฉลี่ย: 3.2&deg; · สูงสุด: 5.7&deg;<br>ระดับสายตา: 870 ม.</div>`)[0];
+                popup_37bd9ae0ef7ca23b4543e464de8a4f7b.setContent(html_29d8e83f893350e563f83387c7cc775b);
+            
+        
+
+        circle_marker_dd8d35d8298b2bf9ba88b57658e1dcb2.bindPopup(popup_37bd9ae0ef7ca23b4543e464de8a4f7b)
+        ;
+
+        
+    
+    
+            circle_marker_dd8d35d8298b2bf9ba88b57658e1dcb2.bindTooltip(
+                `<div>
+                     #3 เขตรักษาพันธุ์สัตว์ป่าภูเขียว
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bf7a1852e6542d3b478448db8023c3e3 = L.circleMarker(
+                [16.87708280280838, 100.63911252049874],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5eead4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_029c456fa74e66ad1268ee8e6885de86 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_22da6376f2bbc642943a05c749bbe622 = $(`<div id="html_22da6376f2bbc642943a05c749bbe622" style="width: 100.0%; height: 100.0%;"><b>#4 วนธารา รีสอร์ท</b><br>ท้องฟ้าเปิด (open-sky): <b>97.0%</b><br>ขอบฟ้าเฉลี่ย: 2.7&deg; · สูงสุด: 5.7&deg;<br>ระดับสายตา: 132 ม.</div>`)[0];
+                popup_029c456fa74e66ad1268ee8e6885de86.setContent(html_22da6376f2bbc642943a05c749bbe622);
+            
+        
+
+        circle_marker_bf7a1852e6542d3b478448db8023c3e3.bindPopup(popup_029c456fa74e66ad1268ee8e6885de86)
+        ;
+
+        
+    
+    
+            circle_marker_bf7a1852e6542d3b478448db8023c3e3.bindTooltip(
+                `<div>
+                     #4 วนธารา รีสอร์ท
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f29030deb9a9e0a10e81709b93e01f90 = L.circleMarker(
+                [16.845275029833413, 102.89682367486878],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5eead4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_e80f79f6c7666db7813030cee8f371cb = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_09db6a46469cc72b97e3536d4393de46 = $(`<div id="html_09db6a46469cc72b97e3536d4393de46" style="width: 100.0%; height: 100.0%;"><b>#5 สวนสัตว์ขอนแก่น</b><br>ท้องฟ้าเปิด (open-sky): <b>98.2%</b><br>ขอบฟ้าเฉลี่ย: 1.6&deg; · สูงสุด: 5.5&deg;<br>ระดับสายตา: 262 ม.</div>`)[0];
+                popup_e80f79f6c7666db7813030cee8f371cb.setContent(html_09db6a46469cc72b97e3536d4393de46);
+            
+        
+
+        circle_marker_f29030deb9a9e0a10e81709b93e01f90.bindPopup(popup_e80f79f6c7666db7813030cee8f371cb)
+        ;
+
+        
+    
+    
+            circle_marker_f29030deb9a9e0a10e81709b93e01f90.bindTooltip(
+                `<div>
+                     #5 สวนสัตว์ขอนแก่น
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f4959d8e9d2dd269ebfdc0c0f5fc533e = L.circleMarker(
+                [13.593784125980354, 101.25681245664718],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#22d3ee", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_cb703b9e4814a8d1957a6b674242db77 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_d5409c868266e558518561dd26d52efd = $(`<div id="html_d5409c868266e558518561dd26d52efd" style="width: 100.0%; height: 100.0%;"><b>#6 หอดูดาวเฉลิมพระเกียรติฯ ฉะเชิงเทรา</b><br>ท้องฟ้าเปิด (open-sky): <b>99.6%</b><br>ขอบฟ้าเฉลี่ย: 0.4&deg; · สูงสุด: 1.3&deg;<br>ระดับสายตา: 13 ม.</div>`)[0];
+                popup_cb703b9e4814a8d1957a6b674242db77.setContent(html_d5409c868266e558518561dd26d52efd);
+            
+        
+
+        circle_marker_f4959d8e9d2dd269ebfdc0c0f5fc533e.bindPopup(popup_cb703b9e4814a8d1957a6b674242db77)
+        ;
+
+        
+    
+    
+            circle_marker_f4959d8e9d2dd269ebfdc0c0f5fc533e.bindTooltip(
+                `<div>
+                     #6 หอดูดาวเฉลิมพระเกียรติฯ ฉะเชิงเทรา
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_23f94d18798bd3eaed02adff9602f4b7 = L.circleMarker(
+                [16.629678859712946, 104.24326297060901],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5eead4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_d7db48cda3e87f6798fea5cd26ae6cee = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_a3d59da4b374ff51eee6ee1c513af028 = $(`<div id="html_a3d59da4b374ff51eee6ee1c513af028" style="width: 100.0%; height: 100.0%;"><b>#7 ทุ่งโนนป่าก่อ เขตรักษาพันธุ์สัตว์ป่าภูสีฐาน</b><br>ท้องฟ้าเปิด (open-sky): <b>97.4%</b><br>ขอบฟ้าเฉลี่ย: 2.3&deg; · สูงสุด: 6.0&deg;<br>ระดับสายตา: 303 ม.</div>`)[0];
+                popup_d7db48cda3e87f6798fea5cd26ae6cee.setContent(html_a3d59da4b374ff51eee6ee1c513af028);
+            
+        
+
+        circle_marker_23f94d18798bd3eaed02adff9602f4b7.bindPopup(popup_d7db48cda3e87f6798fea5cd26ae6cee)
+        ;
+
+        
+    
+    
+            circle_marker_23f94d18798bd3eaed02adff9602f4b7.bindTooltip(
+                `<div>
+                     #7 ทุ่งโนนป่าก่อ เขตรักษาพันธุ์สัตว์ป่าภูสีฐาน
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5d3cb4a66f097038db04d2ffe6700841 = L.circleMarker(
+                [8.467075536760275, 98.5906704526213],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#facc15", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_33dd2cb8a80f68e6626108387ec75c5e = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_81c4708b9fd61bdb2c919b1394b8454b = $(`<div id="html_81c4708b9fd61bdb2c919b1394b8454b" style="width: 100.0%; height: 100.0%;"><b>#8 บ่อแสนวิลล่า</b><br>ท้องฟ้าเปิด (open-sky): <b>95.9%</b><br>ขอบฟ้าเฉลี่ย: 3.7&deg; · สูงสุด: 12.8&deg;<br>ระดับสายตา: 18 ม.</div>`)[0];
+                popup_33dd2cb8a80f68e6626108387ec75c5e.setContent(html_81c4708b9fd61bdb2c919b1394b8454b);
+            
+        
+
+        circle_marker_5d3cb4a66f097038db04d2ffe6700841.bindPopup(popup_33dd2cb8a80f68e6626108387ec75c5e)
+        ;
+
+        
+    
+    
+            circle_marker_5d3cb4a66f097038db04d2ffe6700841.bindTooltip(
+                `<div>
+                     #8 บ่อแสนวิลล่า
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7de5b3fd55340cb3dfa33d869804761a = L.circleMarker(
+                [18.377705645016604, 100.83183229218729],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f43f5e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_90f220b52a542827f10fef180039c973 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_587b1913d49979b085f576d652593290 = $(`<div id="html_587b1913d49979b085f576d652593290" style="width: 100.0%; height: 100.0%;"><b>#9 อุทยานแห่งชาติศรีน่าน</b><br>ท้องฟ้าเปิด (open-sky): <b>81.8%</b><br>ขอบฟ้าเฉลี่ย: 16.4&deg; · สูงสุด: 29.9&deg;<br>ระดับสายตา: 635 ม.</div>`)[0];
+                popup_90f220b52a542827f10fef180039c973.setContent(html_587b1913d49979b085f576d652593290);
+            
+        
+
+        circle_marker_7de5b3fd55340cb3dfa33d869804761a.bindPopup(popup_90f220b52a542827f10fef180039c973)
+        ;
+
+        
+    
+    
+            circle_marker_7de5b3fd55340cb3dfa33d869804761a.bindTooltip(
+                `<div>
+                     #9 อุทยานแห่งชาติศรีน่าน
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_82cfc4458cfa8564392266bbb263f59f = L.circleMarker(
+                [17.561084583811994, 98.87657824138404],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5eead4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_60b815eb7ed6a8dc4d7d7cad830272e2 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_daf8d57c24f7a7b135d00c4fdcb01d2c = $(`<div id="html_daf8d57c24f7a7b135d00c4fdcb01d2c" style="width: 100.0%; height: 100.0%;"><b>#10 อุทยานแห่งชาติแม่ปิง</b><br>ท้องฟ้าเปิด (open-sky): <b>97.2%</b><br>ขอบฟ้าเฉลี่ย: 2.5&deg; · สูงสุด: 5.0&deg;<br>ระดับสายตา: 556 ม.</div>`)[0];
+                popup_60b815eb7ed6a8dc4d7d7cad830272e2.setContent(html_daf8d57c24f7a7b135d00c4fdcb01d2c);
+            
+        
+
+        circle_marker_82cfc4458cfa8564392266bbb263f59f.bindPopup(popup_60b815eb7ed6a8dc4d7d7cad830272e2)
+        ;
+
+        
+    
+    
+            circle_marker_82cfc4458cfa8564392266bbb263f59f.bindTooltip(
+                `<div>
+                     #10 อุทยานแห่งชาติแม่ปิง
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f299af3fba7aa3ff057fc65c1835dc16 = L.circleMarker(
+                [15.608037929868896, 105.37881657301635],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fb923c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_f00596c6b4477d186f21523185b236c5 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_f73abe31a5bf73c5b84df2251ffe13f4 = $(`<div id="html_f73abe31a5bf73c5b84df2251ffe13f4" style="width: 100.0%; height: 100.0%;"><b>#11 วนอุทยานน้ำตกผาหลวง</b><br>ท้องฟ้าเปิด (open-sky): <b>91.9%</b><br>ขอบฟ้าเฉลี่ย: 7.3&deg; · สูงสุด: 15.4&deg;<br>ระดับสายตา: 194 ม.</div>`)[0];
+                popup_f00596c6b4477d186f21523185b236c5.setContent(html_f73abe31a5bf73c5b84df2251ffe13f4);
+            
+        
+
+        circle_marker_f299af3fba7aa3ff057fc65c1835dc16.bindPopup(popup_f00596c6b4477d186f21523185b236c5)
+        ;
+
+        
+    
+    
+            circle_marker_f299af3fba7aa3ff057fc65c1835dc16.bindTooltip(
+                `<div>
+                     #11 วนอุทยานน้ำตกผาหลวง
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d5da166e726f62587434545b1c6647ce = L.circleMarker(
+                [19.707739067306516, 99.75933093863247],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f43f5e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_a97f1aaaa08ba38b06538a0f7885af87 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_978934f7d5f511be7f22a74907c0d872 = $(`<div id="html_978934f7d5f511be7f22a74907c0d872" style="width: 100.0%; height: 100.0%;"><b>#12 ฮ่อมลมจอย</b><br>ท้องฟ้าเปิด (open-sky): <b>84.6%</b><br>ขอบฟ้าเฉลี่ย: 13.8&deg; · สูงสุด: 34.5&deg;<br>ระดับสายตา: 452 ม.</div>`)[0];
+                popup_a97f1aaaa08ba38b06538a0f7885af87.setContent(html_978934f7d5f511be7f22a74907c0d872);
+            
+        
+
+        circle_marker_d5da166e726f62587434545b1c6647ce.bindPopup(popup_a97f1aaaa08ba38b06538a0f7885af87)
+        ;
+
+        
+    
+    
+            circle_marker_d5da166e726f62587434545b1c6647ce.bindTooltip(
+                `<div>
+                     #12 ฮ่อมลมจอย
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3a6bca5b66488085be30181f6c188595 = L.circleMarker(
+                [15.656639124395143, 99.79269810055551],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5eead4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_7a1a1060885118caadb8bce3f8cf4e0f = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_e56f78cb3098003f7db7fa3f7c94bfed = $(`<div id="html_e56f78cb3098003f7db7fa3f7c94bfed" style="width: 100.0%; height: 100.0%;"><b>#13 ภาวนานิเวศน์ แคมป์</b><br>ท้องฟ้าเปิด (open-sky): <b>98.9%</b><br>ขอบฟ้าเฉลี่ย: 1.0&deg; · สูงสุด: 3.5&deg;<br>ระดับสายตา: 55 ม.</div>`)[0];
+                popup_7a1a1060885118caadb8bce3f8cf4e0f.setContent(html_e56f78cb3098003f7db7fa3f7c94bfed);
+            
+        
+
+        circle_marker_3a6bca5b66488085be30181f6c188595.bindPopup(popup_7a1a1060885118caadb8bce3f8cf4e0f)
+        ;
+
+        
+    
+    
+            circle_marker_3a6bca5b66488085be30181f6c188595.bindTooltip(
+                `<div>
+                     #13 ภาวนานิเวศน์ แคมป์
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5094c3ec3a3145d4af4ca95c312a44a7 = L.circleMarker(
+                [16.10264006325147, 99.14005286406244],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fb923c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_655974944b0559dbfde862c0fab922db = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_500fa2f41697dca9138c6446161bd8f2 = $(`<div id="html_500fa2f41697dca9138c6446161bd8f2" style="width: 100.0%; height: 100.0%;"><b>#14 อุทยานแห่งชาติแม่วงก์</b><br>ท้องฟ้าเปิด (open-sky): <b>92.9%</b><br>ขอบฟ้าเฉลี่ย: 6.4&deg; · สูงสุด: 16.6&deg;<br>ระดับสายตา: 1101 ม.</div>`)[0];
+                popup_655974944b0559dbfde862c0fab922db.setContent(html_500fa2f41697dca9138c6446161bd8f2);
+            
+        
+
+        circle_marker_5094c3ec3a3145d4af4ca95c312a44a7.bindPopup(popup_655974944b0559dbfde862c0fab922db)
+        ;
+
+        
+    
+    
+            circle_marker_5094c3ec3a3145d4af4ca95c312a44a7.bindTooltip(
+                `<div>
+                     #14 อุทยานแห่งชาติแม่วงก์
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_17a5bd1028ec9f3ca0d539d23cb55b27 = L.circleMarker(
+                [15.259315272075467, 103.4572935613666],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5eead4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_5de4a8f8356b0251152bf15da9401833 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_fa07926a3fb2ce853eda4b80286eadd4 = $(`<div id="html_fa07926a3fb2ce853eda4b80286eadd4" style="width: 100.0%; height: 100.0%;"><b>#15 คชอาณาจักรสุรินทร์</b><br>ท้องฟ้าเปิด (open-sky): <b>98.9%</b><br>ขอบฟ้าเฉลี่ย: 1.0&deg; · สูงสุด: 1.8&deg;<br>ระดับสายตา: 129 ม.</div>`)[0];
+                popup_5de4a8f8356b0251152bf15da9401833.setContent(html_fa07926a3fb2ce853eda4b80286eadd4);
+            
+        
+
+        circle_marker_17a5bd1028ec9f3ca0d539d23cb55b27.bindPopup(popup_5de4a8f8356b0251152bf15da9401833)
+        ;
+
+        
+    
+    
+            circle_marker_17a5bd1028ec9f3ca0d539d23cb55b27.bindTooltip(
+                `<div>
+                     #15 คชอาณาจักรสุรินทร์
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6e3368cdab9c4211e293d6e44f6ccaa8 = L.circleMarker(
+                [16.219770141539684, 103.32924641534188],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5eead4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_9d73ef56e3fa6fa7839a90d840f94761 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_3fc56499b8ebab426538c81b19202249 = $(`<div id="html_3fc56499b8ebab426538c81b19202249" style="width: 100.0%; height: 100.0%;"><b>#16 สวนวลัยรุกขเวช มหาวิทยาลัยมหาสารคาม</b><br>ท้องฟ้าเปิด (open-sky): <b>98.4%</b><br>ขอบฟ้าเฉลี่ย: 1.4&deg; · สูงสุด: 3.0&deg;<br>ระดับสายตา: 147 ม.</div>`)[0];
+                popup_9d73ef56e3fa6fa7839a90d840f94761.setContent(html_3fc56499b8ebab426538c81b19202249);
+            
+        
+
+        circle_marker_6e3368cdab9c4211e293d6e44f6ccaa8.bindPopup(popup_9d73ef56e3fa6fa7839a90d840f94761)
+        ;
+
+        
+    
+    
+            circle_marker_6e3368cdab9c4211e293d6e44f6ccaa8.bindTooltip(
+                `<div>
+                     #16 สวนวลัยรุกขเวช มหาวิทยาลัยมหาสารคาม
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c8e18e88c23bd9542db13d180ff40a9f = L.circleMarker(
+                [15.575788130802586, 103.9399338626565],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#22d3ee", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_045f7301de6a31999346bde63d327529 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_4a4664a6e81342e26c278c22b7fcb965 = $(`<div id="html_4a4664a6e81342e26c278c22b7fcb965" style="width: 100.0%; height: 100.0%;"><b>#17 โนนขันหมาก (บ่อเกลือพันขันฑ์)</b><br>ท้องฟ้าเปิด (open-sky): <b>99.7%</b><br>ขอบฟ้าเฉลี่ย: 0.3&deg; · สูงสุด: 1.0&deg;<br>ระดับสายตา: 133 ม.</div>`)[0];
+                popup_045f7301de6a31999346bde63d327529.setContent(html_4a4664a6e81342e26c278c22b7fcb965);
+            
+        
+
+        circle_marker_c8e18e88c23bd9542db13d180ff40a9f.bindPopup(popup_045f7301de6a31999346bde63d327529)
+        ;
+
+        
+    
+    
+            circle_marker_c8e18e88c23bd9542db13d180ff40a9f.bindTooltip(
+                `<div>
+                     #17 โนนขันหมาก (บ่อเกลือพันขันฑ์)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2d6af511b3aecef73168ef95547d865a = L.circleMarker(
+                [16.764269007031416, 98.7491308399227],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fb923c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_ee9bdb460dc16953fa2c46bcb6654a6a = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_921f5ae2251ab284302447f588ef5f6d = $(`<div id="html_921f5ae2251ab284302447f588ef5f6d" style="width: 100.0%; height: 100.0%;"><b>#18 สวนป่าแม่ละเมา องค์การอุตสาหกรรมป่าไม้</b><br>ท้องฟ้าเปิด (open-sky): <b>92.4%</b><br>ขอบฟ้าเฉลี่ย: 6.9&deg; · สูงสุด: 12.0&deg;<br>ระดับสายตา: 297 ม.</div>`)[0];
+                popup_ee9bdb460dc16953fa2c46bcb6654a6a.setContent(html_921f5ae2251ab284302447f588ef5f6d);
+            
+        
+
+        circle_marker_2d6af511b3aecef73168ef95547d865a.bindPopup(popup_ee9bdb460dc16953fa2c46bcb6654a6a)
+        ;
+
+        
+    
+    
+            circle_marker_2d6af511b3aecef73168ef95547d865a.bindTooltip(
+                `<div>
+                     #18 สวนป่าแม่ละเมา องค์การอุตสาหกรรมป่าไม้
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_39448a92c562d3198b92db17c4e88c61 = L.circleMarker(
+                [13.706646502889619, 99.20113810184793],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fb923c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_584a141f30dc4a77d8890cbbb91d66e5 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_2fe302c30f6de77c135391836a1aef3d = $(`<div id="html_2fe302c30f6de77c135391836a1aef3d" style="width: 100.0%; height: 100.0%;"><b>#19 ขุนเขา ตำนานไพร รีสอร์ท</b><br>ท้องฟ้าเปิด (open-sky): <b>90.9%</b><br>ขอบฟ้าเฉลี่ย: 8.2&deg; · สูงสุด: 15.2&deg;<br>ระดับสายตา: 347 ม.</div>`)[0];
+                popup_584a141f30dc4a77d8890cbbb91d66e5.setContent(html_2fe302c30f6de77c135391836a1aef3d);
+            
+        
+
+        circle_marker_39448a92c562d3198b92db17c4e88c61.bindPopup(popup_584a141f30dc4a77d8890cbbb91d66e5)
+        ;
+
+        
+    
+    
+            circle_marker_39448a92c562d3198b92db17c4e88c61.bindTooltip(
+                `<div>
+                     #19 ขุนเขา ตำนานไพร รีสอร์ท
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_68bb2478564d69517af7dee05fe4c1fe = L.circleMarker(
+                [7.145091221203791, 100.43940518162948],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#22d3ee", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_f9a5fcc84c2813e370ce0bb1a32d28c9 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_514741f512fbcf34f0ed89cc060ecd94 = $(`<div id="html_514741f512fbcf34f0ed89cc060ecd94" style="width: 100.0%; height: 100.0%;"><b>#20 ปลายแหลมแคมป์</b><br>ท้องฟ้าเปิด (open-sky): <b>99.6%</b><br>ขอบฟ้าเฉลี่ย: 0.3&deg; · สูงสุด: 1.1&deg;<br>ระดับสายตา: 6 ม.</div>`)[0];
+                popup_f9a5fcc84c2813e370ce0bb1a32d28c9.setContent(html_514741f512fbcf34f0ed89cc060ecd94);
+            
+        
+
+        circle_marker_68bb2478564d69517af7dee05fe4c1fe.bindPopup(popup_f9a5fcc84c2813e370ce0bb1a32d28c9)
+        ;
+
+        
+    
+    
+            circle_marker_68bb2478564d69517af7dee05fe4c1fe.bindTooltip(
+                `<div>
+                     #20 ปลายแหลมแคมป์
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0f9cf227a1dd46a9476dfa36ca76474c = L.circleMarker(
+                [16.433629180299814, 104.8031339817871],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#facc15", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_a53a56a4265e1bccf025217428732cb1 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_6673dc198ebcb6cde17561058137180e = $(`<div id="html_6673dc198ebcb6cde17561058137180e" style="width: 100.0%; height: 100.0%;"><b>#21 อุทยานแห่งชาติภูผาเทิบ</b><br>ท้องฟ้าเปิด (open-sky): <b>95.5%</b><br>ขอบฟ้าเฉลี่ย: 4.0&deg; · สูงสุด: 10.4&deg;<br>ระดับสายตา: 181 ม.</div>`)[0];
+                popup_a53a56a4265e1bccf025217428732cb1.setContent(html_6673dc198ebcb6cde17561058137180e);
+            
+        
+
+        circle_marker_0f9cf227a1dd46a9476dfa36ca76474c.bindPopup(popup_a53a56a4265e1bccf025217428732cb1)
+        ;
+
+        
+    
+    
+            circle_marker_0f9cf227a1dd46a9476dfa36ca76474c.bindTooltip(
+                `<div>
+                     #21 อุทยานแห่งชาติภูผาเทิบ
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8df7d26be61dc892fb423739ca9cdade = L.circleMarker(
+                [20.28855820090921, 99.80980327116451],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fb923c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_2dc4d2e71585333e8babb709fd9dbed6 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_a49e0f07797da5e80e5d5cae15e80c99 = $(`<div id="html_a49e0f07797da5e80e5d5cae15e80c99" style="width: 100.0%; height: 100.0%;"><b>#22 สวนแม่ฟ้าหลวง</b><br>ท้องฟ้าเปิด (open-sky): <b>90.4%</b><br>ขอบฟ้าเฉลี่ย: 8.7&deg; · สูงสุด: 21.6&deg;<br>ระดับสายตา: 971 ม.</div>`)[0];
+                popup_2dc4d2e71585333e8babb709fd9dbed6.setContent(html_a49e0f07797da5e80e5d5cae15e80c99);
+            
+        
+
+        circle_marker_8df7d26be61dc892fb423739ca9cdade.bindPopup(popup_2dc4d2e71585333e8babb709fd9dbed6)
+        ;
+
+        
+    
+    
+            circle_marker_8df7d26be61dc892fb423739ca9cdade.bindTooltip(
+                `<div>
+                     #22 สวนแม่ฟ้าหลวง
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3bf5f367cb06698737a4a774ec02ad63 = L.circleMarker(
+                [12.680672548124045, 101.47427843757323],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5eead4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_f29b1d9dd3c10827faf1bc63f674c949 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_4c52ebf2b45fd72d465a0189ec439e4d = $(`<div id="html_4c52ebf2b45fd72d465a0189ec439e4d" style="width: 100.0%; height: 100.0%;"><b>#23 ฟาร์มแสงสุข</b><br>ท้องฟ้าเปิด (open-sky): <b>98.0%</b><br>ขอบฟ้าเฉลี่ย: 1.8&deg; · สูงสุด: 6.7&deg;<br>ระดับสายตา: 42 ม.</div>`)[0];
+                popup_f29b1d9dd3c10827faf1bc63f674c949.setContent(html_4c52ebf2b45fd72d465a0189ec439e4d);
+            
+        
+
+        circle_marker_3bf5f367cb06698737a4a774ec02ad63.bindPopup(popup_f29b1d9dd3c10827faf1bc63f674c949)
+        ;
+
+        
+    
+    
+            circle_marker_3bf5f367cb06698737a4a774ec02ad63.bindTooltip(
+                `<div>
+                     #23 ฟาร์มแสงสุข
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e81b13b5fd9e81cae381eab346fc5291 = L.circleMarker(
+                [11.714674252295914, 99.75411443448256],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5eead4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+        
+    
+        var popup_c567540c355f45a78943d72c19bdbd72 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ddf99b00fcf53b76f1369526e3625e7c = $(`<div id="html_ddf99b00fcf53b76f1369526e3625e7c" style="width: 100.0%; height: 100.0%;"><b>#24 อุทยานวิทยาศาสตร์พระจอมเกล้า ณ หว้ากอ จังหวัดประจวบคีรีขันธ์</b><br>ท้องฟ้าเปิด (open-sky): <b>97.2%</b><br>ขอบฟ้าเฉลี่ย: 2.5&deg; · สูงสุด: 7.8&deg;<br>ระดับสายตา: 10 ม.</div>`)[0];
+                popup_c567540c355f45a78943d72c19bdbd72.setContent(html_ddf99b00fcf53b76f1369526e3625e7c);
+            
+        
+
+        circle_marker_e81b13b5fd9e81cae381eab346fc5291.bindPopup(popup_c567540c355f45a78943d72c19bdbd72)
+        ;
+
+        
+    
+    
+            circle_marker_e81b13b5fd9e81cae381eab346fc5291.bindTooltip(
+                `<div>
+                     #24 อุทยานวิทยาศาสตร์พระจอมเกล้า ณ หว้ากอ จังหวัดประจวบคีรีขันธ์
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_86253c20b32a755c1e03e7775e703d52_layers = {
+                base_layers : {
+                    "Dark" : tile_layer_303729ec84c44fcf6372b359e59b12dc,
+                    "Street" : tile_layer_5031fa03236f22f42778e4e45754c8c3,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_86253c20b32a755c1e03e7775e703d52 = L.control.layers(
+                layer_control_86253c20b32a755c1e03e7775e703d52_layers.base_layers,
+                layer_control_86253c20b32a755c1e03e7775e703d52_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_cf6d4e57daf21ffe6fa1717776afd8b5);
+
+        
+</script>
+</html>
