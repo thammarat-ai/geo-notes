@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="ต่อจาก Day 5: ไม่ใส่ฟิลเตอร์ sepia แต่เปลี่ยนสัญลักษณ์ทั้งแผ่นให้เป็นของที่ถูกยุค — hachure จาก DEM แทน hillshade, เส้นชั้นระยะทางแบบสั่นมือแทน choropleth หกเหลี่ยม, rose เส้นขอบฟ้า 24 ดอก, มาตราเส้น/โยชน์ บนกระดาษแก่ที่สร้างด้วย noise ล้วน">
+<meta name="description" content="ต่อจาก Day 5: ไม่ใส่ฟิลเตอร์ sepia แต่เปลี่ยนสัญลักษณ์ทั้งแผ่นให้ตรงกับยุคก่อนคอมพิวเตอร์ — วาดภูมิประเทศด้วย hachure จาก DEM แทนเงาภูมิประเทศ, ใช้เส้นชั้นระยะทางที่เขียนให้มือสั่นแทน choropleth หกเหลี่ยม, แผนภาพวงเส้นขอบฟ้า 24 วงสไตล์ compass rose และมาตราเส้น/โยชน์ บนกระดาษแก่ที่สร้างด้วยสุ่มเลขเอง">
 
-<title>Day 6 · Vintage — เปลี่ยน notation เป็นยุคก่อน 1900: เส้นขน hachure + เส้นชั้นสั่นมือ + rose เส้นขอบฟ้า – Geo Notes</title>
+<title>Day 6 · Vintage — hachure, เส้นชั้นแบบเขียนมือ และ compass rose บนแผนที่ฟ้ามืดไทย – Geo Notes</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Day 6 · Vintage — เปลี่ยน notation เป็นยุคก่อน 1900: เส้นขน hachure + เส้นชั้นสั่นมือ + rose เส้นขอบฟ้า</h1>
+<h1 class="title">Day 6 · Vintage — hachure, เส้นชั้นแบบเขียนมือ และ compass rose บนแผนที่ฟ้ามืดไทย</h1>
   <div class="quarto-categories">
     <div class="quarto-category">30DayMapChallenge</div>
     <div class="quarto-category">cartography</div>
@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    ต่อจาก Day 5: ไม่ใส่ฟิลเตอร์ sepia แต่เปลี่ยนสัญลักษณ์ทั้งแผ่นให้เป็นของที่ถูกยุค — hachure จาก DEM แทน hillshade, เส้นชั้นระยะทางแบบสั่นมือแทน choropleth หกเหลี่ยม, rose เส้นขอบฟ้า 24 ดอก, มาตราเส้น/โยชน์ บนกระดาษแก่ที่สร้างด้วย noise ล้วน
+    ต่อจาก Day 5: ไม่ใส่ฟิลเตอร์ sepia แต่เปลี่ยนสัญลักษณ์ทั้งแผ่นให้ตรงกับยุคก่อนคอมพิวเตอร์ — วาดภูมิประเทศด้วย hachure จาก DEM แทนเงาภูมิประเทศ, ใช้เส้นชั้นระยะทางที่เขียนให้มือสั่นแทน choropleth หกเหลี่ยม, แผนภาพวงเส้นขอบฟ้า 24 วงสไตล์ compass rose และมาตราเส้น/โยชน์ บนกระดาษแก่ที่สร้างด้วยสุ่มเลขเอง
   </div>
 </div>
 
@@ -230,21 +230,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>ภูมิประเทศ</td>
-<td>hillshade จาก DEM</td>
-<td><strong>เส้นขน hachure</strong> วาดตามเส้น fall-line</td>
-<td>hachure เป็นมาตรฐานก่อนยุค contour + colour band</td>
+<td>เงาภูมิประเทศ (hillshade) จาก DEM</td>
+<td><strong>hachure</strong> — เส้นสั้น ๆ วาดตามทางลาดเขา</td>
+<td>เป็นวิธีมาตรฐานก่อนยุค contour + colour band</td>
 </tr>
 <tr class="even">
 <td>ระยะทางสู่จุดฟ้ามืด</td>
 <td>choropleth หกเหลี่ยม H3</td>
-<td><strong>เส้นชั้น isopleth</strong> 10–150 กม. วาดแบบสั่นมือ</td>
-<td>isopleth มีก่อน grid หกเหลี่ยม</td>
+<td><strong>เส้นชั้น</strong> (isopleth) 10–150 กม. ที่เขียนให้มือสั่น</td>
+<td>เส้นชั้นใช้กันก่อนยุคตารางหกเหลี่ยม</td>
 </tr>
 <tr class="odd">
 <td>เส้นขอบฟ้า 360 ทิศ</td>
 <td>polar plot สีนีออน</td>
-<td><strong>rose 24 ดอก</strong> ขีดเส้นทแยงแบบ engraving</td>
-<td>rose เป็นของคู่กับแผ่น atlas เก่า</td>
+<td><strong>วงเส้นขอบฟ้า 24 วง</strong> ขีดลายทแยงแบบ engraving</td>
+<td>วางในสไตล์ compass rose ของแผ่น atlas ยุคนั้น</td>
 </tr>
 <tr class="even">
 <td>มาตราส่วน</td>
@@ -260,16 +260,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>มีอยู่อย่างหนึ่งที่ <em>ตั้งใจ</em> ไม่เลียนแบบ: แผนที่โบราณมักวาดภูมิประเทศ “ตามรู้สึก” — ของผมเส้นขนทุกเส้น มาจาก DEM จริง (Copernicus GLO-30) และทุกเส้นชั้นมาจาก distance field จริง บนแผ่นจึงมีหมายเหตุเล็ก ๆ กำกับไว้ว่า <em>“แบบย้อนยุคในแผ่นนี้เป็นงานออกแบบใหม่ ไม่ใช่แผนที่โบราณของจริง”</em></p>
+<p><strong>ว่าด้วยคำศัพท์ในโพสต์นี้</strong> — ผมตั้งใจไม่แต่งคำไทยใหม่ครับ คำไหนมีศัพท์มาตรฐานก็ใช้ (เส้นชั้นความสูง, เงาภูมิประเทศ, แผนที่ภูมิประเทศ) คำไหนไม่มีก็เรียกทับศัพท์ไปเลยแล้วอธิบายต่อ เพราะ <em>hachure</em> กับ <em>compass rose</em> ไม่มีศัพท์ไทยที่ราชบัณฑิตฯ หรือตำราไทยใช้กันจริง ใครรู้จักคำที่วงการแผนที่ไทยใช้กว่านี้บอกได้ ผมแก้ทั้งโพสต์และบนแผ่นให้</p>
+<p>มีอยู่อย่างหนึ่งที่ <em>ตั้งใจ</em> ไม่เลียนแบบ: แผนที่โบราณมักวาดภูมิประเทศ “ตามรู้สึก” — ของผมทุกเส้น hachure มาจาก DEM จริง (Copernicus GLO-30) และทุกเส้นชั้นมาจาก distance field จริง บนแผ่นจึงมีหมายเหตุเล็ก ๆ กำกับไว้ว่า <em>“แบบย้อนยุคในแผ่นนี้เป็นงานออกแบบใหม่ ไม่ใช่แผนที่โบราณของจริง”</em></p>
 </section>
 <section id="ผลลพธ" class="level2">
 <h2 class="anchored" data-anchor-id="ผลลพธ">ผลลัพธ์</h2>
 <p><img src="day06_vintage_preview.png" class="img-fluid"></p>
 <p><a href="day06_vintage_plate.png">ดาวน์โหลดแผ่นเต็ม 1700×2185 px</a> · <a href="day06_vintage_lineart.svg">ไฟล์เส้นหมึก SVG สำหรับ plotter</a></p>
-<p>ตัวเลขบนแผ่นวันนี้: <strong>3,664 เส้นขน</strong> จาก 4,884 จุดตั้งต้นที่ความชัน ≥ 4°, <strong>181 ช่วงเส้นชั้น</strong> 7 ระดับ, <strong>83 จุด</strong> NARIT, <strong>24 rose</strong> เส้นขอบฟ้า และ 1 เข็มทิศในอ่าวไทย (อุดร–บูรพา–ทักษิณ–ประจิม)</p>
+<p>ตัวเลขบนแผ่นวันนี้: <strong>3,664 เส้น hachure</strong> จาก 4,884 จุดตั้งต้นที่ความชัน ≥ 4°, <strong>181 ช่วงเส้นชั้น</strong> 7 ระดับ, <strong>83 จุด</strong> NARIT, <strong>24 วงเส้นขอบฟ้า</strong> และ 1 เข็มทิศในอ่าวไทย (อุดร–บูรพา–ทักษิณ–ประจิม)</p>
 <p>ตัวเลขในวงกลมสนิมบนแผ่นคือ <strong>อันดับ hotspot จาก Day 4</strong> (จัดตามขนาด/ความมืดของกลุ่ม) ไม่ใช่อันดับ ความฟ้าเปิด — ผมเลือกเฉพาะ 6 จุดที่ฟ้าเปิดที่สุดมาใส่ชื่อไว้ เพื่อไม่ให้แผ่นรกเกินแบบ atlas จริง</p>
 <p><img src="day06_detail_hachure.png" class="img-fluid"> <img src="day06_detail_cartouche.png" class="img-fluid"></p>
-<p>ของที่ได้เพิ่มมาจริง ๆ ไม่ใช่ความสวย แต่คือ <strong>แผ่น rose</strong> ซึ่งยืนยันข้อสรุปของ Day 5 แบบมองปุ๊บเข้าใจปั๊บ: จุดที่ฟ้า <em>มืดที่สุด</em> บางแห่งมีเส้นขอบฟ้า <em>แย่ที่สุด</em> เพราะอยู่ในหุบเขา — rose ที่ปูดเป็นก้อนคือ อุทยานแห่งชาติศรีนภา (open-sky 0.818 · มุมสูงสุด 30°) และลุ่มน้ำจอย (0.846 · 34°) ส่วน rose วงเล็กกลมนั้นคือที่ราบ/ชายทะเลที่เห็นฟ้าเกือบครบโดม</p>
+<p>ของที่ได้เพิ่มมาจริง ๆ ไม่ใช่ความสวย แต่คือ <strong>แผ่นวงเส้นขอบฟ้า</strong> ซึ่งยืนยันข้อสรุปของ Day 5 แบบมองปุ๊บเข้าใจปั๊บ: จุดที่ฟ้า <em>มืดที่สุด</em> บางแห่งมีเส้นขอบฟ้า <em>แย่ที่สุด</em> เพราะอยู่ในหุบเขา — วงที่ปูดเป็นก้อนคือ อุทยานแห่งชาติศรีนภา (open-sky 0.818 · มุมสูงสุด 30°) และลุ่มน้ำจอย (0.846 · 34°) ส่วนวงเล็กกลมนั้นคือที่ราบ/ชายทะเลที่เห็นฟ้าเกือบครบโดม</p>
 <p><img src="day06_roses_plate.png" class="img-fluid"></p>
 </section>
 <section id="วธทำแบบยอ" class="level2">
@@ -302,8 +303,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> math.hypot(c <span class="op">-</span> pc, r <span class="op">-</span> pr) <span class="op">&lt;</span> <span class="fl">0.55</span> <span class="op">*</span> <span class="bu">len</span>(pts) <span class="op">*</span> step_px: <span class="cf">continue</span></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    strokes.append(pts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="ขนท-2-เสนชน-สนมอ-จาก-kd-tree" class="level3">
-<h3 class="anchored" data-anchor-id="ขนท-2-เสนชน-สนมอ-จาก-kd-tree">ขั้นที่ 2: เส้นชั้น “สั่นมือ” จาก KD-tree</h3>
+<section id="ขนท-2-เสนชนทเขยนใหมอสน-จาก-kd-tree" class="level3">
+<h3 class="anchored" data-anchor-id="ขนท-2-เสนชนทเขยนใหมอสน-จาก-kd-tree">ขั้นที่ 2: เส้นชั้นที่เขียนให้มือสั่น จาก KD-tree</h3>
 <p>ระยะทางสู่จุดฟ้ามืดที่ใกล้ที่สุดไม่ต้องคำนวณใหม่ — ใช้ <code>cKDTree</code> บน 83 จุดพิกัด (หน่วย กม. แบบ equirectangular) query ทั้งกริดแล้ว <code>contour</code> เอาเฉพาะเส้น (ไม่ fill) ส่วนลายมือสั่น ทำใหม่ด้วยการ resample เส้นทุก 5 กม. แล้วเลื่อนจุดตามเส้นตั้งฉากด้วย noise เรียบ (ผลรวม sine 3 ความยาวคลื่น) เพื่อให้เส้นอืดเหมือนปากกา ไม่สั่นแบบ white noise:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> wobble(P, amp_m<span class="op">=</span><span class="fl">2200.0</span>, res_m<span class="op">=</span><span class="fl">6000.0</span>, seed<span class="op">=</span><span class="dv">0</span>, close<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    P <span class="op">=</span> np.asarray(P, <span class="bu">float</span>)</span>
