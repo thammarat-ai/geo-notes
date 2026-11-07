@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://thammarat-ai.github.io/geo-notes/posts/day06-vintage/index.html</loc>
-    <lastmod>2026-11-07T16:33:20.840Z</lastmod>
+    <loc>https://thammarat-ai.github.io/geo-notes/posts/day07-10min/index.html</loc>
+    <lastmod>2026-11-07T16:55:01.642Z</lastmod>
   </url>
   <url>
-    <loc>https://thammarat-ai.github.io/geo-notes/posts/day04-clusters/index.html</loc>
+    <loc>https://thammarat-ai.github.io/geo-notes/posts/day05-sight/index.html</loc>
     <lastmod>2026-11-07T16:33:20.842Z</lastmod>
   </url>
   <url>
-    <loc>https://thammarat-ai.github.io/geo-notes/posts/day02-lines/index.html</loc>
-    <lastmod>2026-11-06T13:34:55.208Z</lastmod>
+    <loc>https://thammarat-ai.github.io/geo-notes/posts/day03-polygons/index.html</loc>
+    <lastmod>2026-11-06T13:34:55.227Z</lastmod>
+  </url>
+  <url>
+    <loc>https://thammarat-ai.github.io/geo-notes/posts/day01_points/index.html</loc>
+    <lastmod>2026-11-06T13:34:55.200Z</lastmod>
   </url>
   <url>
     <loc>https://thammarat-ai.github.io/geo-notes/notebooks/day06_vintage.html</loc>
@@ -45,15 +49,19 @@
     <lastmod>2026-11-06T13:34:55.194Z</lastmod>
   </url>
   <url>
-    <loc>https://thammarat-ai.github.io/geo-notes/posts/day01_points/index.html</loc>
-    <lastmod>2026-11-06T13:34:55.200Z</lastmod>
+    <loc>https://thammarat-ai.github.io/geo-notes/notebooks/day07_10min.html</loc>
+    <lastmod>2026-11-07T16:55:01.836Z</lastmod>
   </url>
   <url>
-    <loc>https://thammarat-ai.github.io/geo-notes/posts/day03-polygons/index.html</loc>
-    <lastmod>2026-11-06T13:34:55.227Z</lastmod>
+    <loc>https://thammarat-ai.github.io/geo-notes/posts/day02-lines/index.html</loc>
+    <lastmod>2026-11-06T13:34:55.208Z</lastmod>
   </url>
   <url>
-    <loc>https://thammarat-ai.github.io/geo-notes/posts/day05-sight/index.html</loc>
+    <loc>https://thammarat-ai.github.io/geo-notes/posts/day04-clusters/index.html</loc>
     <lastmod>2026-11-07T16:33:20.842Z</lastmod>
+  </url>
+  <url>
+    <loc>https://thammarat-ai.github.io/geo-notes/posts/day06-vintage/index.html</loc>
+    <lastmod>2026-11-07T16:33:20.840Z</lastmod>
   </url>
 </urlset>
