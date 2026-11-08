@@ -121,6 +121,17 @@ open_sky = mean((90 - clip(horizon, 0, 90)) / 90)  # สัดส่วนโด
 ไฟล์ `day05_sight.geojson` (24 จุด พร้อม `open_sky` / `mean_horizon` / `max_horizon` / `z_obs`)
 และ `day05_sight_map.html` เปิดดูรายจุดแบบ interactive ได้เลย
 
+
+## ไฟล์ประกอบ
+
+แผนที่แบบ interactive รายจุด และ GeoJSON ของ 24 จุดพร้อม `open_sky` / `mean_horizon` / `max_horizon` / `z_obs`
+
+- [day05_sight_map.html](day05_sight_map.html) — 0.04 MB
+- [day05_sight.geojson](day05_sight.geojson) — 0.01 MB
+
+> **เรื่องขอบประเทศ** — พื้นหลังของรูปนี้คือ hex จาก Day 3 ซึ่งสร้างบนเส้นขอบ GADM
+> ดูหมายเหตุเปรียบเทียบ GADM vs Natural Earth (พร้อมตัวเลขผลต่าง 3.6%) ในโพสต์ Day 3
+
 ## บทเรียน
 
 - **viewshed ≠ ความมืด** — สองมิตินี้แยกกันโดยสิ้นเชิง จุดที่มืดจากแสงไฟอาจมีขอบฟ้าแย่ถ้าอยู่

@@ -123,6 +123,17 @@ for i, l in zip(np.where(mask)[0], lab):
 ไฟล์ `day04_clusters.geojson` (303 features พร้อม `cluster` / `rank` / `size` / `nearest`)
 เปิดใน QGIS หรือเอาไปทำแผนที่ interactive ต่อได้เลย
 
+
+## ไฟล์ประกอบ
+
+แผนที่แบบ interactive ของ 24 กลุ่ม และ GeoJSON ที่มี `cluster` / `rank` / `size` / `nearest`
+
+- [day04_clusters_map.html](day04_clusters_map.html) — 0.21 MB
+- [day04_clusters.geojson](day04_clusters.geojson) — 0.16 MB
+
+> **เรื่องขอบประเทศ** — พื้นหลังของรูปนี้คือ hex จาก Day 3 ซึ่งสร้างบนเส้นขอบ GADM
+> ดูหมายเหตุเปรียบเทียบ GADM vs Natural Earth (พร้อมตัวเลขผลต่าง 3.6%) ในโพสต์ Day 3
+
 ## บทเรียน
 
 - **เลือกเซต input = นิยาม "cluster" ของคุณ** — DBSCAN ไม่ได้บอกว่าอะไรควรถูกกลุ่ม
