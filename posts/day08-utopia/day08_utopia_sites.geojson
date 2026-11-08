@@ -1,0 +1,260 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 1,
+    "lat": 13.85411,
+    "lon": 100.52736,
+    "gained_pop": 7505882,
+    "km_to_nearest_existing_site": 83.9
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     100.5273649379419,
+     13.854106496888319
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 2,
+    "lat": 17.6261,
+    "lon": 102.75952,
+    "gained_pop": 351736,
+    "km_to_nearest_existing_site": 88.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     102.75952405819339,
+     17.626097360568483
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 3,
+    "lat": 6.67114,
+    "lon": 101.2026,
+    "gained_pop": 298140,
+    "km_to_nearest_existing_site": 83.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     101.2026001853739,
+     6.671140637263457
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 4,
+    "lat": 15.28105,
+    "lon": 104.84,
+    "gained_pop": 273893,
+    "km_to_nearest_existing_site": 68.2
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     104.84000095904152,
+     15.281053608835006
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 5,
+    "lat": 8.39751,
+    "lon": 99.71911,
+    "gained_pop": 260558,
+    "km_to_nearest_existing_site": 123.7
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     99.71910825895932,
+     8.397507378596757
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 6,
+    "lat": 13.57274,
+    "lon": 99.97818,
+    "gained_pop": 259988,
+    "km_to_nearest_existing_site": 80.4
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     99.97817820829549,
+     13.572740406744943
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 7,
+    "lat": 16.27829,
+    "lon": 102.65832,
+    "gained_pop": 251056,
+    "km_to_nearest_existing_site": 42.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     102.65831956323893,
+     16.278289438809924
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 8,
+    "lat": 14.61774,
+    "lon": 100.59702,
+    "gained_pop": 217114,
+    "km_to_nearest_existing_site": 61.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     100.5970199397941,
+     14.61774148029071
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 9,
+    "lat": 18.09514,
+    "lon": 99.59244,
+    "gained_pop": 204081,
+    "km_to_nearest_existing_site": 79.1
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     99.5924360459011,
+     18.095142959601844
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 10,
+    "lat": 16.65996,
+    "lon": 100.42243,
+    "gained_pop": 199777,
+    "km_to_nearest_existing_site": 33.4
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     100.42243321102491,
+     16.65995535499559
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 11,
+    "lat": 7.67056,
+    "lon": 99.81704,
+    "gained_pop": 191342,
+    "km_to_nearest_existing_site": 90.1
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     99.81704326196306,
+     7.670557382593292
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 12,
+    "lat": 9.17373,
+    "lon": 99.32997,
+    "gained_pop": 157627,
+    "km_to_nearest_existing_site": 54.3
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     99.32996856665419,
+     9.17373484561805
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 13,
+    "lat": 15.54187,
+    "lon": 100.0893,
+    "gained_pop": 134134,
+    "km_to_nearest_existing_site": 34.2
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     100.08929704774344,
+     15.541873744222059
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 14,
+    "lat": 14.9517,
+    "lon": 103.3438,
+    "gained_pop": 109828,
+    "km_to_nearest_existing_site": 36.3
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     103.34379846562584,
+     14.951697899643813
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "no": 15,
+    "lat": 14.0125,
+    "lon": 101.19634,
+    "gained_pop": 101066,
+    "km_to_nearest_existing_site": 47.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     101.19633882797937,
+     14.012504896631063
+    ]
+   }
+  }
+ ]
+}
