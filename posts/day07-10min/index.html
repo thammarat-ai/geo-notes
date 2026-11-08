@@ -158,6 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ทมาของแผนท" id="toc-ทมาของแผนท" class="nav-link active" data-scroll-target="#ทมาของแผนท">ที่มาของแผนที่</a></li>
   <li><a href="#ผลลพธ" id="toc-ผลลพธ" class="nav-link" data-scroll-target="#ผลลพธ">ผลลัพธ์</a></li>
   <li><a href="#วธทำแบบยอ-พรอม-log-เวลาจรง" id="toc-วธทำแบบยอ-พรอม-log-เวลาจรง" class="nav-link" data-scroll-target="#วธทำแบบยอ-พรอม-log-เวลาจรง">วิธีทำแบบย่อ (พร้อม log เวลาจริง)</a></li>
+  <li><a href="#หมายเหตเรองขอบประเทศ-เพมทหลง-7-พ.ย.-2569" id="toc-หมายเหตเรองขอบประเทศ-เพมทหลง-7-พ.ย.-2569" class="nav-link" data-scroll-target="#หมายเหตเรองขอบประเทศ-เพมทหลง-7-พ.ย.-2569">หมายเหตุเรื่องขอบประเทศ (เพิ่มทีหลัง 7 พ.ย. 2569)</a></li>
   <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
   </ul>
 </nav>
@@ -269,6 +270,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> {n: v <span class="op">/</span> <span class="fl">3.6</span> <span class="op">*</span> <span class="fl">600.0</span> <span class="cf">for</span> n, v, ... <span class="kw">in</span> MODES}      <span class="co"># เมตรใน 10 นาที</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> unary_union(pts.geometry.<span class="bu">buffer</span>(R[n]))           <span class="co"># pts เป็น eqdc (หน่วยเมตร)</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>cov[n] <span class="op">=</span> u.area <span class="op">/</span> <span class="fl">1e6</span>                                <span class="co"># ตร.กม.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="หมายเหตเรองขอบประเทศ-เพมทหลง-7-พ.ย.-2569" class="level2">
+<h2 class="anchored" data-anchor-id="หมายเหตเรองขอบประเทศ-เพมทหลง-7-พ.ย.-2569">หมายเหตุเรื่องขอบประเทศ (เพิ่มทีหลัง 7 พ.ย. 2569)</h2>
+<p>ซีรีส์นี้ไม่ได้ใช้เส้นขอบประเทศแหล่งเดียวตลอด · Day 1 และ Day 3 ใช้ <strong>GADM</strong> (เพราะ Natural Earth 110m หยาบเกินไปสำหรับงานนั้น) ส่วน Day 6–7 ใช้ <strong>Natural Earth 10m</strong> ซึ่งละเอียดกว่าคนละระดับ</p>
+<p>ผลต่างที่วัดได้จริง: union ของหกเหลี่ยม 1,738 บล็อกจาก Day 3 = <strong>496,867 ตร.กม.</strong> เทียบกับ Natural Earth Thailand = <strong>512,593 ตร.กม.</strong> → มีพื้นที่ <strong>18,692 ตร.กม. (3.6%)</strong> ที่ hex กลบไม่ถึง เส้น NE และ hex <strong>2,967 ตร.กม. (0.6%)</strong> ล้นออกนอกเส้น (ทะเล/เกาะ) แปลว่าคำว่า “พื้นที่ประเทศ” ที่อ้างในแต่ละวันไม่เท่ากันโดยนัย</p>
+<p>ตั้งแต่วัน 8 เป็นต้นไป มาตรฐานของซีรีส์นี้คือ <strong>Natural Earth 10m</strong> (public domain) เพราะ ฟรี ไม่ต้องมี token และเส้นละเอียดพอสำหรับทั้งงาน raster และ vector</p>
 </section>
 <section id="บทเรยน" class="level2">
 <h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>

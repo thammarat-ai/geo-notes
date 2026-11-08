@@ -158,6 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ทมาของแผนท" id="toc-ทมาของแผนท" class="nav-link active" data-scroll-target="#ทมาของแผนท">ที่มาของแผนที่</a></li>
   <li><a href="#ผลลพธ" id="toc-ผลลพธ" class="nav-link" data-scroll-target="#ผลลพธ">ผลลัพธ์</a></li>
   <li><a href="#วธทำแบบยอ" id="toc-วธทำแบบยอ" class="nav-link" data-scroll-target="#วธทำแบบยอ">วิธีทำแบบย่อ</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
   <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
   </ul>
 </nav>
@@ -350,6 +351,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>ผมวาด hex ด้วย <strong>geometry ที่ clip แล้วจาก Day 3</strong> (ไม่ใช่ <code>cell_to_boundary</code> ดิบ) เพื่อให้บล็อกตรงชายแดนไม่ล้นออกทะเล/ออกประเทศเพื่อนบ้าน — ไม่งั้นรูปทรงไทยจะเสีย และ backdrop เทา 1,738 บล็อกยังวาดไว้ทั้งประเทศ เพื่อให้ “ก้อนสี” ลอยอยู่ในบริบท ว่าอยู่ตรงไหนของไทย ไม่ใช่ลอยบนพื้นดำเปล่า ๆ</p>
 <p>ไฟล์ <code>day04_clusters.geojson</code> (303 features พร้อม <code>cluster</code> / <code>rank</code> / <code>size</code> / <code>nearest</code>) เปิดใน QGIS หรือเอาไปทำแผนที่ interactive ต่อได้เลย</p>
 </section>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<p>แผนที่แบบ interactive ของ 24 กลุ่ม และ GeoJSON ที่มี <code>cluster</code> / <code>rank</code> / <code>size</code> / <code>nearest</code></p>
+<ul>
+<li><a href="day04_clusters_map.html">day04_clusters_map.html</a> — 0.21 MB</li>
+<li><a href="day04_clusters.geojson">day04_clusters.geojson</a> — 0.16 MB</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>เรื่องขอบประเทศ</strong> — พื้นหลังของรูปนี้คือ hex จาก Day 3 ซึ่งสร้างบนเส้นขอบ GADM ดูหมายเหตุเปรียบเทียบ GADM vs Natural Earth (พร้อมตัวเลขผลต่าง 3.6%) ในโพสต์ Day 3</p>
+</blockquote>
 </section>
 <section id="บทเรยน" class="level2">
 <h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>

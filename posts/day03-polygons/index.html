@@ -158,6 +158,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ทมาของแผนท" id="toc-ทมาของแผนท" class="nav-link active" data-scroll-target="#ทมาของแผนท">ที่มาของแผนที่</a></li>
   <li><a href="#ผลลพธ" id="toc-ผลลพธ" class="nav-link" data-scroll-target="#ผลลพธ">ผลลัพธ์</a></li>
   <li><a href="#วธทำแบบยอ" id="toc-วธทำแบบยอ" class="nav-link" data-scroll-target="#วธทำแบบยอ">วิธีทำแบบย่อ</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
+  <li><a href="#หมายเหตเรองขอบประเทศ-เพมทหลง-7-พ.ย.-2569" id="toc-หมายเหตเรองขอบประเทศ-เพมทหลง-7-พ.ย.-2569" class="nav-link" data-scroll-target="#หมายเหตเรองขอบประเทศ-เพมทหลง-7-พ.ย.-2569">หมายเหตุเรื่องขอบประเทศ (เพิ่มทีหลัง 7 พ.ย. 2569)</a></li>
   <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
   </ul>
 </nav>
@@ -329,6 +331,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>              <span class="cf">else</span> [<span class="bu">list</span>(p.exterior.coords) <span class="cf">for</span> p <span class="kw">in</span> inter.geoms])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>243 จาก 1,738 บล็อก (14.0%) ถูกตัดขอบ</strong> — 14% ของภาพนี้มาจากบล็อกที่แตะชายแดน ถ้าข้ามขั้นนี้ไปรูปทรงประเทศจะผิดทันที และบล็อกที่แตะเกาะ/อ่าวถูกตัดเป็น 2 ชิ้นจริง — ในไฟล์ GeoJSON ที่ปล่อยออกมา มี 24 features ที่เป็น <code>MultiPolygon</code> ไม่ใช่ <code>Polygon</code> (ถ้าใส่ type เป็น Polygon ทุกบล็อก 24 บล็อกนี้กลายเป็น shape เพี้ยนไปเลย polygon ที่ไม่ convex ต้องคิดกรณี “ได้หลายชิ้น” ไว้ตั้งแต่แรก)</p>
 </section>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<p>แผนที่แบบ interactive ของหกเหลี่ยม 1,738 บล็อก และข้อมูล hex พร้อม <code>km_nearest</code> เป็น GeoJSON</p>
+<ul>
+<li><a href="day03_polygons_map.html">day03_polygons_map.html</a> — 1.09 MB</li>
+<li><a href="day03_hex_polygons.geojson">day03_hex_polygons.geojson</a> — 0.94 MB</li>
+</ul>
+</section>
+<section id="หมายเหตเรองขอบประเทศ-เพมทหลง-7-พ.ย.-2569" class="level2">
+<h2 class="anchored" data-anchor-id="หมายเหตเรองขอบประเทศ-เพมทหลง-7-พ.ย.-2569">หมายเหตุเรื่องขอบประเทศ (เพิ่มทีหลัง 7 พ.ย. 2569)</h2>
+<p>ซีรีส์นี้ไม่ได้ใช้เส้นขอบประเทศแหล่งเดียวตลอด · Day 1 และ Day 3 ใช้ <strong>GADM</strong> (เพราะ Natural Earth 110m หยาบเกินไปสำหรับงานนั้น) ส่วน Day 6–7 ใช้ <strong>Natural Earth 10m</strong> ซึ่งละเอียดกว่าคนละระดับ</p>
+<p>ผลต่างที่วัดได้จริง: union ของหกเหลี่ยม 1,738 บล็อกจาก Day 3 = <strong>496,867 ตร.กม.</strong> เทียบกับ Natural Earth Thailand = <strong>512,593 ตร.กม.</strong> → มีพื้นที่ <strong>18,692 ตร.กม. (3.6%)</strong> ที่ hex กลบไม่ถึง เส้น NE และ hex <strong>2,967 ตร.กม. (0.6%)</strong> ล้นออกนอกเส้น (ทะเล/เกาะ) แปลว่าคำว่า “พื้นที่ประเทศ” ที่อ้างในแต่ละวันไม่เท่ากันโดยนัย</p>
+<p>ตั้งแต่วัน 8 เป็นต้นไป มาตรฐานของซีรีส์นี้คือ <strong>Natural Earth 10m</strong> (public domain) เพราะ ฟรี ไม่ต้องมี token และเส้นละเอียดพอสำหรับทั้งงาน raster และ vector</p>
 </section>
 <section id="บทเรยน" class="level2">
 <h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>
