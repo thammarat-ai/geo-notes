@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="โจทย์ ‘A map of something which could be’: ถ้าอยากให้คนเมือง 90% อยู่ภายใน 30 กม. จากท้องฟ้ามืด ต้องเพิ่มจุดอนุรักษ์ท้องฟ้ามืดอีกกี่แห่ง และตรงไหน — greedy set cover บน hex grid เดิมของ Day 3 ให้คำตอบ 15 แห่ง และจุดเดียวใกล้กรุงเทพเก็บคนเดียว 7.5 ล้าน">
+
+<title>Day 8 · Utopia — ประเทศไทยที่ความมืดเป็นของสาธารณะ ต้องเพิ่มจุดฟ้ามืดกี่แห่ง – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#ทมาของแผนท" id="toc-ทมาของแผนท" class="nav-link active" data-scroll-target="#ทมาของแผนท">ที่มาของแผนที่</a></li>
+  <li><a href="#ผลลพธ" id="toc-ผลลพธ" class="nav-link" data-scroll-target="#ผลลพธ">ผลลัพธ์</a></li>
+  <li><a href="#วธทำแบบยอ" id="toc-วธทำแบบยอ" class="nav-link" data-scroll-target="#วธทำแบบยอ">วิธีทำแบบย่อ</a></li>
+  <li><a href="#ขอจำกดทตองบอกตรง-ๆ" id="toc-ขอจำกดทตองบอกตรง-ๆ" class="nav-link" data-scroll-target="#ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
+  <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 8 · Utopia — ประเทศไทยที่ความมืดเป็นของสาธารณะ ต้องเพิ่มจุดฟ้ามืดกี่แห่ง</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">30DayMapChallenge</div>
+    <div class="quarto-category">cartography</div>
+    <div class="quarto-category">utopia</div>
+    <div class="quarto-category">set-cover</div>
+    <div class="quarto-category">accessibility</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    โจทย์ ‘A map of something which could be’: ถ้าอยากให้คนเมือง 90% อยู่ภายใน 30 กม. จากท้องฟ้ามืด ต้องเพิ่มจุดอนุรักษ์ท้องฟ้ามืดอีกกี่แห่ง และตรงไหน — greedy set cover บน hex grid เดิมของ Day 3 ให้คำตอบ 15 แห่ง และจุดเดียวใกล้กรุงเทพเก็บคนเดียว 7.5 ล้าน
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">8 พฤศจิกายน 2569</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day08_utopia.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>โจทย์ทางการของวันนี้คือ <strong>“A map of something which could be”</strong> — แผนที่ของสิ่งที่ <em>อาจเป็นได้</em> ผมไม่อยากทำแผนที่เมืองในฝันแบบวาดเล่น จึงเอาคำถามของ Day 7 มาต่อยอดเป็นแผนที่นโยบาย: Day 7 พบว่าแค่ <strong>0.03%</strong> ของพื้นที่ประเทศที่เดินถึงจุดฟ้ามืดใน 10 นาที วันนี้ถามกลับว่า <strong>ถ้าอยากให้ความมืดเป็นของสาธารณะจริง ต้องเพิ่มจุดที่ไหน อีกกี่แห่ง</strong></p>
+<section id="ทมาของแผนท" class="level2">
+<h2 class="anchored" data-anchor-id="ทมาของแผนท">ที่มาของแผนที่</h2>
+<p>“utopia” ต้องมี <em>บรรทัดฐาน</em> ชัด ๆ หนึ่งข้อ ไม่งั้นเป็นแค่แผนที่สวย ผมเลือกสามข้อ</p>
+<ol type="1">
+<li><strong>เป้าหมาย</strong>: ประชากรเมืองอย่างน้อย 90% ต้องอยู่ภายในรัศมี <strong>30 กม.</strong> จากจุดฟ้ามืด (ประมาณครึ่งชั่วโมงจากบ้าน ยังไปกลับได้ในวันธรรมดา)</li>
+<li><strong>ที่ที่จะตั้งจุดใหม่ได้</strong>: ต้องเป็น hex จาก Day 3 ที่ <em>ไกล</em> จากจุดในทะเบียน NARIT เกิน 25 กม. แปลว่าเลือกเฉพาะ “ที่ที่ยังมืดจริงแต่ยังไม่มีชื่อในทะเบียน” — ไม่ใช่ไปตั้งทับของเดิม ได้ผู้สมัคร <strong>1,429 hex</strong> จาก 1,738 hex</li>
+<li><strong>วิธีเลือก</strong>: greedy set cover —ทุกครั้งเลือกจุดที่เก็บประชากร <em>ที่ยังไม่ถูกบริการ</em> ได้มากที่สุด ทำซ้ำ 15 รอบจนอิ่มตัว</li>
+</ol>
+<p>ข้อมูลเมืองมาจาก Natural Earth 10m populated places (79 เมือง, POP_MAX รวม <strong>14.1 ล้านคน</strong>) และขอบประเทศใช้ Natural Earth 10m ตามมาตรฐานที่เพิ่งตั้งไว้ตั้งแต่ Day 8</p>
+</section>
+<section id="ผลลพธ" class="level2">
+<h2 class="anchored" data-anchor-id="ผลลพธ">ผลลัพธ์</h2>
+<p><img src="day08_utopia_preview.png" class="img-fluid"></p>
+<p><strong>คำตอบสั้น: เพิ่ม 15 แห่ง → จาก 15.2% เป็น 89.7% ของประชากรเมือง</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>รัศมีเป้าหมาย</th>
+<th>ทุกวันนี้</th>
+<th>ต้องเพิ่มกี่จุด</th>
+<th>หลังเพิ่ม</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>30 กม. (ครึ่งชั่วโมง)</td>
+<td>18/79 เมือง · 15.2%</td>
+<td><strong>15 จุด</strong></td>
+<td>48/79 เมือง · 89.7%</td>
+</tr>
+<tr class="even">
+<td>60 กม. (หนึ่งชั่วโมง)</td>
+<td>44/79 เมือง · 28.2%</td>
+<td>14 จุด</td>
+<td>100%</td>
+</tr>
+<tr class="odd">
+<td>100 กม. (เที่ยวคืนเสาร์)</td>
+<td>71/79 เมือง · 94.7%</td>
+<td>5 จุด</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p>จุดที่ “แพงที่สุด” ในเชิงผลลัพธ์คือจุดแรก: ที่ละติจูด 13.854 ลองจิจูด 100.527 (แถวสุพรรณบุรี–นครปฐม) เก็บคนได้ถึง <strong>7.5 ล้านคน</strong> ในรอบเดียว เพราะกรุงเทพ+ปริมณฑลทั้งก้อนอยู่นอกทะเบียนทั้งหมด จุดที่เหลือเก็บได้ 0.1–0.35 ล้านคนต่อจุด — เส้นโค้งอิ่มตัวชัดเจน</p>
+<p><img src="day08_ladder.png" class="img-fluid"></p>
+<section id="จดทแผนทเสนอ" class="level3">
+<h3 class="anchored" data-anchor-id="จดทแผนทเสนอ">15 จุดที่แผนที่เสนอ</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>#</th>
+<th>ละติจูด</th>
+<th>ลองจิจูด</th>
+<th>เก็บประชากร</th>
+<th>ไกลจากจุดเดิม</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>13.854</td>
+<td>100.527</td>
+<td>7,505,882</td>
+<td>83.9 กม.</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>17.626</td>
+<td>102.760</td>
+<td>351,736</td>
+<td>88.0 กม.</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>6.671</td>
+<td>101.203</td>
+<td>298,140</td>
+<td>83.0 กม.</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>15.281</td>
+<td>104.840</td>
+<td>273,893</td>
+<td>68.2 กม.</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>8.398</td>
+<td>99.719</td>
+<td>260,558</td>
+<td>123.7 กม.</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>13.573</td>
+<td>99.978</td>
+<td>259,988</td>
+<td>80.4 กม.</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>16.278</td>
+<td>102.658</td>
+<td>251,056</td>
+<td>42.0 กม.</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>14.618</td>
+<td>100.597</td>
+<td>217,114</td>
+<td>61.5 กม.</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>18.095</td>
+<td>99.592</td>
+<td>204,081</td>
+<td>79.1 กม.</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>16.660</td>
+<td>100.422</td>
+<td>199,777</td>
+<td>33.4 กม.</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>7.671</td>
+<td>99.817</td>
+<td>191,342</td>
+<td>90.1 กม.</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>9.174</td>
+<td>99.330</td>
+<td>157,627</td>
+<td>54.3 กม.</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>15.542</td>
+<td>100.089</td>
+<td>134,134</td>
+<td>34.2 กม.</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>14.952</td>
+<td>103.344</td>
+<td>109,828</td>
+<td>36.3 กม.</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>14.013</td>
+<td>101.196</td>
+<td>101,066</td>
+<td>47.0 กม.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="วธทำแบบยอ" class="level2">
+<h2 class="anchored" data-anchor-id="วธทำแบบยอ">วิธีทำแบบย่อ</h2>
+<section id="ขนท-1-ระยะทางแบบ-haversine-เปนเมทรกซ" class="level3">
+<h3 class="anchored" data-anchor-id="ขนท-1-ระยะทางแบบ-haversine-เปนเมทรกซ">ขั้นที่ 1: ระยะทางแบบ haversine เป็นเมทริกซ์</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hav_km(a, b):                      <span class="co"># a:(N,2) b:(M,2) ของ (lon,lat) -&gt; (N,M) กม.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    la1, lo1 <span class="op">=</span> np.radians(a[:,<span class="dv">1</span>][:,<span class="va">None</span>]), np.radians(a[:,<span class="dv">0</span>][:,<span class="va">None</span>])</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    la2, lo2 <span class="op">=</span> np.radians(b[:,<span class="dv">1</span>][<span class="va">None</span>,:]), np.radians(b[:,<span class="dv">0</span>][<span class="va">None</span>,:])</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> np.sin((la2<span class="op">-</span>la1)<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> np.cos(la1)<span class="op">*</span>np.cos(la2)<span class="op">*</span>np.sin((lo2<span class="op">-</span>lo1)<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">2</span><span class="op">*</span><span class="fl">6371.0</span><span class="op">*</span>np.arcsin(np.sqrt(d))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ขนท-2-greedy-set-cover" class="level3">
+<h3 class="anchored" data-anchor-id="ขนท-2-greedy-set-cover">ขั้นที่ 2: greedy set cover</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>covered <span class="op">=</span> (hav_km(city, sites).<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>) <span class="op">&lt;=</span> R)      <span class="co"># สถานะวันนี้</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">15</span>):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    gain <span class="op">=</span> [pop[(<span class="op">~</span>covered) <span class="op">&amp;</span> (d_city_cand[:, j] <span class="op">&lt;=</span> R)].<span class="bu">sum</span>() <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(cand))]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    j <span class="op">=</span> <span class="bu">int</span>(np.argmax(gain))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> gain[j] <span class="op">&lt;=</span> <span class="dv">0</span>: <span class="cf">break</span>                            <span class="co"># อิ่มตัวแล้ว</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    covered <span class="op">|=</span> (d_city_cand[:, j] <span class="op">&lt;=</span> R)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ขนท-3-ตรวจกอนวาด-กตกาของซรส" class="level3">
+<h3 class="anchored" data-anchor-id="ขนท-3-ตรวจกอนวาด-กตกาของซรส">ขั้นที่ 3: ตรวจก่อนวาด (กติกาของซีรีส์)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">len</span>(chosen) <span class="op">==</span> <span class="bu">len</span>({(<span class="bu">round</span>(c[<span class="st">"lat"</span>],<span class="dv">4</span>), <span class="bu">round</span>(c[<span class="st">"lon"</span>],<span class="dv">4</span>)) <span class="cf">for</span> c <span class="kw">in</span> chosen})</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">all</span>(c[<span class="st">"km_nearest_existing"</span>] <span class="op">&gt;</span> <span class="dv">25</span> <span class="cf">for</span> c <span class="kw">in</span> chosen)   <span class="co"># ไม่ตั้งทับของเดิม</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> covered.<span class="bu">sum</span>() <span class="op">&gt;=</span> base[R].<span class="bu">sum</span>()                        <span class="co"># ความครอบคลุมไม่ลดลง</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="ขอจำกดทตองบอกตรง-ๆ" class="level2">
+<h2 class="anchored" data-anchor-id="ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</h2>
+<ul>
+<li><strong>ประชากร 14.1 ล้านคนนั้นคือ “ประชากรเมือง” ในชุดข้อมูล Natural Earth</strong> ไม่ใช่ประชากรไทย ทั้งประเทศ (~66 ล้าน) ตัวเลข % จึงหมายถึง <em>คนที่อยู่ในเมืองที่ถูกบันทึก</em> เท่านั้น</li>
+<li><strong>ระยะทางเป็นเส้นตรง</strong> ไม่ใช่เวลาเดินทางจริง — เทือกเขาและแม่น้ำหายไปจากสมการ ถ้าจะจริงจังต้องใช้ isochrone จากถนน (Mapbox/OSRM) และนั่นคือแผนที่อีกแผ่นหนึ่ง</li>
+<li><strong>ความมืดวัดจาก proxy ที่วนตัวเอง</strong>: ผู้สมัครคือ hex ที่ <code>km_nearest &gt; 25 กม.</code> ซึ่ง <code>km_nearest</code> คือระยะถึงจุด <em>ในทะเบียน</em> ไม่ใช่ค่าความมืดที่วัดด้วยเครื่อง แปลว่าแผนที่นี้ตอบ “ตั้งที่ไหนจึงบริการคนได้มาก” แต่ไม่ตอบ “ที่ไหนฟ้ามืดจริง” คำตอบที่ถูกต้องต้องใช้ข้อมูล VIIRS/DMSP หรือการวัดภาคสนาม</li>
+<li>hex grid resolution 5 (~258 ตร.กม./บล็อก) ทำให้ตำแหน่งที่เสนอหยาบระดับ 10 กม.</li>
+</ul>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<p>พิกัด 15 จุดที่แบบจำลองเสนอ พร้อมจำนวนคนที่แต่ละจุดเก็บได้ และสถานะก่อน–หลังของทั้งสามรัศมี</p>
+<ul>
+<li><a href="day08_utopia_sites.geojson">day08_utopia_sites.geojson</a></li>
+<li><a href="day08_stats.json">day08_stats.json</a></li>
+</ul>
+</section>
+<section id="บทเรยน" class="level2">
+<h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>
+<ul>
+<li><strong>แผนที่ utopia ต้องมีตัวเลขกำกับความฝัน</strong> — “ความมืดเป็นของสาธารณะ” เป็นคำสวย แต่พอบอกว่า “เพิ่ม 15 จุด ขยับจาก 15% เป็น 90%” มันกลายเป็นสิ่งที่ถกเถียงและตรวจสอบได้</li>
+<li><strong>greedy ให้คำตอบที่ดี แต่ไม่ใช่คำตอบที่ดีที่สุด และนั่นโอเค</strong> — ใน 10–15 จุดแรกมันกิน population ที่กระจุกตัว ถ้าอยากได้ optimal ต้อง solve set-cover จริง (integer programming) ซึ่งเปลี่ยนคำถามจาก “ที่ไหน” เป็น “ที่ไหน + งบเท่าไหร่”</li>
+<li><strong>จุดเดียวใกล้กรุงเทพมีน้ำหนักเท่าอีก 14 จุดรวมกัน</strong> — การกระจาย “ความเท่าเทียม” ไม่ใช่การกระจาย “พื้นที่” แผนที่แบบ area-weighted (Day 3) กับ people-weighted ให้คำตอบ คนละเรื่อง และคนละนโยบาย</li>
+<li><strong>proxy ที่วนตัวเองต้องประกาศ</strong> — ผมใช้ระยะถึงทะเบียนเป็นตัวแทนความมืด ซึ่งทำให้ แผนที่นี้ตอบคำถามการเข้าถึงได้ดี แต่ตอบคำถาม “ที่ไหนมืดจริง” ไม่ได้ ถ้าไม่เขียนกำกับไว้ คนอ่านจะเข้าใจผิดว่าดาวสีเหลืองคือ “ที่ที่ฟ้ามืดที่สุด” ซึ่งไม่ใช่</li>
+<li><strong>ใช้ Natural Earth 10m ทั้งขอบประเทศและข้อมูลเมือง</strong> ตามมาตรฐานที่ประกาศไว้ในหมายเหตุ เรื่องขอบประเทศของ Day 1–7 ทำให้แผ่นนี้กับ Day 6–7 เส้นฝั่งตรงกันแล้ว</li>
+</ul>
+<p>พรุ่งนี้ธีม <strong>Urban-rural</strong> (Day 9) — ต่อจากแผ่นนี้ได้พอดี เพราะคำถาม “เมืองกับชนบท” ในบริบทนี้คือ <em>ใครมีสิทธิ์มองเห็นทางช้างเผือก</em></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
