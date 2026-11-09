@@ -1,0 +1,46 @@
+{
+ "urban_radius_km": 30.0,
+ "urban_cut_pop": 100000,
+ "dark_cut_km": 25.0,
+ "hex_total": 1738,
+ "quadrants": {
+  "UD": {
+   "hex": 42,
+   "area_km2": 11814
+  },
+  "UB": {
+   "hex": 157,
+   "area_km2": 45323
+  },
+  "RD": {
+   "hex": 267,
+   "area_km2": 76629
+  },
+  "RB": {
+   "hex": 1272,
+   "area_km2": 363099
+  }
+ },
+ "spearman_hex_urban_vs_dark": 0.038,
+ "spearman_city_distance_vs_pop": 0.006,
+ "hex_urban500k_and_dark": 0,
+ "city_to_dark_km": {
+  "min": {
+   "city": "Chiang Rai",
+   "km": 0.3
+  },
+  "median": 39.2,
+  "max": {
+   "city": "Chumphon",
+   "km": 148.0
+  },
+  "bangkok": {
+   "city": "Bangkok",
+   "km": 63.3,
+   "pop": 6704000
+  },
+  "cities_under_10km": 15,
+  "cities_over_100km": 6
+ },
+ "note": "ความมืดวัดด้วย proxy = ระยะถึงจุดอนุรักษ์ท้องฟ้ามืดในทะเบียน NARIT (ไม่ใช่ค่าวัดแสงจริง)"
+}
