@@ -42,5 +42,73 @@
   "cities_under_10km": 15,
   "cities_over_100km": 6
  },
- "note": "ความมืดวัดด้วย proxy = ระยะถึงจุดอนุรักษ์ท้องฟ้ามืดในทะเบียน NARIT (ไม่ใช่ค่าวัดแสงจริง)"
+ "note": "ความมืดวัดด้วย proxy = ระยะถึงจุดอนุรักษ์ท้องฟ้ามืดในทะเบียน NARIT (ไม่ใช่ค่าวัดแสงจริง)",
+ "threshold_sensitivity": {
+  "30000": {
+   "urban_hex": 451,
+   "urban_and_dark": 75
+  },
+  "100000": {
+   "urban_hex": 199,
+   "urban_and_dark": 42
+  },
+  "500000": {
+   "urban_hex": 10,
+   "urban_and_dark": 0
+  }
+ },
+ "six_farthest_cities": [
+  {
+   "city": "Chumphon",
+   "km": 148.0,
+   "pop": 85686
+  },
+  {
+   "city": "Narathiwat",
+   "km": 140.2,
+   "pop": 68112
+  },
+  {
+   "city": "Ranong",
+   "km": 138.3,
+   "pop": 24561
+  },
+  {
+   "city": "Thung Song",
+   "km": 121.6,
+   "pop": 28223
+  },
+  {
+   "city": "Trat",
+   "km": 114.6,
+   "pop": 21590
+  },
+  {
+   "city": "Nakhon Si Thammarat",
+   "km": 100.8,
+   "pop": 232335
+  }
+ ],
+ "five_nearest_cities": [
+  {
+   "city": "Chiang Rai",
+   "km": 0.3
+  },
+  {
+   "city": "Chachoengsao",
+   "km": 3.0
+  },
+  {
+   "city": "Nakhon Ratchasima",
+   "km": 3.6
+  },
+  {
+   "city": "Rayong",
+   "km": 3.9
+  },
+  {
+   "city": "Chon Buri",
+   "km": 4.5
+  }
+ ]
 }
