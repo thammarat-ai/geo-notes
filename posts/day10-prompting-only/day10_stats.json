@@ -1,0 +1,452 @@
+{
+ "counts": {
+  "hex_count": 1738,
+  "site_count": 83,
+  "observer_count": 24,
+  "host_provinces": 33
+ },
+ "area": {
+  "total_area_km2": 515023.8,
+  "hex_area_min_km2": 287.8,
+  "hex_area_max_km2": 304.4,
+  "hex_area_mean_km2": 296.3
+ },
+ "distance_km": {
+  "overall_mean_simple": 57.41,
+  "overall_mean_area_weighted": 57.52,
+  "median": 51.85,
+  "min": 0.4,
+  "max": 194.1
+ },
+ "accessibility": {
+  "pct_area_within_25km": 17.56,
+  "pct_area_within_50km": 47.15,
+  "pct_hex_within_25km": 17.61
+ },
+ "bucket_area_pct": {
+  "ต่ำกว่า 25": 17.56,
+  "25–50": 29.59,
+  "50–100": 41.37,
+  "100–150": 10.16,
+  "150 ขึ้นไป": 1.32
+ },
+ "extremes": {
+  "worst3_mean_km": [
+   {
+    "province": "สุราษฎร์ธานี",
+    "region_th": "ภาคใต้",
+    "hex_n": 55,
+    "n_sites": 1,
+    "area_km2": 16701.9,
+    "mean_km": 94.48,
+    "median_km": 96.1,
+    "max_km": 146.3
+   },
+   {
+    "province": "สงขลา",
+    "region_th": "ภาคใต้",
+    "hex_n": 103,
+    "n_sites": 2,
+    "area_km2": 31008.9,
+    "mean_km": 92.42,
+    "median_km": 86.9,
+    "max_km": 194.1
+   },
+   {
+    "province": "ราชบุรี",
+    "region_th": "ภาคตะวันตก",
+    "hex_n": 96,
+    "n_sites": 2,
+    "area_km2": 28934.5,
+    "mean_km": 80.45,
+    "median_km": 82.75,
+    "max_km": 156.2
+   }
+  ],
+  "best3_mean_km": [
+   {
+    "province": "ภูเก็ต",
+    "region_th": "ภาคใต้",
+    "hex_n": 2,
+    "n_sites": 1,
+    "area_km2": 607.9,
+    "mean_km": 14.9,
+    "median_km": 14.9,
+    "max_km": 17.0
+   },
+   {
+    "province": "สระบุรี",
+    "region_th": "ภาคกลาง",
+    "hex_n": 9,
+    "n_sites": 1,
+    "area_km2": 2681.0,
+    "mean_km": 27.23,
+    "median_km": 25.0,
+    "max_km": 43.5
+   },
+   {
+    "province": "แม่ฮ่องสอน",
+    "region_th": "ภาคเหนือ",
+    "hex_n": 11,
+    "n_sites": 1,
+    "area_km2": 3213.5,
+    "mean_km": 27.73,
+    "median_km": 33.2,
+    "max_km": 40.2
+   }
+  ]
+ },
+ "provinces": [
+  {
+   "province": "สุราษฎร์ธานี",
+   "region_th": "ภาคใต้",
+   "hex_n": 55,
+   "n_sites": 1,
+   "area_km2": 16701.9,
+   "mean_km": 94.48,
+   "median_km": 96.1,
+   "max_km": 146.3
+  },
+  {
+   "province": "สงขลา",
+   "region_th": "ภาคใต้",
+   "hex_n": 103,
+   "n_sites": 2,
+   "area_km2": 31008.9,
+   "mean_km": 92.42,
+   "median_km": 86.9,
+   "max_km": 194.1
+  },
+  {
+   "province": "ราชบุรี",
+   "region_th": "ภาคตะวันตก",
+   "hex_n": 96,
+   "n_sites": 2,
+   "area_km2": 28934.5,
+   "mean_km": 80.45,
+   "median_km": 82.75,
+   "max_km": 156.2
+  },
+  {
+   "province": "ประจวบคีรีขันธ์",
+   "region_th": "ภาคตะวันตก",
+   "hex_n": 30,
+   "n_sites": 1,
+   "area_km2": 9093.7,
+   "mean_km": 77.5,
+   "median_km": 81.75,
+   "max_km": 146.5
+  },
+  {
+   "province": "สกลนคร",
+   "region_th": "ภาคตะวันออกเฉียงเหนือ",
+   "hex_n": 62,
+   "n_sites": 1,
+   "area_km2": 17940.1,
+   "mean_km": 77.34,
+   "median_km": 70.0,
+   "max_km": 175.7
+  },
+  {
+   "province": "กำแพงเพชร",
+   "region_th": "ภาคกลาง",
+   "hex_n": 55,
+   "n_sites": 1,
+   "area_km2": 16453.6,
+   "mean_km": 66.58,
+   "median_km": 56.4,
+   "max_km": 150.6
+  },
+  {
+   "province": "พังงา",
+   "region_th": "ภาคใต้",
+   "hex_n": 67,
+   "n_sites": 3,
+   "area_km2": 20356.0,
+   "mean_km": 65.74,
+   "median_km": 68.1,
+   "max_km": 125.3
+  },
+  {
+   "province": "นครสวรรค์",
+   "region_th": "ภาคกลาง",
+   "hex_n": 80,
+   "n_sites": 1,
+   "area_km2": 23926.9,
+   "mean_km": 64.86,
+   "median_km": 66.4,
+   "max_km": 131.6
+  },
+  {
+   "province": "ตราด",
+   "region_th": "ภาคตะวันออก",
+   "hex_n": 13,
+   "n_sites": 2,
+   "area_km2": 3886.0,
+   "mean_km": 61.52,
+   "median_km": 63.1,
+   "max_km": 97.4
+  },
+  {
+   "province": "ลำพูน",
+   "region_th": "ภาคเหนือ",
+   "hex_n": 64,
+   "n_sites": 1,
+   "area_km2": 18939.8,
+   "mean_km": 57.95,
+   "median_km": 57.15,
+   "max_km": 120.4
+  },
+  {
+   "province": "ขอนแก่น",
+   "region_th": "ภาคตะวันออกเฉียงเหนือ",
+   "hex_n": 102,
+   "n_sites": 5,
+   "area_km2": 29819.3,
+   "mean_km": 57.21,
+   "median_km": 49.4,
+   "max_km": 169.9
+  },
+  {
+   "province": "ระยอง",
+   "region_th": "ภาคตะวันออก",
+   "hex_n": 28,
+   "n_sites": 1,
+   "area_km2": 8388.2,
+   "mean_km": 56.89,
+   "median_km": 56.05,
+   "max_km": 108.4
+  },
+  {
+   "province": "น่าน",
+   "region_th": "ภาคเหนือ",
+   "hex_n": 82,
+   "n_sites": 2,
+   "area_km2": 23985.4,
+   "mean_km": 56.79,
+   "median_km": 56.0,
+   "max_km": 124.7
+  },
+  {
+   "province": "ศรีสะเกษ",
+   "region_th": "ภาคตะวันออกเฉียงเหนือ",
+   "hex_n": 38,
+   "n_sites": 1,
+   "area_km2": 11120.2,
+   "mean_km": 55.19,
+   "median_km": 59.1,
+   "max_km": 94.3
+  },
+  {
+   "province": "ฉะเชิงเทรา",
+   "region_th": "ภาคกลาง",
+   "hex_n": 40,
+   "n_sites": 1,
+   "area_km2": 11986.7,
+   "mean_km": 52.14,
+   "median_km": 50.05,
+   "max_km": 101.1
+  },
+  {
+   "province": "พิษณุโลก",
+   "region_th": "ภาคกลาง",
+   "hex_n": 67,
+   "n_sites": 2,
+   "area_km2": 19831.2,
+   "mean_km": 50.88,
+   "median_km": 50.0,
+   "max_km": 102.1
+  },
+  {
+   "province": "สุรินทร์",
+   "region_th": "ภาคตะวันออกเฉียงเหนือ",
+   "hex_n": 50,
+   "n_sites": 1,
+   "area_km2": 14730.1,
+   "mean_km": 50.51,
+   "median_km": 50.75,
+   "max_km": 83.7
+  },
+  {
+   "province": "สระแก้ว",
+   "region_th": "ภาคตะวันออก",
+   "hex_n": 24,
+   "n_sites": 1,
+   "area_km2": 7129.6,
+   "mean_km": 50.25,
+   "median_km": 48.15,
+   "max_km": 106.9
+  },
+  {
+   "province": "เลย",
+   "region_th": "ภาคตะวันออกเฉียงเหนือ",
+   "hex_n": 48,
+   "n_sites": 2,
+   "area_km2": 14084.4,
+   "mean_km": 50.24,
+   "median_km": 45.05,
+   "max_km": 124.7
+  },
+  {
+   "province": "เชียงราย",
+   "region_th": "ภาคเหนือ",
+   "hex_n": 59,
+   "n_sites": 2,
+   "area_km2": 17113.2,
+   "mean_km": 49.19,
+   "median_km": 47.3,
+   "max_km": 130.3
+  },
+  {
+   "province": "ร้อยเอ็ด",
+   "region_th": "ภาคตะวันออกเฉียงเหนือ",
+   "hex_n": 38,
+   "n_sites": 1,
+   "area_km2": 11111.8,
+   "mean_km": 44.58,
+   "median_km": 43.4,
+   "max_km": 77.5
+  },
+  {
+   "province": "อุบลราชธานี",
+   "region_th": "ภาคตะวันออกเฉียงเหนือ",
+   "hex_n": 38,
+   "n_sites": 2,
+   "area_km2": 11035.1,
+   "mean_km": 44.2,
+   "median_km": 46.1,
+   "max_km": 85.6
+  },
+  {
+   "province": "นครราชสีมา",
+   "region_th": "ภาคตะวันออกเฉียงเหนือ",
+   "hex_n": 117,
+   "n_sites": 14,
+   "area_km2": 34877.3,
+   "mean_km": 44.09,
+   "median_km": 40.1,
+   "max_km": 117.2
+  },
+  {
+   "province": "เชียงใหม่",
+   "region_th": "ภาคเหนือ",
+   "hex_n": 130,
+   "n_sites": 17,
+   "area_km2": 38130.8,
+   "mean_km": 43.18,
+   "median_km": 36.3,
+   "max_km": 124.8
+  },
+  {
+   "province": "ชลบุรี",
+   "region_th": "ภาคตะวันออก",
+   "hex_n": 17,
+   "n_sites": 1,
+   "area_km2": 5109.2,
+   "mean_km": 42.51,
+   "median_km": 32.1,
+   "max_km": 94.8
+  },
+  {
+   "province": "ตาก",
+   "region_th": "ภาคตะวันตก",
+   "hex_n": 29,
+   "n_sites": 1,
+   "area_km2": 8626.3,
+   "mean_km": 42.09,
+   "median_km": 40.5,
+   "max_km": 86.7
+  },
+  {
+   "province": "มหาสารคาม",
+   "region_th": "ภาคตะวันออกเฉียงเหนือ",
+   "hex_n": 35,
+   "n_sites": 1,
+   "area_km2": 10260.1,
+   "mean_km": 40.78,
+   "median_km": 41.1,
+   "max_km": 81.2
+  },
+  {
+   "province": "ชัยภูมิ",
+   "region_th": "ภาคตะวันออกเฉียงเหนือ",
+   "hex_n": 97,
+   "n_sites": 7,
+   "area_km2": 28738.6,
+   "mean_km": 38.56,
+   "median_km": 36.6,
+   "max_km": 87.9
+  },
+  {
+   "province": "ปราจีนบุรี",
+   "region_th": "ภาคตะวันออก",
+   "hex_n": 12,
+   "n_sites": 1,
+   "area_km2": 3580.9,
+   "mean_km": 37.02,
+   "median_km": 34.7,
+   "max_km": 66.5
+  },
+  {
+   "province": "มุกดาหาร",
+   "region_th": "ภาคตะวันออกเฉียงเหนือ",
+   "hex_n": 40,
+   "n_sites": 2,
+   "area_km2": 11621.6,
+   "mean_km": 36.27,
+   "median_km": 35.8,
+   "max_km": 66.8
+  },
+  {
+   "province": "แม่ฮ่องสอน",
+   "region_th": "ภาคเหนือ",
+   "hex_n": 11,
+   "n_sites": 1,
+   "area_km2": 3213.5,
+   "mean_km": 27.73,
+   "median_km": 33.2,
+   "max_km": 40.2
+  },
+  {
+   "province": "สระบุรี",
+   "region_th": "ภาคกลาง",
+   "hex_n": 9,
+   "n_sites": 1,
+   "area_km2": 2681.0,
+   "mean_km": 27.23,
+   "median_km": 25.0,
+   "max_km": 43.5
+  },
+  {
+   "province": "ภูเก็ต",
+   "region_th": "ภาคใต้",
+   "hex_n": 2,
+   "n_sites": 1,
+   "area_km2": 607.9,
+   "mean_km": 14.9,
+   "median_km": 14.9,
+   "max_km": 17.0
+  }
+ ],
+ "validation": {
+  "geodesic_mean_abs_diff_km": 0.241,
+  "geodesic_max_abs_diff_km": 4.417,
+  "hex_province_equals_site_province": true,
+  "site_count_matches_csv": true,
+  "hex_area_sum_matches_provinces": true,
+  "generated_by": "tools/day10_prompted.py"
+ },
+ "referee": {
+  "sum_of_nominal_hex_area_km2": 515023.8,
+  "natural_earth_thailand_km2": 512593.1,
+  "union_area_km2": 496867.2,
+  "excess_pct": 0.47,
+  "selftest_cases": 13,
+  "selftest_uncaught": 0,
+  "guard_verdicts": {
+   "lint_thai": "pass",
+   "guard_claims": "pass",
+   "guard_area": "fail-caught"
+  }
+ }
+}
