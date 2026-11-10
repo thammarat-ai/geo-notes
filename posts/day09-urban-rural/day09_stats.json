@@ -42,7 +42,16 @@
   "cities_under_10km": 15,
   "cities_over_100km": 6
  },
- "note": "ความมืดวัดด้วย proxy = ระยะถึงจุดอนุรักษ์ท้องฟ้ามืดในทะเบียน NARIT (ไม่ใช่ค่าวัดแสงจริง)",
+ "dark_hex_count": 309,
+ "city_count": 79,
+ "urban_population_total": 14121483,
+ "metric_definitions": {
+  "km_nearest": "per hex = ระยะจากศูนย์กลาง hex ถึงจุดทะเบียนที่ใกล้ที่สุด (ค่าต่อเนื่อง ไม่ใช่ค่าเฉลี่ย)",
+  "city_to_dark_km": "per city = min เหนือ hex ที่มืด (km_nearest <= 25) เท่านั้น",
+  "quadrant_mean": "per province = mean ของ km_nearest เหนือ hex ทั้งหมดที่จังหวัดนั้นเป็นเจ้าบ้าน",
+  "spearman_hex": "สหสัมพันธ์ระดับ hex ระหว่างแรงกดดันเมืองกับ km_nearest",
+  "spearman_city": "สหสัมพันธ์ระดับเมืองระหว่าง min distance กับ log ประชากร"
+ },
  "threshold_sensitivity": {
   "30000": {
    "urban_hex": 451,
@@ -110,5 +119,20 @@
    "city": "Chon Buri",
    "km": 4.5
   }
- ]
+ ],
+ "external_facts": {
+  "thailand_total_population_millions": 66,
+  "source": "ข้อมูลภายนอก (ทะเบียนประชากร) — อ้างเพื่อเทียบขอบเขตว่า 14.1 ล้านคือประชากรเมืองเท่านั้น"
+ },
+ "cross_reference_day10": {
+  "day10_metric": "mean ของ km_nearest เหนือ hex ที่จังหวัดเป็นเจ้าบ้าน (ไม่ใช่ min จากตัวเมือง)",
+  "chiang_rai_host_mean_km": 49.19,
+  "chiang_rai_host_hex_n": 59,
+  "songkhla_host_mean_km": 92.42,
+  "host_provinces_total": 33,
+  "chiang_rai_city_min_km": 0.3,
+  "songkhla_city_min_km": 12.5,
+  "chiang_rai_rank_by_day10_mean": 14
+ },
+ "note": "ความมืดวัดด้วย proxy = ระยะถึงจุดอนุรักษ์ท้องฟ้ามืดในทะเบียน NARIT (ไม่ใช่ค่าวัดแสงจริง)"
 }
