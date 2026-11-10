@@ -472,5 +472,19 @@
    "Udon Thani": 39.19,
    "Songkhla": 12.48
   }
+ },
+ "metric_definitions": {
+  "km_nearest": "per hex = ระยะจากศูนย์กลาง hex ถึงจุดทะเบียนที่ใกล้ที่สุด (ค่าต่อเนื่อง)",
+  "province_mean_km": "per host province = mean ของ km_nearest เหนือ hex ทั้งหมดที่จังหวัดนั้นเป็นเจ้าบ้าน",
+  "province_median_km": "per host province = median เช่นกัน (ดูคู่กับ mean เพราะ catchment ทรงแหลม)",
+  "national": "mean ธรรมดา 57.41 / mean ถ่วงน้ำหนักพื้นที่ 57.52 / median 51.85 / max 194.1 / min 0.4 ต่อ hex",
+  "not_reported": "min จากตัวเมือง → hex มืด (นั่นคือสถิติของ Day 9 ไม่ใช่ Day 10)"
+ },
+ "label_audit": {
+  "checked_at": "2026-11-10",
+  "tool": "tools/guards.py :: guard_stat_labels",
+  "issues_found_before_fix": 3,
+  "issues_after_fix": 0,
+  "note": "ข้อความในโพสต์เคยเขียนว่าแก้ตารางแล้วทั้งที่ยังไม่ได้แก้ (คำสั่งแทนที่ไม่ match) — ตอนนี้แก้จริงและ guard ตรวจแล้ว"
  }
 }
