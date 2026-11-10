@@ -448,5 +448,28 @@
    "guard_claims": "pass",
    "guard_area": "fail-caught"
   }
+ },
+ "reconciliation_day9_vs_day10": {
+  "question_day9": "min: จากกลางเมืองไปหา hex ที่มืด hex ที่ใกล้ที่สุด",
+  "question_day10": "mean: ค่าเฉลี่ย km_nearest ของ hex ทุกเซลล์ที่จังหวัดนั้นเป็นเจ้าบ้าน",
+  "chiang_rai_city_to_nearest_dark_hex_km": 0.3,
+  "that_hex_km_nearest": 23.5,
+  "that_hex_host": "เชียงราย",
+  "that_hex_site": "ฮ่อมลมจอย",
+  "chiang_rai_as_host_mean_km": 49.19,
+  "median_km": 47.3,
+  "max_km": 130.3,
+  "chiang_rai_host_hex_n": 59,
+  "chiang_rai_host_sites": 2,
+  "chiang_rai_rank_by_mean": 14,
+  "host_provinces_total": 33,
+  "city_min_examples": {
+   "Chiang Rai": 0.3,
+   "Bangkok": 63.27,
+   "Phuket": 4.66,
+   "Chumphon": 147.98,
+   "Udon Thani": 39.19,
+   "Songkhla": 12.48
+  }
  }
 }
