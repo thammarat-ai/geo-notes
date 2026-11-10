@@ -3,7 +3,8 @@
   "hex_count": 1738,
   "site_count": 83,
   "observer_count": 24,
-  "host_provinces": 33
+  "host_provinces": 33,
+  "dark_hex_count": 309
  },
  "area": {
   "total_area_km2": 515023.8,
