@@ -1,0 +1,122 @@
+{
+ "hex_total": 1738,
+ "site_total": 83,
+ "dark_cut_km": 25.0,
+ "quiet_cut_km": 10.0,
+ "loud_site_cut_km": 5.0,
+ "metric_definitions": {
+  "km_nearest": "per hex = ระยะถึงจุดอนุรักษ์ท้องฟ้ามืดในทะเบียนที่ใกล้ที่สุด (proxy ของความมืด)",
+  "noise_km": "per hex = min ระยะถึงแหล่งเสียง 4 ชนิด (ถนนสายหลัก/รถไฟ/พื้นที่เมือง/สนามบิน)",
+  "quadrant": "จัดกลุ่ม hex ด้วยเกณฑ์ dark ≤25 กม. และ quiet ≥10 กม.",
+  "spearman": "สหสัมพันธ์ระดับ hex ระหว่าง km_nearest กับ noise_km",
+  "site_noise_km": "per registered site = min ระยะถึงแหล่งเสียงทั้ง 4 ชนิด"
+ },
+ "darkness_km": {
+  "mean": 57.41,
+  "median": 51.85,
+  "min": 0.4,
+  "max": 194.1
+ },
+ "noise_km": {
+  "mean": 11.13,
+  "median": 7.08,
+  "min": 0.0,
+  "max": 84.3
+ },
+ "quadrants": {
+  "DQ": {
+   "hex": 137,
+   "area_km2": 39423
+  },
+  "DL": {
+   "hex": 172,
+   "area_km2": 49020
+  },
+  "BQ": {
+   "hex": 547,
+   "area_km2": 156654
+  },
+  "BL": {
+   "hex": 882,
+   "area_km2": 251768
+  }
+ },
+ "spearman_dark_vs_noise": -0.021,
+ "spearman_p": 0.3892912735351088,
+ "sensitivity_major_highway_only": {
+  "spearman": -0.039,
+  "quiet_hex_count_major": 1394,
+  "road_lines_used": {
+   "all": 1814,
+   "major": 39
+  }
+ },
+ "nearest_noise_source_by_hex": {
+  "ถนนสายหลัก": 1443,
+  "รถไฟ": 137,
+  "พื้นที่เมือง": 157,
+  "สนามบิน": 1
+ },
+ "nearest_noise_source_by_site": {
+  "ถนนสายหลัก": 63,
+  "รถไฟ": 4,
+  "พื้นที่เมือง": 16,
+  "สนามบิน": 0
+ },
+ "sites_loud_under_5km": 35,
+ "site_noise_km_stats": {
+  "median": 6.5,
+  "min": 0.0,
+  "max": 52.1
+ },
+ "quietest_dark_sites": [
+  {
+   "name": "อุทยานแห่งชาติแม่วงก์",
+   "noise_km": 52.1
+  },
+  {
+   "name": "เขตรักษาพันธุ์สัตว์ป่าภูเขียว",
+   "noise_km": 43.3
+  },
+  {
+   "name": "อุทยานแห่งชาติไทรทอง",
+   "noise_km": 41.5
+  },
+  {
+   "name": "เกาะพะลวยบีชบังกะโล",
+   "noise_km": 38.0
+  },
+  {
+   "name": "โซเนวา คีรี รีสอร์ท",
+   "noise_km": 36.7
+  }
+ ],
+ "loudest_dark_sites": [
+  {
+   "name": "ซัมมิท กรีน วัลเล่ย์ เชียงใหม่ คันทรี คลับ",
+   "noise_km": 0.0,
+   "source": "พื้นที่เมือง"
+  },
+  {
+   "name": "สวนสัตว์เปิดเขาเขียว องค์การสวนสัตว์แห่งประเทศไทย ในพระบรมราชูปถัมภ์",
+   "noise_km": 0.0,
+   "source": "พื้นที่เมือง"
+  },
+  {
+   "name": "หอดูดาวเฉลิมพระเกียรติฯ นครราชสีมา",
+   "noise_km": 0.0,
+   "source": "พื้นที่เมือง"
+  },
+  {
+   "name": "สิริน วิลล์ แม่ริม เชียงใหม่",
+   "noise_km": 0.11,
+   "source": "พื้นที่เมือง"
+  },
+  {
+   "name": "วนธารา รีสอร์ท",
+   "noise_km": 0.12,
+   "source": "ถนนสายหลัก"
+  }
+ ],
+ "note": "ทั้งสองแกนเป็น proxy จากข้อมูล Natural Earth 10m (ถนน/รถไฟ/เมือง/สนามบิน) ไม่ใช่ค่าวัดระดับเสียงจริง (dB) และไม่ใช่ค่า sky brightness จริง"
+}
