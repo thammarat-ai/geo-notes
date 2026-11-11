@@ -51,6 +51,13 @@
    "major": 39
   }
  },
+ "noise_layers_in_thailand": {
+  "road_lines": 1814,
+  "major_highway_lines": 39,
+  "railway_lines": 104,
+  "urban_polygons": 127,
+  "airports": 13
+ },
  "nearest_noise_source_by_hex": {
   "ถนนสายหลัก": 1443,
   "รถไฟ": 137,
