@@ -1,0 +1,74 @@
+{
+ "hex_total": 1738,
+ "default_dark_cut_km": 25.0,
+ "default_quiet_cut_km": 10.0,
+ "metric_definitions": {
+  "d": "km_nearest — ระยะจากศูนย์กลาง hex ถึงจุดทะเบียนที่ใกล้ที่สุด (Day 3)",
+  "n": "ระยะจากศูนย์กลาง hex ถึงแหล่งเสียงที่ใกล้ที่สุด (Day 11)",
+  "u": "ประชากรเมืองในรัศมี 30 กม. ของ hex (Day 9)",
+  "h": "สภาพการถือครองที่ดินของจุดทะเบียนที่ใกล้ที่สุด (Day 12)",
+  "quadrant": "มืด = d ≤ ค่าเกณฑ์ · เงียบ = n ≥ ค่าเกณฑ์ (ผู้ใช้เลื่อนได้)"
+ },
+ "counts_at_defaults": {
+  "DQ": 137,
+  "DL": 172,
+  "BQ": 549,
+  "BL": 880
+ },
+ "area_at_defaults_km2": {
+  "DQ": 39413.0,
+  "DL": 48991.0,
+  "BQ": 157013.0,
+  "BL": 250719.0
+ },
+ "private_dark_hex_at_defaults": 112,
+ "live_panel_at_defaults": {
+  "dark_quiet_pct": 7.9,
+  "dark_quiet_on_private_hex": 40
+ },
+ "private_share_of_dark_pct_at_defaults": 36.2,
+ "interaction_pairs": [
+  {
+   "pair": "ทะเบียน × การถือครอง",
+   "field": "h"
+  },
+  {
+   "pair": "ทะเบียน × เสียง/ถนน",
+   "field": "n"
+  },
+  {
+   "pair": "ทะเบียน × ประชากรเมือง",
+   "field": "u"
+  }
+ ],
+ "cross_check_day11": {
+  "day11_quadrants": {
+   "DQ": 137,
+   "DL": 172,
+   "BQ": 547,
+   "BL": 882
+  },
+  "difference_cells": 2,
+  "why": "Day 11 ใช้ระยะทางไม่ปัดเศษ ส่วนแผนที่นี้ใช้คอลัมน์ noise_km ที่ปัดเป็น 2 ทศนิยม ใน artifact → เซลล์ที่ค่าครบลู่เส้น 10.00 กม. พอดีจึงย้ายกลุ่ม 2 เซลล์"
+ },
+ "filter_check": {
+  "holder": "ที่ดินส่วนบุคคล",
+  "counts": {
+   "DQ": 40,
+   "DL": 72,
+   "BQ": 237,
+   "BL": 339
+  },
+  "total": 688,
+  "urban_radius_km": 30
+ },
+ "strict_criteria_check": {
+  "dark_cut_km": 5.0,
+  "quiet_cut_km": 40.0,
+  "DQ": 1,
+  "DL": 16,
+  "BQ": 71,
+  "BL": 1650
+ },
+ "note": "ค่าทั้งหมดอ่านจาก artifact ของ Day 3/9/11/12 ไม่มีการคำนวณสูตรใหม่ในสคริปต์นี้ ยกเว้นการลดความละเอียดเรขาคณิต (1.5 กม.) เพื่อขนาดไฟล์"
+}
