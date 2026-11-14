@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Day 14 · Borgesian map — แผนที่ที่ละเอียดจนกลายเป็นดินแดน – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#ตอน-1-ขอมลตงตน" id="toc-ตอน-1-ขอมลตงตน" class="nav-link active" data-scroll-target="#ตอน-1-ขอมลตงตน">ตอน 1) ข้อมูลตั้งต้น</a></li>
+  <li><a href="#ตอน-2-แปลงขอบประเทศใหเปนรปท-h3-รบ" id="toc-ตอน-2-แปลงขอบประเทศใหเปนรปท-h3-รบ" class="nav-link" data-scroll-target="#ตอน-2-แปลงขอบประเทศใหเปนรปท-h3-รบ">ตอน 2) แปลงขอบประเทศให้เป็นรูปที่ H3 รับ</a></li>
+  <li><a href="#ตอน-3-ปรบยอดกบ-day-3-1738-เซลล" id="toc-ตอน-3-ปรบยอดกบ-day-3-1738-เซลล" class="nav-link" data-scroll-target="#ตอน-3-ปรบยอดกบ-day-3-1738-เซลล">ตอน 3) ปรับยอดกับ Day 3 (1,738 เซลล์)</a></li>
+  <li><a href="#ตอน-4-ตวเลขตอขนของบนได" id="toc-ตอน-4-ตวเลขตอขนของบนได" class="nav-link" data-scroll-target="#ตอน-4-ตวเลขตอขนของบนได">ตอน 4) ตัวเลขต่อขั้นของบันได</a></li>
+  <li><a href="#ตอน-4b-ทะเบยนเองละเอยดไดแคไหน-จดสองจดอยใกลกนเทาไร" id="toc-ตอน-4b-ทะเบยนเองละเอยดไดแคไหน-จดสองจดอยใกลกนเทาไร" class="nav-link" data-scroll-target="#ตอน-4b-ทะเบยนเองละเอยดไดแคไหน-จดสองจดอยใกลกนเทาไร">ตอน 4b) ทะเบียนเองละเอียดได้แค่ไหน: จุดสองจุดอยู่ใกล้กันเท่าไร</a></li>
+  <li><a href="#ตอน-4c-จดทะเบยนท-ไมมเซลลของตวเอง-ในตารางของซรส" id="toc-ตอน-4c-จดทะเบยนท-ไมมเซลลของตวเอง-ในตารางของซรส" class="nav-link" data-scroll-target="#ตอน-4c-จดทะเบยนท-ไมมเซลลของตวเอง-ในตารางของซรส">ตอน 4c) จุดทะเบียนที่ “ไม่มีเซลล์ของตัวเอง” ในตารางของซีรีส์</a></li>
+  <li><a href="#ตอน-5-ขอมลทไดเพมตอขน-ลกตอบตางจากแมหรอไม" id="toc-ตอน-5-ขอมลทไดเพมตอขน-ลกตอบตางจากแมหรอไม" class="nav-link" data-scroll-target="#ตอน-5-ขอมลทไดเพมตอขน-ลกตอบตางจากแมหรอไม">ตอน 5) ข้อมูลที่ได้เพิ่มต่อขั้น: ลูกตอบต่างจากแม่หรือไม่</a></li>
+  <li><a href="#ตอน-6-ภาพรวม-res-8-เทยบแม-res-5-ทงประเทศ" id="toc-ตอน-6-ภาพรวม-res-8-เทยบแม-res-5-ทงประเทศ" class="nav-link" data-scroll-target="#ตอน-6-ภาพรวม-res-8-เทยบแม-res-5-ทงประเทศ">ตอน 6) ภาพรวม: res 8 เทียบแม่ res 5 ทั้งประเทศ</a></li>
+  <li><a href="#ตอน-7-เพดานรายละเอยดของตนทาง-เสนขอบ-natural-earth-10m" id="toc-ตอน-7-เพดานรายละเอยดของตนทาง-เสนขอบ-natural-earth-10m" class="nav-link" data-scroll-target="#ตอน-7-เพดานรายละเอยดของตนทาง-เสนขอบ-natural-earth-10m">ตอน 7) เพดานรายละเอียดของต้นทาง (เส้นขอบ Natural Earth 10m)</a></li>
+  <li><a href="#ตอน-8-ขนาดไฟลจรง-เวลาวาดจรง-วด-ไมใชคาด" id="toc-ตอน-8-ขนาดไฟลจรง-เวลาวาดจรง-วด-ไมใชคาด" class="nav-link" data-scroll-target="#ตอน-8-ขนาดไฟลจรง-เวลาวาดจรง-วด-ไมใชคาด">ตอน 8) ขนาดไฟล์จริง + เวลาวาดจริง (วัด ไม่ใช่คาด)</a></li>
+  <li><a href="#ตอน-9-ลมตของ-borges-เลขคณตลวน" id="toc-ตอน-9-ลมตของ-borges-เลขคณตลวน" class="nav-link" data-scroll-target="#ตอน-9-ลมตของ-borges-เลขคณตลวน">ตอน 9) ลิมิตของ Borges (เลขคณิตล้วน)</a></li>
+  <li><a href="#ตอน-10-ภาพ-1-บนไดความละเอยด" id="toc-ตอน-10-ภาพ-1-บนไดความละเอยด" class="nav-link" data-scroll-target="#ตอน-10-ภาพ-1-บนไดความละเอยด">ตอน 10) ภาพ 1 — บันไดความละเอียด</a></li>
+  <li><a href="#ตอน-11-ภาพ-2-เสนราคากบเสนขอมล" id="toc-ตอน-11-ภาพ-2-เสนราคากบเสนขอมล" class="nav-link" data-scroll-target="#ตอน-11-ภาพ-2-เสนราคากบเสนขอมล">ตอน 11) ภาพ 2 — เส้นราคากับเส้นข้อมูล</a></li>
+  <li><a href="#ตอน-12-ภาพ-3-ไมบรรทดความละเอยด-เลขคณตของ-borges" id="toc-ตอน-12-ภาพ-3-ไมบรรทดความละเอยด-เลขคณตของ-borges" class="nav-link" data-scroll-target="#ตอน-12-ภาพ-3-ไมบรรทดความละเอยด-เลขคณตของ-borges">ตอน 12) ภาพ 3 — ไม้บรรทัดความละเอียด + เลขคณิตของ Borges</a></li>
+  <li><a href="#ตอน-13-เขยน-artifact" id="toc-ตอน-13-เขยน-artifact" class="nav-link" data-scroll-target="#ตอน-13-เขยน-artifact">ตอน 13) เขียน artifact</a></li>
+  <li><a href="#ตอน-14-referee" id="toc-ตอน-14-referee" class="nav-link" data-scroll-target="#ตอน-14-referee">ตอน 14) referee</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 14 · Borgesian map — แผนที่ที่ละเอียดจนกลายเป็นดินแดน</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>#30DayMapChallenge 2026 · 14 พ.ย. 2569</strong> · โจทย์ทางการ: <em>“A map so detailed it becomes the territory.”</em> <em>(หัวข้อ “Borgesian map” อ้างถึง </em>On Exactitude in Science* ของ Jorge Luis Borges พิมพ์ครั้งแรกปี 1946)*</p>
+<p>โน้ตบุ๊กนี้ <strong>วัด</strong> คำพังเพยของ Borges เป็นตัวเลขสองเส้น ไม่ใช่วาดแผนที่สวย ๆ หนึ่งแผ่น</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>เส้น</th>
+<th>วัดอะไร</th>
+<th>ผล</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ราคาของแผนที่</td>
+<td>จำนวนเซลล์ · จำนวนจุดที่ต้องวาด · ขนาดไฟล์ · เวลาวาด</td>
+<td>โตขึ้น ~7 เท่าทุกขั้น ไม่อิ่มตัว</td>
+</tr>
+<tr class="even">
+<td>ข้อมูลที่ได้เพิ่ม</td>
+<td>สัดส่วนเซลล์ที่มีจุดทะเบียน · คำตอบ “จุดที่ใกล้ที่สุด” ที่เปลี่ยนไปเมื่อซอย</td>
+<td>อิ่มตัวตั้งแต่ res 5–6</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ต้องรันตามลำดับ cell</strong> — สคริปต์ตรวจตัวเองก่อนวาดทุกครั้ง (guard ของซีรีส์อยู่ใน <code>tools/guards.py</code>) และเขียนผลออกมาเป็น <code>day14_ladder.csv</code> + <code>day14_stats.json</code> ซึ่งเป็นแหล่งตัวเลขเดียวที่โพสต์อ้างถึง</p>
+<p><strong>หมายเหตุความซื่อสัตย์ 3 ข้อ</strong></p>
+<ol type="1">
+<li><code>h3</code> ไม่ใช่ package ที่ติดมากับ Colab มาตรฐาน — cell แรกจะ <code>pip install h3==4.5.0</code> ให้</li>
+<li>ห้องผู้ตัดสิน <code>guards.py</code> ตอนนี้อยู่ใน repo ที่ <code>tools/guards.py</code> แล้ว — บนเครื่องตัวเองสคริปต์ใช้ไฟล์นั้น บน Colab จะดาวน์โหลดจาก GitHub มาใช้ ถ้าดึงไม่ได้สคริปต์จะล้มเหลวเสียงดัง ไม่ได้ข้าม guard เงียบ ๆ</li>
+<li>ตัวเลขที่ res 9 ขึ้นไป (รวมถึง “ผมหนึ่งเส้น”) เป็น <strong>เลขคณิตต่อจากกฎ 7 เท่า</strong> ไม่ใช่แผนที่ที่วาดจริง ทุกจุดที่ต่อเอาจะถูกป้ายไว้ว่า extrapolate ทั้งในภาพและใน <code>day14_stats.json</code></li>
+</ol>
+<section id="คาคงท-ชดเครองมอ-อานดาวนโหลดขอมล-ตงฟอนตไทย-ตรวจวารนทไหน" class="level3">
+<h3 class="anchored" data-anchor-id="คาคงท-ชดเครองมอ-อานดาวนโหลดขอมล-ตงฟอนตไทย-ตรวจวารนทไหน">ค่าคงที่ + ชุดเครื่องมือ (อ่าน/ดาวน์โหลดข้อมูล, ตั้งฟอนต์ไทย, ตรวจว่ารันที่ไหน)</h3>
+<div id="cell-3" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -*- coding: utf-8 -*-</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">Day 14 · Borgesian map — "A map so detailed it becomes the territory."</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">(ข้อความหัวข้อจาก 30daymapchallenge.com อ่านสดวันเขียน · อ้างถึงเรื่องสั้น</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"> "On Exactitude in Science" ของ Jorge Luis Borges พิมพ์ครั้งแรกปี 1946)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">คำถามของแผ่นนี้ไม่ใช่ "ทำแผนที่ให้ละเอียดที่สุด" แต่คือวางสองเส้นเทียบกัน</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  เส้นที่ 1  ราคาของแผนที่ (จำนวนเซลล์ · จำนวนจุดที่ต้องวาด · ขนาดไฟล์ · เวลาวาด)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  เส้นที่ 2  ข้อมูลที่แผนที่บอก (สัดส่วนเซลล์ที่มีจุดทะเบียน · คำตอบที่เปลี่ยนไปเมื่อซอยเพิ่ม</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">             · ความคลาดเคลื่อนของพื้นที่ประเทศเมื่อเทียบกับค่าอ้างอิง)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">ราคาโตขั้นละเจ็ดเท่าไม่อิ่มตัว ส่วนข้อมูลอิ่มตัวตั้งแต่ res 5–6 และที่สำคัญกว่านั้น</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">ต้นทางข้อมูล (เส้นขอบประเทศใน Natural Earth 10m) มีเพดานของมันเอง: ตอนที่ตาราง</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">ละเอียดกว่าช่วงห่างของจุดบนเส้นขอบ รายละเอียดที่เพิ่มคือของแต่ง ไม่ใช่ของวัด</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">ทุกตัวเลขที่โพสต์อ้างอ่านจาก day14_ladder.csv / day14_stats.json ที่สคริปต์นี้เขียนออกเท่านั้น</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, sys, json, time, subprocess, urllib.request, zipfile</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd, geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>T0 <span class="op">=</span> time.time()</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># รันได้ทั้งบนเครื่องผู้เขียนและบน Colab: ถ้าไม่มีโฟลเดอร์รีโปให้ ก็ดึงข้อมูลจาก GitHub / Natural Earth ตรง ๆ</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>COLAB <span class="op">=</span> <span class="kw">not</span> os.path.isdir(os.path.join(<span class="vs">r"D:</span><span class="dv">\G</span><span class="vs">IS30Days"</span>, <span class="st">"geo-notes"</span>))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>WORK <span class="op">=</span> os.getcwd() <span class="cf">if</span> COLAB <span class="cf">else</span> <span class="vs">r"D:</span><span class="dv">\G</span><span class="vs">IS30Days"</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>REPO <span class="op">=</span> os.path.join(WORK, <span class="st">"geo-notes"</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>CACHE <span class="op">=</span> os.path.join(WORK, <span class="st">"day14_cache"</span>) <span class="cf">if</span> COLAB <span class="cf">else</span> os.path.join(WORK, <span class="st">"cache"</span>, <span class="st">"day06"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>OUT <span class="op">=</span> os.path.join(WORK, <span class="st">"out"</span>, <span class="st">"day14"</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>os.makedirs(CACHE, exist_ok<span class="op">=</span><span class="va">True</span>)<span class="op">;</span> os.makedirs(OUT, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>RAW <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/thammarat-ai/geo-notes/main/"</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> COLAB:                                   <span class="co"># h3 ไม่ใช่ package ติดตั้งมาใน Colab มาตรฐาน</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> h3</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ImportError</span>:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        subprocess.check_call([sys.executable, <span class="st">"-m"</span>, <span class="st">"pip"</span>, <span class="st">"-q"</span>, <span class="st">"install"</span>, <span class="st">"h3==4.5.0"</span>])</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ensure_shp(stem, sub<span class="op">=</span><span class="st">"cultural"</span>):</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    shp <span class="op">=</span> os.path.join(CACHE, stem <span class="op">+</span> <span class="st">".shp"</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(shp):</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        zp <span class="op">=</span> os.path.join(CACHE, stem <span class="op">+</span> <span class="st">".zip"</span>)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        urllib.request.urlretrieve(<span class="ss">f"https://naciscdn.org/naturalearth/10m/</span><span class="sc">{</span>sub<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>stem<span class="sc">}</span><span class="ss">.zip"</span>, zp)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        zipfile.ZipFile(zp).extractall(CACHE)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> shp</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> repo_file(rel):</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    dst <span class="op">=</span> os.path.join(CACHE, os.path.basename(rel))</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> COLAB <span class="kw">and</span> <span class="kw">not</span> os.path.exists(dst):</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        urllib.request.urlretrieve(RAW <span class="op">+</span> rel, dst)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dst <span class="cf">if</span> COLAB <span class="cf">else</span> os.path.join(REPO, rel)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> COLAB:</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    ensure_shp(<span class="st">"ne_10m_admin_0_countries"</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> rel <span class="kw">in</span> [<span class="st">"ofl/trirong/Trirong-Regular.ttf"</span>, <span class="st">"ofl/trirong/Trirong-Bold.ttf"</span>]:</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>        dst <span class="op">=</span> os.path.join(CACHE, os.path.basename(rel))</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> os.path.exists(dst):</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>            urllib.request.urlretrieve(<span class="st">"https://github.com/google/fonts/raw/main/"</span> <span class="op">+</span> rel, dst)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> h3</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely.geometry <span class="im">import</span> Point</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely.validation <span class="im">import</span> make_valid</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyproj <span class="im">import</span> CRS, Transformer</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>matplotlib.use(<span class="st">"Agg"</span>)</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> font_manager</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.collections <span class="im">import</span> PolyCollection</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    sys.path.insert(<span class="dv">0</span>, os.path.join(WORK, <span class="st">"tools"</span>))</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> guards <span class="im">import</span> (guard_bbox, guard_crs, guard_area, guard_variance,</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>                        guard_distances, lint_thai, hav_km)</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ModuleNotFoundError</span>:</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>    <span class="co"># บน Colab ไม่มีโฟลเดอร์ tools/ ของเวิร์กสเปซ — ดึงห้องผู้ตัดสินจาก repo มาใช้</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    gp <span class="op">=</span> os.path.join(CACHE, <span class="st">"guards.py"</span>)</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(gp):</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>        urllib.request.urlretrieve(RAW <span class="op">+</span> <span class="st">"tools/guards.py"</span>, gp)</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>    sys.path.insert(<span class="dv">0</span>, CACHE)</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> guards <span class="im">import</span> (guard_bbox, guard_crs, guard_area, guard_variance,</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>                        guard_distances, lint_thai, hav_km)</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _f <span class="kw">in</span> <span class="bu">sorted</span>(os.listdir(CACHE)):</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> _f.endswith(<span class="st">".ttf"</span>):</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>        font_manager.fontManager.addfont(os.path.join(CACHE, _f))</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"font.family"</span>] <span class="op">=</span> <span class="st">"Trirong"</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>_LOGF <span class="op">=</span> <span class="bu">open</span>(os.path.join(OUT, <span class="st">"day14_run.log"</span>), <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log(m):</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="ss">f"[</span><span class="sc">{</span>time<span class="sc">.</span>time()<span class="op">-</span>T0<span class="sc">:6.1f}</span><span class="ss">s] </span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s, flush<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    _LOGF.write(s <span class="op">+</span> <span class="bu">chr</span>(<span class="dv">10</span>))<span class="op">;</span> _LOGF.flush()</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>EQ <span class="op">=</span> CRS.from_proj4(<span class="st">"+proj=eqdc +lat_0=14 +lon_0=101 +lat_1=8 +lat_2=20 +units=m +no_defs +ellps=WGS84"</span>)</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>BG, INK <span class="op">=</span> <span class="st">"#0d1522"</span>, <span class="st">"#e8e3d3"</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>ACCENT, WARM, COOL, TEAL <span class="op">=</span> <span class="st">"#f5b942"</span>, <span class="st">"#f4566a"</span>, <span class="st">"#38bdf8"</span>, <span class="st">"#2dd4bf"</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>MUTED <span class="op">=</span> <span class="st">"#9fb2c8"</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>RES_MEASURE <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]   <span class="co"># ระดับที่ H3 เติมให้จริงในเครื่องนี้</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>RES_DRAW <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">8</span>]         <span class="co"># ระดับที่นำไปเขียนเป็นภาพ</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>BYTE_RES <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]               <span class="co"># ระดับที่เขียน GeoJSON จริงเพื่อวัดขนาดไฟล์</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>TIME_RES <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]               <span class="co"># ระดับที่จับเวลาวาดจริง</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>HAIR_M <span class="op">=</span> <span class="fl">5e-5</span>                         <span class="co"># ผมหนึ่งเส้น 0.05 มม.</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>DOT300_M <span class="op">=</span> <span class="fl">25.4e-3</span> <span class="op">/</span> <span class="fl">300.0</span>            <span class="co"># จุดหมึกหนึ่งจุดที่ 300 dpi = 0.0847 มม.</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>A4_M2 <span class="op">=</span> <span class="fl">0.210</span> <span class="op">*</span> <span class="fl">0.297</span>                 <span class="co"># พื้นที่แผ่น A4 ตามนิยาม ISO 216</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>HEX_K <span class="op">=</span> <span class="dv">3</span> <span class="op">*</span> np.sqrt(<span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>            <span class="co"># พื้นที่หกเหลี่ยมด้านเท่า = 2.598 × s²</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>TXT <span class="op">=</span> []                              <span class="co"># รวมข้อความไทยที่ไปโผล่ในภาพ ให้ lint จับ</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> T(s):</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>    TXT.append(s)</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-1-ขอมลตงตน" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-1-ขอมลตงตน">ตอน 1) ข้อมูลตั้งต้น</h2>
+<div id="cell-5" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------- 1. ข้อมูลตั้งต้น</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ne <span class="op">=</span> gpd.read_file(ensure_shp(<span class="st">"ne_10m_admin_0_countries"</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>row <span class="op">=</span> ne[ne[<span class="st">"NAME"</span>] <span class="op">==</span> <span class="st">"Thailand"</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">len</span>(row) <span class="op">==</span> <span class="dv">1</span>, <span class="ss">f"ต้องเจอ Thailand 1 แถว ได้ </span><span class="sc">{</span><span class="bu">len</span>(row)<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>TH <span class="op">=</span> make_valid(row.geometry.iloc[<span class="dv">0</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>PARTS <span class="op">=</span> <span class="bu">list</span>(TH.geoms) <span class="cf">if</span> TH.geom_type.startswith(<span class="st">"Multi"</span>) <span class="cf">else</span> [TH]</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>country_m <span class="op">=</span> gpd.GeoSeries([TH], crs<span class="op">=</span><span class="st">"EPSG:4326"</span>).to_crs(EQ).area.iloc[<span class="dv">0</span>] <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>REF_KM2 <span class="op">=</span> <span class="fl">512593.1</span>                    <span class="co"># ตัวเลขที่ซีรีส์ใช้มาตั้งแต่ Day 8 (Natural Earth 10m)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>guard_area(country_m, REF_KM2, <span class="st">"thailand-area-recheck"</span>, tol<span class="op">=</span><span class="fl">0.005</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>guard_crs(TH.bounds, <span class="st">"thailand-outline-wgs84"</span>, expect<span class="op">=</span><span class="st">"degrees"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(repo_file(<span class="st">"data/darksky_thailand.csv"</span>))</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"name"</span>] <span class="op">=</span> df[<span class="st">"name"</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.strip()</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>SITES <span class="op">=</span> np.column_stack([df.longitude.values, df.latitude.values])   <span class="co"># (lon, lat)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>NAMES <span class="op">=</span> df[<span class="st">"name"</span>].values</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>guard_bbox(SITES, <span class="fl">96.5</span>, <span class="fl">107.6</span>, <span class="fl">4.3</span>, <span class="fl">21.7</span>, <span class="st">"darksky-sites"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">len</span>(df) <span class="op">==</span> <span class="dv">83</span>, <span class="ss">f"ทะเบียนต้องมี 83 จุด ได้ </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"ประเทศ </span><span class="sc">{</span>country_m<span class="sc">:,.1f}</span><span class="ss"> ตร.กม. ยืนยันซ้ำแล้ว · ทะเบียน </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss"> จุด · outline </span><span class="sc">{</span><span class="bu">len</span>(PARTS)<span class="sc">}</span><span class="ss"> ส่วน"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-2-แปลงขอบประเทศใหเปนรปท-h3-รบ" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-2-แปลงขอบประเทศใหเปนรปท-h3-รบ">ตอน 2) แปลงขอบประเทศให้เป็นรูปที่ H3 รับ</h2>
+<div id="cell-7" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------- 2. แปลงขอบประเทศให้เป็นรูปที่ H3 รับ</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _ring(coords):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> []</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c <span class="kw">in</span> coords:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        ll <span class="op">=</span> (<span class="bu">round</span>(<span class="bu">float</span>(c[<span class="dv">1</span>]), <span class="dv">7</span>), <span class="bu">round</span>(<span class="bu">float</span>(c[<span class="dv">0</span>]), <span class="dv">7</span>))   <span class="co"># H3 รับ (lat, lng)</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> out <span class="kw">or</span> out[<span class="op">-</span><span class="dv">1</span>] <span class="op">!=</span> ll:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            out.append(ll)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(out) <span class="op">&gt;</span> <span class="dv">1</span> <span class="kw">and</span> out[<span class="dv">0</span>] <span class="op">==</span> out[<span class="op">-</span><span class="dv">1</span>]:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        out.pop()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>HPS <span class="op">=</span> []</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> PARTS:</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    loops <span class="op">=</span> [_ring(p.exterior.coords)] <span class="op">+</span> [_ring(i.coords) <span class="cf">for</span> i <span class="kw">in</span> p.interiors]</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    loops <span class="op">=</span> [l <span class="cf">for</span> l <span class="kw">in</span> loops <span class="cf">if</span> <span class="bu">len</span>(l) <span class="op">&gt;=</span> <span class="dv">3</span>]</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> loops:</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        HPS.append(h3.LatLngPoly(loops[<span class="dv">0</span>], <span class="op">*</span>loops[<span class="dv">1</span>:]))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>MP <span class="op">=</span> h3.LatLngMultiPoly(<span class="op">*</span>HPS)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fill(res):</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(<span class="bu">sorted</span>(h3.polygon_to_cells(MP, res)), dtype<span class="op">=</span><span class="bu">object</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>CELLS <span class="op">=</span> {}</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> RES_MEASURE:</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    t1 <span class="op">=</span> time.perf_counter()</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    CELLS[r] <span class="op">=</span> fill(r)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"เติม res </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span><span class="bu">len</span>(CELLS[r])<span class="sc">:,}</span><span class="ss"> เซลล์ (</span><span class="sc">{</span>time<span class="sc">.</span>perf_counter()<span class="op">-</span>t1<span class="sc">:.2f}</span><span class="ss"> วิ)"</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># กฎเจ็ดเท่า: H3 แบ่งแม่หนึ่งเซลล์เป็นลูกเจ็ดเซลล์ จำนวนเซลล์ต้องโตประมาณเจ็ดเท่าต่อขั้น</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>RATIO <span class="op">=</span> {r: <span class="bu">float</span>(<span class="bu">len</span>(CELLS[r <span class="op">+</span> <span class="dv">1</span>]) <span class="op">/</span> <span class="bu">len</span>(CELLS[r])) <span class="cf">for</span> r <span class="kw">in</span> RES_MEASURE[:<span class="op">-</span><span class="dv">1</span>]}</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r, v <span class="kw">in</span> RATIO.items():</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="fl">6.0</span> <span class="op">&lt;=</span> v <span class="op">&lt;=</span> <span class="fl">7.3</span>, <span class="ss">f"res </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">→</span><span class="sc">{</span>r<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> อัตราส่วน </span><span class="sc">{</span>v<span class="sc">:.2f}</span><span class="ss"> ไม่ใกล้ 7 = เติมไม่ครบหรือตกขอบ"</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>log(<span class="st">"กฎเจ็ดเท่าผ่านการตรวจ: "</span> <span class="op">+</span> <span class="st">" · "</span>.join(<span class="ss">f"</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">→</span><span class="sc">{</span>r<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">=</span><span class="sc">{</span>v<span class="sc">:.2f}</span><span class="ss">"</span> <span class="cf">for</span> r, v <span class="kw">in</span> RATIO.items()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-3-ปรบยอดกบ-day-3-1738-เซลล" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-3-ปรบยอดกบ-day-3-1738-เซลล">ตอน 3) ปรับยอดกับ Day 3 (1,738 เซลล์)</h2>
+<div id="cell-9" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------ 3. ปรับยอดกับ Day 3 (1,738 เซลล์)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>g3 <span class="op">=</span> gpd.read_file(repo_file(<span class="st">"posts/day03-polygons/day03_hex_polygons.geojson"</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>day3 <span class="op">=</span> <span class="bu">set</span>(g3[<span class="st">"cell"</span>].astype(<span class="bu">str</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>mine5 <span class="op">=</span> <span class="bu">set</span>(CELLS[<span class="dv">5</span>].astype(<span class="bu">str</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>REC <span class="op">=</span> <span class="bu">dict</span>(day3_cells<span class="op">=</span><span class="bu">len</span>(day3), res5_ne10m_cells<span class="op">=</span><span class="bu">len</span>(mine5), common<span class="op">=</span><span class="bu">len</span>(day3 <span class="op">&amp;</span> mine5),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>           only_day3<span class="op">=</span><span class="bu">len</span>(day3 <span class="op">-</span> mine5), only_today<span class="op">=</span><span class="bu">len</span>(mine5 <span class="op">-</span> day3),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>           reason<span class="op">=</span><span class="st">"Day 3 เติมตารางจากขอบประเทศ GADM · วันนี้ใช้ Natural Earth 10m "</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"(มาตรฐานที่ซีรีส์เริ่มใช้ตั้งแต่ Day 8) วิธีเดียวกัน คนละต้นทางของเส้นขอบ"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"Day 3 </span><span class="sc">{</span>REC[<span class="st">'day3_cells'</span>]<span class="sc">}</span><span class="ss"> เซลล์ · วันนี้ </span><span class="sc">{</span>REC[<span class="st">'res5_ne10m_cells'</span>]<span class="sc">}</span><span class="ss"> เซลล์ · "</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"ซ้ำกัน </span><span class="sc">{</span>REC[<span class="st">'common'</span>]<span class="sc">}</span><span class="ss"> · ต่าง </span><span class="sc">{</span>REC[<span class="st">'only_day3'</span>]<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>REC[<span class="st">'only_today'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> REC[<span class="st">"common"</span>] <span class="op">&gt;=</span> <span class="fl">0.98</span> <span class="op">*</span> <span class="bu">min</span>(REC[<span class="st">"day3_cells"</span>], REC[<span class="st">"res5_ne10m_cells"</span>]), <span class="op">\</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"เซลล์ res 5 ของสองวันควรซ้อนกันเกือบทั้งหมด ถ้าต่างมากกว่านี้แปลว่าวิธีเติมเปลี่ยน"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-4-ตวเลขตอขนของบนได" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-4-ตวเลขตอขนของบนได">ตอน 4) ตัวเลขต่อขั้นของบันได</h2>
+<div id="cell-11" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------- 4. ตัวเลขต่อขั้นของบันได</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> areas_sample(cells, k<span class="op">=</span><span class="dv">20000</span>, seed<span class="op">=</span><span class="dv">14</span>):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> np.random.default_rng(seed).choice(<span class="bu">len</span>(cells), size<span class="op">=</span><span class="bu">min</span>(k, <span class="bu">len</span>(cells)), replace<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">float</span>(np.mean([h3.cell_area(cells[i], <span class="st">"km^2"</span>) <span class="cf">for</span> i <span class="kw">in</span> idx])), <span class="bu">int</span>(<span class="bu">len</span>(idx))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> nearest_for(cells_arr, res):</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""ตอบ 'จุดทะเบียนที่ใกล้ที่สุด' ของทุกเซลล์ด้วยระยะทรงกลมจริง คำนวณเป็นก้อนกัน index เพี้ยน"""</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    ll <span class="op">=</span> np.array([h3.cell_to_latlng(x) <span class="cf">for</span> x <span class="kw">in</span> cells_arr])</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    deg <span class="op">=</span> np.column_stack([ll[:, <span class="dv">1</span>], ll[:, <span class="dv">0</span>]])</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    guard_bbox(deg, <span class="fl">96.5</span>, <span class="fl">107.6</span>, <span class="fl">4.3</span>, <span class="fl">21.7</span>, <span class="ss">f"cell-centre-res</span><span class="sc">{</span>res<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    ans <span class="op">=</span> np.empty(<span class="bu">len</span>(deg), dtype<span class="op">=</span><span class="bu">object</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    dmin <span class="op">=</span> np.empty(<span class="bu">len</span>(deg))</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    step <span class="op">=</span> <span class="dv">200000</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(deg), step):</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        d <span class="op">=</span> hav_km(deg[i:i <span class="op">+</span> step], SITES)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        ans[i:i <span class="op">+</span> step] <span class="op">=</span> NAMES[d.argmin(axis<span class="op">=</span><span class="dv">1</span>)]</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        dmin[i:i <span class="op">+</span> step] <span class="op">=</span> d.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    guard_distances(dmin.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="ss">f"cell-to-site-res</span><span class="sc">{</span>res<span class="sc">}</span><span class="ss">"</span>, max_km<span class="op">=</span><span class="dv">600</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> deg, ans, dmin</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>rows, ANS, CENT, DMIN <span class="op">=</span> [], {}, {}, {}</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>OUTSIDE <span class="op">=</span> {}</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> RES_MEASURE:</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> CELLS[r]</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(c)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    a_mean, a_n <span class="op">=</span> areas_sample(c)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    nominal <span class="op">=</span> a_mean <span class="op">*</span> n</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    site_cell <span class="op">=</span> [h3.latlng_to_cell(<span class="bu">float</span>(la), <span class="bu">float</span>(lo), r)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>                 <span class="cf">for</span> la, lo <span class="kw">in</span> <span class="bu">zip</span>(df.latitude.values, df.longitude.values)]</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># นับเฉพาะเซลล์ที่อยู่ในชุดที่เติมจากประเทศ: จุดทะเบียนริมขอบอาจตกในเซลล์ยักษ์</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ที่ center ของมันอยู่นอกรอยต่อ (เห็นชัดที่ res 2 ซึ่ง 13 เซลล์ที่มีจุด &gt; 6 เซลล์ของประเทศ)</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    setc <span class="op">=</span> <span class="bu">set</span>(c.astype(<span class="bu">str</span>))</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    inside <span class="op">=</span> <span class="bu">set</span>(site_cell) <span class="op">&amp;</span> setc</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    outside_names <span class="op">=</span> <span class="bu">sorted</span>({<span class="bu">str</span>(NAMES[k]) <span class="cf">for</span> k, sc <span class="kw">in</span> <span class="bu">enumerate</span>(site_cell) <span class="cf">if</span> sc <span class="kw">not</span> <span class="kw">in</span> setc})</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    OUTSIDE[r] <span class="op">=</span> outside_names</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    occ <span class="op">=</span> <span class="bu">len</span>(inside)</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> occ <span class="op">&lt;=</span> n, <span class="ss">f"res </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: เซลล์ที่มีจุด </span><span class="sc">{</span>occ<span class="sc">}</span><span class="ss"> &gt; จำนวนเซลล์ </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> = นับผิด"</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    deg, ans, dmin <span class="op">=</span> nearest_for(c, r)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    ANS[r], CENT[r], DMIN[r] <span class="op">=</span> ans, deg, dmin</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    rows.append(<span class="bu">dict</span>(res<span class="op">=</span>r, cells<span class="op">=</span>n, edge_km<span class="op">=</span><span class="bu">float</span>(h3.average_hexagon_edge_length(r, <span class="st">"km"</span>)),</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>                     cell_area_km2<span class="op">=</span>a_mean, area_sampled<span class="op">=</span>a_n, nominal_area_km2<span class="op">=</span>nominal,</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>                     nominal_vs_country_pct<span class="op">=</span><span class="dv">100</span> <span class="op">*</span> nominal <span class="op">/</span> REF_KM2,</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>                     occupied_cells<span class="op">=</span>occ, occupied_pct<span class="op">=</span><span class="dv">100</span> <span class="op">*</span> occ <span class="op">/</span> n,</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>                     site_cells_distinct<span class="op">=</span><span class="bu">len</span>(<span class="bu">set</span>(site_cell)),</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>                     site_cells_outside_fill<span class="op">=</span><span class="bu">len</span>(<span class="bu">set</span>(site_cell) <span class="op">-</span> setc),</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>                     sites_without_own_cell<span class="op">=</span><span class="bu">len</span>(outside_names), vertices<span class="op">=</span>n <span class="op">*</span> <span class="dv">6</span>))</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"res </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>n<span class="sc">:,}</span><span class="ss"> เซลล์ · </span><span class="sc">{</span>a_mean<span class="sc">:,.4f}</span><span class="ss"> ตร.กม./เซลล์ · รวม </span><span class="sc">{</span>nominal<span class="sc">:,.0f}</span><span class="ss"> "</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"(</span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>nominal<span class="op">/</span>REF_KM2<span class="sc">:.2f}</span><span class="ss">% ของประเทศ) · เซลล์ที่มีจุดทะเบียน </span><span class="sc">{</span>occ<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>occ<span class="op">/</span>n<span class="sc">:.3f}</span><span class="ss">%)"</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f" · จุดทะเบียนที่ไม่มีเซลล์ของตัวเองในตาราง </span><span class="sc">{</span><span class="bu">len</span>(outside_names)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>LAD <span class="op">=</span> pd.DataFrame(rows)</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>guard_variance(LAD.edge_km.values, <span class="st">"hex-edge-km"</span>, min_spread_km<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> (LAD.cells.values[:<span class="op">-</span><span class="dv">1</span>] <span class="op">&lt;</span> LAD.cells.values[<span class="dv">1</span>:]).<span class="bu">all</span>(), <span class="st">"จำนวนเซลล์ต้องมากขึ้นทุกขั้น"</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> (LAD.edge_km.values[:<span class="op">-</span><span class="dv">1</span>] <span class="op">&gt;</span> LAD.edge_km.values[<span class="dv">1</span>:]).<span class="bu">all</span>(), <span class="st">"ขอบเซลล์ต้องสั้นลงทุกขั้น"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-4b-ทะเบยนเองละเอยดไดแคไหน-จดสองจดอยใกลกนเทาไร" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-4b-ทะเบยนเองละเอยดไดแคไหน-จดสองจดอยใกลกนเทาไร">ตอน 4b) ทะเบียนเองละเอียดได้แค่ไหน: จุดสองจุดอยู่ใกล้กันเท่าไร</h2>
+<div id="cell-13" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------- 4b. ทะเบียนเองละเอียดได้แค่ไหน: จุดสองจุดอยู่ใกล้กันเท่าไร</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>DS <span class="op">=</span> hav_km(SITES, SITES)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>np.fill_diagonal(DS, np.inf)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>i, j <span class="op">=</span> np.unravel_index(DS.argmin(), DS.shape)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>iu <span class="op">=</span> np.triu_indices(<span class="bu">len</span>(df), <span class="dv">1</span>)                 <span class="co"># เฉพาะคู่ที่ไม่ซ้ำ (เหนือเส้นทแยง)</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>PAIRS <span class="op">=</span> <span class="bu">dict</span>(closest_pair_km<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(DS.<span class="bu">min</span>()), <span class="dv">3</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>             closest_pair<span class="op">=</span>[<span class="bu">str</span>(NAMES[i]), <span class="bu">str</span>(NAMES[j])],</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>             total_pairs<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(iu[<span class="dv">0</span>])),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>             pairs_under_0p5km<span class="op">=</span><span class="bu">int</span>((DS[iu] <span class="op">&lt;</span> <span class="fl">0.5</span>).<span class="bu">sum</span>()),</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>             pairs_under_1km<span class="op">=</span><span class="bu">int</span>((DS[iu] <span class="op">&lt;</span> <span class="fl">1.0</span>).<span class="bu">sum</span>()),</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>             pairs_under_5km<span class="op">=</span><span class="bu">int</span>((DS[iu] <span class="op">&lt;</span> <span class="fl">5.0</span>).<span class="bu">sum</span>()),</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>             pairs_under_20km<span class="op">=</span><span class="bu">int</span>((DS[iu] <span class="op">&lt;</span> <span class="fl">20.0</span>).<span class="bu">sum</span>()))</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>guard_distances(np.array([[PAIRS[<span class="st">"closest_pair_km"</span>]]]), <span class="st">"site-pair-min"</span>, max_km<span class="op">=</span><span class="dv">2500</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> PAIRS[<span class="st">"total_pairs"</span>] <span class="op">==</span> <span class="bu">len</span>(df) <span class="op">*</span> (<span class="bu">len</span>(df) <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> <span class="dv">2</span>, <span class="st">"นับคู่จุดต้องไม่ซ้ำไปมา"</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> PAIRS[<span class="st">"pairs_under_1km"</span>] <span class="op">&lt;=</span> PAIRS[<span class="st">"total_pairs"</span>], <span class="st">"จำนวนคู่มากกว่าคู่ที่เป็นไปได้ = นับซ้ำ"</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------- 4b2. แยก 83 จุดให้คนละเซลล์ต้องใช้ตารางละเอียดแค่ไหน (ไม่ต้องเติมทั้งประเทศ)</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>SEP <span class="op">=</span> {}</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">13</span>):</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    SEP[r] <span class="op">=</span> <span class="bu">len</span>({h3.latlng_to_cell(<span class="bu">float</span>(la), <span class="bu">float</span>(lo), r)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">for</span> la, lo <span class="kw">in</span> <span class="bu">zip</span>(df.latitude.values, df.longitude.values)})</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>PAIRS[<span class="st">"distinct_site_cells_by_res"</span>] <span class="op">=</span> SEP</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>PAIRS[<span class="st">"first_res_all_separate"</span>] <span class="op">=</span> <span class="bu">next</span>((r <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">13</span>) <span class="cf">if</span> SEP[r] <span class="op">==</span> <span class="dv">83</span>), <span class="va">None</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------- 4b3. จุดทะเบียนที่เส้นขอบประเทศมาตรฐาน "มองไม่เห็น"</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>inside_pt <span class="op">=</span> np.array([TH.contains(Point(lo, la))</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                      <span class="cf">for</span> la, lo <span class="kw">in</span> <span class="bu">zip</span>(df.latitude.values, df.longitude.values)])</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>outside_pt <span class="op">=</span> <span class="bu">sorted</span>(df.name.values[<span class="op">~</span>inside_pt].astype(<span class="bu">str</span>))</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>PAIRS[<span class="st">"sites_outside_country_outline"</span>] <span class="op">=</span> outside_pt</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>PAIRS[<span class="st">"n_sites_outside_country_outline"</span>] <span class="op">=</span> <span class="bu">len</span>(outside_pt)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"คู่จุดทะเบียนที่ใกล้ที่สุด </span><span class="sc">{</span>PAIRS[<span class="st">'closest_pair_km'</span>]<span class="sc">:,.3f}</span><span class="ss"> กม. "</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"(</span><span class="sc">{</span>PAIRS[<span class="st">'closest_pair'</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> ↔ </span><span class="sc">{</span>PAIRS[<span class="st">'closest_pair'</span>][<span class="dv">1</span>]<span class="sc">}</span><span class="ss">) · "</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"คู่ต่ำกว่า 0.5 กม. </span><span class="sc">{</span>PAIRS[<span class="st">'pairs_under_0p5km'</span>]<span class="sc">}</span><span class="ss"> · ต่ำกว่า 1 กม. </span><span class="sc">{</span>PAIRS[<span class="st">'pairs_under_1km'</span>]<span class="sc">}</span><span class="ss"> · "</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"ต่ำกว่า 5 กม. </span><span class="sc">{</span>PAIRS[<span class="st">'pairs_under_5km'</span>]<span class="sc">}</span><span class="ss"> · ต่ำกว่า 20 กม. </span><span class="sc">{</span>PAIRS[<span class="st">'pairs_under_20km'</span>]<span class="sc">}</span><span class="ss"> "</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"(จากทั้งหมด </span><span class="sc">{</span>PAIRS[<span class="st">'total_pairs'</span>]<span class="sc">:,}</span><span class="ss"> คู่)"</span>)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>log(<span class="st">"จำนวนเซลล์ที่จุด 83 จุดครอง: "</span> <span class="op">+</span> <span class="st">" · "</span>.join(<span class="ss">f"res </span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">=</span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> k, v <span class="kw">in</span> SEP.items()) <span class="op">+</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f" · แยกครบทุกคนที่ res </span><span class="sc">{</span>PAIRS[<span class="st">'first_res_all_separate'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"จุดทะเบียนที่อยู่นอกเส้นขอบประเทศของ Natural Earth 10m = </span><span class="sc">{</span><span class="bu">len</span>(outside_pt)<span class="sc">}</span><span class="ss"> จุด: "</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> <span class="st">", "</span>.join(outside_pt))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-4c-จดทะเบยนท-ไมมเซลลของตวเอง-ในตารางของซรส" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-4c-จดทะเบยนท-ไมมเซลลของตวเอง-ในตารางของซรส">ตอน 4c) จุดทะเบียนที่ “ไม่มีเซลล์ของตัวเอง” ในตารางของซีรีส์</h2>
+<div id="cell-15" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------- 4c. จุดทะเบียนที่ "ไม่มีเซลล์ของตัวเอง" ในตารางของซีรีส์</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sc5 <span class="op">=</span> [h3.latlng_to_cell(<span class="bu">float</span>(la), <span class="bu">float</span>(lo), <span class="dv">5</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>       <span class="cf">for</span> la, lo <span class="kw">in</span> <span class="bu">zip</span>(df.latitude.values, df.longitude.values)]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>miss_ne <span class="op">=</span> <span class="bu">sorted</span>({<span class="bu">str</span>(NAMES[k]) <span class="cf">for</span> k, c <span class="kw">in</span> <span class="bu">enumerate</span>(sc5) <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> mine5})</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>miss_d3 <span class="op">=</span> <span class="bu">sorted</span>({<span class="bu">str</span>(NAMES[k]) <span class="cf">for</span> k, c <span class="kw">in</span> <span class="bu">enumerate</span>(sc5) <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> day3})</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>NOSITE <span class="op">=</span> <span class="bu">dict</span>(res5_ne10m_missing<span class="op">=</span>miss_ne, res5_day3_missing<span class="op">=</span>miss_d3,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>              n_ne10m<span class="op">=</span><span class="bu">len</span>(miss_ne), n_day3<span class="op">=</span><span class="bu">len</span>(miss_d3),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>              why<span class="op">=</span><span class="st">"H3 เติมตารางแบบเก็บเซลล์ที่จุดกลางอยู่ในประเทศเท่านั้น "</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"เซลล์ริมขอบที่กินเข้ามาในไทยแต่จุดกลางอยู่ต่างประเทศจึงไม่ถูกนับ "</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"จุดทะเบียนที่อยู่กับเซลล์แบบนั้นจึงไม่มีที่อยู่บนกริด"</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"res 5: </span><span class="sc">{</span><span class="bu">len</span>(miss_ne)<span class="sc">}</span><span class="ss"> จุดที่ไม่มีเซลล์ของตัวเองในตาราง (</span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(miss_ne)<span class="sc">}</span><span class="ss">) · "</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"เทียบกับกริด Day 3 = </span><span class="sc">{</span><span class="bu">len</span>(miss_d3)<span class="sc">}</span><span class="ss"> จุด"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-5-ขอมลทไดเพมตอขน-ลกตอบตางจากแมหรอไม" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-5-ขอมลทไดเพมตอขน-ลกตอบตางจากแมหรอไม">ตอน 5) ข้อมูลที่ได้เพิ่มต่อขั้น: ลูกตอบต่างจากแม่หรือไม่</h2>
+<div id="cell-17" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------- 5. ข้อมูลที่ได้เพิ่มต่อขั้น: ลูกตอบต่างจากแม่หรือไม่</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>INHERIT <span class="op">=</span> []</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> RES_MEASURE[<span class="dv">1</span>:]:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    ch, pa <span class="op">=</span> CELLS[r], CELLS[r <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    setr <span class="op">=</span> <span class="bu">set</span>(pa.astype(<span class="bu">str</span>))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    par <span class="op">=</span> [h3.cell_to_parent(x, r <span class="op">-</span> <span class="dv">1</span>) <span class="cf">for</span> x <span class="kw">in</span> ch]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    keep <span class="op">=</span> np.fromiter((<span class="bu">str</span>(p) <span class="kw">in</span> setr <span class="cf">for</span> p <span class="kw">in</span> par), <span class="bu">bool</span>, <span class="bu">len</span>(par))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> {<span class="bu">str</span>(v): i <span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(pa)}</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    pidx <span class="op">=</span> np.fromiter((pos[<span class="bu">str</span>(p)] <span class="cf">for</span> p, k <span class="kw">in</span> <span class="bu">zip</span>(par, keep) <span class="cf">if</span> k), <span class="bu">int</span>, <span class="bu">int</span>(keep.<span class="bu">sum</span>()))</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    child_ans <span class="op">=</span> np.asarray(ANS[r], dtype<span class="op">=</span><span class="bu">object</span>)[keep]</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    par_ans <span class="op">=</span> np.asarray(ANS[r <span class="op">-</span> <span class="dv">1</span>], dtype<span class="op">=</span><span class="bu">object</span>)[pidx]</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    same <span class="op">=</span> <span class="bu">float</span>(np.mean(child_ans <span class="op">==</span> par_ans))</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    INHERIT.append(<span class="bu">dict</span>(step<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>r<span class="op">-</span><span class="dv">1</span><span class="sc">}</span><span class="ss">→</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">"</span>, children_matched<span class="op">=</span><span class="bu">int</span>(keep.<span class="bu">sum</span>()),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                        same_as_parent_pct<span class="op">=</span><span class="bu">round</span>(<span class="dv">100</span> <span class="op">*</span> same, <span class="dv">3</span>),</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                        new_answer_cells<span class="op">=</span><span class="bu">int</span>(<span class="bu">round</span>((<span class="dv">1</span> <span class="op">-</span> same) <span class="op">*</span> keep.<span class="bu">sum</span>()))))</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"</span><span class="sc">{</span>r<span class="op">-</span><span class="dv">1</span><span class="sc">}</span><span class="ss">→</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: ลูก </span><span class="sc">{</span><span class="bu">int</span>(keep.<span class="bu">sum</span>())<span class="sc">:,}</span><span class="ss"> เซลล์ ตอบเหมือนแม่ </span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>same<span class="sc">:.3f}</span><span class="ss">% "</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"(คำตอบใหม่ </span><span class="sc">{</span><span class="bu">int</span>(<span class="bu">round</span>((<span class="dv">1</span><span class="op">-</span>same)<span class="op">*</span>keep.<span class="bu">sum</span>()))<span class="sc">:,}</span><span class="ss"> เซลล์)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-6-ภาพรวม-res-8-เทยบแม-res-5-ทงประเทศ" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-6-ภาพรวม-res-8-เทยบแม-res-5-ทงประเทศ">ตอน 6) ภาพรวม: res 8 เทียบแม่ res 5 ทั้งประเทศ</h2>
+<div id="cell-19" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------- 6. ภาพรวม: res 8 เทียบแม่ res 5 ทั้งประเทศ</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>par8to5 <span class="op">=</span> [h3.cell_to_parent(x, <span class="dv">5</span>) <span class="cf">for</span> x <span class="kw">in</span> CELLS[<span class="dv">8</span>]]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pos5 <span class="op">=</span> {<span class="bu">str</span>(v): i <span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(CELLS[<span class="dv">5</span>])}</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>kid <span class="op">=</span> np.fromiter((pos5.get(<span class="bu">str</span>(p), <span class="op">-</span><span class="dv">1</span>) <span class="cf">for</span> p <span class="kw">in</span> par8to5), <span class="bu">int</span>, <span class="bu">len</span>(par8to5))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>valid <span class="op">=</span> kid <span class="op">&gt;=</span> <span class="dv">0</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>agree85 <span class="op">=</span> <span class="bu">float</span>(np.mean(np.asarray(ANS[<span class="dv">8</span>], dtype<span class="op">=</span><span class="bu">object</span>)[valid] <span class="op">==</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                        np.asarray(ANS[<span class="dv">5</span>], dtype<span class="op">=</span><span class="bu">object</span>)[kid[valid]]))</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>extra_km <span class="op">=</span> DMIN[<span class="dv">8</span>][valid] <span class="op">-</span> DMIN[<span class="dv">5</span>][kid[valid]]</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"res 8 เทียบแม่ res 5: ตอบตรงกัน </span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>agree85<span class="sc">:.2f}</span><span class="ss">% "</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"(</span><span class="sc">{</span><span class="bu">int</span>(<span class="bu">round</span>((<span class="dv">1</span><span class="op">-</span>agree85)<span class="op">*</span>valid.<span class="bu">sum</span>()))<span class="sc">:,}</span><span class="ss"> เซลล์ต่าง) · "</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"ระยะที่เปลี่ยนมากที่สุด </span><span class="sc">{</span>extra_km<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:+.2f}</span><span class="ss"> ถึง </span><span class="sc">{</span>extra_km<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:+.2f}</span><span class="ss"> กม."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-7-เพดานรายละเอยดของตนทาง-เสนขอบ-natural-earth-10m" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-7-เพดานรายละเอยดของตนทาง-เสนขอบ-natural-earth-10m">ตอน 7) เพดานรายละเอียดของต้นทาง (เส้นขอบ Natural Earth 10m)</h2>
+<div id="cell-21" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------- 7. เพดานรายละเอียดของต้นทาง (เส้นขอบ Natural Earth 10m)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>_tr <span class="op">=</span> Transformer.from_crs(<span class="st">"EPSG:4326"</span>, EQ, always_xy<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>segs <span class="op">=</span> []</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> PARTS:</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    xy <span class="op">=</span> np.array(p.exterior.coords)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    xs, ys <span class="op">=</span> _tr.transform(xy[:, <span class="dv">0</span>], xy[:, <span class="dv">1</span>])</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    segs.append(np.hypot(np.diff(xs), np.diff(ys)))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>SEG <span class="op">=</span> np.concatenate(segs)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> SEG.<span class="bu">max</span>() <span class="op">&gt;</span> <span class="dv">1000</span>, <span class="st">"หน่วยช่วงห่างจุดไม่ใช่เมตรหรือเส้นขอบสั้นผิดปกติ"</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>FLOOR <span class="op">=</span> <span class="bu">dict</span>(border_segments<span class="op">=</span><span class="bu">int</span>(SEG.size), seg_min_m<span class="op">=</span><span class="bu">float</span>(SEG.<span class="bu">min</span>()),</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>             seg_p05_m<span class="op">=</span><span class="bu">float</span>(np.percentile(SEG, <span class="dv">5</span>)), seg_median_m<span class="op">=</span><span class="bu">float</span>(np.median(SEG)),</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>             seg_mean_m<span class="op">=</span><span class="bu">float</span>(SEG.mean()), seg_p95_m<span class="op">=</span><span class="bu">float</span>(np.percentile(SEG, <span class="dv">95</span>)),</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>             seg_max_m<span class="op">=</span><span class="bu">float</span>(SEG.<span class="bu">max</span>()))</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"ช่วงห่างจุดบนเส้นขอบ (NE 10m): ต่ำสุด </span><span class="sc">{</span>FLOOR[<span class="st">'seg_min_m'</span>]<span class="sc">:,.2f}</span><span class="ss"> · "</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"มัธยฐาน </span><span class="sc">{</span>FLOOR[<span class="st">'seg_median_m'</span>]<span class="sc">:,.1f}</span><span class="ss"> ·สูงสุด </span><span class="sc">{</span>FLOOR[<span class="st">'seg_max_m'</span>]<span class="sc">:,.0f}</span><span class="ss"> ม. "</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"(</span><span class="sc">{</span>FLOOR[<span class="st">'border_segments'</span>]<span class="sc">:,}</span><span class="ss"> ช่วง)"</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>CROSSOVER <span class="op">=</span> <span class="bu">int</span>(<span class="bu">max</span>(r <span class="cf">for</span> r <span class="kw">in</span> RES_MEASURE <span class="cf">if</span> LAD.loc[LAD.res <span class="op">==</span> r, <span class="st">"edge_km"</span>].iloc[<span class="dv">0</span>] <span class="op">*</span> <span class="dv">1000</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&gt;</span> FLOOR[<span class="st">"seg_median_m"</span>]))</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"res ที่ขอบเซลล์ยังหนากว่าช่วงห่างจุดของเส้นขอบ: ถึง res </span><span class="sc">{</span>CROSSOVER<span class="sc">}</span><span class="ss"> — "</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"res </span><span class="sc">{</span>CROSSOVER<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> คือจุดที่ตารางละเอียดกว่าต้นทาง"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-8-ขนาดไฟลจรง-เวลาวาดจรง-วด-ไมใชคาด" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-8-ขนาดไฟลจรง-เวลาวาดจรง-วด-ไมใชคาด">ตอน 8) ขนาดไฟล์จริง + เวลาวาดจริง (วัด ไม่ใช่คาด)</h2>
+<div id="cell-23" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------- 8. ขนาดไฟล์จริง + เวลาวาดจริง (วัด ไม่ใช่คาด)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hex_ring(c, nd<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> h3.cell_to_boundary(c)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [(<span class="bu">round</span>(<span class="bu">float</span>(p[<span class="dv">1</span>]), nd), <span class="bu">round</span>(<span class="bu">float</span>(p[<span class="dv">0</span>]), nd)) <span class="cf">for</span> p <span class="kw">in</span> b]</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>SIZES <span class="op">=</span> []</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> BYTE_RES:</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    path <span class="op">=</span> os.path.join(OUT, <span class="ss">f"_tmp_res</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">.geojson"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    feats <span class="op">=</span> [{<span class="st">"type"</span>: <span class="st">"Feature"</span>, <span class="st">"properties"</span>: {<span class="st">"cell"</span>: <span class="bu">str</span>(c)},</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>              <span class="st">"geometry"</span>: {<span class="st">"type"</span>: <span class="st">"Polygon"</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"coordinates"</span>: [hex_ring(c, <span class="dv">7</span>) <span class="op">+</span> [hex_ring(c, <span class="dv">7</span>)[<span class="dv">0</span>]]]}}</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>             <span class="cf">for</span> c <span class="kw">in</span> CELLS[r]]</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(path, <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        json.dump({<span class="st">"type"</span>: <span class="st">"FeatureCollection"</span>, <span class="st">"crs"</span>: {<span class="st">"type"</span>: <span class="st">"name"</span>, <span class="st">"properties"</span>:</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                  {<span class="st">"name"</span>: <span class="st">"urn:ogc:def:crs:OGC:1.3:CRS84"</span>}}, <span class="st">"features"</span>: feats}, f)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> os.path.getsize(path)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    SIZES.append(<span class="bu">dict</span>(res<span class="op">=</span>r, cells<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(CELLS[r])), mb<span class="op">=</span><span class="bu">round</span>(b <span class="op">/</span> <span class="fl">1e6</span>, <span class="dv">3</span>),</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>                      bytes_per_cell<span class="op">=</span><span class="bu">round</span>(b <span class="op">/</span> <span class="bu">len</span>(CELLS[r]), <span class="dv">1</span>)))</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    os.remove(path)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"GeoJSON res </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>b<span class="op">/</span><span class="fl">1e6</span><span class="sc">:,.3f}</span><span class="ss"> MB · </span><span class="sc">{</span>SIZES[<span class="op">-</span><span class="dv">1</span>][<span class="st">'bytes_per_cell'</span>]<span class="sc">:,.1f}</span><span class="ss"> ไบต์/เซลล์"</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>BCD <span class="op">=</span> <span class="bu">float</span>(np.median([s[<span class="st">"bytes_per_cell"</span>] <span class="cf">for</span> s <span class="kw">in</span> SIZES]))</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>DUR <span class="op">=</span> {}</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>tmp <span class="op">=</span> os.path.join(OUT, <span class="st">"_tmp_timing.png"</span>)</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> TIME_RES:</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    t1 <span class="op">=</span> time.perf_counter()</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    rings <span class="op">=</span> [hex_ring(c, <span class="dv">5</span>) <span class="cf">for</span> c <span class="kw">in</span> CELLS[r]]</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    t2 <span class="op">=</span> time.perf_counter()</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">2.2</span>, <span class="fl">2.6</span>), dpi<span class="op">=</span><span class="dv">72</span>)</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    ax.add_collection(PolyCollection(rings, facecolor<span class="op">=</span><span class="st">"#5b7fa6"</span>, edgecolor<span class="op">=</span><span class="st">"none"</span>))</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="dv">97</span>, <span class="dv">106</span>)<span class="op">;</span> ax.set_ylim(<span class="dv">5</span>, <span class="dv">21</span>)<span class="op">;</span> ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    fig.savefig(tmp, transparent<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    plt.close(fig)<span class="op">;</span> os.remove(tmp)</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>    t3 <span class="op">=</span> time.perf_counter()</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>    DUR[r] <span class="op">=</span> <span class="bu">dict</span>(cells<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(rings)), build_s<span class="op">=</span><span class="bu">round</span>(t2 <span class="op">-</span> t1, <span class="dv">2</span>), draw_s<span class="op">=</span><span class="bu">round</span>(t3 <span class="op">-</span> t2, <span class="dv">2</span>),</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>                  total_s<span class="op">=</span><span class="bu">round</span>(t3 <span class="op">-</span> t1, <span class="dv">2</span>), cells_per_s<span class="op">=</span><span class="bu">round</span>(<span class="bu">len</span>(rings) <span class="op">/</span> (t3 <span class="op">-</span> t1), <span class="dv">1</span>))</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">del</span> rings</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"จับเวลาวาด res </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>DUR[r][<span class="st">'cells'</span>]<span class="sc">:,}</span><span class="ss"> เซลล์ · สร้างขอบ </span><span class="sc">{</span>DUR[r][<span class="st">'build_s'</span>]<span class="sc">}</span><span class="ss"> วิ · "</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"วาด+เซฟ </span><span class="sc">{</span>DUR[r][<span class="st">'draw_s'</span>]<span class="sc">}</span><span class="ss"> วิ = </span><span class="sc">{</span>DUR[r][<span class="st">'cells_per_s'</span>]<span class="sc">:,.0f}</span><span class="ss"> เซลล์/วิ"</span>)</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>THR <span class="op">=</span> <span class="bu">float</span>(DUR[<span class="dv">8</span>][<span class="st">"cells_per_s"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-9-ลมตของ-borges-เลขคณตลวน" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-9-ลมตของ-borges-เลขคณตลวน">ตอน 9) ลิมิตของ Borges (เลขคณิตล้วน)</h2>
+<div id="cell-25" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------ 9. ลิมิตของ Borges (เลขคณิตล้วน)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cells_at_edge(edge_m):</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (REF_KM2 <span class="op">*</span> <span class="fl">1e6</span>) <span class="op">/</span> (HEX_K <span class="op">*</span> edge_m <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>hair_cells <span class="op">=</span> cells_at_edge(HAIR_M)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>dot_cells <span class="op">=</span> cells_at_edge(DOT300_M)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>LIMIT <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    hair_edge_mm<span class="op">=</span>HAIR_M <span class="op">*</span> <span class="dv">1000</span>, dot300_edge_mm<span class="op">=</span>DOT300_M <span class="op">*</span> <span class="dv">1000</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    hair_cells<span class="op">=</span><span class="bu">float</span>(hair_cells), dot300_cells<span class="op">=</span><span class="bu">float</span>(dot_cells),</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    h3_max_res<span class="op">=</span><span class="dv">15</span>, h3_res15_edge_mm<span class="op">=</span><span class="bu">float</span>(h3.average_hexagon_edge_length(<span class="dv">15</span>, <span class="st">"km"</span>)) <span class="op">*</span> <span class="fl">1e6</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    steps_beyond_res8_to_hair<span class="op">=</span><span class="bu">int</span>(np.ceil(np.log(hair_cells <span class="op">/</span> <span class="bu">len</span>(CELLS[<span class="dv">8</span>])) <span class="op">/</span> np.log(<span class="dv">7</span>))),</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    hair_bytes_at_1B_per_cell<span class="op">=</span><span class="bu">float</span>(hair_cells), hair_bytes_geojson<span class="op">=</span><span class="bu">float</span>(hair_cells <span class="op">*</span> BCD),</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    hair_draw_years<span class="op">=</span><span class="bu">float</span>(hair_cells <span class="op">/</span> THR <span class="op">/</span> <span class="dv">3600</span> <span class="op">/</span> <span class="dv">24</span> <span class="op">/</span> <span class="fl">365.25</span>),</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    dot300_draw_years<span class="op">=</span><span class="bu">float</span>(dot_cells <span class="op">/</span> THR <span class="op">/</span> <span class="dv">3600</span> <span class="op">/</span> <span class="dv">24</span> <span class="op">/</span> <span class="fl">365.25</span>),</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    one_to_one_a4_sheets<span class="op">=</span><span class="bu">float</span>(REF_KM2 <span class="op">*</span> <span class="fl">1e6</span> <span class="op">/</span> A4_M2), one_to_one_paper_km2<span class="op">=</span>REF_KM2,</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    bytes_per_cell_measured<span class="op">=</span>BCD, cells_per_second_measured<span class="op">=</span>THR)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"ผมหนึ่งเส้น: </span><span class="sc">{</span>hair_cells<span class="sc">:,.0f}</span><span class="ss"> เซลล์ · ซอยต่อจาก res 8 อีก "</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="sc">{</span>LIMIT[<span class="st">'steps_beyond_res8_to_hair'</span>]<span class="sc">}</span><span class="ss"> ขั้น · วาดที่ </span><span class="sc">{</span>THR<span class="sc">:,.0f}</span><span class="ss"> เซลล์/วิ = "</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="sc">{</span>LIMIT[<span class="st">'hair_draw_years'</span>]<span class="sc">:,.3g}</span><span class="ss"> ปี"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-10-ภาพ-1-บนไดความละเอยด" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-10-ภาพ-1-บนไดความละเอยด">ตอน 10) ภาพ 1 — บันไดความละเอียด</h2>
+<div id="cell-27" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================= 10. ภาพ 1 — บันไดความละเอียด</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_ladder():</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="fl">16.2</span>, <span class="fl">7.4</span>), dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    fig.patch.set_facecolor(BG)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    gs <span class="op">=</span> fig.add_gridspec(<span class="dv">1</span>, <span class="bu">len</span>(RES_DRAW), left<span class="op">=</span><span class="fl">0.015</span>, right<span class="op">=</span><span class="fl">0.985</span>, wspace<span class="op">=</span><span class="fl">0.10</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                          hspace<span class="op">=</span><span class="fl">0.1</span>, top<span class="op">=</span><span class="fl">0.86</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    shade <span class="op">=</span> [<span class="st">"#22334c"</span>, <span class="st">"#2a4661"</span>, <span class="st">"#33627e"</span>, <span class="st">"#3d8299"</span>, <span class="st">"#57b0bf"</span>, <span class="st">"#e8c46a"</span>]</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, r <span class="kw">in</span> <span class="bu">enumerate</span>(RES_DRAW):</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        ax <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, i])<span class="op">;</span> ax.set_facecolor(BG)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        rings <span class="op">=</span> [hex_ring(c, <span class="dv">5</span>) <span class="cf">for</span> c <span class="kw">in</span> CELLS[r]]</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        ax.add_collection(PolyCollection(rings, facecolor<span class="op">=</span>shade[i], edgecolor<span class="op">=</span>BG,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                                         linewidth<span class="op">=</span><span class="fl">0.25</span> <span class="cf">if</span> r <span class="op">&lt;=</span> <span class="dv">6</span> <span class="cf">else</span> <span class="fl">0.0</span>))</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> p <span class="kw">in</span> PARTS:</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>            x, y <span class="op">=</span> p.exterior.xy</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            ax.plot(x, y, color<span class="op">=</span>INK, lw<span class="op">=</span><span class="fl">0.7</span>, alpha<span class="op">=</span><span class="fl">0.9</span>, zorder<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> r <span class="op">&lt;=</span> <span class="dv">6</span>:</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>            sc <span class="op">=</span> np.array([h3.latlng_to_cell(<span class="bu">float</span>(la), <span class="bu">float</span>(lo), r)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>                           <span class="cf">for</span> la, lo <span class="kw">in</span> <span class="bu">zip</span>(df.latitude.values, df.longitude.values)], dtype<span class="op">=</span><span class="bu">object</span>)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>            keep <span class="op">=</span> np.isin(sc, CELLS[r].astype(<span class="bu">str</span>))</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>            ax.scatter(df.longitude.values[keep], df.latitude.values[keep], s<span class="op">=</span><span class="dv">16</span>, color<span class="op">=</span><span class="st">"#0d1522"</span>,</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>                       edgecolor<span class="op">=</span><span class="st">"#ffffff"</span>, linewidth<span class="op">=</span><span class="fl">0.7</span>, zorder<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        ax.set_xlim(<span class="fl">97.2</span>, <span class="fl">106.4</span>)<span class="op">;</span> ax.set_ylim(<span class="fl">4.8</span>, <span class="fl">21.2</span>)<span class="op">;</span> ax.set_aspect(<span class="st">"equal"</span>)<span class="op">;</span> ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        w <span class="op">=</span> LAD[LAD.res <span class="op">==</span> r].iloc[<span class="dv">0</span>]</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        ax.set_title(T(<span class="ss">f"res </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss"> · </span><span class="sc">{</span><span class="bu">int</span>(w.cells)<span class="sc">:,}</span><span class="ss"> เซลล์</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>                       <span class="ss">f"ขอบ </span><span class="sc">{</span>w<span class="sc">.</span>edge_km<span class="sc">:,.2f}</span><span class="ss"> กม.</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>                       <span class="ss">f"จุดทะเบียนอยู่ใน </span><span class="sc">{</span><span class="bu">int</span>(w.occupied_cells)<span class="sc">}</span><span class="ss"> เซลล์ (</span><span class="sc">{</span>w<span class="sc">.</span>occupied_pct<span class="sc">:.2f}</span><span class="ss">%)"</span>),</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>                     color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">10</span>, linespacing<span class="op">=</span><span class="fl">1.5</span>, pad<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>        <span class="kw">del</span> rings</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    fig.text(<span class="fl">0.5</span>, <span class="fl">0.012</span>, T(<span class="st">"จุดขาวคือแหล่งในทะเบียน 83 จุด · res 8 มีเซลล์ 597,542 ก้อน "</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"จนทั้งประเทศกลายเป็นแผ่นสีเดียว — แผนที่เริ่มหายไป เหลือแต่ดินแดน"</span>),</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>             color<span class="op">=</span>MUTED, fontsize<span class="op">=</span><span class="dv">11</span>, ha<span class="op">=</span><span class="st">"center"</span>)</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(T(<span class="st">"บันไดความละเอียด · ราคาเพิ่มเจ็ดเท่าทุกขั้น ข้อมูลชุดเดิม 83 จุด"</span>),</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">16</span>, y<span class="op">=</span><span class="fl">0.99</span>)</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> os.path.join(OUT, <span class="st">"day14_ladder.png"</span>)</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    fig.savefig(p, facecolor<span class="op">=</span>BG, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)<span class="op">;</span> plt.close(fig)</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"เขียน </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-11-ภาพ-2-เสนราคากบเสนขอมล" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-11-ภาพ-2-เสนราคากบเสนขอมล">ตอน 11) ภาพ 2 — เส้นราคากับเส้นข้อมูล</h2>
+<div id="cell-29" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================= 11. ภาพ 2 — เส้นราคากับเส้นข้อมูล</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_curves():</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">14.6</span>, <span class="fl">5.9</span>), dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    fig.patch.set_facecolor(BG)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> LAD.res.values.astype(<span class="bu">float</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[<span class="dv">0</span>]<span class="op">;</span> ax.set_facecolor(<span class="st">"#111c2b"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    ax.plot(x, LAD.cells.values, <span class="st">"-o"</span>, color<span class="op">=</span>ACCENT, lw<span class="op">=</span><span class="fl">2.2</span>, ms<span class="op">=</span><span class="dv">6</span>, label<span class="op">=</span>T(<span class="st">"จำนวนเซลล์"</span>))</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    ax.plot(x, LAD.vertices.values, <span class="st">"--s"</span>, color<span class="op">=</span>COOL, lw<span class="op">=</span><span class="fl">1.6</span>, ms<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span>T(<span class="st">"จุดที่ต้องวาด (เซลล์ × 6)"</span>))</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    ax.plot([s[<span class="st">"res"</span>] <span class="cf">for</span> s <span class="kw">in</span> SIZES], [s[<span class="st">"mb"</span>] <span class="op">*</span> <span class="fl">1e6</span> <span class="cf">for</span> s <span class="kw">in</span> SIZES], <span class="st">"^"</span>, color<span class="op">=</span>TEAL, ms<span class="op">=</span><span class="dv">8</span>, ls<span class="op">=</span><span class="st">"none"</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span>T(<span class="st">"ขนาดไฟล์ GeoJSON (ไบต์) ที่วัดจริง"</span>))</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    fit <span class="op">=</span> np.polyfit(x[<span class="dv">2</span>:], np.log10(LAD.cells.values[<span class="dv">2</span>:]), <span class="dv">1</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    ax.plot(x, <span class="dv">10</span> <span class="op">**</span> np.polyval(fit, x), <span class="st">":"</span>, color<span class="op">=</span>ACCENT, alpha<span class="op">=</span><span class="fl">0.4</span>, lw<span class="op">=</span><span class="fl">1.2</span>,</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span>T(<span class="st">"เส้นเจ็ดเท่าต่อขั้น (res 4–8)"</span>))</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    ax.set_yscale(<span class="st">"log"</span>)<span class="op">;</span> ax.set_xlabel(T(<span class="st">"ความละเอียด H3 (res)"</span>))</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(T(<span class="st">"ราคาของแผนที่ (มาตราลอการิทึม)"</span>))</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    ax.set_title(T(<span class="st">"เส้นที่ 1 — ราคา: โตขึ้นเจ็ดเท่าทุกขั้น ไม่อิ่มตัว"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">12.5</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(colors<span class="op">=</span>INK, labelsize<span class="op">=</span><span class="dv">10</span>)<span class="op">;</span> ax.grid(color<span class="op">=</span><span class="st">"#26364f"</span>, lw<span class="op">=</span><span class="fl">0.6</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    ax.legend(facecolor<span class="op">=</span><span class="st">"#111c2b"</span>, edgecolor<span class="op">=</span><span class="st">"#33415e"</span>, labelcolor<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> ax.spines.values(): s.set_color(<span class="st">"#33415e"</span>)</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> (<span class="st">"top"</span>, <span class="st">"right"</span>): ax.spines[s].set_visible(<span class="va">False</span>)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[<span class="dv">1</span>]<span class="op">;</span> ax.set_facecolor(<span class="st">"#111c2b"</span>)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    ax.plot(x, LAD.occupied_pct.values, <span class="st">"-o"</span>, color<span class="op">=</span>TEAL, lw<span class="op">=</span><span class="fl">2.2</span>, ms<span class="op">=</span><span class="dv">6</span>,</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span>T(<span class="st">"ร้อยละของเซลล์ที่มีจุดทะเบียน"</span>))</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    ax.plot(x, np.<span class="bu">abs</span>(LAD.nominal_vs_country_pct.values <span class="op">-</span> <span class="dv">100</span>), <span class="st">"-s"</span>, color<span class="op">=</span>WARM, lw<span class="op">=</span><span class="fl">2.2</span>, ms<span class="op">=</span><span class="dv">6</span>,</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span>T(<span class="st">"ค่าสัมบูรณ์ของผลต่างพื้นที่ตารางกับพื้นที่ประเทศ (ร้อยละ)"</span>))</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    ax.plot([<span class="bu">int</span>(i[<span class="st">"step"</span>].split(<span class="st">"→"</span>)[<span class="dv">1</span>]) <span class="cf">for</span> i <span class="kw">in</span> INHERIT],</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">100</span> <span class="op">-</span> i[<span class="st">"same_as_parent_pct"</span>] <span class="cf">for</span> i <span class="kw">in</span> INHERIT], <span class="st">"-D"</span>, color<span class="op">=</span>COOL, lw<span class="op">=</span><span class="fl">2.0</span>, ms<span class="op">=</span><span class="dv">6</span>,</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span>T(<span class="st">"ร้อยละของเซลล์ลูกที่ตอบต่างจากแม่ (ข้อมูลใหม่ที่ซื้อได้)"</span>))</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>    ax.set_yscale(<span class="st">"log"</span>)<span class="op">;</span> ax.set_xlabel(T(<span class="st">"ความละเอียด H3 (res)"</span>))</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(T(<span class="st">"ร้อยละ (มาตราลอการิทึม)"</span>))</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    ax.set_title(T(<span class="st">"เส้นที่ 2 — ข้อมูล: ตกแรงแล้วแบนราบ อิ่มตัวตั้งแต่ res 5–6"</span>),</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">12.5</span>)</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(colors<span class="op">=</span>INK, labelsize<span class="op">=</span><span class="dv">10</span>)<span class="op">;</span> ax.grid(color<span class="op">=</span><span class="st">"#26364f"</span>, lw<span class="op">=</span><span class="fl">0.6</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>    ax.legend(facecolor<span class="op">=</span><span class="st">"#111c2b"</span>, edgecolor<span class="op">=</span><span class="st">"#33415e"</span>, labelcolor<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> ax.spines.values(): s.set_color(<span class="st">"#33415e"</span>)</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> (<span class="st">"top"</span>, <span class="st">"right"</span>): ax.spines[s].set_visible(<span class="va">False</span>)</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(T(<span class="st">"สองเส้นนี้คือเนื้อความของแผนที่ที่ “ละเอียดจนกลายเป็นดินแดน”: "</span></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ฝั่งซ้ายจ่ายไม่หยุด ฝั่งขวาอิ่มตัวตั้งแต่ res 5"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">14.5</span>, y<span class="op">=</span><span class="fl">0.995</span>)</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> os.path.join(OUT, <span class="st">"day14_detail_vs_info.png"</span>)</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>    fig.savefig(p, facecolor<span class="op">=</span>BG, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)<span class="op">;</span> plt.close(fig)</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"เขียน </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-12-ภาพ-3-ไมบรรทดความละเอยด-เลขคณตของ-borges" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-12-ภาพ-3-ไมบรรทดความละเอยด-เลขคณตของ-borges">ตอน 12) ภาพ 3 — ไม้บรรทัดความละเอียด + เลขคณิตของ Borges</h2>
+<div id="cell-31" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================= 12. ภาพ 3 — ไม้บรรทัดความละเอียด + เลขคณิตของ Borges</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_floor():</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    fig, (ax, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">15.6</span>, <span class="fl">5.8</span>), dpi<span class="op">=</span><span class="dv">150</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                                  gridspec_kw<span class="op">=</span><span class="bu">dict</span>(width_ratios<span class="op">=</span>[<span class="fl">1.32</span>, <span class="fl">1.0</span>]))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    fig.patch.set_facecolor(BG)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    ax.set_facecolor(<span class="st">"#111c2b"</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    marks <span class="op">=</span> [(<span class="bu">float</span>(LAD.loc[LAD.res <span class="op">==</span> r, <span class="st">"edge_km"</span>].iloc[<span class="dv">0</span>]) <span class="op">*</span> <span class="fl">1e6</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>              T(<span class="ss">f"res </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss"> · </span><span class="sc">{</span><span class="bu">int</span>(LAD.loc[LAD.res <span class="op">==</span> r, <span class="st">'cells'</span>].iloc[<span class="dv">0</span>])<span class="sc">:,}</span><span class="ss"> เซลล์"</span>), <span class="st">"grid"</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>             <span class="cf">for</span> r <span class="kw">in</span> RES_MEASURE]</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    marks <span class="op">+=</span> [(FLOOR[<span class="st">"seg_median_m"</span>],</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>               T(<span class="ss">f"ช่วงห่างจุดบนเส้นขอบประเทศ (NE 10m) · มัธยฐาน </span><span class="sc">{</span>FLOOR[<span class="st">'seg_median_m'</span>]<span class="sc">:,.0f}</span><span class="ss"> ม."</span>), <span class="st">"floor"</span>),</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>              (LIMIT[<span class="st">"h3_res15_edge_mm"</span>],</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>               T(<span class="ss">f"ขอบเซลล์ที่ละเอียดที่สุดที่ H3 ทำได้ · res </span><span class="sc">{</span>LIMIT[<span class="st">'h3_max_res'</span>]<span class="sc">}</span><span class="ss"> · "</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>                 <span class="ss">f"</span><span class="sc">{</span>LIMIT[<span class="st">'h3_res15_edge_mm'</span>]<span class="sc">:,.1f}</span><span class="ss"> มม."</span>), <span class="st">"floor"</span>),</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>              (DOT300_M <span class="op">*</span> <span class="dv">1000</span>, T(<span class="ss">f"จุดหมึกหนึ่งจุดที่ 300 dpi · </span><span class="sc">{</span>DOT300_M<span class="op">*</span><span class="dv">1000</span><span class="sc">:.3f}</span><span class="ss"> มม."</span>), <span class="st">"hair"</span>),</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>              (HAIR_M <span class="op">*</span> <span class="dv">1000</span>, T(<span class="st">"ผมหนึ่งเส้น 0.05 มม. · ขีดสุดที่ Borges เรียก"</span>), <span class="st">"hair"</span>)]</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    col <span class="op">=</span> {<span class="st">"grid"</span>: ACCENT, <span class="st">"floor"</span>: COOL, <span class="st">"hair"</span>: WARM}</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    logmid <span class="op">=</span> np.sqrt(<span class="bu">min</span>(v <span class="cf">for</span> v, _, _ <span class="kw">in</span> marks) <span class="op">*</span> <span class="bu">max</span>(v <span class="cf">for</span> v, _, _ <span class="kw">in</span> marks))</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, (v, lab, kind) <span class="kw">in</span> <span class="bu">enumerate</span>(marks):</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> <span class="bu">len</span>(marks) <span class="op">-</span> i</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>        ax.scatter([v], [y], s<span class="op">=</span><span class="dv">70</span>, color<span class="op">=</span>col[kind], zorder<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> v <span class="op">&gt;</span> logmid:</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>            ax.annotate(lab, (v, y), xytext<span class="op">=</span>(<span class="op">-</span><span class="dv">12</span>, <span class="dv">0</span>), textcoords<span class="op">=</span><span class="st">"offset points"</span>,</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">10</span>, va<span class="op">=</span><span class="st">"center"</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>            ax.annotate(lab, (v, y), xytext<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">0</span>), textcoords<span class="op">=</span><span class="st">"offset points"</span>,</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">10</span>, va<span class="op">=</span><span class="st">"center"</span>)</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    ax.axvline(FLOOR[<span class="st">"seg_median_m"</span>], color<span class="op">=</span>COOL, lw<span class="op">=</span><span class="fl">1.2</span>, ls<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.75</span>)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    lo <span class="op">=</span> <span class="bu">min</span>(v <span class="cf">for</span> v, _, _ <span class="kw">in</span> marks) <span class="op">*</span> <span class="fl">0.55</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    ax.axvspan(lo, FLOOR[<span class="st">"seg_median_m"</span>], color<span class="op">=</span>WARM, alpha<span class="op">=</span><span class="fl">0.06</span>)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    ax.set_xscale(<span class="st">"log"</span>)<span class="op">;</span> ax.set_xlim(lo, <span class="bu">max</span>(v <span class="cf">for</span> v, _, _ <span class="kw">in</span> marks) <span class="op">*</span> <span class="fl">2.2</span>)</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="fl">0.5</span>, <span class="bu">len</span>(marks) <span class="op">+</span> <span class="fl">0.6</span>)<span class="op">;</span> ax.set_yticks([])</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(T(<span class="st">"ความยาวขอบเซลล์ (มิลลิเมตร · มาตราลอการิทึม)"</span>), labelpad<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>    ax.set_title(T(<span class="st">"ไม้บรรทัดความละเอียด: ตรงไหนละเอียดจริง ตรงไหนละเอียดเพราะแต่ง"</span>),</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">12.5</span>)</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(colors<span class="op">=</span>INK, labelsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> (<span class="st">"top"</span>, <span class="st">"right"</span>, <span class="st">"left"</span>): ax.spines[s].set_visible(<span class="va">False</span>)</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>    ax.spines[<span class="st">"bottom"</span>].set_color(<span class="st">"#33415e"</span>)</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>    ax2.set_facecolor(<span class="st">"#111c2b"</span>)<span class="op">;</span> ax2.axis(<span class="st">"off"</span>)</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> [</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>        (T(<span class="st">"ถ้าแผนที่ละเอียดเท่าผมหนึ่งเส้น ที่มาตราส่วน 1 ต่อ 1"</span>), <span class="st">""</span>),</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>        (T(<span class="st">"จำนวนหกเหลี่ยมที่ต้องมี"</span>), <span class="ss">f"</span><span class="sc">{</span>LIMIT[<span class="st">'hair_cells'</span>]<span class="sc">:,.0f}</span><span class="ss"> "</span> <span class="op">+</span> T(<span class="st">"เซลล์"</span>)),</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>        (T(<span class="st">"ต้องซอยต่อจาก res 8 อีก"</span>), <span class="ss">f"</span><span class="sc">{</span>LIMIT[<span class="st">'steps_beyond_res8_to_hair'</span>]<span class="sc">}</span><span class="ss"> "</span> <span class="op">+</span> T(<span class="st">"ขั้น (ขั้นละเจ็ดเท่า)"</span>)),</span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>        (T(<span class="st">"ไฟล์ถ้าเก็บหนึ่งไบต์ต่อเซลล์"</span>), <span class="ss">f"</span><span class="sc">{</span>LIMIT[<span class="st">'hair_bytes_at_1B_per_cell'</span>]<span class="op">/</span><span class="fl">1e18</span><span class="sc">:,.1f}</span><span class="ss"> "</span> <span class="op">+</span> T(<span class="st">"เอ็กซาไบต์"</span>)),</span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>        (T(<span class="st">"ไฟล์แบบ GeoJSON (ไบต์ต่อเซลล์วัดจริง)"</span>),</span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>         <span class="ss">f"</span><span class="sc">{</span>LIMIT[<span class="st">'hair_bytes_geojson'</span>]<span class="op">/</span><span class="fl">1e21</span><span class="sc">:,.1f}</span><span class="ss"> "</span> <span class="op">+</span> T(<span class="st">"เซตตาไบต์"</span>)),</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>        (T(<span class="ss">f"เวลาวาดที่ </span><span class="sc">{</span>THR<span class="sc">:,.0f}</span><span class="ss"> เซลล์ต่อวินาที (วัดจริงที่ res 8)"</span>),</span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>         <span class="ss">f"</span><span class="sc">{</span>LIMIT[<span class="st">'hair_draw_years'</span>]<span class="sc">:,.0f}</span><span class="ss"> "</span> <span class="op">+</span> T(<span class="st">"ปี"</span>)),</span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>        (T(<span class="st">"พิมพ์ 1:1 ด้วยกระดาษ A4"</span>), <span class="ss">f"</span><span class="sc">{</span>LIMIT[<span class="st">'one_to_one_a4_sheets'</span>]<span class="sc">:,.0f}</span><span class="ss"> "</span> <span class="op">+</span> T(<span class="st">"แผ่น"</span>)),</span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a>        (T(<span class="st">"เท่ากับเนื้อที่กระดาษ"</span>), <span class="ss">f"</span><span class="sc">{</span>LIMIT[<span class="st">'one_to_one_paper_km2'</span>]<span class="sc">:,.0f}</span><span class="ss"> "</span> <span class="op">+</span> T(<span class="st">"ตารางกิโลเมตร"</span>)),</span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>        (<span class="st">""</span>, <span class="st">""</span>),</span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>        (T(<span class="st">"อีกทางหนึ่ง ดินแดนละเอียดกว่าแผนที่"</span>), <span class="st">""</span>),</span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a>        (T(<span class="st">"จุดในทะเบียนที่เส้นขอบประเทศมาตรฐานมองไม่เห็น"</span>),</span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a>         <span class="ss">f"</span><span class="sc">{</span>PAIRS[<span class="st">'n_sites_outside_country_outline'</span>]<span class="sc">}</span><span class="ss"> "</span> <span class="op">+</span> T(<span class="st">"จาก 83 จุด"</span>)),</span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a>        (T(<span class="st">"res ที่ต้องใช้อยากให้ 83 จุดอยู่คนละเซลล์"</span>), <span class="ss">f"res </span><span class="sc">{</span>PAIRS[<span class="st">'first_res_all_separate'</span>]<span class="sc">}</span><span class="ss">"</span>),</span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="fl">0.93</span></span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k, v <span class="kw">in</span> lines:</span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> k:</span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a>            y <span class="op">-=</span> <span class="fl">0.045</span><span class="op">;</span> <span class="cf">continue</span></span>
+<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a>        ax2.text(<span class="fl">0.03</span>, y, k, color<span class="op">=</span>MUTED <span class="cf">if</span> <span class="kw">not</span> v <span class="cf">else</span> INK, fontsize<span class="op">=</span><span class="dv">11</span>, va<span class="op">=</span><span class="st">"top"</span>)</span>
+<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> v:</span>
+<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a>            ax2.text(<span class="fl">0.97</span>, y, v, color<span class="op">=</span>ACCENT, fontsize<span class="op">=</span><span class="dv">11</span>, va<span class="op">=</span><span class="st">"top"</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
+<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a>        y <span class="op">-=</span> <span class="fl">0.083</span> <span class="cf">if</span> v <span class="cf">else</span> <span class="fl">0.048</span></span>
+<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a>    ax2.set_title(T(<span class="st">"เลขคณิตของ Borges (ต่อจากกฎเจ็ดเท่า ไม่ใช่แผนที่ที่วาดจริง)"</span>),</span>
+<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a>                  color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a>    fig.text(<span class="fl">0.26</span>, <span class="fl">0.005</span>, T(<span class="st">"แถบสีส้มทางซ้ายของเส้นประ = ช่วงที่ต้นทางข้อมูลไม่มีรายละเอียดให้ลอกแล้ว"</span>),</span>
+<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a>             color<span class="op">=</span>WARM, fontsize<span class="op">=</span><span class="dv">10</span>, ha<span class="op">=</span><span class="st">"center"</span>)</span>
+<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(T(<span class="st">"แผนที่ละเอียดเท่าดินแดนเป็นไปไม่ได้ทั้งสองทาง: "</span></span>
+<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ทางแรกต้นทางหมดรายละเอียดก่อน ทางที่สองราคาไม่มีวันหมด"</span>),</span>
+<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">15</span>, y<span class="op">=</span><span class="fl">0.99</span>)</span>
+<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> os.path.join(OUT, <span class="st">"day14_floor.png"</span>)</span>
+<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a>    fig.savefig(p, facecolor<span class="op">=</span>BG, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)<span class="op">;</span> plt.close(fig)</span>
+<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"เขียน </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p</span>
+<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a>P1, P2, P3 <span class="op">=</span> draw_ladder(), draw_curves(), draw_floor()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-13-เขยน-artifact" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-13-เขยน-artifact">ตอน 13) เขียน artifact</h2>
+<div id="cell-33" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================= 13. เขียน artifact</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pyo(o):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">hasattr</span>(o, <span class="st">"item"</span>):</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> o.item()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(o, (np.ndarray,)):</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> o.tolist()</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="ss">f"เข้ารหัส JSON ไม่ได้ที่ </span><span class="sc">{</span><span class="bu">type</span>(o)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>LAD.<span class="bu">round</span>(<span class="dv">6</span>).to_csv(os.path.join(OUT, <span class="st">"day14_ladder.csv"</span>), index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>STATS <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    theme<span class="op">=</span><span class="st">"A map so detailed it becomes the territory."</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    theme_source<span class="op">=</span><span class="st">"30daymapchallenge.com หัวข้อ Day 14 “Borgesian map” (อ่านสดวันเขียน) · "</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"อ้างถึง On Exactitude in Science ของ Jorge Luis Borges พิมพ์ครั้งแรกปี 1946"</span>,</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    generated_local<span class="op">=</span>time.strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S"</span>),</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    h3_version<span class="op">=</span>h3.__version__,</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    reference_areas<span class="op">=</span><span class="bu">dict</span>(natural_earth_thailand_km2_used<span class="op">=</span>REF_KM2,</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>                         recomputed_this_run_km2<span class="op">=</span><span class="bu">round</span>(country_m, <span class="dv">1</span>)),</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    ladder<span class="op">=</span>[{k: (<span class="bu">round</span>(v, <span class="dv">4</span>) <span class="cf">if</span> <span class="bu">isinstance</span>(v, <span class="bu">float</span>) <span class="cf">else</span> v) <span class="cf">for</span> k, v <span class="kw">in</span> r.items()} <span class="cf">for</span> r <span class="kw">in</span> rows],</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    ratio_seven_law<span class="op">=</span>{<span class="ss">f"</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">→</span><span class="sc">{</span>r<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">"</span>: <span class="bu">round</span>(v, <span class="dv">3</span>) <span class="cf">for</span> r, v <span class="kw">in</span> RATIO.items()},</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    inheritance<span class="op">=</span>INHERIT,</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    res8_vs_res5<span class="op">=</span><span class="bu">dict</span>(agree_pct<span class="op">=</span><span class="bu">round</span>(<span class="dv">100</span> <span class="op">*</span> agree85, <span class="dv">3</span>),</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>                      different_cells<span class="op">=</span><span class="bu">int</span>(<span class="bu">round</span>((<span class="dv">1</span> <span class="op">-</span> agree85) <span class="op">*</span> valid.<span class="bu">sum</span>())),</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>                      distance_change_min_km<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(extra_km.<span class="bu">min</span>()), <span class="dv">3</span>),</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>                      distance_change_max_km<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(extra_km.<span class="bu">max</span>()), <span class="dv">3</span>)),</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    geojson_bytes_measured<span class="op">=</span>SIZES,</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    render_seconds_measured<span class="op">=</span>{<span class="bu">str</span>(k): v <span class="cf">for</span> k, v <span class="kw">in</span> DUR.items()},</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    border_detail_floor<span class="op">=</span>FLOOR,</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    crossover<span class="op">=</span><span class="bu">dict</span>(last_res_coarser_than_border_source<span class="op">=</span>CROSSOVER,</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>                   border_median_spacing_m<span class="op">=</span><span class="bu">round</span>(FLOOR[<span class="st">"seg_median_m"</span>], <span class="dv">1</span>)),</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    borgesian_limit<span class="op">=</span>{k: (<span class="bu">round</span>(v, <span class="dv">4</span>) <span class="cf">if</span> <span class="bu">isinstance</span>(v, <span class="bu">float</span>) <span class="cf">else</span> v) <span class="cf">for</span> k, v <span class="kw">in</span> LIMIT.items()},</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    reconciliation_day3<span class="op">=</span>REC,</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    site_register_total<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(df)),</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    register_detail<span class="op">=</span>PAIRS,</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>    sites_without_own_cell<span class="op">=</span>NOSITE,</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    extremes<span class="op">=</span><span class="bu">dict</span>(finest_edge_mm<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(LAD.edge_km.<span class="bu">min</span>()) <span class="op">*</span> <span class="fl">1e6</span>, <span class="dv">2</span>),</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>                  coarsest_edge_mm<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(LAD.edge_km.<span class="bu">max</span>()) <span class="op">*</span> <span class="fl">1e6</span>, <span class="dv">1</span>),</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>                  cells_min<span class="op">=</span><span class="bu">int</span>(LAD.cells.<span class="bu">min</span>()), cells_max<span class="op">=</span><span class="bu">int</span>(LAD.cells.<span class="bu">max</span>()),</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>                  occupied_pct_min<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(LAD.occupied_pct.<span class="bu">min</span>()), <span class="dv">4</span>),</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>                  occupied_pct_max<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(LAD.occupied_pct.<span class="bu">max</span>()), <span class="dv">3</span>)),</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>    figures<span class="op">=</span>[<span class="st">"day14_ladder.png"</span>, <span class="st">"day14_detail_vs_info.png"</span>, <span class="st">"day14_floor.png"</span>],</span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>    metric_definitions<span class="op">=</span>{</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>        <span class="st">"res"</span>: <span class="st">"ระดับตาราง H3 (แต่ละขั้นแบ่งแม่หนึ่งเซลล์เป็นลูกเจ็ดเซลล์ พื้นที่เล็กลงเจ็ดเท่า)"</span>,</span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>        <span class="st">"cells"</span>: <span class="st">"จำนวนเซลล์ H3 ที่จุดกลางเซลล์อยู่ในเส้นขอบประเทศ Natural Earth 10m (นับใหม่รอบนี้)"</span>,</span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>        <span class="st">"edge_km"</span>: <span class="st">"ความยาวขอบเซลล์เฉลี่ยที่ระดับนั้น ตามค่าที่ H3 รายงาน (ค่าเฉลี่ยทั้งโลก หน่วยกิโลเมตร)"</span>,</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>        <span class="st">"cell_area_km2"</span>: <span class="st">"พื้นที่เซลล์เต็มเฉลี่ย (ตารางกิโลเมตร) สุ่มวัด 20,000 เซลล์ต่อขั้นด้วย h3.cell_area (seed 14)"</span>,</span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>        <span class="st">"nominal_area_km2"</span>: <span class="st">"cell_area_km2 × cells คือพื้นที่ถ้าถือว่าทุกเซลล์เป็นก้อนเต็ม (ไม่ตัดตามขอบ)"</span>,</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>        <span class="st">"nominal_vs_country_pct"</span>: <span class="st">"nominal_area_km2 ÷ 512,593.1 × 100 (มากกว่า 100 คือตารางล้นประเทศ น้อยกว่า 100 คือตารางไม่คลุม)"</span>,</span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>        <span class="st">"occupied_cells"</span>: <span class="st">"จำนวนเซลล์ที่มีแหล่งในทะเบียน 83 จุด อย่างน้อยหนึ่งจุดตกอยู่ (นับเฉพาะเซลล์ที่อยู่ในชุดของประเทศ)"</span>,</span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>        <span class="st">"site_cells_distinct"</span>: <span class="st">"จำนวนเซลล์ที่แตกต่างกันที่เกิดขึ้นจริงจาก 83 จุด (ไม่สนใจว่าเซลล์นั้นอยู่ในชุดของประเทศไหม)"</span>,</span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>        <span class="st">"distinct_site_cells_by_res"</span>: <span class="st">"จำนวนเซลล์ที่จุด 83 จุดครอง ที่ res 5 ถึง 12 — บอกว่าต้องละเอียดแค่ไหนกว่าทุกจุดจะแยกจากกัน"</span>,</span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>        <span class="st">"sites_outside_country_outline"</span>: <span class="st">"จุดในทะเบียนที่พิกัดของมันอยู่นอกเส้นขอบประเทศของ Natural Earth 10m (ต้นทางมองไม่เห็น)"</span>,</span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>        <span class="st">"site_cells_outside_fill"</span>: <span class="st">"เซลล์ที่มีจุดทะเบียนตกอยู่แต่จุดกลางของเซลล์อยู่นอกชุดที่เติมจากประเทศ (เกิดริมขอบ)"</span>,</span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>        <span class="st">"sites_without_own_cell"</span>: <span class="st">"รายชื่อจุดทะเบียนที่เซลล์ของตัวไม่อยู่ในตาราง (res 5) ทั้งของวันนี้และของ Day 3 เพราะ H3 เก็บเซลล์แบบจุดกลางอยู่ในประเทศ"</span>,</span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>        <span class="st">"register_detail"</span>: <span class="st">"ระยะระหว่างจุดสองจุดในทะเบียน (กิโลเมตร) นับเฉพาะคู่ไม่ซ้ำ บอกว่าตัวข้อมูลเองละเอียดได้แค่เท่านั้น "</span></span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"คู่ที่ใกล้ที่สุดคือสองแหล่งที่ลงทะเบียนคนละแห่งแต่อยู่ติดกัน"</span>,</span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>        <span class="st">"first_res_all_separate"</span>: <span class="st">"res แรกที่ทั้ง 83 จุดอยู่คนละเซลล์ หากเป็น null แปลว่าแม้แต่ res 8 ยังแยกไม่ครบ"</span>,</span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>        <span class="st">"occupied_pct"</span>: <span class="st">"occupied_cells ÷ cells × 100 คือสัดส่วนของแผนที่ที่มีอะไรอยู่ ไม่ใช่ช่องว่าง"</span>,</span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>        <span class="st">"same_as_parent_pct"</span>: <span class="st">"ร้อยละของเซลล์ลูกที่ตอบ “จุดทะเบียนที่ใกล้ที่สุด” เหมือนจุดกลางของแม่ — รายละเอียดเพิ่มแต่คำตอบไม่เปลี่ยน"</span>,</span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>        <span class="st">"new_answer_cells"</span>: <span class="st">"จำนวนเซลล์ลูกที่ตอบต่างจากแม่ คือเนื้อหาใหม่ที่การซอยครั้งนั้นซื้อมาได้"</span>,</span>
+<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a>        <span class="st">"seg_median_m"</span>: <span class="st">"ค่ามัธยฐานของระยะระหว่างจุดต่อเนื่องบนเส้นขอบประเทศในไฟล์ Natural Earth 10m (เมตร) — เพดานรายละเอียดของต้นทาง"</span>,</span>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a>        <span class="st">"crossover"</span>: <span class="st">"res สุดท้ายที่ขอบเซลล์ยังยาวกว่าช่วงห่างจุดบนเส้นขอบ เลยจุดนี้ตารางละเอียดกว่าเส้นที่ลอกมา"</span>,</span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hair_cells"</span>: <span class="st">"จำนวนหกเหลี่ยมขนาด 0.05 มม. ที่ต้องวางทับพื้นที่ 512,593.1 ตารางกิโลเมตร คำนวณจากสูตรพื้นที่หกเหลี่ยม 2.598·s²"</span>,</span>
+<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a>        <span class="st">"cells_per_second_measured"</span>: <span class="st">"จำนวนเซลล์ต่อวินาทีที่ชุดโค้ดนี้วาดแล้วเซฟเป็นไฟล์ได้จริงที่ res 8 (จับเวลา)"</span>,</span>
+<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hair_draw_years"</span>: <span class="st">"hair_cells ÷ cells_per_second_measured แปลงเป็นปี สมมติให้เครื่องทำงานต่อเนื่องไม่หยุด"</span>,</span>
+<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a>        <span class="st">"one_to_one_a4_sheets"</span>: <span class="st">"พื้นที่ประเทศ ÷ พื้นที่แผ่น A4 (0.210 × 0.297 เมตร ตาม ISO 216) คือจำนวนแผ่นถ้าพิมพ์ที่มาตราส่วน 1 ต่อ 1"</span>},</span>
+<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a>    note<span class="op">=</span><span class="st">"res 9 ขึ้นไปไม่ได้วาดจริง (4,182,974 เซลล์ ใช้เวลาเติมราวหนึ่งนาที) ตัวเลขส่วนหลังต่อจากกฎเจ็ดเท่า และบอกว่าต่อจากกฎ"</span>)</span>
+<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a>json.dump(STATS, <span class="bu">open</span>(os.path.join(OUT, <span class="st">"day14_stats.json"</span>), <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>),</span>
+<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a>          ensure_ascii<span class="op">=</span><span class="va">False</span>, indent<span class="op">=</span><span class="dv">2</span>, default<span class="op">=</span>pyo)</span>
+<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"เขียน day14_stats.json และ day14_ladder.csv ที่ </span><span class="sc">{</span>OUT<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-14-referee" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-14-referee">ตอน 14) referee</h2>
+<div id="cell-35" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================= 14. referee</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> [<span class="st">"day14_ladder.png"</span>, <span class="st">"day14_detail_vs_info.png"</span>, <span class="st">"day14_floor.png"</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">"day14_ladder.csv"</span>, <span class="st">"day14_stats.json"</span>]:</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    pth <span class="op">=</span> os.path.join(OUT, f)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> os.path.exists(pth) <span class="kw">and</span> os.path.getsize(pth) <span class="op">&gt;</span> <span class="dv">0</span>, <span class="ss">f"ไฟล์ขาดหรือว่าง: </span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="kw">not</span> [f <span class="cf">for</span> f <span class="kw">in</span> os.listdir(OUT) <span class="cf">if</span> f.startswith(<span class="st">"_tmp"</span>)], <span class="st">"ต้องลบไฟล์ชั่วคราวให้หมด"</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>json.load(<span class="bu">open</span>(os.path.join(OUT, <span class="st">"day14_stats.json"</span>), encoding<span class="op">=</span><span class="st">"utf-8"</span>))</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>lint_thai(<span class="st">" "</span>.join(TXT) <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> __doc__, <span class="st">"day14-figure-texts"</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># สแกน unicode ทั้งไฟล์: ห้ามมีอักษรเวียดนาม/จีน/เกาหลีหลุดมาในบรรทัดที่มีภาษาไทย</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>_src_path <span class="op">=</span> os.path.abspath(<span class="va">__file__</span>) <span class="cf">if</span> <span class="st">"__file__"</span> <span class="kw">in</span> <span class="bu">globals</span>() <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>_bad <span class="op">=</span> []</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> _src_path <span class="kw">and</span> os.path.exists(_src_path):</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    _lines <span class="op">=</span> <span class="bu">open</span>(_src_path, encoding<span class="op">=</span><span class="st">"utf-8"</span>).read().split(<span class="bu">chr</span>(<span class="dv">10</span>))</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _n, _l <span class="kw">in</span> <span class="bu">enumerate</span>(_lines, <span class="dv">1</span>):</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">any</span>(<span class="bn">0x0E00</span> <span class="op">&lt;=</span> <span class="bu">ord</span>(ch) <span class="op">&lt;=</span> <span class="bn">0x0E7F</span> <span class="cf">for</span> ch <span class="kw">in</span> _l):</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> ch <span class="kw">in</span> _l:</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>                o <span class="op">=</span> <span class="bu">ord</span>(ch)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> (<span class="bn">0x0100</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x017F</span>) <span class="kw">or</span> (<span class="bn">0x1E00</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x1EFF</span>) <span class="kw">or</span> <span class="op">\</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>                   (<span class="bn">0x3000</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x30FF</span>) <span class="kw">or</span> (<span class="bn">0x3400</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x4DBF</span>) <span class="kw">or</span> <span class="op">\</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>                   (<span class="bn">0x4E00</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x9FFF</span>) <span class="kw">or</span> (<span class="bn">0xAC00</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0xD7AF</span>):</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>                    _bad.append((_n, ch))</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="kw">not</span> _bad, <span class="ss">f"พบอักษรไม่ใช่ไทย/ASCII ในบรรทัดที่มีภาษาไทย: </span><span class="sc">{</span>_bad[:<span class="dv">6</span>]<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>    log(<span class="st">"ตรวจ unicode ทั้งไฟล์แล้ว: ไม่มีอักษรเวียดนาม/จีน/เกาหลีหลุดมา"</span>)</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    log(<span class="st">"รันใน Colab ไม่มีการ์ดไฟล์ต้นทาง จึงข้ามการสแกน unicode"</span>)</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>a5 <span class="op">=</span> <span class="bu">float</span>(LAD.loc[LAD.res <span class="op">==</span> <span class="dv">5</span>, <span class="st">"nominal_area_km2"</span>].iloc[<span class="dv">0</span>])</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"res 5 nominal </span><span class="sc">{</span>a5<span class="sc">:,.1f}</span><span class="ss"> ตร.กม. (Day 12 บันทึกพื้นที่ที่ตัดขอบแล้ว 496,867.2 · ต่าง "</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>(a5<span class="op">-</span><span class="fl">496867.2</span>)<span class="op">/</span><span class="fl">496867.2</span><span class="sc">:+.2f}</span><span class="ss">% เพราะวันนี้ไม่นับการตัดขอบ)"</span>)</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    res2_cells<span class="op">=</span><span class="bu">int</span>(LAD.loc[LAD.res <span class="op">==</span> <span class="dv">2</span>, <span class="st">"cells"</span>].iloc[<span class="dv">0</span>]),</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>    res5_cells<span class="op">=</span><span class="bu">int</span>(LAD.loc[LAD.res <span class="op">==</span> <span class="dv">5</span>, <span class="st">"cells"</span>].iloc[<span class="dv">0</span>]),</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>    res8_cells<span class="op">=</span><span class="bu">int</span>(LAD.loc[LAD.res <span class="op">==</span> <span class="dv">8</span>, <span class="st">"cells"</span>].iloc[<span class="dv">0</span>]),</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>    res5_occupied_pct<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(LAD.loc[LAD.res <span class="op">==</span> <span class="dv">5</span>, <span class="st">"occupied_pct"</span>].iloc[<span class="dv">0</span>]), <span class="dv">3</span>),</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>    res8_occupied_pct<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(LAD.loc[LAD.res <span class="op">==</span> <span class="dv">8</span>, <span class="st">"occupied_pct"</span>].iloc[<span class="dv">0</span>]), <span class="dv">4</span>),</span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>    first_res_all_separate<span class="op">=</span>PAIRS[<span class="st">"first_res_all_separate"</span>],</span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>    same_parent_7to8_pct<span class="op">=</span>INHERIT[<span class="op">-</span><span class="dv">1</span>][<span class="st">"same_as_parent_pct"</span>],</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>    agree_res8_res5_pct<span class="op">=</span><span class="bu">round</span>(<span class="dv">100</span> <span class="op">*</span> agree85, <span class="dv">2</span>),</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>    border_median_m<span class="op">=</span><span class="bu">round</span>(FLOOR[<span class="st">"seg_median_m"</span>], <span class="dv">1</span>),</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>    crossover_res<span class="op">=</span>CROSSOVER,</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>    hair_cells<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>LIMIT[<span class="st">'hair_cells'</span>]<span class="sc">:,.0f}</span><span class="ss">"</span>,</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>    hair_draw_years<span class="op">=</span><span class="bu">round</span>(LIMIT[<span class="st">"hair_draw_years"</span>]),</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>    a4_one_to_one<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>LIMIT[<span class="st">'one_to_one_a4_sheets'</span>]<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>log(<span class="st">"สรุป: "</span> <span class="op">+</span> json.dumps(summary, ensure_ascii<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"DONE day14 ใน </span><span class="sc">%.1f</span><span class="st"> วิ"</span> <span class="op">%</span> (time.time() <span class="op">-</span> T0))</span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>_LOGF.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

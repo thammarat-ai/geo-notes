@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="โจทย์ ‘A map so detailed it becomes the territory.’ ผมไม่พยายามวาดแผนที่แบบนั้นให้สวย แต่ถามว่ามันวัดได้ไหม — ไล่ H3 จาก res 2 ถึง res 8 (6 เซลล์ ถึง 597,542 เซลล์) แล้ววางสองเส้นเทียบกัน เส้นราคากับเส้นข้อมูล ราคาโตขึ้น 7 เท่าทุกขั้นไม่อิ่มตัว ส่วนข้อมูลอิ่มตัวตั้งแต่ res 5–6 และก่อนหน้านั้นอีก เส้นขอบประเทศที่เป็นต้นทางหมดรายละเอียดให้ลอกตั้งแต่ res 7">
+
+<title>Day 14 · Borgesian map — แผนที่ที่ละเอียดจนกลายเป็นดินแดน วัดจริงว่าแต่ละขั้นต้องจ่ายอะไร และได้อะไรกลับมา – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#ทมาของแผนท" id="toc-ทมาของแผนท" class="nav-link active" data-scroll-target="#ทมาของแผนท">ที่มาของแผนที่</a></li>
+  <li><a href="#ผลลพธ" id="toc-ผลลพธ" class="nav-link" data-scroll-target="#ผลลพธ">ผลลัพธ์</a></li>
+  <li><a href="#วธทำแบบยอ" id="toc-วธทำแบบยอ" class="nav-link" data-scroll-target="#วธทำแบบยอ">วิธีทำแบบย่อ</a></li>
+  <li><a href="#ขอจำกดทตองบอกตรง-ๆ" id="toc-ขอจำกดทตองบอกตรง-ๆ" class="nav-link" data-scroll-target="#ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
+  <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 14 · Borgesian map — แผนที่ที่ละเอียดจนกลายเป็นดินแดน วัดจริงว่าแต่ละขั้นต้องจ่ายอะไร และได้อะไรกลับมา</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">30DayMapChallenge</div>
+    <div class="quarto-category">cartography</div>
+    <div class="quarto-category">h3</div>
+    <div class="quarto-category">scale</div>
+    <div class="quarto-category">data-quality</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    โจทย์ ‘A map so detailed it becomes the territory.’ ผมไม่พยายามวาดแผนที่แบบนั้นให้สวย แต่ถามว่ามันวัดได้ไหม — ไล่ H3 จาก res 2 ถึง res 8 (6 เซลล์ ถึง 597,542 เซลล์) แล้ววางสองเส้นเทียบกัน เส้นราคากับเส้นข้อมูล ราคาโตขึ้น 7 เท่าทุกขั้นไม่อิ่มตัว ส่วนข้อมูลอิ่มตัวตั้งแต่ res 5–6 และก่อนหน้านั้นอีก เส้นขอบประเทศที่เป็นต้นทางหมดรายละเอียดให้ลอกตั้งแต่ res 7
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">14 พฤศจิกายน 2569</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day14_borgesian.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>โจทย์ทางการวันนี้คือ <strong>“A map so detailed it becomes the territory.”</strong> ภายใต้หัวข้อ <em>“Borgesian map”</em> พร้อมหมายเหตุจากหน้าโจทย์ว่า <em>“Inspired by Borges’ On Exactitude in Science”</em> — ข้อความทั้งสองบรรทัด ผมเปิดหน้า 30daymapchallenge.com อ่านสดในวันเขียน ไม่ได้ท่องต่อมาจากความจำ</p>
+<p>เรื่องสั้นของ Borges เป็นเพียงย่อหน้าเดียว พิมพ์ครั้งแรกปี 1946 ใต้ชื่อปากการ่วม “B. Lynch Davis” (คือ Borges กับ Adolfo Bioy Casares) และแกล้งอ้างว่าเป็นข้อความจากหนังสือปี 1658 — ใจความที่ Wikipedia สรุปไว้คือ <em>“only a map on the same scale as the empire itself will suffice”</em> (ผมอ้างประโยคนี้ในฐานะสรุปของ Wikipedia ไม่ใช่ประโยคที่ Borges เขียนเอง)</p>
+<p><strong>คำถามของแผ่นนี้</strong> — คำพังเพย “ละเอียดจนกลายเป็นดินแดน” <em>วัด</em> ได้ไหม ได้ ถ้าไม่ถามคำถามเดียว แต่ถามสองคำถามพร้อมกัน แล้วพล็อตเป็นสองเส้น</p>
+<ul>
+<li>เส้นที่ 1 — <strong>ราคา</strong>ของแผนที่เมื่อละเอียดขึ้นอีกขั้น (จำนวนเซลล์ · จำนวนจุดที่ต้องวาด · ขนาดไฟล์ · เวลาวาด)</li>
+<li>เส้นที่ 2 — <strong>ข้อมูล</strong>ที่แผนที่บอกเพิ่มขึ้นจริงแค่ไหน (สัดส่วนเซลล์ที่มีของอยู่ · คำตอบที่เปลี่ยนไปเมื่อซอย)</li>
+</ul>
+<section id="ทมาของแผนท" class="level2">
+<h2 class="anchored" data-anchor-id="ทมาของแผนท">ที่มาของแผนที่</h2>
+<p>ซีรีส์นี้ใช้ตารางหกเหลี่ยม H3 มาตั้งแต่ Day 3 ที่ <code>res 5</code> (1,738 เซลล์) และไม่เคยถามคำถามที่ควรถามที่สุด ว่า <strong>“แล้ว res 6, res 7, res 8 ล่ะ”</strong> — ทุกขั้นของ H3 แบ่งแม่หนึ่งเซลล์เป็นลูกเจ็ดเซลล์ แปลว่าราคาต้องโต 7 เท่าต่อขั้น ส่วนข้อมูลจะโตตามหรือเปล่า เป็นอีกเรื่องหนึ่ง</p>
+<p>ต้นทางข้อมูลที่ใช้ (ทุกค่าในโพสต์นี้อ่านจากไฟล์ที่สคริปต์เขียนไว้ ไม่ใช่จำมาจากภาพ)</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>อย่าง</th>
+<th>ใช้อะไร</th>
+<th>ทำไม</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>เส้นขอบประเทศ</td>
+<td>Natural Earth 10m <code>admin_0_countries</code></td>
+<td>มาตรฐานที่ซีรีส์สลับมาใช้ตั้งแต่ Day 8 · พื้นที่ 512,593.1 ตร.กม.</td>
+</tr>
+<tr class="even">
+<td>ข้อมูลจุด</td>
+<td>ทะเบียนแหล่งท้องฟ้ามืด NARIT 83 จุด (CSV ของ Day 1)</td>
+<td>เป็นเนื้อหาที่แผนที่ต้องรับใช้</td>
+</tr>
+<tr class="odd">
+<td>ตาราง</td>
+<td>H3 4.5.0 (<code>pip install</code> เพิ่มวันนี้)</td>
+<td>เป็นระบบเดียวกับ Day 3 แต่เปิดให้ไล่ระดับได้</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ผลลพธ" class="level2">
+<h2 class="anchored" data-anchor-id="ผลลพธ">ผลลัพธ์</h2>
+<section id="บนไดความละเอยด" class="level3">
+<h3 class="anchored" data-anchor-id="บนไดความละเอยด">๑. บันไดความละเอียด</h3>
+<p><img src="day14_ladder.png" class="img-fluid"></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>res</th>
+<th>จำนวนเซลล์</th>
+<th>ขอบเซลล์ (กม.)</th>
+<th>เซลล์ที่มีจุดทะเบียน</th>
+<th>สัดส่วนที่มีข้อมูล</th>
+<th>เทียบพื้นที่ตารางกับประเทศ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>6</td>
+<td>182.513</td>
+<td>6</td>
+<td>100%</td>
+<td>118.64%</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>36</td>
+<td>68.979</td>
+<td>25</td>
+<td>69.44%</td>
+<td>101.72%</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>246</td>
+<td>26.072</td>
+<td>43</td>
+<td>17.48%</td>
+<td>99.50%</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>1,745</td>
+<td>9.854</td>
+<td>62</td>
+<td>3.55%</td>
+<td>100.89%</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>12,204</td>
+<td>3.725</td>
+<td>71</td>
+<td>0.58%</td>
+<td>100.79%</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>85,367</td>
+<td>1.406</td>
+<td>75</td>
+<td>0.09%</td>
+<td>100.71%</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>597,542</td>
+<td>0.531</td>
+<td>75</td>
+<td>0.013%</td>
+<td>100.69%</td>
+</tr>
+</tbody>
+</table>
+<p>กฎ 7 เท่าที่ H3 สัญญาไว้ เป็นจริงกับข้อมูลจริง (อัตราส่วนจำนวนเซลล์ต่อขั้น): <strong>6.00 · 6.833 · 7.093 · 6.994 · 6.995 · 7.00</strong> — ค่าต่ำสุด 6.00 ที่ขั้น 2→3 เพราะเซลล์ res 2 มีเพียง 6 เซลล์ทั้งประเทศ การปัดเศษจึงเห็นผลมาก ส่วน res 4 ขึ้นไปนิ่งที่ประมาณ 7</p>
+</section>
+<section id="เสนราคากบเสนขอมล" class="level3">
+<h3 class="anchored" data-anchor-id="เสนราคากบเสนขอมล">๒. เส้นราคากับเส้นข้อมูล</h3>
+<p><img src="day14_detail_vs_info.png" class="img-fluid"></p>
+<p><strong>ด้านราคา</strong> (วัดจริง ไม่ใช่สูตร) — ที่ res 6 ไฟล์ GeoJSON ของตารางทั้งประเทศมีขนาด 3.661 MB (ที่ res 5 คือ 0.524 MB) และเมื่อวัดจำนวนไบต์ต่อเซลล์ได้คงที่ราว 300.0 ไบต์/เซลล์ การ extrapolate ไปข้างหน้าจึงเป็นการคูณ ไม่ใช่การเดา ส่วน res 8 ต้องวางจุดทั้งหมด 3,585,252 จุด (หกจุดต่อเซลล์)</p>
+<p><strong>ด้านข้อมูล</strong> — ผมวัดด้วยคำถามเดียวที่ตอบได้ทันทีจากข้อมูล “จุดทะเบียนที่ใกล้ที่สุดของเซลล์นี้คือจุดไหน” แล้วเทียบว่าเซลล์ลูกตอบต่างจากแม่หรือไม่</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ขั้น</th>
+<th>เซลล์ลูกที่เทียบได้</th>
+<th>ตอบเหมือนแม่</th>
+<th>คำตอบใหม่ที่ได้</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2→3</td>
+<td>29</td>
+<td>27.586%</td>
+<td>21 เซลล์</td>
+</tr>
+<tr class="even">
+<td>3→4</td>
+<td>214</td>
+<td>53.271%</td>
+<td>100 เซลล์</td>
+</tr>
+<tr class="odd">
+<td>4→5</td>
+<td>1,626</td>
+<td>80.627%</td>
+<td>315 เซลล์</td>
+</tr>
+<tr class="even">
+<td>5→6</td>
+<td>11,887</td>
+<td>92.53%</td>
+<td>888 เซลล์</td>
+</tr>
+<tr class="odd">
+<td>6→7</td>
+<td>84,453</td>
+<td>97.337%</td>
+<td>2,249 เซลล์</td>
+</tr>
+<tr class="even">
+<td>7→8</td>
+<td>594,973</td>
+<td>98.948%</td>
+<td>6,262 เซลล์</td>
+</tr>
+</tbody>
+</table>
+<p>อ่านตารางจากขวาไปซ้าย: ขั้นที่แพงที่สุด (7→8) ซื้อคำตอบใหม่มาได้ 6,262 เซลล์จากห้าแสนกว่าเซลล์ คือ <strong>1.052%</strong> ของแผนที่ ที่จ่ายไป 7 เท่า ส่วนถ้าย้อนดูทั้งช่วง <strong>res 5 เทียบ res 8</strong> คำตอบตรงกัน 91.947% ต่างกัน 46,763 เซลล์ และระยะทางสู่จุดที่ใกล้ที่สุดเปลี่ยนไปอย่างมากที่ ±10.665 กม. (ค่าต่ำสุด −10.665 กม. · ค่าสูงสุด +10.665 กม.) ซึ่งก็คือขนาดของเซลล์ res 5 นั่นเอง</p>
+</section>
+<section id="เพดานของตนทาง-และเลขคณตของ-borges" class="level3">
+<h3 class="anchored" data-anchor-id="เพดานของตนทาง-และเลขคณตของ-borges">๓. เพดานของต้นทาง และเลขคณิตของ Borges</h3>
+<p><img src="day14_floor.png" class="img-fluid"></p>
+<p>นี่คือส่วนที่ผมไม่ได้คาดไว้ และมันน่าสนใจกว่าเส้นสองเส้นข้างบน</p>
+<ul>
+<li>เส้นขอบประเทศใน Natural Earth 10m ประกอบด้วยช่วงทั้งหมด 3,297 ช่วง ระยะระหว่างจุดต่อเนื่อง <strong>ค่าต่ำสุด 11.06 ม. · ค่าที่ 5 เปอร์เซ็นไทล 619.4 ม. · ค่ามัธยฐาน 1,892.8 ม. · ค่าเฉลี่ย 2,547.7 ม. · ค่าที่ 95 เปอร์เซ็นไทล 6,637.4 ม. · ค่าสูงสุด 39,381.9 ม.</strong></li>
+<li>ขอบเซลล์ res 6 ยาว 3.725 กม. ยังหนากว่ามัธยฐาน 1,892.8 ม. ของเส้นขอบ — แต่ res 7 ยาวเพียง 1.406 กม. ซึ่ง <em>บางกว่า</em> เส้นที่ตารางกำลังอ้างถึง</li>
+<li>แปลว่าตั้งแต่ <strong>res 7</strong> เป็นต้นไป ตารางไม่ได้ละเอียดกว่า “ดินแดน” แต่ละเอียดกว่า <em>ไฟล์เส้นขอบ</em> รายละเอียดที่เพิ่มหลังจากนั้นคือการเติมลงบนแบบจำลอง ไม่ใช่การวัด</li>
+</ul>
+<p>และด้านกลับของ Borges ก็จริงเช่นกัน — <strong>ดินแดนละเอียดกว่าแผนที่</strong> ในกรณีนี้คือทะเบียนละเอียดกว่าแผนที่</p>
+<ul>
+<li>จุดในทะเบียน 4 จาก 83 จุด อยู่นอกเส้นขอบประเทศของ Natural Earth 10m คือ <code>หอดูดาวเฉลิมพระเกียรติฯ สงขลา</code>, <code>อุทยานแห่งชาติเขาพระวิหาร</code>, <code>เกาะพะลวยบีชบังกะโล</code>, <code>โซเนวา คีรี รีสอร์ท</code> (อ่านชื่อจาก CSV ไม่ใช่จากภาพ · ในจำนวนนี้มีจุดชายแดนที่เส้นเขตในไฟล์ต้นทางกับทะเบียนวางไว้คนละที่ ซึ่งผมไม่ได้ตัดสินว่าใครถูก — ผมบันทึกว่าสองแหล่งไม่ตรงกัน)</li>
+<li>ที่ res 5 มี 5 จุดที่ไม่มีเซลล์ของตัวเองในตาราง (<code>ดาราควิซีน</code> เพิ่มเข้ามาอีกจุด เพราะเซลล์ของมัน มีจุดกลางอยู่นอกประเทศ) เหลือ <strong>78 จาก 83 จุด</strong> ที่มีที่อยู่จริงบนกริดที่ซีรีส์ใช้มาตั้งแต่วันนั้น ถ้าเทียบกับกริด GADM ของ Day 3 จะเหลือ 76 จุด</li>
+<li>ทะเบียนเองก็มีเพดาน: จุดสองจุดที่ใกล้กันที่สุดในทะเบียนห่างกันเพียง <strong>0.061 กม.</strong> (<code>พูโตะ</code> กับ <code>บ้านสวนป่าโป่งดอย</code>) มี 3 คู่น้อยกว่า 0.5 กม. · 7 คู่ต่ำกว่า 1 กม. · 25 คู่ต่ำกว่า 5 กม. (จากทั้งหมด 3,403 คู่) ที่ res 8 จุด 83 จุดยังครองเซลล์เพียง 80 เซลล์ — ต้องละเอียดถึง <strong>res 10</strong> จึงจะแยกทุกจุดออกจากกันคนละเซลล์ ซึ่งเลยจุดที่ต้นทางเส้นขอบรับได้ไปสามขั้นแล้ว</li>
+</ul>
+<p><strong>ถ้าเดินไปจนถึงเส้นผมจริง ๆ</strong> (0.05 มม. · extrapolate จากกฎ 7 เท่า ไม่ใช่แผนที่ที่วาดจริง) พื้นที่ประเทศต้องถูกทับด้วยหกเหลี่ยม <strong>7.89 × 10¹⁹ เซลล์</strong> = ราว 1.32 × 10¹⁴ เท่าของ res 8 ต้องวางจุด <strong>4.74 × 10²⁰ จุด</strong> ไฟล์จะอยู่ที่ <strong>78.9 เอ็กซาไบต์</strong> ถ้าเก็บหนึ่งไบต์ต่อเซลล์ หรือ <strong>23.7 เซตตาไบต์</strong> ในรูปแบบ GeoJSON ที่วัดไบต์ต่อเซลล์จริง · และถ้ายอมลดมาตราส่วนลงมาพิมพ์ 1 ต่อ 1 บนกระดาษ A4 ต้องใช้ <strong>8.22 ล้านล้านแผ่น</strong> ซึ่งกินเนื้อที่ <strong>512,593.1 ตร.กม.</strong> — เท่าประเทศ นั่นคือประโยคของ Borges ตรงตัว: ที่มาตราส่วน 1 ต่อ 1 แผนที่กับดินแดนเท่ากัน <em>ไม่ว่าจะละเอียดแค่ไหน</em></p>
+</section>
+</section>
+<section id="วธทำแบบยอ" class="level2">
+<h2 class="anchored" data-anchor-id="วธทำแบบยอ">วิธีทำแบบย่อ</h2>
+<ol type="1">
+<li>อ่านขอบประเทศ Natural Earth 10m → แปลงเป็น <code>LatLngMultiPoly</code> ของ H3 (ลบจุดซ้ำ ปิดวงให้ครบ 3 จุดขึ้นไป)</li>
+<li><code>h3.polygon_to_cells</code> ที่ res 2–8 → ได้จำนวนเซลล์จริงทุกขั้น แล้วตรวจกฎ 7 เท่า (ต้องอยู่ระหว่าง 6.0–7.3)</li>
+<li>ทุกขั้น: สุ่มวัดพื้นที่เซลล์ 20,000 เซลล์ด้วย <code>h3.cell_area</code> (seed 14) · นับเซลล์ที่มีจุดทะเบียน · ตอบคำถาม “จุดทะเบียนที่ใกล้ที่สุด” ด้วย haversine เป็นก้อนก้อนละสองแสนแถว กัน index เพี้ยน</li>
+<li>เทียบคำตอบของเซลล์ลูกกับแม่ (<code>h3.cell_to_parent</code>) → ได้ร้อยละ “ข้อมูลใหม่ที่ซื้อได้”</li>
+<li>วัดราคาจริง: เขียน GeoJSON ที่ res 3–6 เพื่อหาไบต์ต่อเซลล์ · จับเวลาวาด res 8 สามรอบแล้วใช้ค่ามัธยฐาน</li>
+<li>คำนวณเพดานของต้นทาง: ระยะระหว่างจุดต่อเนื่องบนเส้นขอบประเทศเป็นเมตร (projection เดียวกับทั้งซีรีส์)</li>
+<li>ต่อเลขคณิตถึง “เส้นผม” จากสูตรพื้นที่หกเหลี่ยม 2.598·s² แล้วเขียนทุกอย่างลง <code>day14_stats.json</code></li>
+<li>ตรวจก่อนส่ง: <code>lint_thai</code> · <code>guard_bbox</code> · <code>guard_crs</code> · <code>guard_area</code> · <code>guard_variance</code> · <code>guard_distances</code> · <code>guard_claims</code> · <code>guard_stat_labels</code> · <code>guard_assets</code></li>
+</ol>
+</section>
+<section id="ขอจำกดทตองบอกตรง-ๆ" class="level2">
+<h2 class="anchored" data-anchor-id="ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</h2>
+<ul>
+<li><strong>res 9 ขึ้นไปไม่ได้วาดจริง</strong> — ตัวเลข “เส้นผม” ทั้งหมดเป็นการ extrapolate จากกฎ 7 เท่ากับสูตรพื้นที่ หกเหลี่ยม ป้ายไว้ในภาพและในไฟล์ว่า extrapolate ทุกจุด</li>
+<li><strong>เวลาเป็นตัวเลขที่แกว่ง</strong> — รอบที่บันทึกไว้ใน <code>day14_stats.json</code> วัดได้ 42,330.5 เซลล์/วินาที (มัธยฐาน 3 รอบ · ช่วง 39,056–43,560) คิดเป็น <strong>59.08 ล้านปี</strong> ผมรันสคริปต์เดียวกันซ้ำหลายรอบใน เย็นวันเดียวและได้ค่าต่างกันเกิน 2 เท่าตามภาระเครื่อง จึงเริ่มบันทึกประวัติทุกรอบไว้จริง (ไฟล์ <code>day14_throughput_history.json</code> ตั้งแต่รอบนี้) เพื่อพูดประโยคนี้จากหลักฐาน ไม่ใช่จากความจำ ตัวเลขปีควรอ่านเป็น “หลักสิบล้านปี” ไม่ใช่ค่าแน่นอน — ที่คงที่จริงคือจำนวนเซลล์ จำนวนจุด และขนาดไฟล์</li>
+<li><strong>การเทียบ “ขอบเซลล์” กับ “ช่วงห่างจุดของเส้นขอบ” เป็นการเทียบความยาวสองชนิดคนละความหมาย</strong> มันบอกได้ว่าตารางละเอียดกว่าเส้นที่ลอกมาเมื่อไร แต่ไม่ใช่ทฤษฎีบทว่ารายละเอียดนั้นไร้ประโยชน์</li>
+<li><strong>พื้นที่ในตารางที่ 5 เป็นแบบ “เซลล์เต็ม”</strong> (100.89% ของประเทศ) เพราะ H3 เก็บเซลล์ทั้งก้อน ไม่ clip ตามขอบ — ถ้า clip ตามขอบจะได้ 496,867.2 ตร.กม. หรือหายไป 3.07% ของประเทศตามที่ Day 12 บันทึกไว้</li>
+<li><strong>จำนวนเซลล์ res 5 ของวันนี้ 1,745 ไม่ตรงกับ 1,738 ของ Day 3</strong> — วิธีเดียวกัน คนละต้นทางเส้นขอบ (Day 3 ใช้ GADM) ซ้อนกัน 1,720 เซลล์ Day 3 มีเฉพาะของตัวเอง 18 เซลล์ วันนี้มี 25 เซลล์ ผมไม่แก้ Day 3 เพราะตัวเลขของวันนั้นถูกต้องตามต้นทางของวันนั้น แต่บันทึกการเทียบไว้ให้ตรวจสอบ</li>
+<li><strong>จุดทะเบียน 4 จุดอยู่นอกเส้นขอบประเทศมาตรฐาน</strong> รวมถึงจุดในบริเวณชายแดนที่มีข้อโต้แย้งเรื่องเขตแดน ผมรายงานเฉพาะว่า “สองแหล่งไม่ตรงกัน” ไม่ได้เลือกข้างว่าเส้นไหนถูก</li>
+<li><strong>ฟอนต์ไทยในภาพใช้ Trirong</strong> ที่ฝังใน repo แล้ว ถ้าเปิดภาพบนเครื่องที่ไม่มีฟอนต์นี้ตัวหนังสือจะไม่เพี้ยน เพราะภาพเป็น PNG ไม่ได้พึ่งฟอนต์ของผู้ดู</li>
+</ul>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<ul>
+<li><a href="day14_ladder.png">day14_ladder.png</a> — บันไดความละเอียด res 2 ถึง res 8 (597,542 เซลล์ในแผ่นสุดท้าย)</li>
+<li><a href="day14_detail_vs_info.png">day14_detail_vs_info.png</a> — เส้นราคากับเส้นข้อมูล</li>
+<li><a href="day14_floor.png">day14_floor.png</a> — ไม้บรรทัดความละเอียด + เลขคณิตของ Borges</li>
+<li><a href="day14_ladder.csv">day14_ladder.csv</a> — ตารางทุกขั้นของบันได (11 ฟิลด์ต่อแถว)</li>
+<li><a href="day14_stats.json">day14_stats.json</a> — ตัวเลขทุกตัวในโพสต์นี้ พร้อม <code>metric_definitions</code> นิยามของแต่ละฟิลด์ รวมถึงช่วงที่วัดซ้ำและบล็อก <code>reconciliation_day3</code></li>
+</ul>
+</section>
+<section id="บทเรยน" class="level2">
+<h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>
+<ul>
+<li><strong>ตัวชี้วัดที่เกิน 100% คือบั๊กที่ส่งเสียง</strong> — ตอนแรกผมคำนวณ “สัดส่วนเซลล์ที่มีจุดทะเบียน” แบบนับเซลล์ ที่จุดตกอยู่โดยไม่เช็กว่าเซลล์นั้นอยู่ในชุดของประเทศไหม ได้ 13 เซลล์จากตารางที่มี 6 เซลล์ทั้งประเทศ คือเกิน 100% ชัดเจน เพิ่ม assert ว่า <code>occupied &lt;= cells</code> แล้วจึงพบว่ามันไม่ใช่แค่บั๊ก แต่มันคือ เรื่องจริงอีกเรื่อง: จุดริมขอบตกอยู่ในเซลล์ที่จุดกลางอยู่ต่างประเทศ ซึ่งกลายเป็นข้อจำกัดของทั้งซีรีส์ ที่เพิ่งถูกเขียนลงกระดาษวันนี้</li>
+<li><strong>อย่ารายงานตัวเลขที่ใช้เวลาเป็นหน่วย</strong> ถ้าเวลานั้นวัดจากเครื่องของตัวเองโดยไม่ได้ทำซ้ำ ราคาที่ควรใช้ Argument คือ intrinsic cost (จำนวนเซลล์ · จำนวนจุด · ไบต์) ส่วน wall-clock รายงานพร้อมช่วงที่วัดซ้ำหรือไม่ก็อย่ารายงาน</li>
+<li><strong><code>np.triu(D, 1) &lt; x</code> ไม่ว่างเปล่าด้านล่าง</strong> — มันถูกเติมด้วย 0 ซึ่งผ่านเงื่อนไขทุกข้อ ผมได้ “3,493 คู่” จากคู่ที่เป็นไปได้ทั้งหมด 3,403 คู่ ถ้าไม่มี assert ที่นับคู่สูงสุดไว้ก่อน ตัวเลขเพี้ยนระดับนี้ก็จะถูกพิมพ์ออกมาอย่างภาคภูมิ</li>
+<li><strong>การเทียบข้ามวันคือเครื่องมือหาบั๊กที่ถูกที่สุด</strong> — 1,738 กับ 1,745 ต่างกันแค่ 7 เซลล์ แต่การเปิดไฟล์ Day 3 มาเทียบบังคับให้ผมตอบว่า “เซลล์ของจุดทะเบียนอยู่ที่ไหน” และพบว่า 5 จุด ไม่มีเซลล์ของตัวเอง ซึ่งไม่ปรากฏขึ้นถ้าผมรันแต่วันของตัวเองต่อไปเงียบ ๆ</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
