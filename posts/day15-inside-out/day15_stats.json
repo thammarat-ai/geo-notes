@@ -1,0 +1,186 @@
+{
+  "theme": "Inside out, upside down. Something on this map is not quite right.",
+  "theme_source": "30daymapchallenge.com หัวข้อ Day 15 'Inside out' (อ่านสดวันเขียน)",
+  "generated_local": "2026-11-14 22:14:55",
+  "made_on": "14 พ.ย. 2569 (ทำล่วงหน้าหนึ่งวัน · ลงวันที่ 15 ตามโจทย์)",
+  "h3_version": "4.5.0",
+  "inputs": {
+    "hex_grid_cells": 1738,
+    "site_register": 83,
+    "outline_source": "Natural Earth 10m admin_0_countries",
+    "country_area_km2": 512593.1
+  },
+  "inside_share": {
+    "worst_cell_outside_pct": 81.03,
+    "cells_fully_inside": 1555,
+    "mean_pct": 99.257,
+    "median_pct": 100.0,
+    "min_pct": 18.97,
+    "max_pct": 100.0,
+    "thresholds": {
+      "0.5": {
+        "cells": 3,
+        "outside_km2": 598.4095212650061
+      },
+      "0.75": {
+        "cells": 9,
+        "outside_km2": 1057.6566541599202
+      },
+      "0.9": {
+        "cells": 45,
+        "outside_km2": 2250.1471171998337
+      },
+      "0.99": {
+        "cells": 123,
+        "outside_km2": 2920.5904139912204
+      },
+      "1.0": {
+        "cells": 481,
+        "outside_km2": 2966.677589052724
+      }
+    },
+    "worst_six": [
+      {
+        "cell": "85651bc3fffffff",
+        "share_km2": 0.1897,
+        "outside_pct": 81.03,
+        "inside_km2": 57.1,
+        "full_km2": 301.1,
+        "lat": 7.6333,
+        "lon": 100.2636,
+        "province": "สงขลา",
+        "nearest_site": "ปลายแหลมแคมป์"
+      },
+      {
+        "cell": "85651bd3fffffff",
+        "share_km2": 0.3074,
+        "outside_pct": 69.26,
+        "inside_km2": 78.3,
+        "full_km2": 254.7,
+        "lat": 7.5098,
+        "lon": 100.3696,
+        "province": "สงขลา",
+        "nearest_site": "ปลายแหลมแคมป์"
+      },
+      {
+        "cell": "8565186ffffffff",
+        "share_km2": 0.4084,
+        "outside_pct": 59.16,
+        "inside_km2": 122.9,
+        "full_km2": 301.0,
+        "lat": 7.3511,
+        "lon": 100.3351,
+        "province": "สงขลา",
+        "nearest_site": "ปลายแหลมแคมป์"
+      },
+      {
+        "cell": "85651bd7fffffff",
+        "share_km2": 0.5364,
+        "outside_pct": 46.36,
+        "inside_km2": 161.5,
+        "full_km2": 301.1,
+        "lat": 7.4714,
+        "lon": 100.2173,
+        "province": "สงขลา",
+        "nearest_site": "ปลายแหลมแคมป์"
+      },
+      {
+        "cell": "85659da3fffffff",
+        "share_km2": 0.638,
+        "outside_pct": 36.2,
+        "inside_km2": 109.8,
+        "full_km2": 172.1,
+        "lat": 13.2314,
+        "lon": 102.3323,
+        "province": "สระแก้ว",
+        "nearest_site": "อุทยานแห่งชาติตาพระยา"
+      },
+      {
+        "cell": "8564b027fffffff",
+        "share_km2": 0.6892,
+        "outside_pct": 31.08,
+        "inside_km2": 142.7,
+        "full_km2": 207.0,
+        "lat": 17.5159,
+        "lon": 100.985,
+        "province": "เลย",
+        "nearest_site": "อุทยานแห่งชาติภูสวนทราย"
+      }
+    ],
+    "sum_inside_km2": 493900.6,
+    "sum_full_km2": 496867.2
+  },
+  "complement_of_bbox": {
+    "bbox_cells": 4978,
+    "inside_cells": 1738,
+    "outside_cells": 3240,
+    "bbox_area_km2": 1467464.580167783,
+    "country_share_of_bbox_pct": 34.93052803886483
+  },
+  "upside_down": {
+    "rotation_degrees": 180,
+    "rotation_origin": "centroid ของประเทศไทยใน Equidistant Conic (หน่วยเมตร)",
+    "changed_cells": 1737,
+    "changed_pct": 99.94,
+    "extra_km_min": -142.714,
+    "extra_km_median": 38.049,
+    "extra_km_mean": 69.686,
+    "extra_km_max": 450.898,
+    "distance_true_mean_km": 57.368,
+    "distance_flipped_mean_km": 127.054,
+    "agree_with_day3_artifact_pct": 99.942,
+    "rotate_both_geodesic_max_abs_diff_km": 0.849,
+    "rotate_both_planar_max_abs_diff_m": 0.0
+  },
+  "join_inversion": {
+    "sites": 83,
+    "cells": 1738,
+    "cells_claimed_by_a_site": 66,
+    "cells_never_claimed": 1672,
+    "sites_sharing_a_cell": 17,
+    "mutual_pairs": 65,
+    "non_mutual_cells": 1,
+    "claimed_cell_answer_differs": 18,
+    "claimed_cell_extra_km_mean": 2.951,
+    "claimed_cell_extra_km_max": 22.704
+  },
+  "cross_check_day07": {
+    "country_not_covered_km2": 18692.569772940536,
+    "grid_area_outside_country_km2": 2966.6775890527642,
+    "day07_post_says_not_covered": 18692.0,
+    "day07_post_says_overflow": 2967.0,
+    "delta_not_covered": 0.6,
+    "delta_overflow": -0.3
+  },
+  "cross_check_day14": {
+    "day14_res5_cells_ne10m": 1745,
+    "day3_grid_cells": 1738,
+    "day14_sites_without_own_cell": 5,
+    "day14_sites_outside_outline": 4,
+    "note": "Day 14 นับจากขอบ NE 10m ด้วย H3 fill วันนี้ใช้กริดของ Day 3 (GADM) มา clip กับขอบ NE 10m — สองวิธีให้เลขคนละชุดแต่เรื่องเดียวกัน"
+  },
+  "figures": [
+    "day15_inside_out.png",
+    "day15_inside_share.png",
+    "day15_upside_down.png"
+  ],
+  "metric_definitions": {
+    "worst_cell_outside_pct": "ร้อยละของพื้นที่เซลล์ที่อยู่นอกประเทศ สำหรับเซลล์ที่ 'เป็นไทย' น้อยที่สุด",
+    "cells_fully_inside": "จำนวนเซลล์ที่ clip แล้วพื้นที่เท่ากับเซลล์เต็มทุกตารางเมตร (share = 100%)",
+    "inside_share": "พื้นที่เซลล์หลัง clip กับเส้นขอบประเทศ หารด้วยพื้นที่เซลล์เต็ม (ร้อยละ) — บอกว่า 'เซลล์ที่ระบบนับเป็นไทย' เป็นไทยจริงเท่าไร",
+    "thresholds": "จำนวนเซลล์ที่ inside_share ต่ำกว่าเกณฑ์ พร้อมผลรวมพื้นที่ที่ล้นออกนอกประเทศ (ตร.กม.)",
+    "bbox_cells": "จำนวนเซลล์ H3 res 5 ที่จุดกลางอยู่ในกล่องคลุมประเทศ (รวมส่วนที่เป็นประเทศเพื่อนบ้าน)",
+    "outside_cells": "เซลล์ในกล่องคลุมประเทศที่จุดกลางอยู่นอกไทย = complement ที่วาดในช่อง (ข)",
+    "country_share_of_bbox_pct": "พื้นที่ประเทศ ÷ พื้นที่กล่องคลุมประเทศ × 100 — 'ความเปล่า' โดยรอบ",
+    "changed_cells": "จำนวนเซลล์ที่ตอบ 'จุดทะเบียนที่ใกล้ที่สุด' เปลี่ยนไปเมื่อหมุนแผนที่ 180° รอบ centroid ของประเทศ แต่ไม่หมุนพิกัดจุดทะเบียน",
+    "extra_km_mean/max": "ระยะทางสู่จุดที่ใกล้ที่สุดที่เพิ่มขึ้นเพราะกลับหัวเฉพาะแผนที่ (มัธยฐาน/เฉลี่ย/สูงสุด เป็นกิโลเมตร)",
+    "rotate_both_planar_max_abs_diff_m": "ผลต่างสูงสุดของระยะทาง (เมตร) เมื่อหมุนทั้งแผนที่และข้อมูล 180° บนระนาบ projection แล้ววัดระยะบนระนาบเดียวกัน — ต้องเป็น 0 เพราะการหมุนคือ rigid motion",
+    "rotate_both_geodesic_max_abs_diff_km": "ผลต่างสูงสุดของระยะทาง (กิโลเมตร) เมื่อหมุนทั้งแผนที่และข้อมูลบนระนาบ projection แต่ไปวัดระยะบนทรงกลม — ไม่เป็น 0 เพราะการหมุนในแผนที่ไม่ใช่การหมุนบนโลก",
+    "cells_claimed_by_a_site": "จำนวนเซลล์ที่แตกต่างกันที่จุด 83 จุดเลือกเมื่อเริ่มจากฝั่งจุด (site→cell)",
+    "mutual_pairs": "จำนวนคู่ที่เซลล์เลือกจุดนั้น และจุดนั้นก็เลือกเซลล์นั้น (mutual nearest neighbour)",
+    "cells_never_claimed": "เซลล์ที่ไม่มีจุดทะเบียนใดเลือกเลยเมื่อเริ่มจากฝั่งจุด",
+    "claimed_cell_extra_km_mean": "ผลเฉลี่ยของ 'ถ้าเชื่อการเลือกจากฝั่งจุด' ผู้ใช้เซลล์นั้นจะไกลขึ้นกี่กิโลเมตร",
+    "cross_check_day07": "ตัวเลขในโพสต์ Day 7 ที่เคยหาที่มาไม่ได้ใน artifact เทียบกับที่คำนวณใหม่วันนี้"
+  },
+  "note": "ภาพช่อง (ค) ตั้งใจให้ประเทศกลับหัวเพื่อสาธิตความผิดพลาดที่วัดได้ ไม่ใช่แผนที่สำหรับใช้งาน"
+}

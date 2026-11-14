@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Day 15 · Inside out — แผนที่ที่ “ไม่ถูกต้องพอดี” สามที่ – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#ตอน-1-ขอมล-ตรวจขาเขา" id="toc-ตอน-1-ขอมล-ตรวจขาเขา" class="nav-link active" data-scroll-target="#ตอน-1-ขอมล-ตรวจขาเขา">ตอน 1) ข้อมูล + ตรวจขาเข้า</a></li>
+  <li><a href="#ตอน-2-การกลบขอ-1-inside-ของเซลลคออะไรวดจากอะไร" id="toc-ตอน-2-การกลบขอ-1-inside-ของเซลลคออะไรวดจากอะไร" class="nav-link" data-scroll-target="#ตอน-2-การกลบขอ-1-inside-ของเซลลคออะไรวดจากอะไร">ตอน 2) การกลับข้อ 1: “inside” ของเซลล์คืออะไรวัดจากอะไร</a></li>
+  <li><a href="#ตอน-2c-cross-check-ตวเลขของ-day-7-ทเคยหาทมาไมได" id="toc-ตอน-2c-cross-check-ตวเลขของ-day-7-ทเคยหาทมาไมได" class="nav-link" data-scroll-target="#ตอน-2c-cross-check-ตวเลขของ-day-7-ทเคยหาทมาไมได">ตอน 2c) cross-check ตัวเลขของ Day 7 ที่เคยหาที่มาไม่ได้</a></li>
+  <li><a href="#ตอน-3-การกลบขอ-2-กลบหวเฉพาะแผนท-ไมกลบขอมล" id="toc-ตอน-3-การกลบขอ-2-กลบหวเฉพาะแผนท-ไมกลบขอมล" class="nav-link" data-scroll-target="#ตอน-3-การกลบขอ-2-กลบหวเฉพาะแผนท-ไมกลบขอมล">ตอน 3) การกลับข้อ 2: กลับหัวเฉพาะแผนที่ ไม่กลับข้อมูล</a></li>
+  <li><a href="#ตอน-4-การกลบขอ-3-join-จากฝงจด-site-cell" id="toc-ตอน-4-การกลบขอ-3-join-จากฝงจด-site-cell" class="nav-link" data-scroll-target="#ตอน-4-การกลบขอ-3-join-จากฝงจด-site-cell">ตอน 4) การกลับข้อ 3: join จากฝั่งจุด (site → cell)</a></li>
+  <li><a href="#ตอน-5-ภาพ-1-แผนหลกสามชอง" id="toc-ตอน-5-ภาพ-1-แผนหลกสามชอง" class="nav-link" data-scroll-target="#ตอน-5-ภาพ-1-แผนหลกสามชอง">ตอน 5) ภาพ 1 — แผ่นหลักสามช่อง</a></li>
+  <li><a href="#ตอน-6-ภาพ-2-เซลล-เปนไทย-กเปอรเซนต" id="toc-ตอน-6-ภาพ-2-เซลล-เปนไทย-กเปอรเซนต" class="nav-link" data-scroll-target="#ตอน-6-ภาพ-2-เซลล-เปนไทย-กเปอรเซนต">ตอน 6) ภาพ 2 — เซลล์ “เป็นไทย” กี่เปอร์เซ็นต์</a></li>
+  <li><a href="#ตอน-7-ภาพ-3-กลบหว-กบ-กลบทศของ-join" id="toc-ตอน-7-ภาพ-3-กลบหว-กบ-กลบทศของ-join" class="nav-link" data-scroll-target="#ตอน-7-ภาพ-3-กลบหว-กบ-กลบทศของ-join">ตอน 7) ภาพ 3 — กลับหัว กับ กลับทิศของ join</a></li>
+  <li><a href="#ตอน-8-artifact" id="toc-ตอน-8-artifact" class="nav-link" data-scroll-target="#ตอน-8-artifact">ตอน 8) artifact</a></li>
+  <li><a href="#ตอน-9-referee" id="toc-ตอน-9-referee" class="nav-link" data-scroll-target="#ตอน-9-referee">ตอน 9) referee</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 15 · Inside out — แผนที่ที่ “ไม่ถูกต้องพอดี” สามที่</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>#30DayMapChallenge 2026 · 15 พ.ย. 2569</strong> (สร้างล่วงหน้าหนึ่งวันในเย็นวันที่ 14) · โจทย์: <em>“Inside out, upside down. Something on this map is not quite right.”</em></p>
+<p>ธีมวันนี้ชวนให้แกล้งวาดแผนที่ผิด แต่ผมเลือกอีกทาง — <strong>กลับกฎสามข้อที่ซีรีส์นี้ใช้อยู่แล้ว</strong> แล้ววัดของจริงว่าข้อมูลเพี้ยนไปเท่าไร</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>การกลับ</th>
+<th>กฎที่ถูกกลับ</th>
+<th>ผลที่วัดได้</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ในเป็นนอก</td>
+<td>H3 เก็บเซลล์ที่ <em>จุดกลาง</em> อยู่ในประเทศ</td>
+<td>มีเซลล์ที่ 81.03% ของพื้นที่อยู่นอกประเทศ แต่ยังถูกนับเป็นไทย</td>
+</tr>
+<tr class="even">
+<td>กลับหัว</td>
+<td>หมุนแผนที่ 180° แต่ไม่หมุนพิกัดข้อมูล</td>
+<td>1,737 จาก 1,738 เซลล์ตอบ “จุดที่ใกล้ที่สุด” ผิดจุด</td>
+</tr>
+<tr class="odd">
+<td>กลับทิศคำถาม</td>
+<td>เปลี่ยน cell→site เป็น site→cell</td>
+<td>83 จุดเลือกได้แค่ 66 เซลล์ อีก 1,672 เซลล์ไม่มีเจ้าของ</td>
+</tr>
+</tbody>
+</table>
+<p><strong>รันตามลำดับ cell</strong> · สคริปต์ตรวจตัวเองด้วย <code>tools/guards.py</code> ก่อนวาดทุกครั้ง และเขียนผลลง <code>day15_stats.json</code> + <code>day15_cells_inside_out.csv</code> ซึ่งเป็นแหล่งตัวเลขเดียวที่โพสต์อ้าง</p>
+<p><strong>ข้อสังเกตที่อยากให้อ่านก่อนรัน</strong> — การหมุน <em>ทั้งสองฝั่ง</em> ไม่ใช่ความผิดพลาด บนระนาบ projection ระยะทางไม่เปลี่ยนแม้แต่มิลิเมตรเดียว (rigid motion) แต่ถ้าวัดระยะทางบนทรงกลมหลังหมุนในระนาบ จะต่างได้ถึง 0.849 กม. เพราะ “การหมุนแผนที่” กับ “การหมุนโลก” ไม่ใช่การกระทำเดียวกัน</p>
+<section id="คาคงท-ชดเครองมอ-อานดาวนโหลดขอมล-ตงฟอนตไทย-ตรวจวารนทไหน" class="level3">
+<h3 class="anchored" data-anchor-id="คาคงท-ชดเครองมอ-อานดาวนโหลดขอมล-ตงฟอนตไทย-ตรวจวารนทไหน">ค่าคงที่ + ชุดเครื่องมือ (อ่าน/ดาวน์โหลดข้อมูล, ตั้งฟอนต์ไทย, ตรวจว่ารันที่ไหน)</h3>
+<div id="cell-3" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -*- coding: utf-8 -*-</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">Day 15 · Inside out — "Inside out, upside down. Something on this map is not quite right."</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">(ข้อความหัวข้อจาก 30daymapchallenge.com อ่านสดวันเขียน)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">"กลับในเป็นนอก" ในแผ่นนี้ไม่ใช่ลูกเล่นทางภาพ แต่คือกลับ *กฎ* สามข้อที่ซีรีส์นี้ใช้มาตลอด</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">แล้ววัดว่าข้อมูลเพี้ยนไปเท่าไรจริง ๆ</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  1) กฎ "จุดกลางเซลล์อยู่ในประเทศ" (H3 fill)  → เซลล์ที่แทบไม่ได้อยู่ในไทยยังถูกนับเป็นไทย</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  2) กลับหัวเฉพาะแผนที่ ไม่กลับข้อมูล        → คำตอบ "จุดทะเบียนที่ใกล้ที่สุด" เพี้ยนกี่กิโลเมตร</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  3) กลับทิศของ join (cell→site เป็น site→cell) → ได้คำตอบคนละคำถาม และไม่ใช่การแบ่งพื้นที่</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">ทุกตัวเลขในโพสต์อ่านจาก day15_stats.json / day15_cells_inside_out.csv ที่สคริปต์นี้เขียนเท่านั้น</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, sys, json, time, subprocess, urllib.request, zipfile</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd, geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shapely</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely.geometry <span class="im">import</span> Point</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely.affinity <span class="im">import</span> rotate <span class="im">as</span> shp_rotate</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely.validation <span class="im">import</span> make_valid</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyproj <span class="im">import</span> CRS, Transformer</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>matplotlib.use(<span class="st">"Agg"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> font_manager</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.collections <span class="im">import</span> PolyCollection</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>T0 <span class="op">=</span> time.time()</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>COLAB <span class="op">=</span> <span class="kw">not</span> os.path.isdir(os.path.join(<span class="vs">r"D:</span><span class="dv">\G</span><span class="vs">IS30Days"</span>, <span class="st">"geo-notes"</span>))</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>WORK <span class="op">=</span> os.getcwd() <span class="cf">if</span> COLAB <span class="cf">else</span> <span class="vs">r"D:</span><span class="dv">\G</span><span class="vs">IS30Days"</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>REPO <span class="op">=</span> os.path.join(WORK, <span class="st">"geo-notes"</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>CACHE <span class="op">=</span> os.path.join(WORK, <span class="st">"day15_cache"</span>) <span class="cf">if</span> COLAB <span class="cf">else</span> os.path.join(WORK, <span class="st">"cache"</span>, <span class="st">"day06"</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>OUT <span class="op">=</span> os.path.join(WORK, <span class="st">"out"</span>, <span class="st">"day15"</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>os.makedirs(CACHE, exist_ok<span class="op">=</span><span class="va">True</span>)<span class="op">;</span> os.makedirs(OUT, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>RAW <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/thammarat-ai/geo-notes/main/"</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ensure_shp(stem, sub<span class="op">=</span><span class="st">"cultural"</span>):</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    shp <span class="op">=</span> os.path.join(CACHE, stem <span class="op">+</span> <span class="st">".shp"</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(shp):</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        zp <span class="op">=</span> os.path.join(CACHE, stem <span class="op">+</span> <span class="st">".zip"</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        urllib.request.urlretrieve(<span class="ss">f"https://naciscdn.org/naturalearth/10m/</span><span class="sc">{</span>sub<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>stem<span class="sc">}</span><span class="ss">.zip"</span>, zp)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        zipfile.ZipFile(zp).extractall(CACHE)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> shp</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> repo_file(rel):</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    dst <span class="op">=</span> os.path.join(CACHE, os.path.basename(rel))</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> COLAB <span class="kw">and</span> <span class="kw">not</span> os.path.exists(dst):</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        urllib.request.urlretrieve(RAW <span class="op">+</span> rel, dst)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dst <span class="cf">if</span> COLAB <span class="cf">else</span> os.path.join(REPO, rel)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    sys.path.insert(<span class="dv">0</span>, os.path.join(WORK, <span class="st">"tools"</span>))</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> guards <span class="im">import</span> (guard_bbox, guard_crs, guard_area, guard_variance,</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>                        guard_distances, lint_thai, hav_km)</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ModuleNotFoundError</span>:</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    gp <span class="op">=</span> os.path.join(CACHE, <span class="st">"guards.py"</span>)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(gp):</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>        urllib.request.urlretrieve(RAW <span class="op">+</span> <span class="st">"tools/guards.py"</span>, gp)</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    sys.path.insert(<span class="dv">0</span>, CACHE)</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> guards <span class="im">import</span> (guard_bbox, guard_crs, guard_area, guard_variance,</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>                        guard_distances, lint_thai, hav_km)</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> h3</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    subprocess.check_call([sys.executable, <span class="st">"-m"</span>, <span class="st">"pip"</span>, <span class="st">"-q"</span>, <span class="st">"install"</span>, <span class="st">"h3==4.5.0"</span>])</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> h3</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _f <span class="kw">in</span> <span class="bu">sorted</span>(os.listdir(CACHE)):</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> _f.endswith(<span class="st">".ttf"</span>):</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>        font_manager.fontManager.addfont(os.path.join(CACHE, _f))</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"font.family"</span>] <span class="op">=</span> <span class="st">"Trirong"</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>_LOGF <span class="op">=</span> <span class="bu">open</span>(os.path.join(OUT, <span class="st">"day15_run.log"</span>), <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log(m):</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="ss">f"[</span><span class="sc">{</span>time<span class="sc">.</span>time()<span class="op">-</span>T0<span class="sc">:6.1f}</span><span class="ss">s] </span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s, flush<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>    _LOGF.write(s <span class="op">+</span> <span class="bu">chr</span>(<span class="dv">10</span>))<span class="op">;</span> _LOGF.flush()</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>TXT <span class="op">=</span> []</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> T(s):</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>    TXT.append(s)</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>EQ <span class="op">=</span> CRS.from_proj4(<span class="st">"+proj=eqdc +lat_0=14 +lon_0=101 +lat_1=8 +lat_2=20 +units=m +no_defs +ellps=WGS84"</span>)</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>BG, INK <span class="op">=</span> <span class="st">"#0d1522"</span>, <span class="st">"#e8e3d3"</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>ACCENT, WARM, COOL, TEAL, MUTED <span class="op">=</span> <span class="st">"#f5b942"</span>, <span class="st">"#f4566a"</span>, <span class="st">"#38bdf8"</span>, <span class="st">"#2dd4bf"</span>, <span class="st">"#9fb2c8"</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>REF_KM2 <span class="op">=</span> <span class="fl">512593.1</span>                     <span class="co"># ตัวเลขที่ซีรีส์ใช้ตั้งแต่ Day 8</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>DAY12_CLIPPED <span class="op">=</span> <span class="fl">496867.2</span>               <span class="co"># พื้นที่ hex รวมหลัง clip ตามที่ Day 12 บันทึก</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-1-ขอมล-ตรวจขาเขา" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-1-ขอมล-ตรวจขาเขา">ตอน 1) ข้อมูล + ตรวจขาเข้า</h2>
+<div id="cell-5" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------- 1. ข้อมูล + ตรวจขาเข้า</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ne <span class="op">=</span> gpd.read_file(ensure_shp(<span class="st">"ne_10m_admin_0_countries"</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>TH <span class="op">=</span> make_valid(ne[ne.NAME <span class="op">==</span> <span class="st">"Thailand"</span>].geometry.iloc[<span class="dv">0</span>])</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>PARTS <span class="op">=</span> <span class="bu">list</span>(TH.geoms) <span class="cf">if</span> TH.geom_type.startswith(<span class="st">"Multi"</span>) <span class="cf">else</span> [TH]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>country_km2 <span class="op">=</span> gpd.GeoSeries([TH], crs<span class="op">=</span><span class="st">"EPSG:4326"</span>).to_crs(EQ).area.iloc[<span class="dv">0</span>] <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>guard_area(country_km2, REF_KM2, <span class="st">"thailand-area"</span>, tol<span class="op">=</span><span class="fl">0.005</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>guard_crs(TH.bounds, <span class="st">"thailand-outline"</span>, expect<span class="op">=</span><span class="st">"degrees"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(repo_file(<span class="st">"data/darksky_thailand.csv"</span>))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"name"</span>] <span class="op">=</span> df[<span class="st">"name"</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.strip()</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>SITES <span class="op">=</span> np.column_stack([df.longitude.values, df.latitude.values])</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>NAMES <span class="op">=</span> np.array(df[<span class="st">"name"</span>].astype(<span class="bu">str</span>), dtype<span class="op">=</span><span class="bu">object</span>)   <span class="co"># numpy object array กัน arrow indexing</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>guard_bbox(SITES, <span class="fl">96.5</span>, <span class="fl">107.6</span>, <span class="fl">4.3</span>, <span class="fl">21.7</span>, <span class="st">"darksky-sites"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">len</span>(df) <span class="op">==</span> <span class="dv">83</span>, <span class="ss">f"ทะเบียนต้องมี 83 จุด ได้ </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>g3 <span class="op">=</span> gpd.read_file(repo_file(<span class="st">"posts/day03-polygons/day03_hex_polygons.geojson"</span>))</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>CELLS <span class="op">=</span> g3.geometry.values</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">len</span>(CELLS) <span class="op">==</span> <span class="dv">1738</span>, <span class="ss">f"กริด Day 3 ต้องมี 1,738 เซลล์ ได้ </span><span class="sc">{</span><span class="bu">len</span>(CELLS)<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>near_art <span class="op">=</span> np.array([<span class="bu">str</span>(x).strip() <span class="cf">for</span> x <span class="kw">in</span> g3.nearest.values])</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>prov_art <span class="op">=</span> np.array([<span class="bu">str</span>(x).strip() <span class="cf">for</span> x <span class="kw">in</span> g3.province.values])</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>cell_km2_full <span class="op">=</span> np.array(gpd.GeoSeries(<span class="bu">list</span>(CELLS), crs<span class="op">=</span><span class="st">"EPSG:4326"</span>).to_crs(EQ).area) <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>cen_deg <span class="op">=</span> np.array([[c.centroid.x, c.centroid.y] <span class="cf">for</span> c <span class="kw">in</span> CELLS])</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>guard_bbox(cen_deg, <span class="fl">96.5</span>, <span class="fl">107.6</span>, <span class="fl">4.3</span>, <span class="fl">21.7</span>, <span class="st">"hex-centroid-degrees"</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"ประเทศ </span><span class="sc">{</span>country_km2<span class="sc">:,.1f}</span><span class="ss"> ตร.กม. · ทะเบียน </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss"> จุด · กริด </span><span class="sc">{</span><span class="bu">len</span>(CELLS)<span class="sc">}</span><span class="ss"> เซลล์ "</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"(</span><span class="sc">{</span>cell_km2_full<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:,.1f}</span><span class="ss"> ตร.กม. ถ้าไม่ clip)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-2-การกลบขอ-1-inside-ของเซลลคออะไรวดจากอะไร" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-2-การกลบขอ-1-inside-ของเซลลคออะไรวดจากอะไร">ตอน 2) การกลับข้อ 1: “inside” ของเซลล์คืออะไรวัดจากอะไร</h2>
+<div id="cell-7" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------ 2. การกลับข้อ 1: "inside" ของเซลล์คืออะไรวัดจากอะไร</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time.perf_counter()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>clipped <span class="op">=</span> shapely.intersection(CELLS, TH)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>in_km2 <span class="op">=</span> np.array(gpd.GeoSeries(<span class="bu">list</span>(clipped), crs<span class="op">=</span><span class="st">"EPSG:4326"</span>).to_crs(EQ).area) <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>share <span class="op">=</span> in_km2 <span class="op">/</span> cell_km2_full</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> share.<span class="bu">min</span>() <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"มีเซลล์ที่ clip แล้วไม่เหลือพื้นที่ = กริดกับเส้นขอบไม่ทับกันเลย"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> (in_km2 <span class="op">&lt;=</span> cell_km2_full <span class="op">+</span> <span class="fl">1e-6</span>).<span class="bu">all</span>(), <span class="st">"พื้นที่ clip ใหญ่กว่าเซลล์เต็ม = มีอะไรพัง"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"clip 1,738 เซลล์กับเส้นขอบ </span><span class="sc">{</span>time<span class="sc">.</span>perf_counter()<span class="op">-</span>t1<span class="sc">:.1f}</span><span class="ss"> วิ"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>THRESH <span class="op">=</span> {thr: <span class="bu">dict</span>(cells<span class="op">=</span><span class="bu">int</span>((share <span class="op">&lt;</span> thr).<span class="bu">sum</span>()),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                    outside_km2<span class="op">=</span><span class="bu">float</span>((cell_km2_full[share <span class="op">&lt;</span> thr] <span class="op">-</span> in_km2[share <span class="op">&lt;</span> thr]).<span class="bu">sum</span>()))</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>          <span class="cf">for</span> thr <span class="kw">in</span> (<span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>, <span class="fl">0.99</span>, <span class="fl">1.0</span>)}</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>worst_idx <span class="op">=</span> np.argsort(share)[:<span class="dv">6</span>]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>WORST <span class="op">=</span> [<span class="bu">dict</span>(cell<span class="op">=</span><span class="bu">str</span>(g3.cell.iloc[i]), share_km2<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(share[i]), <span class="dv">4</span>),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>              outside_pct<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(<span class="dv">100</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> share[i])), <span class="dv">2</span>),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>              inside_km2<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(in_km2[i]), <span class="dv">1</span>), full_km2<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(cell_km2_full[i]), <span class="dv">1</span>),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>              lat<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(cen_deg[i][<span class="dv">1</span>]), <span class="dv">4</span>), lon<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(cen_deg[i][<span class="dv">0</span>]), <span class="dv">4</span>),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>              province<span class="op">=</span>prov_art[i], nearest_site<span class="op">=</span>near_art[i]) <span class="cf">for</span> i <span class="kw">in</span> worst_idx]</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> w <span class="kw">in</span> WORST[:<span class="dv">3</span>]:</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"  เซลล์ </span><span class="sc">{</span>w[<span class="st">'cell'</span>]<span class="sc">}</span><span class="ss"> เหลือพื้นที่ในไทย </span><span class="sc">{</span>w[<span class="st">'share_km2'</span>]<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">% "</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"(</span><span class="sc">{</span>w[<span class="st">'inside_km2'</span>]<span class="sc">:,.1f}</span><span class="ss"> จาก </span><span class="sc">{</span>w[<span class="st">'full_km2'</span>]<span class="sc">:,.1f}</span><span class="ss"> ตร.กม.) · จังหวัด </span><span class="sc">{</span>w[<span class="st">'province'</span>]<span class="sc">}</span><span class="ss"> · "</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"จุดที่ใกล้สุด </span><span class="sc">{</span>w[<span class="st">'nearest_site'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>guard_variance(share, <span class="st">"inside-share"</span>, min_spread_km<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 2b. complement: ตารางที่ "ไม่ใช่ประเทศไทย" ในกล่องคลุมประเทศ (ใช้ H3 เหมือน Day 14)</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>lo, la, hi, la_hi <span class="op">=</span> TH.bounds</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>bbox_poly <span class="op">=</span> h3.LatLngPoly([(la, lo), (la_hi, lo), (la_hi, hi), (la, hi)])</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>bbox_cells <span class="op">=</span> <span class="bu">set</span>(h3.polygon_to_cells(bbox_poly, <span class="dv">5</span>))</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>th_cells <span class="op">=</span> <span class="bu">set</span>(<span class="bu">str</span>(c) <span class="cf">for</span> c <span class="kw">in</span> g3.cell.values)          <span class="co"># ใช้ H3 index ที่ Day 3 บันทึกไว้โดยตรง</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> th_cells <span class="op">&lt;=</span> bbox_cells, <span class="st">"เซลล์ของ Day 3 ต้องอยู่ในกล่องคลุมประเทศทั้งหมด"</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>COMPL <span class="op">=</span> <span class="bu">dict</span>(bbox_cells<span class="op">=</span><span class="bu">len</span>(bbox_cells), inside_cells<span class="op">=</span><span class="bu">len</span>(th_cells <span class="op">&amp;</span> bbox_cells),</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>             outside_cells<span class="op">=</span><span class="bu">len</span>(bbox_cells <span class="op">-</span> th_cells),</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>             bbox_area_km2<span class="op">=</span><span class="bu">float</span>((gpd.GeoSeries([shapely.box(lo, la, hi, la_hi)], crs<span class="op">=</span><span class="st">"EPSG:4326"</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                                  .to_crs(EQ).area.iloc[<span class="dv">0</span>] <span class="op">/</span> <span class="fl">1e6</span>)))</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>COMPL[<span class="st">"country_share_of_bbox_pct"</span>] <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> country_km2 <span class="op">/</span> COMPL[<span class="st">"bbox_area_km2"</span>]</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"กล่องคลุมประเทศมี res 5 จำนวน </span><span class="sc">{</span>COMPL[<span class="st">'bbox_cells'</span>]<span class="sc">:,}</span><span class="ss"> เซลล์ · "</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"ที่อยู่ในไทย </span><span class="sc">{</span>COMPL[<span class="st">'inside_cells'</span>]<span class="sc">:,}</span><span class="ss"> · นอกไทย </span><span class="sc">{</span>COMPL[<span class="st">'outside_cells'</span>]<span class="sc">:,}</span><span class="ss"> · "</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"ประเทศกินพื้นที่กล่องเพียง </span><span class="sc">{</span>COMPL[<span class="st">'country_share_of_bbox_pct'</span>]<span class="sc">:.1f}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-2c-cross-check-ตวเลขของ-day-7-ทเคยหาทมาไมได" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-2c-cross-check-ตวเลขของ-day-7-ทเคยหาทมาไมได">ตอน 2c) cross-check ตัวเลขของ Day 7 ที่เคยหาที่มาไม่ได้</h2>
+<div id="cell-9" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------- 2c. cross-check ตัวเลขของ Day 7 ที่เคยหาที่มาไม่ได้</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>XDAY7 <span class="op">=</span> <span class="bu">dict</span>(country_not_covered_km2<span class="op">=</span><span class="bu">float</span>(country_km2 <span class="op">-</span> in_km2.<span class="bu">sum</span>()),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>             grid_area_outside_country_km2<span class="op">=</span><span class="bu">float</span>(cell_km2_full.<span class="bu">sum</span>() <span class="op">-</span> in_km2.<span class="bu">sum</span>()),</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>             day07_post_says_not_covered<span class="op">=</span><span class="fl">18692.0</span>, day07_post_says_overflow<span class="op">=</span><span class="fl">2967.0</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>XDAY7[<span class="st">"delta_not_covered"</span>] <span class="op">=</span> <span class="bu">round</span>(XDAY7[<span class="st">"country_not_covered_km2"</span>] <span class="op">-</span> <span class="fl">18692.0</span>, <span class="dv">1</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>XDAY7[<span class="st">"delta_overflow"</span>] <span class="op">=</span> <span class="bu">round</span>(XDAY7[<span class="st">"grid_area_outside_country_km2"</span>] <span class="op">-</span> <span class="fl">2967.0</span>, <span class="dv">1</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"Day 7 บอก hex กลบไม่ถึง 18,692 ตร.กม. · วันนี้คำนวณได้ "</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="sc">{</span>XDAY7[<span class="st">'country_not_covered_km2'</span>]<span class="sc">:,.1f}</span><span class="ss"> (ต่าง </span><span class="sc">{</span>XDAY7[<span class="st">'delta_not_covered'</span>]<span class="sc">:+.1f}</span><span class="ss">) และ "</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"ล้นออกนอกเส้น 2,967 · วันนี้ </span><span class="sc">{</span>XDAY7[<span class="st">'grid_area_outside_country_km2'</span>]<span class="sc">:,.1f}</span><span class="ss"> "</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"(ต่าง </span><span class="sc">{</span>XDAY7[<span class="st">'delta_overflow'</span>]<span class="sc">:+.1f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-3-การกลบขอ-2-กลบหวเฉพาะแผนท-ไมกลบขอมล" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-3-การกลบขอ-2-กลบหวเฉพาะแผนท-ไมกลบขอมล">ตอน 3) การกลับข้อ 2: กลับหัวเฉพาะแผนที่ ไม่กลับข้อมูล</h2>
+<div id="cell-11" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------- 3. การกลับข้อ 2: กลับหัวเฉพาะแผนที่ ไม่กลับข้อมูล</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>_tr <span class="op">=</span> Transformer.from_crs(<span class="st">"EPSG:4326"</span>, EQ, always_xy<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>_c <span class="op">=</span> gpd.GeoSeries([TH], crs<span class="op">=</span><span class="st">"EPSG:4326"</span>).to_crs(EQ).centroid.iloc[<span class="dv">0</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>cx, cy <span class="op">=</span> _c.x, _c.y</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>cen_m <span class="op">=</span> np.array(_tr.transform(cen_deg[:, <span class="dv">0</span>], cen_deg[:, <span class="dv">1</span>])).T</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>rot_m <span class="op">=</span> np.column_stack([<span class="dv">2</span> <span class="op">*</span> cx <span class="op">-</span> cen_m[:, <span class="dv">0</span>], <span class="dv">2</span> <span class="op">*</span> cy <span class="op">-</span> cen_m[:, <span class="dv">1</span>]])      <span class="co"># หมุน 180° รอบ centroid</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>rot_deg <span class="op">=</span> np.array(_tr.transform(rot_m[:, <span class="dv">0</span>], rot_m[:, <span class="dv">1</span>], direction<span class="op">=</span><span class="st">"INVERSE"</span>)).T</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>guard_crs((rot_deg[:, <span class="dv">0</span>].<span class="bu">min</span>(), rot_deg[:, <span class="dv">1</span>].<span class="bu">min</span>(), rot_deg[:, <span class="dv">0</span>].<span class="bu">max</span>(), rot_deg[:, <span class="dv">1</span>].<span class="bu">max</span>()),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>          <span class="st">"rotated-cell-centres"</span>, expect<span class="op">=</span><span class="st">"degrees"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>D_true <span class="op">=</span> hav_km(cen_deg, SITES)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>guard_distances(D_true, <span class="st">"cell-to-site-true"</span>, max_km<span class="op">=</span><span class="dv">2500</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>ans_true <span class="op">=</span> NAMES[D_true.argmin(axis<span class="op">=</span><span class="dv">1</span>)]</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>agree_art <span class="op">=</span> <span class="bu">float</span>(np.mean(ans_true <span class="op">==</span> near_art))</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>d_true <span class="op">=</span> D_true.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>D_flip <span class="op">=</span> hav_km(rot_deg, SITES)          <span class="co"># แผนที่กลับหัวแล้ว แต่จุดทะเบียนยังอยู่พิกัดเดิม</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>guard_distances(D_flip, <span class="st">"cell-to-site-flipped"</span>, max_km<span class="op">=</span><span class="dv">2500</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>ans_flip <span class="op">=</span> NAMES[D_flip.argmin(axis<span class="op">=</span><span class="dv">1</span>)]</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>d_flip <span class="op">=</span> D_flip.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>extra <span class="op">=</span> d_flip <span class="op">-</span> d_true</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>changed <span class="op">=</span> <span class="bu">int</span>((ans_flip <span class="op">!=</span> ans_true).<span class="bu">sum</span>())</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>guard_variance(extra, <span class="st">"flip-extra-km"</span>, min_spread_km<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"ตรวจซ้ำกับไฟล์ Day 3: คำตอบ nearest ของวันนี้ตรงกับที่ไฟล์บันทึก </span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>agree_art<span class="sc">:.2f}</span><span class="ss">% "</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"(</span><span class="sc">{</span><span class="bu">int</span>((ans_true <span class="op">!=</span> near_art).<span class="bu">sum</span>())<span class="sc">}</span><span class="ss"> เซลล์ต่าง — centroid ของ polygon ≠ จุดกลางของ H3 cell ที่ถูก clip)"</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"กลับหัวเฉพาะแผนที่: </span><span class="sc">{</span>changed<span class="sc">:,}</span><span class="ss"> จาก </span><span class="sc">{</span><span class="bu">len</span>(CELLS)<span class="sc">:,}</span><span class="ss"> เซลล์ตอบผิดจุด "</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"(</span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>changed<span class="op">/</span><span class="bu">len</span>(CELLS)<span class="sc">:.1f}</span><span class="ss">%) · ระยะที่ไกลขึ้น ค่าต่ำสุด </span><span class="sc">{</span>extra<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:,.2f}</span><span class="ss"> · "</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"ค่ามัธยฐาน </span><span class="sc">{</span>np<span class="sc">.</span>median(extra)<span class="sc">:,.2f}</span><span class="ss"> · ค่าเฉลี่ย </span><span class="sc">{</span>extra<span class="sc">.</span>mean()<span class="sc">:,.2f}</span><span class="ss"> · "</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"ค่าสูงสุด </span><span class="sc">{</span>extra<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:,.2f}</span><span class="ss"> กม."</span>)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 3b. การหมุนไม่เปลี่ยนข้อมูล (ยืนยันด้วยการคำนวณ ไม่ใช่ด้วยการพูด)</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>s_m <span class="op">=</span> np.array(_tr.transform(SITES[:, <span class="dv">0</span>], SITES[:, <span class="dv">1</span>])).T</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>s_rot <span class="op">=</span> np.column_stack([<span class="dv">2</span> <span class="op">*</span> cx <span class="op">-</span> s_m[:, <span class="dv">0</span>], <span class="dv">2</span> <span class="op">*</span> cy <span class="op">-</span> s_m[:, <span class="dv">1</span>]])</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>s_rot_deg <span class="op">=</span> np.array(_tr.transform(s_rot[:, <span class="dv">0</span>], s_rot[:, <span class="dv">1</span>], direction<span class="op">=</span><span class="st">"INVERSE"</span>)).T</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>D_rot <span class="op">=</span> hav_km(rot_deg, s_rot_deg)          <span class="co"># หมุนทั้งแผนที่และข้อมูลพร้อมกัน (บนระนาบ projection)</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>guard_distances(D_rot[:<span class="dv">2000</span>], <span class="st">"cell-to-site-rotated-both"</span>, max_km<span class="op">=</span><span class="dv">2500</span>)</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>rot_both_diff <span class="op">=</span> np.<span class="bu">abs</span>(D_rot.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>) <span class="op">-</span> d_true)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co"># บนระนาบที่หมุน การหมุน 180° เป็น rigid motion → ระยะทางต้องไม่เปลี่ยนเลย</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>d_planar_true <span class="op">=</span> np.sqrt(((cen_m[:, <span class="dv">0</span>][:, <span class="va">None</span>] <span class="op">-</span> s_m[:, <span class="dv">0</span>][<span class="va">None</span>, :])<span class="op">**</span><span class="dv">2</span> <span class="op">+</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>                        (cen_m[:, <span class="dv">1</span>][:, <span class="va">None</span>] <span class="op">-</span> s_m[:, <span class="dv">1</span>][<span class="va">None</span>, :])<span class="op">**</span><span class="dv">2</span>)).<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>d_planar_rot <span class="op">=</span> np.sqrt(((rot_m[:, <span class="dv">0</span>][:, <span class="va">None</span>] <span class="op">-</span> s_rot[:, <span class="dv">0</span>][<span class="va">None</span>, :])<span class="op">**</span><span class="dv">2</span> <span class="op">+</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>                       (rot_m[:, <span class="dv">1</span>][:, <span class="va">None</span>] <span class="op">-</span> s_rot[:, <span class="dv">1</span>][<span class="va">None</span>, :])<span class="op">**</span><span class="dv">2</span>)).<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>planar_diff_m <span class="op">=</span> <span class="bu">float</span>(np.<span class="bu">abs</span>(d_planar_rot <span class="op">-</span> d_planar_true).<span class="bu">max</span>())</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>FLIP <span class="op">=</span> <span class="bu">dict</span>(rotation_degrees<span class="op">=</span><span class="dv">180</span>,</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>            rotation_origin<span class="op">=</span><span class="st">"centroid ของประเทศไทยใน Equidistant Conic (หน่วยเมตร)"</span>,</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>            changed_cells<span class="op">=</span>changed, changed_pct<span class="op">=</span><span class="bu">round</span>(<span class="dv">100</span> <span class="op">*</span> changed <span class="op">/</span> <span class="bu">len</span>(CELLS), <span class="dv">2</span>),</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>            extra_km_min<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(extra.<span class="bu">min</span>()), <span class="dv">3</span>), extra_km_median<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(np.median(extra)), <span class="dv">3</span>),</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>            extra_km_mean<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(extra.mean()), <span class="dv">3</span>), extra_km_max<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(extra.<span class="bu">max</span>()), <span class="dv">3</span>),</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>            distance_true_mean_km<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(d_true.mean()), <span class="dv">3</span>),</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>            distance_flipped_mean_km<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(d_flip.mean()), <span class="dv">3</span>),</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>            agree_with_day3_artifact_pct<span class="op">=</span><span class="bu">round</span>(<span class="dv">100</span> <span class="op">*</span> agree_art, <span class="dv">3</span>),</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>            rotate_both_geodesic_max_abs_diff_km<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(rot_both_diff.<span class="bu">max</span>()), <span class="dv">3</span>),</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>            rotate_both_planar_max_abs_diff_m<span class="op">=</span><span class="bu">round</span>(planar_diff_m, <span class="dv">6</span>))</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"ถ้าหมุนทั้งแผนที่และข้อมูลพร้อมกัน: บนระนาบ projection ระยะทางไม่เปลี่ยนเลย "</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"(ต่างสูงสุด </span><span class="sc">{</span>planar_diff_m<span class="sc">:.6f}</span><span class="ss"> ม.) แต่บนทรงกลมจริงต่างได้ถึง "</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="sc">{</span>rot_both_diff<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:,.3f}</span><span class="ss"> กม. เพราะการหมุนใน projection ไม่ใช่การหมุนบนโลก — "</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"การกลับหัวไม่ใช่ปัญหา ปัญหาคือการกลับข้างเดียว"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-4-การกลบขอ-3-join-จากฝงจด-site-cell" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-4-การกลบขอ-3-join-จากฝงจด-site-cell">ตอน 4) การกลับข้อ 3: join จากฝั่งจุด (site → cell)</h2>
+<div id="cell-13" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ 4. การกลับข้อ 3: join จากฝั่งจุด (site → cell)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>own_answer <span class="op">=</span> <span class="kw">lambda</span> c: <span class="bu">str</span>(near_art[c])                   <span class="co"># คำตอบที่ซีรีส์บันทึกไว้สำหรับเซลล์ c</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># D_true เป็นเมทริกซ์ (เซลล์ × จุด) — เริ่มจากฝั่งจุดต้อง argmin ตาม axis=0 (ได้ยาว 83)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>site_to_cell <span class="op">=</span> D_true.argmin(axis<span class="op">=</span><span class="dv">0</span>)                      <span class="co"># แต่ละจุดเลือกเซลล์ที่ใกล้ตัวมันที่สุด</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> site_to_cell.size <span class="op">==</span> <span class="bu">len</span>(df), <span class="st">"site→cell ต้องมี 83 ค่า (หนึ่งค่าต่อหนึ่งจุด)"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>cells_claimed <span class="op">=</span> np.unique(site_to_cell)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>mutual <span class="op">=</span> np.zeros(<span class="bu">len</span>(CELLS), <span class="bu">bool</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, c <span class="kw">in</span> <span class="bu">enumerate</span>(site_to_cell):</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ans_true[c] <span class="op">==</span> NAMES[k]:                            <span class="co"># เซลล์นั้นก็ต้องเลือกจุดเดียวกันกลับ</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        mutual[c] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>farther <span class="op">=</span> []</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(df)):</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="bu">int</span>(site_to_cell[k])</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> own_answer(c) <span class="op">!=</span> NAMES[k]:</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        farther.append(D_true[c, k] <span class="op">-</span> d_true[c])            <span class="co"># ผู้ใช้เซลล์นั้นต้องเดินทางไกลขึ้นเท่าไร</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>farther <span class="op">=</span> np.array(farther) <span class="cf">if</span> farther <span class="cf">else</span> np.array([<span class="fl">0.0</span>])</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>JOIN <span class="op">=</span> <span class="bu">dict</span>(sites<span class="op">=</span><span class="bu">len</span>(df), cells<span class="op">=</span><span class="bu">len</span>(CELLS), cells_claimed_by_a_site<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(cells_claimed)),</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>            cells_never_claimed<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(CELLS) <span class="op">-</span> <span class="bu">len</span>(cells_claimed)),</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>            sites_sharing_a_cell<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(df) <span class="op">-</span> <span class="bu">len</span>(cells_claimed)),</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            mutual_pairs<span class="op">=</span><span class="bu">int</span>(mutual.<span class="bu">sum</span>()), non_mutual_cells<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(cells_claimed) <span class="op">-</span> mutual.<span class="bu">sum</span>()),</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"join กลับทิศ: </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss"> จุดเลือกได้ </span><span class="sc">{</span>JOIN[<span class="st">'cells_claimed_by_a_site'</span>]<span class="sc">}</span><span class="ss"> เซลล์ "</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"(เหลือ </span><span class="sc">{</span>JOIN[<span class="st">'cells_never_claimed'</span>]<span class="sc">}</span><span class="ss"> เซลล์ไม่มีจุดมาเลือก) · คู่ที่เลือกซึ่งกันและกัน "</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="sc">{</span>JOIN[<span class="st">'mutual_pairs'</span>]<span class="sc">}</span><span class="ss"> คู่"</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 4b. ถ้ายึด "เซลล์ที่จุดเลือก" เป็นคำตอบ ผู้ใช้เซลล์นั้นจะไกลขึ้นกี่กิโลเมตร</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>assigned <span class="op">=</span> NAMES.copy()                                   <span class="co"># จุด k เลือกเซลล์ site_to_cell[k]</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>own <span class="op">=</span> np.array([own_answer(<span class="bu">int</span>(c)) <span class="cf">for</span> c <span class="kw">in</span> site_to_cell], dtype<span class="op">=</span><span class="bu">object</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>diff_class <span class="op">=</span> <span class="bu">int</span>((assigned <span class="op">!=</span> own).<span class="bu">sum</span>())</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>JOIN[<span class="st">"claimed_cell_answer_differs"</span>] <span class="op">=</span> diff_class</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>JOIN[<span class="st">"claimed_cell_extra_km_mean"</span>] <span class="op">=</span> <span class="bu">round</span>(<span class="bu">float</span>(farther.mean()), <span class="dv">3</span>)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>JOIN[<span class="st">"claimed_cell_extra_km_max"</span>] <span class="op">=</span> <span class="bu">round</span>(<span class="bu">float</span>(farther.<span class="bu">max</span>()), <span class="dv">3</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"ใน </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss"> เซลล์ที่จุดมาเลือก เซลล์นั้นตอบผิดจากจุดที่เลือกมัน </span><span class="sc">{</span>diff_class<span class="sc">}</span><span class="ss"> ครั้ง "</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"(ไกลขึ้นเฉลี่ย </span><span class="sc">{</span>farther<span class="sc">.</span>mean()<span class="sc">:,.2f}</span><span class="ss"> กม. · สูงสุด </span><span class="sc">{</span>farther<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:,.2f}</span><span class="ss"> กม.)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-5-ภาพ-1-แผนหลกสามชอง" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-5-ภาพ-1-แผนหลกสามชอง">ตอน 5) ภาพ 1 — แผ่นหลักสามช่อง</h2>
+<div id="cell-15" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------ 5. ภาพ 1 — แผ่นหลักสามช่อง</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rings_of(geoms):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""แปลง Polygon/MultiPolygon เป็น list ของ ring (กัน .exterior พังกับ MultiPolygon)"""</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> []</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> g <span class="kw">in</span> geoms:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> q <span class="kw">in</span> (g.geoms <span class="cf">if</span> g.geom_type.startswith(<span class="st">"Multi"</span>) <span class="cf">else</span> [g]):</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>            out.append(<span class="bu">list</span>(q.exterior.coords))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hex_outline(c, nd<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [(<span class="bu">round</span>(<span class="bu">float</span>(p[<span class="dv">1</span>]), nd), <span class="bu">round</span>(<span class="bu">float</span>(p[<span class="dv">0</span>]), nd)) <span class="cf">for</span> p <span class="kw">in</span> h3.cell_to_boundary(c)]</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_hero():</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="fl">16.4</span>, <span class="fl">6.4</span>), dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    fig.patch.set_facecolor(BG)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    gs <span class="op">=</span> fig.add_gridspec(<span class="dv">1</span>, <span class="dv">3</span>, left<span class="op">=</span><span class="fl">0.015</span>, right<span class="op">=</span><span class="fl">0.985</span>, wspace<span class="op">=</span><span class="fl">0.06</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># (a) ปกติ</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">0</span>])<span class="op">;</span> ax.set_facecolor(BG)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    ax.add_collection(PolyCollection(rings_of(CELLS), facecolor<span class="op">=</span><span class="st">"#2c4a63"</span>, edgecolor<span class="op">=</span>BG, lw<span class="op">=</span><span class="fl">0.25</span>))</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> p <span class="kw">in</span> PARTS:</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> p.exterior.xy</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        ax.plot(x, y, color<span class="op">=</span>INK, lw<span class="op">=</span><span class="fl">0.8</span>, zorder<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    ax.scatter(SITES[:, <span class="dv">0</span>], SITES[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">18</span>, color<span class="op">=</span><span class="st">"#0d1522"</span>, edgecolor<span class="op">=</span>ACCENT, lw<span class="op">=</span><span class="fl">0.8</span>, zorder<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    ax.set_title(T(<span class="st">"(ก) ตามปกติ</span><span class="ch">\n</span><span class="st">1,738 เซลล์ที่จุดกลางอยู่ในประเทศ"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">11.5</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># (b) กลับในเป็นนอก: เซลล์นอกประเทศถูก tô ทับ ประเทศกลายเป็นรู</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">1</span>])<span class="op">;</span> ax.set_facecolor(BG)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    out_cells <span class="op">=</span> <span class="bu">sorted</span>(bbox_cells <span class="op">-</span> th_cells)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    rings_out <span class="op">=</span> [hex_outline(c) <span class="cf">for</span> c <span class="kw">in</span> out_cells]</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    ax.add_collection(PolyCollection(rings_out, facecolor<span class="op">=</span><span class="st">"#5a3f52"</span>, edgecolor<span class="op">=</span>BG, lw<span class="op">=</span><span class="fl">0.2</span>))</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    ax.add_collection(PolyCollection(rings_of(CELLS), facecolor<span class="op">=</span><span class="st">"none"</span>, edgecolor<span class="op">=</span>COOL, lw<span class="op">=</span><span class="fl">0.3</span>))</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> p <span class="kw">in</span> PARTS:</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> p.exterior.xy</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        ax.plot(x, y, color<span class="op">=</span>INK, lw<span class="op">=</span><span class="fl">0.9</span>, zorder<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    bad <span class="op">=</span> [hex_outline(<span class="bu">str</span>(g3.cell.iloc[i])) <span class="cf">for</span> i <span class="kw">in</span> worst_idx[:<span class="dv">3</span>]]</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    ax.add_collection(PolyCollection(bad, facecolor<span class="op">=</span><span class="st">"none"</span>, edgecolor<span class="op">=</span>WARM, lw<span class="op">=</span><span class="fl">1.8</span>, zorder<span class="op">=</span><span class="dv">6</span>))</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    ax.set_title(T(<span class="ss">f"(ข) กลับในเป็นนอก</span><span class="ch">\n</span><span class="ss">เซลล์นอกประเทศ </span><span class="sc">{</span><span class="bu">len</span>(out_cells)<span class="sc">:,}</span><span class="ss"> ก้อน · "</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>                   <span class="ss">f"3 เซลล์สีส้มคือเซลล์ที่ &lt;50% เป็นไทย"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">11.5</span>)</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># (c) กลับหัวเฉพาะแผนที่</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">2</span>])<span class="op">;</span> ax.set_facecolor(BG)</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    cells_m <span class="op">=</span> gpd.GeoSeries(<span class="bu">list</span>(CELLS), crs<span class="op">=</span><span class="st">"EPSG:4326"</span>).to_crs(EQ).geometry.values</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    rot_m <span class="op">=</span> [shp_rotate(g, <span class="dv">180</span>, origin<span class="op">=</span>(cx, cy)) <span class="cf">for</span> g <span class="kw">in</span> cells_m]</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    rot_deg <span class="op">=</span> gpd.GeoSeries(<span class="bu">list</span>(rot_m), crs<span class="op">=</span>EQ).to_crs(<span class="st">"EPSG:4326"</span>).geometry.values</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    ax.add_collection(PolyCollection(rings_of(rot_deg),</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>                                     facecolor<span class="op">=</span><span class="st">"#2c4a63"</span>, edgecolor<span class="op">=</span>BG, lw<span class="op">=</span><span class="fl">0.25</span>))</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> p <span class="kw">in</span> PARTS:</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> p.exterior.xy</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>        ax.plot(x, y, color<span class="op">=</span>INK, lw<span class="op">=</span><span class="fl">0.8</span>, alpha<span class="op">=</span><span class="fl">0.35</span>, zorder<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>    ax.scatter(SITES[:, <span class="dv">0</span>], SITES[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">18</span>, color<span class="op">=</span><span class="st">"#0d1522"</span>, edgecolor<span class="op">=</span>WARM, lw<span class="op">=</span><span class="fl">0.8</span>, zorder<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>    ax.annotate(T(<span class="st">"↑ เหนือยังอยู่ข้างบน</span><span class="ch">\n</span><span class="st">แต่ประเทศถูกหมุนไปแล้ว 180°"</span>), (<span class="fl">106.1</span>, <span class="fl">20.9</span>),</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span>WARM, fontsize<span class="op">=</span><span class="fl">10.5</span>, ha<span class="op">=</span><span class="st">"right"</span>, va<span class="op">=</span><span class="st">"top"</span>, linespacing<span class="op">=</span><span class="fl">1.4</span>)</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>    ax.set_title(T(<span class="ss">f"(ค) กลับหัวเฉพาะแผนที่</span><span class="ch">\n</span><span class="sc">{</span>changed<span class="sc">:,}</span><span class="ss"> เซลล์ตอบผิดจุด "</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>                   <span class="ss">f"(</span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>changed<span class="op">/</span><span class="bu">len</span>(CELLS)<span class="sc">:.1f}</span><span class="ss">%)"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">11.5</span>)</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> a <span class="kw">in</span> fig.axes:</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>        a.set_xlim(<span class="fl">97.2</span>, <span class="fl">106.4</span>)<span class="op">;</span> a.set_ylim(<span class="fl">4.8</span>, <span class="fl">21.2</span>)<span class="op">;</span> a.set_aspect(<span class="st">"equal"</span>)<span class="op">;</span> a.axis(<span class="st">"off"</span>)</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>    fig.text(<span class="fl">0.5</span>, <span class="fl">0.015</span>, T(<span class="st">"จุดส้มในช่อง (ค) คือจุดทะเบียนตำแหน่งจริง — แผนที่หมุนแต่ข้อมูลไม่หมุน "</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"ผลลัพธ์ไม่ใช่ภาพที่ดูแปลก แต่คือคำตอบที่ผิดเป็นกิโลเมตร"</span>),</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>             color<span class="op">=</span>MUTED, fontsize<span class="op">=</span><span class="fl">10.5</span>, ha<span class="op">=</span><span class="st">"center"</span>)</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(T(<span class="st">"กลับในเป็นนอก · กลับหัว · กลับทิศของ join — สามอย่างนี้ไม่ใช่ลูกเล่น "</span></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"แต่คือกฎที่เราไม่ได้เขียนไว้"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">15.5</span>, y<span class="op">=</span><span class="fl">0.99</span>)</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> os.path.join(OUT, <span class="st">"day15_inside_out.png"</span>)</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>    fig.savefig(p, facecolor<span class="op">=</span>BG, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)<span class="op">;</span> plt.close(fig)</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"เขียน </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-6-ภาพ-2-เซลล-เปนไทย-กเปอรเซนต" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-6-ภาพ-2-เซลล-เปนไทย-กเปอรเซนต">ตอน 6) ภาพ 2 — เซลล์ “เป็นไทย” กี่เปอร์เซ็นต์</h2>
+<div id="cell-17" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------ 6. ภาพ 2 — เซลล์ "เป็นไทย" กี่เปอร์เซ็นต์</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_share():</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    fig, (ax, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">14.4</span>, <span class="fl">5.4</span>), dpi<span class="op">=</span><span class="dv">150</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                                  gridspec_kw<span class="op">=</span><span class="bu">dict</span>(width_ratios<span class="op">=</span>[<span class="fl">1.15</span>, <span class="dv">1</span>]))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    fig.patch.set_facecolor(BG)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    ax.set_facecolor(<span class="st">"#111c2b"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    bins <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="fl">1.0</span>, <span class="dv">41</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    ax.hist(share <span class="op">*</span> <span class="dv">100</span>, bins<span class="op">=</span>bins <span class="op">*</span> <span class="dv">100</span>, color<span class="op">=</span>TEAL, edgecolor<span class="op">=</span>BG, lw<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    ax.axvline(<span class="dv">50</span>, color<span class="op">=</span>WARM, ls<span class="op">=</span><span class="st">"--"</span>, lw<span class="op">=</span><span class="fl">1.4</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="dv">51</span>, ax.get_ylim()[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">0.82</span>, T(<span class="st">"เกณฑ์ 50%"</span>), color<span class="op">=</span>WARM, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(T(<span class="st">"สัดส่วนพื้นที่เซลล์ที่อยู่ในประเทศไทย (ร้อยละ)"</span>))</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(T(<span class="st">"จำนวนเซลล์ (มาตราลอการิทึม)"</span>))</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    ax.set_yscale(<span class="st">"log"</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    ax.set_title(T(<span class="st">"เซลล์ที่ระบบนับว่าเป็นไทย เป็นไทยจริงแค่ไหน"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">12.5</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(colors<span class="op">=</span>INK, labelsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> ax.spines.values(): s.set_color(<span class="st">"#33415e"</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> (<span class="st">"top"</span>, <span class="st">"right"</span>): ax.spines[s].set_visible(<span class="va">False</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    ax2.set_facecolor(<span class="st">"#111c2b"</span>)<span class="op">;</span> ax2.axis(<span class="st">"off"</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    rows <span class="op">=</span> [(<span class="ss">f"</span><span class="sc">{</span><span class="bu">int</span>(k<span class="op">*</span><span class="dv">100</span>)<span class="sc">}</span><span class="ss">% หรือน้อยกว่า"</span>, v[<span class="st">"cells"</span>], <span class="ss">f"</span><span class="sc">{</span>v[<span class="st">'outside_km2'</span>]<span class="sc">:,.1f}</span><span class="ss"> ตร.กม."</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> k, v <span class="kw">in</span> THRESH.items() <span class="cf">if</span> k <span class="op">&lt;</span> <span class="fl">1.0</span>]</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    ax2.text(<span class="fl">0.02</span>, <span class="fl">0.95</span>, T(<span class="st">"เซลล์ที่พื้นที่เกินเกณฑ์น้อยว่า..."</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">11.5</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    ax2.text(<span class="fl">0.62</span>, <span class="fl">0.95</span>, T(<span class="st">"จำนวน"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">11.5</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    ax2.text(<span class="fl">0.78</span>, <span class="fl">0.95</span>, T(<span class="st">"ส่วนที่ล้นออกนอกประเทศ"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">11.5</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="fl">0.87</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> lab, n, area <span class="kw">in</span> rows:</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        ax2.text(<span class="fl">0.02</span>, y, lab, color<span class="op">=</span><span class="st">"#cfe0f0"</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        ax2.text(<span class="fl">0.62</span>, y, <span class="ss">f"</span><span class="sc">{</span>n<span class="sc">:,}</span><span class="ss">"</span>, color<span class="op">=</span>ACCENT, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        ax2.text(<span class="fl">0.78</span>, y, area, color<span class="op">=</span>TEAL, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        y <span class="op">-=</span> <span class="fl">0.075</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    y <span class="op">-=</span> <span class="fl">0.03</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    ax2.text(<span class="fl">0.02</span>, y, T(<span class="st">"หกเซลล์ที่ 'เป็นไทย' น้อยที่สุด (ชื่อจากไฟล์ ไม่ใช่จากภาพ)"</span>),</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>             color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">11.5</span>)<span class="op">;</span> y <span class="op">-=</span> <span class="fl">0.07</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> w <span class="kw">in</span> WORST[:<span class="dv">6</span>]:</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        ax2.text(<span class="fl">0.02</span>, y, <span class="ss">f"</span><span class="sc">{</span>w[<span class="st">'share_km2'</span>]<span class="op">*</span><span class="dv">100</span><span class="sc">:5.1f}</span><span class="ss">%  </span><span class="sc">{</span>w[<span class="st">'province'</span>]<span class="sc">}</span><span class="ss"> · </span><span class="sc">{</span>w[<span class="st">'nearest_site'</span>]<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span><span class="st">"#cfe0f0"</span>, fontsize<span class="op">=</span><span class="fl">10.5</span>)</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>        y <span class="op">-=</span> <span class="fl">0.062</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    ax2.text(<span class="fl">0.02</span>, <span class="fl">0.03</span>, T(<span class="ss">f"ค่ามัธยฐาน </span><span class="sc">{</span>np<span class="sc">.</span>median(share)<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">% · ค่าเฉลี่ย </span><span class="sc">{</span>share<span class="sc">.</span>mean()<span class="op">*</span><span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">% "</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>                           <span class="ss">f"· ค่าต่ำสุด </span><span class="sc">{</span>share<span class="sc">.</span><span class="bu">min</span>()<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%"</span>), color<span class="op">=</span>MUTED, fontsize<span class="op">=</span><span class="fl">10.5</span>)</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(T(<span class="st">"กฎ 'จุดกลางอยู่ในประเทศ' ไม่ได้บอกว่าเซลล์ส่วนใหญ่อยู่ในประเทศ"</span>),</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">15</span>, y<span class="op">=</span><span class="fl">0.99</span>)</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> os.path.join(OUT, <span class="st">"day15_inside_share.png"</span>)</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>    fig.savefig(p, facecolor<span class="op">=</span>BG, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)<span class="op">;</span> plt.close(fig)</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"เขียน </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-7-ภาพ-3-กลบหว-กบ-กลบทศของ-join" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-7-ภาพ-3-กลบหว-กบ-กลบทศของ-join">ตอน 7) ภาพ 3 — กลับหัว กับ กลับทิศของ join</h2>
+<div id="cell-19" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------ 7. ภาพ 3 — กลับหัว กับ กลับทิศของ join</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_join():</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    fig, (ax, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">14.4</span>, <span class="fl">5.4</span>), dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    fig.patch.set_facecolor(BG)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    ax.set_facecolor(<span class="st">"#111c2b"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    ax.hist(np.clip(extra, <span class="dv">0</span>, <span class="va">None</span>), bins<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="bu">min</span>(extra.<span class="bu">max</span>(), <span class="dv">900</span>), <span class="dv">46</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            color<span class="op">=</span>WARM, edgecolor<span class="op">=</span>BG, lw<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    ax.axvline(extra.mean(), color<span class="op">=</span>INK, ls<span class="op">=</span><span class="st">"--"</span>, lw<span class="op">=</span><span class="fl">1.3</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    ax.text(extra.mean() <span class="op">*</span> <span class="fl">1.03</span>, ax.get_ylim()[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">0.86</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            T(<span class="ss">f"ค่าเฉลี่ย </span><span class="sc">{</span>extra<span class="sc">.</span>mean()<span class="sc">:,.1f}</span><span class="ss"> กม."</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.02</span>, <span class="fl">0.62</span>, T(<span class="ss">f"บางเซลล์กลับใกล้ขึ้น: ค่าต่ำสุด </span><span class="sc">{</span>extra<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:,.1f}</span><span class="ss"> กม."</span> <span class="op">+</span> <span class="bu">chr</span>(<span class="dv">10</span>) <span class="op">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                          <span class="ss">f"แต่ส่วนใหญ่ไกลขึ้น · ค่ามัธยฐาน </span><span class="sc">{</span>np<span class="sc">.</span>median(extra)<span class="sc">:,.1f}</span><span class="ss"> กม."</span>),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>            transform<span class="op">=</span>ax.transAxes, color<span class="op">=</span>MUTED, fontsize<span class="op">=</span><span class="dv">10</span>, va<span class="op">=</span><span class="st">"top"</span>, linespacing<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(T(<span class="st">"ระยะที่ไกลขึ้นเมื่อแผนที่ถูกกลับหัวแต่ข้อมูลไม่กลับ (กิโลเมตร)"</span>))</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(T(<span class="st">"จำนวนเซลล์"</span>))</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    ax.set_title(T(<span class="ss">f"กลับหัวเฉพาะแผนที่: </span><span class="sc">{</span>changed<span class="sc">:,}</span><span class="ss"> เซลล์ตอบผิดจุด "</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>                   <span class="ss">f"(สูงสุด </span><span class="sc">{</span>extra<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:,.0f}</span><span class="ss"> กม.)"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(colors<span class="op">=</span>INK, labelsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> ax.spines.values(): s.set_color(<span class="st">"#33415e"</span>)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> (<span class="st">"top"</span>, <span class="st">"right"</span>): ax.spines[s].set_visible(<span class="va">False</span>)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    ax2.set_facecolor(<span class="st">"#111c2b"</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    cats <span class="op">=</span> [T(<span class="st">"จุด 83 จุด</span><span class="ch">\n</span><span class="st">เลือกเซลล์"</span>), T(<span class="st">"เซลล์ที่ได้เจ้าของ"</span>), T(<span class="st">"คู่ที่เลือก</span><span class="ch">\n</span><span class="st">ซึ่งกันและกัน"</span>),</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>            T(<span class="st">"เซลล์ที่</span><span class="ch">\n</span><span class="st">ไม่มีจุดมาเลือก"</span>)]</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    vals <span class="op">=</span> [<span class="dv">83</span>, JOIN[<span class="st">"cells_claimed_by_a_site"</span>], JOIN[<span class="st">"mutual_pairs"</span>], JOIN[<span class="st">"cells_never_claimed"</span>]]</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    cols <span class="op">=</span> [ACCENT, TEAL, COOL, WARM]</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    bars <span class="op">=</span> ax2.bar(<span class="bu">range</span>(<span class="dv">4</span>), vals, color<span class="op">=</span>cols, width<span class="op">=</span><span class="fl">0.62</span>)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> b, v <span class="kw">in</span> <span class="bu">zip</span>(bars, vals):</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>        ax2.text(b.get_x() <span class="op">+</span> b.get_width()<span class="op">/</span><span class="dv">2</span>, v <span class="op">*</span> <span class="fl">1.02</span>, <span class="ss">f"</span><span class="sc">{</span>v<span class="sc">:,}</span><span class="ss">"</span>, color<span class="op">=</span>INK, ha<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    ax2.set_xticks(<span class="bu">range</span>(<span class="dv">4</span>))<span class="op">;</span> ax2.set_xticklabels(cats, color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">10.5</span>)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    ax2.set_yscale(<span class="st">"log"</span>)<span class="op">;</span> ax2.set_ylim(<span class="dv">1</span>, <span class="dv">4000</span>)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(colors<span class="op">=</span>INK, labelsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    ax2.set_title(T(<span class="ss">f"join กลับทิศตอบอีกคำถาม: </span><span class="sc">{</span><span class="bu">len</span>(CELLS)<span class="sc">:,}</span><span class="ss"> เซลล์เหลือ "</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>                    <span class="ss">f"</span><span class="sc">{</span>JOIN[<span class="st">'cells_claimed_by_a_site'</span>]<span class="sc">}</span><span class="ss"> เซลล์ที่มีเจ้าของ"</span>),</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>                  color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> ax2.spines.values(): s.set_color(<span class="st">"#33415e"</span>)</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> (<span class="st">"top"</span>, <span class="st">"right"</span>): ax2.spines[s].set_visible(<span class="va">False</span>)</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(T(<span class="st">"กลับหัวไม่ใช่ความผิดพลาด ถ้ากลับทั้งสองฝั่ง · "</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ที่ผิดพลาดจริงคือการกลับข้างเดียว และเปลี่ยนทิศของคำถาม"</span>),</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">14.5</span>, y<span class="op">=</span><span class="fl">0.99</span>)</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> os.path.join(OUT, <span class="st">"day15_upside_down.png"</span>)</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    fig.savefig(p, facecolor<span class="op">=</span>BG, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)<span class="op">;</span> plt.close(fig)</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"เขียน </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>P1, P2, P3 <span class="op">=</span> draw_hero(), draw_share(), draw_join()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-8-artifact" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-8-artifact">ตอน 8) artifact</h2>
+<div id="cell-21" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------ 8. artifact</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pyo(o):</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">hasattr</span>(o, <span class="st">"item"</span>):</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> o.item()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(o, np.ndarray):</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> o.tolist()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="ss">f"เข้ารหัส JSON ไม่ได้ที่ </span><span class="sc">{</span><span class="bu">type</span>(o)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(<span class="bu">dict</span>(cell<span class="op">=</span>g3.cell.values, province<span class="op">=</span>prov_art, nearest_site<span class="op">=</span>near_art,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                  full_km2<span class="op">=</span>np.<span class="bu">round</span>(cell_km2_full, <span class="dv">3</span>), inside_km2<span class="op">=</span>np.<span class="bu">round</span>(in_km2, <span class="dv">3</span>),</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                  inside_share<span class="op">=</span>np.<span class="bu">round</span>(share, <span class="dv">5</span>),</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                  answer_if_map_flipped<span class="op">=</span>ans_flip)).to_csv(os.path.join(OUT, <span class="st">"day15_cells_inside_out.csv"</span>),</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                                                          index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>STATS <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    theme<span class="op">=</span><span class="st">"Inside out, upside down. Something on this map is not quite right."</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    theme_source<span class="op">=</span><span class="st">"30daymapchallenge.com หัวข้อ Day 15 'Inside out' (อ่านสดวันเขียน)"</span>,</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    generated_local<span class="op">=</span>time.strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S"</span>),</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    made_on<span class="op">=</span><span class="st">"14 พ.ย. 2569 (ทำล่วงหน้าหนึ่งวัน · ลงวันที่ 15 ตามโจทย์)"</span>,</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    h3_version<span class="op">=</span>h3.__version__,</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    inputs<span class="op">=</span><span class="bu">dict</span>(hex_grid_cells<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(CELLS)), site_register<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(df)),</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>                outline_source<span class="op">=</span><span class="st">"Natural Earth 10m admin_0_countries"</span>,</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>                country_area_km2<span class="op">=</span><span class="bu">round</span>(country_km2, <span class="dv">1</span>)),</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    inside_share<span class="op">=</span><span class="bu">dict</span>(worst_cell_outside_pct<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(<span class="dv">100</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> share.<span class="bu">min</span>())), <span class="dv">2</span>),</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>                      cells_fully_inside<span class="op">=</span><span class="bu">int</span>((share <span class="op">&gt;=</span> <span class="fl">0.999999</span>).<span class="bu">sum</span>()),</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>                      mean_pct<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(share.mean()<span class="op">*</span><span class="dv">100</span>), <span class="dv">3</span>),</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>                      median_pct<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(np.median(share)<span class="op">*</span><span class="dv">100</span>), <span class="dv">3</span>),</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>                      min_pct<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(share.<span class="bu">min</span>()<span class="op">*</span><span class="dv">100</span>), <span class="dv">3</span>),</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>                      max_pct<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(share.<span class="bu">max</span>()<span class="op">*</span><span class="dv">100</span>), <span class="dv">3</span>),</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>                      thresholds<span class="op">=</span>THRESH, worst_six<span class="op">=</span>WORST,</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>                      sum_inside_km2<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(in_km2.<span class="bu">sum</span>()), <span class="dv">1</span>),</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>                      sum_full_km2<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(cell_km2_full.<span class="bu">sum</span>()), <span class="dv">1</span>)),</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    complement_of_bbox<span class="op">=</span>COMPL,</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    upside_down<span class="op">=</span>FLIP,</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    join_inversion<span class="op">=</span>JOIN,</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    cross_check_day07<span class="op">=</span>XDAY7,</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    cross_check_day14<span class="op">=</span><span class="bu">dict</span>(day14_res5_cells_ne10m<span class="op">=</span><span class="dv">1745</span>, day3_grid_cells<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(CELLS)),</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>                           day14_sites_without_own_cell<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>                           day14_sites_outside_outline<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>                           note<span class="op">=</span><span class="st">"Day 14 นับจากขอบ NE 10m ด้วย H3 fill วันนี้ใช้กริดของ Day 3 "</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"(GADM) มา clip กับขอบ NE 10m — สองวิธีให้เลขคนละชุดแต่เรื่องเดียวกัน"</span>),</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    figures<span class="op">=</span>[<span class="st">"day15_inside_out.png"</span>, <span class="st">"day15_inside_share.png"</span>, <span class="st">"day15_upside_down.png"</span>],</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>    metric_definitions<span class="op">=</span>{</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>        <span class="st">"worst_cell_outside_pct"</span>: <span class="st">"ร้อยละของพื้นที่เซลล์ที่อยู่นอกประเทศ สำหรับเซลล์ที่ 'เป็นไทย' น้อยที่สุด"</span>,</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>        <span class="st">"cells_fully_inside"</span>: <span class="st">"จำนวนเซลล์ที่ clip แล้วพื้นที่เท่ากับเซลล์เต็มทุกตารางเมตร (share = 100%)"</span>,</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>        <span class="st">"inside_share"</span>: <span class="st">"พื้นที่เซลล์หลัง clip กับเส้นขอบประเทศ หารด้วยพื้นที่เซลล์เต็ม (ร้อยละ) — "</span></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"บอกว่า 'เซลล์ที่ระบบนับเป็นไทย' เป็นไทยจริงเท่าไร"</span>,</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>        <span class="st">"thresholds"</span>: <span class="st">"จำนวนเซลล์ที่ inside_share ต่ำกว่าเกณฑ์ พร้อมผลรวมพื้นที่ที่ล้นออกนอกประเทศ (ตร.กม.)"</span>,</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>        <span class="st">"bbox_cells"</span>: <span class="st">"จำนวนเซลล์ H3 res 5 ที่จุดกลางอยู่ในกล่องคลุมประเทศ (รวมส่วนที่เป็นประเทศเพื่อนบ้าน)"</span>,</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>        <span class="st">"outside_cells"</span>: <span class="st">"เซลล์ในกล่องคลุมประเทศที่จุดกลางอยู่นอกไทย = complement ที่วาดในช่อง (ข)"</span>,</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>        <span class="st">"country_share_of_bbox_pct"</span>: <span class="st">"พื้นที่ประเทศ ÷ พื้นที่กล่องคลุมประเทศ × 100 — 'ความเปล่า' โดยรอบ"</span>,</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>        <span class="st">"changed_cells"</span>: <span class="st">"จำนวนเซลล์ที่ตอบ 'จุดทะเบียนที่ใกล้ที่สุด' เปลี่ยนไปเมื่อหมุนแผนที่ 180° "</span></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"รอบ centroid ของประเทศ แต่ไม่หมุนพิกัดจุดทะเบียน"</span>,</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>        <span class="st">"extra_km_mean/max"</span>: <span class="st">"ระยะทางสู่จุดที่ใกล้ที่สุดที่เพิ่มขึ้นเพราะกลับหัวเฉพาะแผนที่ "</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"(มัธยฐาน/เฉลี่ย/สูงสุด เป็นกิโลเมตร)"</span>,</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>        <span class="st">"rotate_both_planar_max_abs_diff_m"</span>: <span class="st">"ผลต่างสูงสุดของระยะทาง (เมตร) เมื่อหมุนทั้งแผนที่และข้อมูล 180° บนระนาบ projection แล้ววัดระยะบนระนาบเดียวกัน — ต้องเป็น 0 เพราะการหมุนคือ rigid motion"</span>,</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>        <span class="st">"rotate_both_geodesic_max_abs_diff_km"</span>: <span class="st">"ผลต่างสูงสุดของระยะทาง (กิโลเมตร) เมื่อหมุนทั้งแผนที่และข้อมูลบนระนาบ projection แต่ไปวัดระยะบนทรงกลม — ไม่เป็น 0 เพราะการหมุนในแผนที่ไม่ใช่การหมุนบนโลก"</span>,</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>        <span class="st">"cells_claimed_by_a_site"</span>: <span class="st">"จำนวนเซลล์ที่แตกต่างกันที่จุด 83 จุดเลือกเมื่อเริ่มจากฝั่งจุด (site→cell)"</span>,</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mutual_pairs"</span>: <span class="st">"จำนวนคู่ที่เซลล์เลือกจุดนั้น และจุดนั้นก็เลือกเซลล์นั้น (mutual nearest neighbour)"</span>,</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>        <span class="st">"cells_never_claimed"</span>: <span class="st">"เซลล์ที่ไม่มีจุดทะเบียนใดเลือกเลยเมื่อเริ่มจากฝั่งจุด"</span>,</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>        <span class="st">"claimed_cell_extra_km_mean"</span>: <span class="st">"ผลเฉลี่ยของ 'ถ้าเชื่อการเลือกจากฝั่งจุด' ผู้ใช้เซลล์นั้นจะไกลขึ้นกี่กิโลเมตร"</span>,</span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>        <span class="st">"cross_check_day07"</span>: <span class="st">"ตัวเลขในโพสต์ Day 7 ที่เคยหาที่มาไม่ได้ใน artifact เทียบกับที่คำนวณใหม่วันนี้"</span>},</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>    note<span class="op">=</span><span class="st">"ภาพช่อง (ค) ตั้งใจให้ประเทศกลับหัวเพื่อสาธิตความผิดพลาดที่วัดได้ ไม่ใช่แผนที่สำหรับใช้งาน"</span>)</span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>json.dump(STATS, <span class="bu">open</span>(os.path.join(OUT, <span class="st">"day15_stats.json"</span>), <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>),</span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>          ensure_ascii<span class="op">=</span><span class="va">False</span>, indent<span class="op">=</span><span class="dv">2</span>, default<span class="op">=</span>pyo)</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"เขียน day15_stats.json + day15_cells_inside_out.csv ที่ </span><span class="sc">{</span>OUT<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-9-referee" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-9-referee">ตอน 9) referee</h2>
+<div id="cell-23" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------ 9. referee</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> [<span class="st">"day15_inside_out.png"</span>, <span class="st">"day15_inside_share.png"</span>, <span class="st">"day15_upside_down.png"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">"day15_cells_inside_out.csv"</span>, <span class="st">"day15_stats.json"</span>]:</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    pth <span class="op">=</span> os.path.join(OUT, f)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> os.path.exists(pth) <span class="kw">and</span> os.path.getsize(pth) <span class="op">&gt;</span> <span class="dv">0</span>, <span class="ss">f"ไฟล์ขาดหรือว่าง: </span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="kw">not</span> [f <span class="cf">for</span> f <span class="kw">in</span> os.listdir(OUT) <span class="cf">if</span> f.startswith(<span class="st">"_tmp"</span>)], <span class="st">"ต้องลบไฟล์ชั่วคราวให้หมด"</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>json.load(<span class="bu">open</span>(os.path.join(OUT, <span class="st">"day15_stats.json"</span>), encoding<span class="op">=</span><span class="st">"utf-8"</span>))</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>lint_thai(<span class="st">" "</span>.join(TXT) <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> __doc__, <span class="st">"day15-figure-texts"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>_src <span class="op">=</span> os.path.abspath(<span class="va">__file__</span>) <span class="cf">if</span> <span class="st">"__file__"</span> <span class="kw">in</span> <span class="bu">globals</span>() <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> _src <span class="kw">and</span> os.path.exists(_src):</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    _bad <span class="op">=</span> []</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _n, _l <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">open</span>(_src, encoding<span class="op">=</span><span class="st">"utf-8"</span>).read().split(<span class="bu">chr</span>(<span class="dv">10</span>)), <span class="dv">1</span>):</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">any</span>(<span class="bn">0x0E00</span> <span class="op">&lt;=</span> <span class="bu">ord</span>(c) <span class="op">&lt;=</span> <span class="bn">0x0E7F</span> <span class="cf">for</span> c <span class="kw">in</span> _l):</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> c <span class="kw">in</span> _l:</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                o <span class="op">=</span> <span class="bu">ord</span>(c)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> (<span class="bn">0x0100</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x017F</span>) <span class="kw">or</span> (<span class="bn">0x1E00</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x1EFF</span>) <span class="kw">or</span> <span class="op">\</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>                   (<span class="bn">0x3000</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x30FF</span>) <span class="kw">or</span> (<span class="bn">0xAC00</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0xD7AF</span>) <span class="kw">or</span> (<span class="bn">0x4E00</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x9FFF</span>):</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>                    _bad.append((_n, c))</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="kw">not</span> _bad, <span class="ss">f"พบอักษรไม่ใช่ไทย/ASCII ในบรรทัดที่มีภาษาไทย: </span><span class="sc">{</span>_bad[:<span class="dv">6</span>]<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    log(<span class="st">"ตรวจ unicode ทั้งไฟล์แล้ว"</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">abs</span>(share.mean() <span class="op">-</span> <span class="fl">0.9926</span>) <span class="op">&lt;</span> <span class="fl">0.01</span>, <span class="st">"ค่าเฉลี่ย inside share เปลี่ยนจากที่ตรวจไว้ — ทบทวนเส้นขอบ"</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> planar_diff_m <span class="op">&lt;</span> <span class="fl">1e-3</span>, <span class="st">"หมุนทั้งสองฝั่งบนระนาบแล้วระยะทางต้องไม่เปลี่ยน (rigid motion)"</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>log(<span class="st">"สรุป: "</span> <span class="op">+</span> json.dumps(<span class="bu">dict</span>(</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    cells<span class="op">=</span><span class="bu">len</span>(CELLS), median_share_pct<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(np.median(share)<span class="op">*</span><span class="dv">100</span>), <span class="dv">2</span>),</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    min_share_pct<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(share.<span class="bu">min</span>()<span class="op">*</span><span class="dv">100</span>), <span class="dv">2</span>), cells_below_50<span class="op">=</span>THRESH[<span class="fl">0.5</span>][<span class="st">"cells"</span>],</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    outside_km2<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(cell_km2_full.<span class="bu">sum</span>() <span class="op">-</span> in_km2.<span class="bu">sum</span>()), <span class="dv">1</span>),</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    uncovered_km2<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(country_km2 <span class="op">-</span> in_km2.<span class="bu">sum</span>()), <span class="dv">1</span>),</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    flipped_changed_cells<span class="op">=</span>changed, flip_extra_mean_km<span class="op">=</span>FLIP[<span class="st">"extra_km_mean"</span>],</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    flip_extra_max_km<span class="op">=</span>FLIP[<span class="st">"extra_km_max"</span>],</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    rotate_planar_diff_m<span class="op">=</span><span class="bu">round</span>(planar_diff_m, <span class="dv">6</span>),</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    rotate_geodesic_diff_km<span class="op">=</span>FLIP[<span class="st">"rotate_both_geodesic_max_abs_diff_km"</span>],</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    claimed_cells<span class="op">=</span>JOIN[<span class="st">"cells_claimed_by_a_site"</span>], mutual<span class="op">=</span>JOIN[<span class="st">"mutual_pairs"</span>],</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    never_claimed<span class="op">=</span>JOIN[<span class="st">"cells_never_claimed"</span>]), ensure_ascii<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"DONE day15 ใน </span><span class="sc">%.1f</span><span class="st"> วิ"</span> <span class="op">%</span> (time.time() <span class="op">-</span> T0))</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>_LOGF.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

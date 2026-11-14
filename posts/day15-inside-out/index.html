@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="โจทย์ ‘Inside out, upside down. Something on this map is not quite right.’ ผมไม่แกล้งวาดแผนที่ผิด แต่กลับกฎจริงสามข้อที่ใช้อยู่ทุกวัน — กฎจุดกลางเซลล์ของ H3, การหมุนแผนที่ 180° โดยไม่หมุนข้อมูล, และการเปลี่ยนทิศของ nearest-neighbour join — แล้ววัดผล: มีเซลล์ที่ 81.03% ของพื้นที่อยู่นอกประเทศแต่ยังถูกนับเป็นไทย, 1,737 จาก 1,738 เซลล์ตอบผิดจุดเมื่อแผนที่กลับหัว, และ 83 จุดเลือกได้แค่ 66 เซลล์เมื่อเริ่มคำถามจากฝั่งจุด">
+
+<title>Day 15 · Inside out — กลับกฎสามข้อที่ซีรีส์นี้ใช้อยู่แล้ว แล้ววัดว่าข้อมูลเพี้ยนไปกี่กิโลเมตร – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#ทมาของแผนท" id="toc-ทมาของแผนท" class="nav-link active" data-scroll-target="#ทมาของแผนท">ที่มาของแผนที่</a></li>
+  <li><a href="#ผลลพธ" id="toc-ผลลพธ" class="nav-link" data-scroll-target="#ผลลพธ">ผลลัพธ์</a></li>
+  <li><a href="#วธทำแบบยอ" id="toc-วธทำแบบยอ" class="nav-link" data-scroll-target="#วธทำแบบยอ">วิธีทำแบบย่อ</a></li>
+  <li><a href="#ขอจำกดทตองบอกตรง-ๆ" id="toc-ขอจำกดทตองบอกตรง-ๆ" class="nav-link" data-scroll-target="#ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
+  <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 15 · Inside out — กลับกฎสามข้อที่ซีรีส์นี้ใช้อยู่แล้ว แล้ววัดว่าข้อมูลเพี้ยนไปกี่กิโลเมตร</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">30DayMapChallenge</div>
+    <div class="quarto-category">cartography</div>
+    <div class="quarto-category">h3</div>
+    <div class="quarto-category">nearest-neighbour</div>
+    <div class="quarto-category">data-quality</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    โจทย์ ‘Inside out, upside down. Something on this map is not quite right.’ ผมไม่แกล้งวาดแผนที่ผิด แต่กลับกฎจริงสามข้อที่ใช้อยู่ทุกวัน — กฎจุดกลางเซลล์ของ H3, การหมุนแผนที่ 180° โดยไม่หมุนข้อมูล, และการเปลี่ยนทิศของ nearest-neighbour join — แล้ววัดผล: มีเซลล์ที่ 81.03% ของพื้นที่อยู่นอกประเทศแต่ยังถูกนับเป็นไทย, 1,737 จาก 1,738 เซลล์ตอบผิดจุดเมื่อแผนที่กลับหัว, และ 83 จุดเลือกได้แค่ 66 เซลล์เมื่อเริ่มคำถามจากฝั่งจุด
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">15 พฤศจิกายน 2569</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day15_inside_out.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>โจทย์ทางการวันนี้คือ <strong>“Inside out, upside down. Something on this map is not quite right.”</strong> (หัวข้อ <em>Inside out</em> — ดึงข้อความมาจากหน้า 30daymapchallenge.com อ่านสดวันเขียน) แผ่นนี้สร้างในเย็นวันที่ 14 พ.ย. จึงเป็น <strong>ล่วงหน้าหนึ่งวัน</strong> ตามที่ผมทำเป็นประจำในชาเลนจ์นี้</p>
+<p>ทางง่ายคือวาดแผนที่ผิดสักแผ่น แล้วเขียนว่า “สังเกตไหมว่าอะไรผิด” — แต่คำว่า “not quite right” ใน GIS มีอยู่จริงและเป็นตัวเลขได้ ผมจึงเลือกกลับ <strong>กฎสามข้อที่ซีรีส์นี้ใช้อยู่แล้ว</strong> แล้ววัดของเสีย</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>การกลับ</th>
+<th>กฎที่ถูกกลับ</th>
+<th>สิ่งที่วัด</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ในเป็นนอก</td>
+<td>H3 เก็บเซลล์ที่ <em>จุดกลาง</em> อยู่ในประเทศ</td>
+<td>เซลล์ที่ระบบนับเป็นไทย เป็นไทยจริงกี่ % ของพื้นที่</td>
+</tr>
+<tr class="even">
+<td>กลับหัว</td>
+<td>หมุนแผนที่ 180° รอบ centroid แต่ไม่หมุนพิกัดจุดทะเบียน</td>
+<td>คำตอบ “จุดที่ใกล้ที่สุด” เปลี่ยนกี่เซลล์ ไกลขึ้นกี่ กม.</td>
+</tr>
+<tr class="odd">
+<td>กลับทิศคำถาม</td>
+<td>เปลี่ยน <code>cell → site</code> เป็น <code>site → cell</code></td>
+<td>ได้คำตอบคนละคำถาม ไม่ใช่คำตอบที่ผิด</td>
+</tr>
+</tbody>
+</table>
+<section id="ทมาของแผนท" class="level2">
+<h2 class="anchored" data-anchor-id="ทมาของแผนท">ที่มาของแผนที่</h2>
+<p>ต้นทางข้อมูลคือของเดิมทั้งซีรีส์ ไม่เพิ่มชุดใหม่</p>
+<ul>
+<li>กริด H3 res 5 ของ <strong>Day 3</strong> — 1,738 เซลล์ (สร้างจากขอบ GADM ในวันนั้น)</li>
+<li>เส้นขอบประเทศ <strong>Natural Earth 10m</strong> (<code>admin_0_countries</code>) — พื้นที่ 512,593.1 ตร.กม.</li>
+<li>ทะเบียนแหล่งท้องฟ้ามืด NARIT <strong>83 จุด</strong></li>
+</ul>
+<p>“Something is not quite right” ของแผ่นนี้จึงไม่ใช่ภาพที่วาดผิด แต่คือ <strong>ช่องว่างระหว่างกฎที่ระบบใช้ กับความจริงบนพื้น</strong> ซึ่งวัดได้ด้วยการ clip, การหมุน, และการสลับทิศของ join</p>
+</section>
+<section id="ผลลพธ" class="level2">
+<h2 class="anchored" data-anchor-id="ผลลพธ">ผลลัพธ์</h2>
+<section id="ในเปนนอก-เซลลทระบบบอกวา-เปนไทย-เปนไทยจรงแคไหน" class="level3">
+<h3 class="anchored" data-anchor-id="ในเปนนอก-เซลลทระบบบอกวา-เปนไทย-เปนไทยจรงแคไหน">๑. ในเป็นนอก — เซลล์ที่ระบบบอกว่า “เป็นไทย” เป็นไทยจริงแค่ไหน</h3>
+<p><img src="day15_inside_share.png" class="img-fluid"></p>
+<p>เอา 1,738 เซลล์มา clip กับเส้นขอบประเทศจริงแล้วหารด้วยพื้นที่เซลล์เต็ม</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>สถิติ</th>
+<th>ค่า</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ค่ามัธยฐาน</td>
+<td>100.0%</td>
+</tr>
+<tr class="even">
+<td>ค่าเฉลี่ย</td>
+<td>99.257%</td>
+</tr>
+<tr class="odd">
+<td>ค่าต่ำสุด</td>
+<td><strong>18.97%</strong></td>
+</tr>
+<tr class="even">
+<td>ค่าสูงสุด</td>
+<td>100.0%</td>
+</tr>
+</tbody>
+</table>
+<p>และนับตามเกณฑ์</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>เกณฑ์ (พื้นที่ในไทยน้อยกว่า)</th>
+<th>จำนวนเซลล์</th>
+<th>ส่วนที่ล้นออกนอกประเทศ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>50%</td>
+<td>3</td>
+<td>598.4 ตร.กม.</td>
+</tr>
+<tr class="even">
+<td>75%</td>
+<td>9</td>
+<td>1,057.7 ตร.กม.</td>
+</tr>
+<tr class="odd">
+<td>90%</td>
+<td>45</td>
+<td>2,250.1 ตร.กม.</td>
+</tr>
+<tr class="even">
+<td>99%</td>
+<td>123</td>
+<td>2,920.6 ตร.กม.</td>
+</tr>
+<tr class="odd">
+<td>ไม่เต็ม 100%</td>
+<td>481</td>
+<td>2,966.7 ตร.กม.</td>
+</tr>
+</tbody>
+</table>
+<p>หกเซลล์ที่มีค่าต่ำสุดของสัดส่วนพื้นที่ในไทย — ชื่อจังหวัดและจุดทะเบียนอ่านจากไฟล์ ไม่ใช่ถอดจากภาพ</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>สัดส่วนพื้นที่ในไทย (6 ค่าต่ำสุด)</th>
+<th>จังหวัด</th>
+<th>จุดทะเบียนที่ใกล้ที่สุด</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>19.0%</td>
+<td>สงขลา</td>
+<td>ปลายแหลมแคมป์</td>
+</tr>
+<tr class="even">
+<td>30.7%</td>
+<td>สงขลา</td>
+<td>ปลายแหลมแคมป์</td>
+</tr>
+<tr class="odd">
+<td>40.8%</td>
+<td>สงขลา</td>
+<td>ปลายแหลมแคมป์</td>
+</tr>
+<tr class="even">
+<td>53.6%</td>
+<td>สงขลา</td>
+<td>ปลายแหลมแคมป์</td>
+</tr>
+<tr class="odd">
+<td>63.8%</td>
+<td>สระแก้ว</td>
+<td>อุทยานแห่งชาติตาพระยา</td>
+</tr>
+<tr class="even">
+<td>68.9%</td>
+<td>เลย</td>
+<td>อุทยานแห่งชาติภูสวนทราย</td>
+</tr>
+</tbody>
+</table>
+<p>สี่เซลล์แรกของสงขลาอยู่ที่ละติจูด 7.35–7.63° ลองจิจูด 100.22–100.37° ซึ่งคือแนวทะเลสาบสงขลา และชายฝั่งอ่าวไทย — จุดกลางเซลล์อยู่บนฝั่ง ระบบจึงนับทั้งก้อนเป็นประเทศ ทั้งที่ค่าต่ำสุด (<strong>18.97%</strong> เป็นพื้นที่ในไทย เท่ากับ <strong>81.03%</strong> อยู่นอกเส้นขอบบก) อยู่ห่างจากคำว่า “เป็นไทย” พอสมควร เซลล์ 1,555 เซลล์จาก 1,738 clip แล้วได้พื้นที่ครบทั้งก้อนไม่มีส่วนนอกประเทศปน ที่เหลือคือรอยต่อที่กฎจุดกลางมองไม่เห็น นี่คือ “inside out” ที่ไม่ใช่ลูกเล่น: กฎจุดกลางเป็นเพียง <em>ข้อจำกัดของวิธีการ</em> ไม่ใช่คำรับประกันว่าเซลล์นั้นเป็นไทย</p>
+<p>ในทางกลับกัน ถ้าถามว่า “อะไรอยู่นอกประเทศใกล้เราที่สุด” — ในกล่องคลุมประเทศ (bounding box) มี ตาราง res 5 ทั้งหมด 4,978 เซลล์ เป็นของไทย 1,738 เซลล์ และ <strong>3,240 เซลล์ที่ไม่ใช่ไทย</strong> ประเทศเรากินพื้นที่เพียง <strong>34.93%</strong> ของกล่องที่แผนที่มักจะแสดง</p>
+<p><img src="day15_inside_out.png" class="img-fluid"></p>
+</section>
+<section id="กลบหว-แผนทหมน-แตขอมลไมหมน" class="level3">
+<h3 class="anchored" data-anchor-id="กลบหว-แผนทหมน-แตขอมลไมหมน">๒. กลับหัว — แผนที่หมุน แต่ข้อมูลไม่หมุน</h3>
+<p><img src="day15_upside_down.png" class="img-fluid"></p>
+<p>หมุนเซลล์ทั้ง 1,738 ก้อนไป 180° รอบ centroid ของประเทศ (แบบเดียวกับที่คนดูภาพกลับหัวทำ) แต่ปล่อยพิกัดจุดทะเบียน 83 จุดไว้กับที่ แล้วถามคำถามเดิม “จุดทะเบียนที่ใกล้ที่สุดของเซลล์นี้คือจุดไหน”</p>
+<ul>
+<li><strong>1,737 จาก 1,738 เซลล์ตอบผิดจุด</strong> (99.94%) — เหลือเซลล์เดียวที่โชคช่วย</li>
+<li>ระยะทางสู่จุดที่ใกล้ที่สุดเฉลี่ยเพิ่มจาก <strong>57.368 กม. เป็น 127.054 กม.</strong></li>
+<li>ส่วนที่ไกลขึ้น: ค่าต่ำสุด <strong>−142.714 กม.</strong> (บางเซลล์ใกล้ขึ้น) · ค่ามัธยฐาน <strong>38.049 กม.</strong> · ค่าเฉลี่ย <strong>69.686 กม.</strong> · ค่าสูงสุด <strong>450.898 กม.</strong></li>
+</ul>
+<p>และนี่คือส่วนที่ผมชอบที่สุดของการทดลอง: <strong>ถ้าหมุนทั้งสองฝั่งพร้อมกัน การกลับหัวไม่ใช่ความผิดพลาดเลย</strong> วัดระยะบนระนาบ projection เดียวกัน ผลต่างสัมบูรณ์สูงสุด = <strong>0.0 ม.</strong> (rigid motion ตามนิยาม) แต่ถ้าไปวัดระยะทางบนทรงกลมหลังหมุนในระนาบ จะได้ผลต่างถึง <strong>0.849 กม.</strong> เพราะ “การหมุนแผนที่” ใน projection หนึ่ง <em>ไม่ใช่</em> “การหมุนโลก” — สองอย่างนี้ฟังดูเหมือนกัน แต่ไม่เท่ากัน</p>
+</section>
+<section id="กลบทศของ-join-ตงคำถามจากฝงจด" class="level3">
+<h3 class="anchored" data-anchor-id="กลบทศของ-join-ตงคำถามจากฝงจด">๓. กลับทิศของ join — ตั้งคำถามจากฝั่งจุด</h3>
+<p>ซีรีส์นี้ตอบคำถาม “เซลล์นี้ใกล้จุดไหน” มาตั้งแต่ Day 3 วันนี้ลองถามกลับ “จุดนี้ใกล้เซลล์ไหน” (เริ่มจากฝั่งจุด 83 จุด เลือกเซลล์ที่ใกล้ตัวมันที่สุด)</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ตัวเลข</th>
+<th>ค่า</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>จุดในทะเบียน</td>
+<td>83</td>
+</tr>
+<tr class="even">
+<td>เซลล์ที่ถูกเลือก (ไม่ซ้ำ)</td>
+<td><strong>66</strong></td>
+</tr>
+<tr class="odd">
+<td>เซลล์ที่ไม่มีจุดใดเลือกเลย</td>
+<td><strong>1,672</strong></td>
+</tr>
+<tr class="even">
+<td>จุดที่ต้องใช้เซลล์ร่วมกัน</td>
+<td>17</td>
+</tr>
+<tr class="odd">
+<td>คู่ที่เลือกซึ่งกันและกัน (mutual)</td>
+<td>65</td>
+</tr>
+<tr class="even">
+<td>เซลล์ที่ถูกเลือกแต่คำตอบของตัวเองไม่ตรง</td>
+<td>18</td>
+</tr>
+<tr class="odd">
+<td>ผู้ใช้เซลล์นั้นไกลขึ้นเฉลี่ย</td>
+<td>2.951 กม. (สูงสุด 22.704 กม.)</td>
+</tr>
+</tbody>
+</table>
+<p>ข้อสรุปไม่ใช่ “join กลับทิศให้คำตอบผิด” แต่คือ <strong>มันตอบอีกคำถามหนึ่ง</strong> — ถ้าเอา 66 เซลล์ที่จุดเลือก ไปทำแผนที่ “พื้นที่ให้บริการของจุดทะเบียน” จะได้แผนที่ที่มีรูโหว่ 1,672 เซลล์ เพราะการจับคู่แบบ nearest neighbour ไม่กลับด้าน (cell→site เป็นฟังก์ชัน, site→cell ไม่ใช่ตัวผกผันของมัน) จุด 17 จุดใช้เซลล์เดียวกับจุดอื่น และใน 18 กรณี เซลล์ที่ถูกเลือกกลับตอบว่าจุดอื่นใกล้กว่าตัวเอง</p>
+</section>
+<section id="ของแถม-ตวเลขเกาทหาทมาไมได-ถกคำนวณซำแลวตรงกน" class="level3">
+<h3 class="anchored" data-anchor-id="ของแถม-ตวเลขเกาทหาทมาไมได-ถกคำนวณซำแลวตรงกน">๔. ของแถม: ตัวเลขเก่าที่หาที่มาไม่ได้ ถูกคำนวณซ้ำแล้วตรงกัน</h3>
+<p><code>check_series.py</code> เคยฟ้องว่าตัวเลขในโพสต์ Day 7 หาที่มาใน artifact ไม่ได้ ผมคำนวณใหม่ด้วยวิธีของวันนี้</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ตัวเลขในโพสต์ Day 7</th>
+<th>คำนวณใหม่ 14 พ.ย.</th>
+<th>ต่าง</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>18,692 ตร.กม. (hex กลบไม่ถึง)</td>
+<td>18,692.57 ตร.กม.</td>
+<td>+0.6</td>
+</tr>
+<tr class="even">
+<td>2,967 ตร.กม. (hex ล้นออกนอกเส้น)</td>
+<td>2,966.68 ตร.กม.</td>
+<td>−0.3</td>
+</tr>
+</tbody>
+</table>
+<p>ตัวเลขทั้งสอง <em>ถูก</em> มาตั้งแต่ต้น แค่ไม่เคยถูกเก็บไว้ในไฟล์ artifact — บทเรียนเรื่อง “ตัวเลขที่ย้อนกลับ ไปที่ไฟล์ไม่ได้ ถือว่าผิดไว้ก่อน” ยังใช้ได้ แม้คนที่ผิดคือผมเองเมื่อสองสัปดาห์ก่อน</p>
+</section>
+</section>
+<section id="วธทำแบบยอ" class="level2">
+<h2 class="anchored" data-anchor-id="วธทำแบบยอ">วิธีทำแบบย่อ</h2>
+<ol type="1">
+<li>อ่านกริด Day 3 (1,738 เซลล์) + เส้นขอบ NE 10m + ทะเบียน 83 จุด</li>
+<li><code>shapely.intersection</code> แบบ elementwise (ไม่ใช้ <code>GeoSeries.distance/intersection</code> ที่ index เพี้ยน) → พื้นที่เซลล์หลัง clip ÷ พื้นที่เซลล์เต็ม = <code>inside_share</code></li>
+<li>เติม H3 res 5 ใน bounding box ทั้งกล่อง → เซต complement = <code>bbox_cells − inside_cells</code></li>
+<li>หมุนเซลล์ 180° รอบ centroid ใน projection Equidistant Conic (หน่วยเมตร) แล้วแปลงกลับเป็น lon/lat เพื่อถามคำถาม nearest เดิมใหม่ (haversine chunk เดียวกับ Day 14)</li>
+<li>สลับแกน <code>argmin(axis=1)</code> เป็น <code>argmin(axis=0)</code> เพื่อทำ join ฝั่งจุด แล้วนับ mutual pairs</li>
+<li>ตรวจ: <code>guard_area</code> (พื้นที่ประเทศ), <code>guard_bbox</code> (เซลล์และจุด), <code>guard_distances</code> (ระยะต้องไม่เกิน 2,500 กม.), <code>guard_variance</code>, assert ว่า <code>inside_share ≤ 1</code>, assert ว่าการหมุนสองฝั่งบนระนาบต้องให้ ผลต่าง 0, และ <code>lint_thai</code> + สแกน unicode ทั้งไฟล์</li>
+<li>เขียน <code>day15_stats.json</code> + <code>day15_cells_inside_out.csv</code> แล้วให้โพสต์อ่านจากสองไฟล์นี้เท่านั้น</li>
+</ol>
+</section>
+<section id="ขอจำกดทตองบอกตรง-ๆ" class="level2">
+<h2 class="anchored" data-anchor-id="ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</h2>
+<ul>
+<li><strong>ตัวเลข 2,966.7 ตร.กม. ที่ “ล้นออกนอกประเทศ” เกิดจากการผสมต้นทาง</strong> — กริดของ Day 3 สร้างจากขอบ GADM แต่วันนี้ clip กับขอบ Natural Earth 10m ซึ่งเป็นมาตรฐานที่ซีรีส์ใช้ตั้งแต่ Day 8 ถ้า clip ด้วย GADM ของวันนั้นเอง ตัวเลขจะต่างออกไป (ผมยังไม่ได้รันเทียบ เพราะไฟล์ GADM ไม่ได้อยู่ในเครื่อง)</li>
+<li><strong>18,692.57 ตร.กม. ที่ “hex กลบไม่ถึง” ไม่ใช่พื้นที่ประเทศจริงที่หายไปทั้งหมด</strong> — ส่วนหนึ่งคือทะเลสาบ และเกาะเล็กที่เส้นขอบมีแต่กริดจุดกลางไม่ครอบคลุม</li>
+<li><strong>การหมุน 180° ใน projection ไม่ใช่การหมุนทรงกลม</strong> — ผมวัดทั้งสองแบบและรายงานต่างกัน (0.0 ม. บนระนาบ · 0.849 กม. บนทรงกลม) เพื่อไม่ให้ตัวเลขเดียวถูกตีความเป็นสองเรื่อง</li>
+<li><strong>ช่อง (ค) ในภาพหลักไม่ใช้แผนที่สำหรับใช้งาน</strong> — เป็นภาพประกอบคำอธิบายที่จงใจให้ผิดกติกาการอ่านแผนที่</li>
+<li><strong>แผ่นนี้ทำล่วงหน้าหนึ่งวัน</strong> (เย็นวันที่ 14 สำหรับวันที่ 15) และรันซ้ำได้ผลตรงกันเพราะใช้ seed เดิม และไม่มีขั้นตอนสุ่มในบทที่ 2–4</li>
+<li><strong>ฟอนต์ไทยในภาพคือ Trirong ฝังในไฟล์ PNG</strong> ผู้ดูไม่ต้องมีฟอนต์นี้จึงจะเห็นตัวหนังสือไม่เพี้ยน</li>
+</ul>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<ul>
+<li><a href="day15_inside_out.png">day15_inside_out.png</a> — แผ่นหลักสามช่อง (ปกติ / กลับในเป็นนอก / กลับหัว)</li>
+<li><a href="day15_inside_share.png">day15_inside_share.png</a> — การกระจายของ % พื้นที่เซลล์ที่เป็นไทยจริง</li>
+<li><a href="day15_upside_down.png">day15_upside_down.png</a> — ความเสียหายจากการกลับหัว + ผลของการกลับทิศ join</li>
+<li><a href="day15_cells_inside_out.csv">day15_cells_inside_out.csv</a> — ทุก 1,738 เซลล์: พื้นที่เต็ม, พื้นที่ในไทย, สัดส่วน, คำตอบถ้าแผนที่ถูกกลับหัว</li>
+<li><a href="day15_stats.json">day15_stats.json</a> — ตัวเลขทุกตัวในโพสต์นี้ พร้อม <code>metric_definitions</code>, <code>cross_check_day07</code> และ <code>cross_check_day14</code></li>
+</ul>
+</section>
+<section id="บทเรยน" class="level2">
+<h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>
+<ul>
+<li><strong>ลูกเล่นกับข้อเท็จจริงแยกกันด้วยการวัด</strong> — “กลับหัว” เป็นความผิดพลาดก็ต่อเมื่อหมุนฝั่งเดียว ถ้าหมุนทั้งสองฝั่ง ระยะทางไม่เปลี่ยนแม้แต่มิลิเมตรเดียว การทดลองนี้บอกเส้นแบ่งนั้นด้วยตัวเลข</li>
+<li><strong>projection ไม่ใช่โลก</strong> — การหมุนใน Equidistant Conic ต่างจากการหมุนบนทรงกลม 0.849 กม. ซึ่งน้อยจนไม่มีใครสังเกตบนแผนที่ประเทศ แต่ไม่ใช่ศูนย์ และคนทำแผนที่ไม่ควรรู้สึกปลอดภัยกับ คำว่า “ก็แค่หมุน”</li>
+<li><strong>nearest-neighbour join ไม่กลับด้าน</strong> — cell→site เป็นฟังก์ชันจาก 1,738 เซลล์ไป 83 จุด แต่ site→cell เลือกได้แค่ 66 เซลล์ เหลือ 1,672 เซลล์ที่ไม่มีเจ้าของ ถ้าใครเอาคำตอบจากฝั่งจุด ไปทำ choropleth “พื้นที่ให้บริการ” จะได้แผนที่ที่มีรูโหว่โดยที่ข้อมูลไม่ได้ขาด</li>
+<li><strong>กฎที่เขียนไม่ครบคือบั๊กที่ทำงานอยู่เงียบ ๆ</strong> — “เซลล์ที่จุดกลางอยู่ในประเทศ” ไม่ได้บอกว่า “เซลล์ส่วนใหญ่อยู่ในประเทศ” และผลลัพธ์คือสี่เซลล์แนวทะเลสาบสงขลาที่เซลล์หนึ่งเป็นน้ำถึง 81.03% ซึ่งถูกนับเป็นไทยมาตั้งแต่ Day 3 โดยไม่มีใครทัก</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
