@@ -217,40 +217,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>ผมสร้างแกน “เงียบ” ด้วยวิธีที่ซื่อสัตย์แต่ยังไม่ใช่การวัดจริง: สำหรับ hex แต่ละเซลล์จาก Day 3 คำนวณระยะทาง (เมตร) จากศูนย์กลาง hex ไปถึง <strong>แหล่งเสียงที่ใกล้ที่สุด</strong> ในสี่ชนิดจาก Natural Earth 10m</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>แหล่งเสียง</th>
-<th>จำนวนที่ตกในกรอบไทย</th>
+<th>อ่านเข้ามาในกรอบ AOI</th>
+<th>ที่แตะเส้นขอบประเทศจริง</th>
 <th>เหตุผลที่นับ</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>ถนนสายหลัก (NE ไม่จำแนกชั้น: Unknown 1,537 / Road 238 / Major Highway 39 → ใช้ทุกสาย)</td>
+<td>ถนน (NE ไม่จำแนกชั้น: Unknown 1,537 / Road 238 / Major Highway 39 → ใช้ทุกสาย)</td>
 <td>1,814 เส้น</td>
+<td>700 เส้น (Unknown 595 / Road 102 / Major Highway 3)</td>
 <td>เสียงจราจร คือแหล่งที่ครอบคลุมที่สุด</td>
 </tr>
 <tr class="even">
 <td>พื้นที่เมือง (polygon)</td>
 <td>127 ผืน</td>
+<td>95 ผืน</td>
 <td>เสียงชุมชน/กิจกรรมกลางคืน</td>
 </tr>
 <tr class="odd">
 <td>รถไฟ</td>
 <td>104 เส้น</td>
+<td>38 เส้น</td>
 <td>เสียงเป็นช่วง ๆ แต่ไกล</td>
 </tr>
 <tr class="even">
 <td>สนามบิน</td>
 <td>13 จุด</td>
+<td>6 จุด</td>
 <td>เสียงเครื่องบินกินบริเวณกว้าง</td>
 </tr>
 </tbody>
 </table>
+<p><strong>ตารางนี้แก้ถ้อยคำเมื่อวันที่ 15 พ.ย.</strong> เพราะหัวคอลัมน์เดิมเขียนว่า “จำนวนที่ตกในกรอบไทย” ซึ่ง <em>ไม่ตรงกับความหมายของตัวเลข</em> — สคริปต์อ่าน layer ด้วยการกรองกล่อง AOI (96–108°E, 4–22°N) ไม่ใช่ clip ตามเส้นขอบประเทศ ตัวเลข 1,814 / 127 / 104 / 13 จึงเป็น “จำนวนแถวที่อ่านเข้ามาในกล่อง” ซึ่งรวมถนนและสนามบินของประเทศเพื่อนบ้านด้วย (คอลัมน์ขวาคือจำนวนที่แตะเส้นขอบประเทศจริง)</p>
+<p>ผม <strong>ไม่ได้เปลี่ยนผลลัพธ์</strong> ของ Day 11 เพราะการนับแหล่งเสียงนอกเส้นขอบเป็นเรื่องตั้งใจ hex ริมขอบอย่างเซลล์ที่ติดชายแดนสระแก้วหรือชายแดนใต้ ต้องได้ยินถนน/สนามบินที่อยู่คนละฝั่งเส้น การ clip ทิ้งจะหลอกว่าริมประเทศเงียบกว่าความจริง ทั้งสองนิยามตอนนี้บันทึกไว้ใน <code>day11_stats.json</code> (<code>noise_layers_in_aoi</code> และ <code>noise_layers_touching_thailand</code>) พร้อม <code>key_name_correction</code> ที่บอกว่ากุญแจชื่อเดิม “<code>..._in_thailand</code>” สื่อความหมายผิดไว้ตรง ๆ</p>
 <p>แล้วเทียบกับ <code>km_nearest</code> (ระยะถึงจุดอนุรักษ์ท้องฟ้ามืดในทะเบียน) ที่ใชามาตั้งแต่ Day 3 <strong>ทั้งสองแกนเป็น proxy ทั้งคู่</strong> — ผมไม่ได้วัด dB และไม่ได้วัด sky brightness จริง</p>
 <p>เกณฑ์ที่ใช้ติดป้ายไว้บนแผ่น: <strong>มืด</strong> = <code>km_nearest ≤ 25 กม.</code> · <strong>เงียบ</strong> = ระยะถึงแหล่งเสียง <code>≥ 10 กม.</code> และสำหรับจุดทะเบียน <strong>เสียงถึง</strong> = <code>&lt; 5 กม.</code></p>
 </section>
