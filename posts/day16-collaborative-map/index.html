@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="โจทย์ ‘Do a map with a friend, colleague or a stranger. AI doesn’t count as a friend :)’ — ผมชวนใครไม่ทันในคืนวันที่ 16 จึงไม่สมมติว่า AI เป็นผู้ร่วมทำงาน แต่ไปวัดว่าแผนที่รอบจุดทะเบียน 83 จุดเป็นผลงานของใครบ้าง ผลคือคนแปลกหน้า 299 คน · way รวม 5,495 ชิ้น · มัธยฐาน 24 ชิ้นต่อจุด · 3 จุดไม่มีอะไรในแผนที่เลย และจุดที่เป็นอุทยานท้องฟ้ามืดมี median เพียง 13 ชิ้น เทียบกับจุดในพื้นที่ชานเมือง 147.5 ชิ้น">
+
+<title>Day 16 · Collaborative map — วัดว่าใครเขียน OpenStreetMap รอบจุดทะเบียนฟ้ามืด 83 จุด แล้วพบว่าที่ฟ้าดีที่สุดคือที่ที่แผนที่บางที่สุด – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#ทมาของแผนท" id="toc-ทมาของแผนท" class="nav-link active" data-scroll-target="#ทมาของแผนท">ที่มาของแผนที่</a></li>
+  <li><a href="#ผลลพธ" id="toc-ผลลพธ" class="nav-link" data-scroll-target="#ผลลพธ">ผลลัพธ์</a></li>
+  <li><a href="#สองครงทพง-และกลายเปนสวนหนงของโพสต" id="toc-สองครงทพง-และกลายเปนสวนหนงของโพสต" class="nav-link" data-scroll-target="#สองครงทพง-และกลายเปนสวนหนงของโพสต">สองครั้งที่พัง (และกลายเป็นส่วนหนึ่งของโพสต์)</a></li>
+  <li><a href="#วธทำแบบยอ" id="toc-วธทำแบบยอ" class="nav-link" data-scroll-target="#วธทำแบบยอ">วิธีทำแบบย่อ</a></li>
+  <li><a href="#ขอจำกดทตองบอกตรง-ๆ" id="toc-ขอจำกดทตองบอกตรง-ๆ" class="nav-link" data-scroll-target="#ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
+  <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 16 · Collaborative map — วัดว่าใครเขียน OpenStreetMap รอบจุดทะเบียนฟ้ามืด 83 จุด แล้วพบว่าที่ฟ้าดีที่สุดคือที่ที่แผนที่บางที่สุด</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">30DayMapChallenge</div>
+    <div class="quarto-category">cartography</div>
+    <div class="quarto-category">openstreetmap</div>
+    <div class="quarto-category">overpass</div>
+    <div class="quarto-category">collaborative</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    โจทย์ ‘Do a map with a friend, colleague or a stranger. AI doesn’t count as a friend :)’ — ผมชวนใครไม่ทันในคืนวันที่ 16 จึงไม่สมมติว่า AI เป็นผู้ร่วมทำงาน แต่ไปวัดว่าแผนที่รอบจุดทะเบียน 83 จุดเป็นผลงานของใครบ้าง ผลคือคนแปลกหน้า 299 คน · way รวม 5,495 ชิ้น · มัธยฐาน 24 ชิ้นต่อจุด · 3 จุดไม่มีอะไรในแผนที่เลย และจุดที่เป็นอุทยานท้องฟ้ามืดมี median เพียง 13 ชิ้น เทียบกับจุดในพื้นที่ชานเมือง 147.5 ชิ้น
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">16 พฤศจิกายน 2569</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day16_collaborative.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>โจทย์ทางการวันนี้คือ <strong>“Do a map with a friend, colleague or a stranger. AI doesn’t count as a friend :)”</strong> (หัวข้อ <em>Collaborative map</em> — ดึงข้อความมาจากหน้า 30daymapchallenge.com อ่านสดตอน 07:00 ของวันที่ 17)</p>
+<p><strong>บอกตรง ๆ ก่อนเริ่ม</strong>: แผ่นนี้ทำและลง <em>เช้าวันที่ 17 พ.ย. สำหรับโจทย์วันที่ 16</em> เพราะคืนวันที่ 16 ผมลองวัด สองทางแล้วพังทั้งสองทาง (บันทึกไว้ในหัวข้อ “สองครั้งที่พัง” ข้างล่าง) และผมไม่สมมติว่า AI เป็นผู้ร่วมทำงาน ตามที่เขาเขียนกำกับไว้ทางเดียวที่เหลือคือ ทำแผนที่ที่ <em>เป็น</em> collaborative อยู่จริงและพิสูจน์ได้ นั่นคือวัดว่าใครเป็นคนเขียนแผนที่รอบจุดที่ผมใช้มาทั้งซีรีส์</p>
+<p>คำถาม: <strong>แผนที่รอบฟ้ามืดของไทย ถูกเขียนโดยคนแปลกหน้ากี่คน — และที่ที่ฟ้าดีที่สุด มีคนเขียนไว้แค่ไหน</strong></p>
+<section id="ทมาของแผนท" class="level2">
+<h2 class="anchored" data-anchor-id="ทมาของแผนท">ที่มาของแผนที่</h2>
+<p>ตัววัดคือ <strong>OpenStreetMap</strong> — แผนที่ที่คนแปลกหน้าเขียนกันเอง ผมดึงผ่าน Overpass API ด้วยนิยามที่เขียนไว้ชัด ๆ (และตรงกับโค้ด) ว่า</p>
+<blockquote class="blockquote">
+<p><code>way</code> (เส้นและพื้นที่) ที่ <strong>จุดศูนย์กลางของ way</strong> อยู่ภายใน <strong>1 กม.</strong> จากพิกัดจุดทะเบียน นับเฉพาะ way ไม่นับ node · snapshot เวลา 07:40–08:10 น. ของวันที่ 17 พ.ย.</p>
+</blockquote>
+<p>แล้วผูกกับของเดิมในซีรีส์โดยไม่คำนวณซ้ำ: ประชากรเมืองรอบจุดจาก <strong>Day 9</strong> (<code>urban_pop_30km</code>) และผู้ถือครองที่ดินจากฟิลด์ <code>type</code> ของทะเบียน (ย่อตาม <strong>Day 12</strong> — นับได้ 43 จุดที่เป็นที่ดินส่วนบุคคล ตรงกับที่ Day 12 รายงาน)</p>
+</section>
+<section id="ผลลพธ" class="level2">
+<h2 class="anchored" data-anchor-id="ผลลพธ">ผลลัพธ์</h2>
+<p><img src="day16_collaborative.png" class="img-fluid"></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ตัวเลข</th>
+<th>ค่า</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>way รวมทุกจุด</td>
+<td>5,495 ชิ้น</td>
+</tr>
+<tr class="even">
+<td>way ต่อจุด · ต่ำสุด / มัธยฐาน / สูงสุด</td>
+<td>0 / 24 / 589 ชิ้น</td>
+</tr>
+<tr class="odd">
+<td>จุดที่มี way น้อยกว่า 50</td>
+<td><strong>58 จาก 83 จุด</strong></td>
+</tr>
+<tr class="even">
+<td>จุดที่ไม่มี way เลย</td>
+<td><strong>3 จุด</strong></td>
+</tr>
+<tr class="odd">
+<td>คนแปลกหน้าที่ไม่ซ้ำกันทั้งประเทศ</td>
+<td><strong>299 คน</strong></td>
+</tr>
+<tr class="even">
+<td>คนต่อจุด · ต่ำสุด / มัธยฐาน / สูงสุด</td>
+<td>0 / 5 / 44 คน</td>
+</tr>
+<tr class="odd">
+<td>จุดที่มีคนน้อยกว่า 10</td>
+<td>69 จุด</td>
+</tr>
+<tr class="even">
+<td>คนที่เขียนไว้มากกว่าหนึ่งจุดทะเบียน</td>
+<td><strong>76 คน = 25.4% ของทั้งหมด</strong></td>
+</tr>
+</tbody>
+</table>
+<p>สามจุดที่ <em>ไม่มีอะไรในแผนที่เลย</em> (ชื่ออ่านจากไฟล์ CSV ไม่ใช่ถอดจากภาพ): <code>ทุ่งโนนป่าก่อ เขตรักษาพันธุ์สัตว์ป่าภูสีฐาน</code> (มุกดาหาร) · <code>อุทยานแห่งชาติเขาใหญ่</code> (นครราชสีมา) · <code>หอดูดาวเฉลิมพระเกียรติฯ สงขลา</code> (สงขลา) — จุดสุดท้ายคือจุดเดียวกับที่ Day 14 พบว่า <strong>พิกัดของมันอยู่นอกเส้นขอบประเทศใน Natural Earth 10m</strong> วันนี้มันหายไปจากแผนที่อีกครั้ง ในความหมายที่ว่าไม่มีใครเขียนอะไรไว้รอบตัวมันเลย</p>
+<p>สามจุดที่เขียนเยอะที่สุด: <code>สวนวลัยรุกขเวช มหาวิทยาลัยมหาสารคาม</code> 589 way จาก 14 คน · <code>อุทยานดาราศาสตร์สิรินธร</code> (เชียงใหม่) 561 way จาก 42 คน · <code>สิริน วิลล์ แม่ริม</code> 511 way จาก 44 คน สังเกตว่าจุดที่ <em>คน</em> เยอะที่สุด (42–44 คน) ไม่ใช่จุดที่ <em>way</em> เยอะที่สุด (14 คนเขียน 589 ชิ้น) — แผนที่ตรงนั้นเขียนโดยคนกลุ่มเล็กแต่วัตถุเยอะ ส่วนอีกที่เขียนกระจายกันคนละนิดคนละหน่อย</p>
+<section id="แผนทหนาแนนตามคนทอย-ไมใชตามความมดของฟา" class="level3">
+<h3 class="anchored" data-anchor-id="แผนทหนาแนนตามคนทอย-ไมใชตามความมดของฟา">แผนที่หนาแน่นตามคนที่อยู่ ไม่ใช่ตามความมืดของฟ้า</h3>
+<p><img src="day16_who_draws.png" class="img-fluid"></p>
+<p>สหสัมพันธ์อันดับระหว่างประชากรเมืองรอบจุด (Day 9) กับปริมาณแผนที่: <strong>Spearman rho = 0.355</strong> (p = 0.001) และกับจำนวนคน: <strong>rho = 0.371</strong> (p = 0.00055) — n = 83 จุด กล่าวคือจุดที่อยู่ใกล้เมืองยิ่งมีแผนที่หนาแน่น ซึ่งแปลเป็นภาษากลับกันว่า <strong>ที่ที่ฟ้ามืดที่สุด คือที่ที่แผนที่บางที่สุด</strong> และนี่ไม่ใช่เรื่องเล็ก เพราะจุดที่ผมใช้วัด “ความมืด” ทั้งซีรีส์ตั้งอยู่บนแผนที่ที่ถูกเขียนน้อยลงเรื่อย ๆ ตามที่มันมืดลง</p>
+</section>
+<section id="ใครเขยน-คนกลมเลกทเดนทางไกล" class="level3">
+<h3 class="anchored" data-anchor-id="ใครเขยน-คนกลมเลกทเดนทางไกล">ใครเขียน — คนกลุ่มเล็กที่เดินทางไกล</h3>
+<p><img src="day16_holders.png" class="img-fluid"></p>
+<p>เมื่อจัดกลุ่มตามสภาพการถือครองที่ดินของ <em>ตัวจุดทะเบียน</em> ค่ามัธยฐานของ way และจำนวนคนเป็นดังนี้</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ผู้ถือครอง (type ของทะเบียน)</th>
+<th>จำนวนจุด</th>
+<th>way · มัธยฐาน</th>
+<th>คน · มัธยฐาน</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>พื้นที่ชานเมือง</td>
+<td>10</td>
+<td>147.5</td>
+<td>13.5</td>
+</tr>
+<tr class="even">
+<td>ชุมชนอนุรักษ์</td>
+<td>2</td>
+<td>43.5</td>
+<td>6.0</td>
+</tr>
+<tr class="odd">
+<td>ที่ดินส่วนบุคคล</td>
+<td>43</td>
+<td>37.0</td>
+<td>5.0</td>
+</tr>
+<tr class="even">
+<td>อุทยานแห่งชาติ</td>
+<td>2</td>
+<td>14.5</td>
+<td>3.5</td>
+</tr>
+<tr class="odd">
+<td><strong>อุทยานท้องฟ้ามืด</strong></td>
+<td>25</td>
+<td><strong>13.0</strong></td>
+<td><strong>3.0</strong></td>
+</tr>
+<tr class="even">
+<td>ส่วนบุคคล + ชุมชน</td>
+<td>1</td>
+<td>11.0</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<p>จุดที่เป็น <strong>อุทยานท้องฟ้ามืด</strong> — หมวดที่สถานะการปกป้องฟ้าดีที่สุดตามทะเบียน — มีแผนที่รอบตัว เพียง <strong>13 ชิ้นต่อจุด</strong> เทียบกับพื้นที่ชานเมือง <strong>147.5 ชิ้น</strong> (ต่างกันราว 11 เท่า) และจำนวนคนเฉลี่ยแค่ 3.0 คนต่อจุด</p>
+<p>ส่วนคนที่เขียนครอบคลุมหลายจุดที่สุด: <code>julcnx</code> 26 จุด · <code>Russ McD</code> 23 · <code>AlaskaDave</code> 18 · <code>PaulHaag</code> 16 · <code>Kri_ttt</code> 10 · <code>stephankn</code> 10 (จาก 83 จุด) — 76 จาก 299 คนเขียนไว้มากกว่าหนึ่งจุด แปลว่า collaborative ของแผนที่ไทยรอบฟ้ามืด <strong>พึ่งคนกลุ่มเล็กที่เดินทางไกล</strong> มากกว่าชุมชนท้องถิ่นของจุดนั้น</p>
+</section>
+</section>
+<section id="สองครงทพง-และกลายเปนสวนหนงของโพสต" class="level2">
+<h2 class="anchored" data-anchor-id="สองครงทพง-และกลายเปนสวนหนงของโพสต">สองครั้งที่พัง (และกลายเป็นส่วนหนึ่งของโพสต์)</h2>
+<ol type="1">
+<li><strong>Overpass คืนคอลัมน์ว่าง</strong> — query ที่จบด้วย <code>out;</code> ไม่ส่ง <code>user</code>/<code>timestamp</code> มาให้ ต้องเป็น <code>out meta;</code> ผมจึงมีไฟล์แคช 42 ชุดที่ “ไม่มีคน” อยู่ในนั้นทั้งที่มี way เต็มไปหมด และกว่าจะเห็น ผมก็เอาไปคำนวณทั้งชุดแล้วรอบหนึ่ง (ไฟล์ครั้งนั้นถูกตั้งชื่อ <code>INVALID_*</code> ไว้ใน <code>out/day16/</code>)</li>
+<li><strong>วัดด้วย changesets API แล้วทิ้ง</strong> — คืนวันที่ 16 ผมสวิตช์ไปใช้ <code>changesets?bbox=</code> เพราะ Overpass ไม่ตอบ แต่ bbox ของ changeset คือขอบเขตของ <em>ทุกสิ่งที่คนนั้นแก้ในครั้งเดียว</em> ซึ่งมักครอบคลุมทั้งประเทศ ผลคือจุดใต้สุดกับจุดเหนือสุดที่ห่างกัน <strong>1,463 กม.</strong> ยังแชร์ changeset กัน <strong>44 จาก 100 ชุด</strong> และจำนวน changeset ที่อยู่ในกล่องจริงต่อจุด มีค่าต่ำสุด 0 · มัธยฐาน 0 · สูงสุด 39 จาก 100 ตัวเลขที่ออกมานึกว่าวัดได้ (172 คน / 1.6 ล้านครั้ง) จึงไม่ใช่ความจริงเกี่ยวกับสถานที่ แต่คือความจริงเกี่ยวกับ <em>ขอบเขตของ changeset</em></li>
+<li><strong>Overpass ล่มช่วงดึก</strong> — <code>overpass-api.de</code> ไม่ตอบจากเครื่องนี้ทั้งคืน mirror บางตัวตอบ แต่ field ว่าง เช้าวันที่ 17 จึงรันใหม่แบบรวมชุด (3 จุดต่อ query) และข้ามชุดที่ทำแล้ว ใช้เวลาเก็บข้อมูล 83 จุดประมาณ 40 นาที</li>
+</ol>
+</section>
+<section id="วธทำแบบยอ" class="level2">
+<h2 class="anchored" data-anchor-id="วธทำแบบยอ">วิธีทำแบบย่อ</h2>
+<ol type="1">
+<li>อ่านทะเบียน 83 จุด + กริด Day 3 + <code>urban_pop_30km</code> จาก Day 9</li>
+<li><code>tools/collect_day16_osm.py</code> ยิง Overpass แบบรวมชุดด้วย <code>[out:csv(::id,::user,::timestamp,::lat,::lon,false)] ... out center meta;</code> แล้วจับคู่ way กับจุดด้วย <strong>จุดศูนย์กลางของ way</strong> (กัน way ยาว ๆ ที่ลากผ่านหลายกล่อง) ผลเก็บใน <code>cache/day16/way_all.json</code> พร้อม resume</li>
+<li><code>tools/day16_collaborative.py</code> นับ way / คน / ส่วนแบ่งอันดับหนึ่ง ต่อจุด แล้วคำนวณ Spearman กับประชากรเมือง และจัดกลุ่มตาม type ของทะเบียน</li>
+<li><code>--compare</code> วัดเทียบนิยาม “แตะกล่อง” กับ “จุดศูนย์กลางในกล่อง” ที่ 3 จุด</li>
+<li>ตรวจ: <code>guard_bbox</code> · <code>guard_crs</code> · <code>guard_variance</code> · assert ว่าคน ≤ way, assert ว่าผลรวมไม่ซ้ำ ≥ จุดที่มากที่สุด, <code>lint_thai</code> + สแกน unicode ทั้งไฟล์</li>
+</ol>
+</section>
+<section id="ขอจำกดทตองบอกตรง-ๆ" class="level2">
+<h2 class="anchored" data-anchor-id="ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</h2>
+<ul>
+<li><strong>นิยาม “ในกล่อง” ต่างจากนิยาม “แตะกล่อง”</strong> — วัดเทียบ 3 จุด: ญาติกา บูทีค 62 way/12 คน (แตะกล่อง) เทียบกับ 44 way/9 คน (จุดศูนย์กลาง) · คชอาณาจักรสุรินทร์ 20/9 เทียบกับ 11/6 · เดอะทีค รีสอร์ท 140/12 เทียบกับ 121/11 ทุกจุดนิยามที่ผมใช้ให้ค่าน้อยกว่า และมี way อีก <strong>806 ชิ้น</strong> ที่ถูกทิ้งเพราะแตะกล่องแต่จุดศูนย์กลางอยู่นอก 1 กม.</li>
+<li><strong>นับเฉพาะ way</strong> ไม่รวม node (ถนนเส้นหนึ่งเป็น node ได้เป็นหมื่นจุด) ตัวเลขจึงไม่ใช่ “ปริมาณข้อมูลแผนที่” แต่เป็น “จำนวนวัตถุที่คนวางไว้”</li>
+<li><strong>timestamp คือเวลาแก้ <em>ล่าสุด</em></strong> ของวัตถุ ไม่ใช่เวลาสร้าง — คอลัมน์ <code>years</code> ใน <code>day16_sites_osm.csv</code> จึงเป็นช่วงปีของ “การแตะครั้งสุดท้าย” ไม่ใช่ประวัติการเขียน</li>
+<li><strong>snapshot เดียว</strong> ค่าจะเปลี่ยนเมื่อ OSM ถูกแก้เพิ่ม (รันซ้ำได้ แต่จะไม่ได้ตัวเลขชุดเดิม)</li>
+<li><strong>ชื่อ username เป็นข้อมูลสาธารณะของ OSM</strong> ผมแสดงเฉพาะชื่อที่ระบบเปิดเผยและจำนวนจุด ไม่ได้เดาสัญชาติ อาชีพ หรือตัวตนจากชื่อ และไม่ได้ติดต่อใคร</li>
+<li><strong>นี่ไม่ใช่แผนที่สำหรับใช้งาน</strong> และกล่อง 2×2 กม. อาจเล็กเกินสำหรับจุดที่อยู่ห่างถนนจริง (เช่นจุดบนเขา) ซึ่ง way แรกอาจอยู่ไกลกว่า 1 กม. แล้ว</li>
+<li><strong>ผู้ร่วมทำงานเป็นมนุษย์จริงไม่ได้</strong> ในความหมายของโจทย์ — คนที่ผม “ทำงานด้วย” คือ คนแปลกหน้า 299 คนที่เขียน OpenStreetMap โดยไม่รู้ว่ามีคนเอาผลงานเขาไปนับในเช้าวันหนึ่ง ข้อมูลทั้งหมดใช้ภายใต้ <strong>© OpenStreetMap contributors (ODbL)</strong></li>
+</ul>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<ul>
+<li><a href="day16_collaborative.png">day16_collaborative.png</a> — แผนที่ 83 จุด ขนาดวง = จำนวนคน สี = ปริมาณแผนที่</li>
+<li><a href="day16_who_draws.png">day16_who_draws.png</a> — ประชากรเมือง ↔︎ ปริมาณแผนที่ และการกระจายของ way ต่อจุด</li>
+<li><a href="day16_holders.png">day16_holders.png</a> — เทียบตามสภาพการถือครองที่ดิน + คนที่เขียนครอบคลุมหลายจุด</li>
+<li><a href="day16_sites_osm.csv">day16_sites_osm.csv</a> — ทุกจุด: way, คน, อันดับหนึ่ง, ช่วงปี, ประชากรเมือง, ผู้ถือครอง</li>
+<li><a href="day16_by_holder.csv">day16_by_holder.csv</a> — สรุปตามกลุ่มผู้ถือครอง</li>
+<li><a href="day16_stats.json">day16_stats.json</a> — ตัวเลขทุกตัว + <code>metric_definitions</code> + <code>scope_compare</code> + provenance</li>
+</ul>
+</section>
+<section id="บทเรยน" class="level2">
+<h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>
+<ul>
+<li><strong>จับผิดตัวเองด้วยตัวเลข ไม่ใช่ด้วยความรู้สึก</strong> — ตัวเลข “299 คน / 5,495 ชิ้น” ฟังดูสมเหตุสมผล เหมือนกับ “172 คน / 1.6 ล้านครั้ง” ของวิธีที่พังเมื่อคืน ถ้าไม่มี assert ว่า <em>จุดสองจุดห่าง 1,463 กม. ไม่ควรแชร์ข้อมูลกัน 44 ชิ้น</em> ผมก็คงพิมพ์ตัวเลขชุดนั้นออกไปอย่างมั่นใจ</li>
+<li><strong>API ที่ “ใช้ได้” ไม่เท่ากับ API ที่ “ตอบคำถาม”</strong> — changesets API ทำงานเร็วและคืนข้อมูลครบ แต่มันตอบคำถาม “ใครแก้บ้างในช่วงนี้” ซึ่ง bbox ของมันใหญ่เกินคำถามของผมไปทั้งประเทศ ความเร็วของแหล่งข้อมูลไม่ใช่หลักฐานว่าวัดถูก</li>
+<li><strong>โจทย์ “ทำกับคน” สอนสิ่งที่โจทย์อื่นไม่สอน</strong> — ผมต้องยอมรับว่าตัวเองเป็นผู้ร่วมงานไม่ได้ และหาคำตอบว่า <em>แล้วใครคือคนที่ทำงานนี้ด้วยจริง ๆ</em> คำตอบคือคนแปลกหน้า 299 คน ซึ่งก็ตรงกับสิ่งที่แผนที่ใบนี้ว่าไว้ตั้งแต่ต้น: แผนที่ของประเทศนี้เขียนโดยคนไม่กี่คน ในที่ที่คนน้อยที่สุด</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
