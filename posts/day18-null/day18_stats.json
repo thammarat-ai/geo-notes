@@ -1,0 +1,304 @@
+{
+  "theme": "NULL",
+  "theme_note": "หน้า 30daymapchallenge.com วันที่ 18-11-2026 ให้แค่คำว่า NULL ไม่มีประโยคอธิบาย (ดึงอ่านสดสองครั้งเพื่อยืนยัน) — โจทย์จึงเป็น NULL ด้วยตัวมันเอง",
+  "generated_local": "2026-11-19 23:44:59",
+  "posted_late": "เขียนและเผยแพร่คืนวันที่ 19 พ.ย. สำหรับโจทย์วันที่ 18 พ.ย. (ช้าหนึ่งวัน)",
+  "register": {
+    "sites": 83,
+    "columns": 19,
+    "cells_total": 1577,
+    "cells_blank": 219,
+    "blank_share_pct": 13.89
+  },
+  "column_missing": [
+    {
+      "column": "address",
+      "blank": 22,
+      "blank_pct": 26.5
+    },
+    {
+      "column": "events_held",
+      "blank": 50,
+      "blank_pct": 60.2
+    },
+    {
+      "column": "tourism_types",
+      "blank": 60,
+      "blank_pct": 72.3
+    },
+    {
+      "column": "facilities",
+      "blank": 44,
+      "blank_pct": 53.0
+    },
+    {
+      "column": "details_note",
+      "blank": 43,
+      "blank_pct": 51.8
+    }
+  ],
+  "columns_complete": [
+    "id",
+    "name",
+    "province",
+    "type",
+    "region",
+    "region_th",
+    "latitude",
+    "longitude",
+    "detail_url",
+    "google_maps_url",
+    "sky_quality_sqm",
+    "sky_quality_raw",
+    "registration_year",
+    "contact"
+  ],
+  "per_site": {
+    "min": 0,
+    "median": 2.0,
+    "mean": 2.639,
+    "max": 5,
+    "sites_zero_blank": 1,
+    "sites_ge3_blank": 41
+  },
+  "by_holder": [
+    {
+      "holder": "ชานเมือง",
+      "size": 10,
+      "min": 1,
+      "median": 2.0,
+      "max": 4,
+      "mean": 2.1
+    },
+    {
+      "holder": "ชุมชน",
+      "size": 2,
+      "min": 4,
+      "median": 4.0,
+      "max": 4,
+      "mean": 4.0
+    },
+    {
+      "holder": "ที่ดินส่วนบุคคล",
+      "size": 43,
+      "min": 0,
+      "median": 2.0,
+      "max": 4,
+      "mean": 2.395
+    },
+    {
+      "holder": "ส่วนบุคคล+ชุมชน",
+      "size": 1,
+      "min": 2,
+      "median": 2.0,
+      "max": 2,
+      "mean": 2.0
+    },
+    {
+      "holder": "อุทยานท้องฟ้ามืด",
+      "size": 25,
+      "min": 1,
+      "median": 3.0,
+      "max": 5,
+      "mean": 3.2
+    },
+    {
+      "holder": "อุทยานแห่งชาติ",
+      "size": 2,
+      "min": 2,
+      "median": 2.5,
+      "max": 3,
+      "mean": 2.5
+    }
+  ],
+  "by_region": [
+    {
+      "region": "ภาคกลาง",
+      "size": 6,
+      "median": 2.0,
+      "max": 4
+    },
+    {
+      "region": "ภาคตะวันตก",
+      "size": 4,
+      "median": 2.5,
+      "max": 4
+    },
+    {
+      "region": "ภาคตะวันออก",
+      "size": 6,
+      "median": 2.0,
+      "max": 2
+    },
+    {
+      "region": "ภาคตะวันออกเฉียงเหนือ",
+      "size": 37,
+      "median": 3.0,
+      "max": 5
+    },
+    {
+      "region": "ภาคเหนือ",
+      "size": 23,
+      "median": 2.0,
+      "max": 5
+    },
+    {
+      "region": "ภาคใต้",
+      "size": 7,
+      "median": 3.0,
+      "max": 3
+    }
+  ],
+  "fake_nulls": {
+    "registration_year": {
+      "distinct": 14,
+      "counts": {
+        "พ.ศ. 2568 – 2570": 21,
+        "พ.ศ. 2567 – 2569": 16,
+        "พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571": 16,
+        "พ.ศ. 2569 – 2571": 13,
+        "พ.ศ. 2565 – 2567": 5,
+        "พ.ศ. 2569 – 2570": 2,
+        "พ.ศ. 2566 – 2568": 2,
+        "พ.ศ. 2565- 2567, พ.ศ. 2568 – 2570": 2,
+        "พ.ศ. 2567 – 2570": 1,
+        "พ.ศ. 2566 – 2568 และ พ.ศ. 2569 – 2571": 1,
+        "พ.ศ. 2564": 1,
+        "พ.ศ. 2565 – 2567, พ.ศ. 2568 – 2570": 1,
+        "พ.ศ. 2565- 2567 และ พ.ศ. 2568 – 2570": 1,
+        "พ.ศ. 2565 -2567": 1
+      },
+      "is_range": 82,
+      "is_single_year": 1,
+      "separator_variants": {
+        "en dash": 81,
+        "hyphen": 4,
+        "คำว่า และ": 2,
+        "จุลภาค": 19
+      },
+      "mentions_2570_or_later": 58
+    },
+    "sky_quality_sqm": {
+      "distinct": 10,
+      "integer_form": 77,
+      "decimal_form": 6,
+      "modal_value": "20",
+      "modal_count": 29,
+      "values": [
+        "19",
+        "20",
+        "20.50",
+        "21",
+        "21.06",
+        "21.10",
+        "21.11",
+        "21.28",
+        "21.42",
+        "22"
+      ]
+    },
+    "sky_quality_raw": {
+      "distinct": 10,
+      "all_start_with_sqm": 83,
+      "example": "SQM ~ 20 mpsas"
+    },
+    "contact": {
+      "distinct": 81,
+      "duplicated_values": 2,
+      "sites_involved": 4,
+      "examples": [
+        {
+          "value_head": "โทร:093-2422914",
+          "sites": 2,
+          "names": [
+            "ป่าสนวัดจันทร์ อ.อ.ป. กัลยาณิวัฒนา",
+            "อุทยานแห่งชาติศรีน่าน"
+          ]
+        },
+        {
+          "value_head": "โทร:096-8808980",
+          "sites": 2,
+          "names": [
+            "อุทยานแห่งชาติตาพระยา",
+            "พูโตะ"
+          ]
+        }
+      ]
+    }
+  },
+  "map_nulls": {
+    "outside_outline": [
+      "หอดูดาวเฉลิมพระเกียรติฯ สงขลา",
+      "อุทยานแห่งชาติเขาพระวิหาร",
+      "เกาะพะลวยบีชบังกะโล",
+      "โซเนวา คีรี รีสอร์ท"
+    ],
+    "n_outside": 4,
+    "no_own_cell": [
+      "คีรีมาลา อีโค่ แคมป์",
+      "ดาราควิซีน",
+      "สวนแม่ฟ้าหลวง",
+      "อุทยานแห่งชาติเขาพระวิหาร",
+      "เกาะพะลวยบีชบังกะโล",
+      "โกลเด้น คลิฟ บีช รีสอร์ท",
+      "โซเนวา คีรี รีสอร์ท"
+    ],
+    "n_no_own_cell": 7,
+    "no_own_cell_reference": "กริด Day 3 (GADM, 1,738 เซลล์)",
+    "no_own_cell_vs_ne10m_fill": [
+      "ดาราควิซีน",
+      "อุทยานแห่งชาติเขาพระวิหาร",
+      "เกาะพะลวยบีชบังกะโล",
+      "โกลเด้น คลิฟ บีช รีสอร์ท",
+      "โซเนวา คีรี รีสอร์ท"
+    ],
+    "n_no_own_cell_vs_ne10m_fill": 5,
+    "ne10m_fill_cells": 1745,
+    "day3_grid_cells": 1738,
+    "zero_way_sites": [
+      "ทุ่งโนนป่าก่อ เขตรักษาพันธุ์สัตว์ป่าภูสีฐาน",
+      "หอดูดาวเฉลิมพระเกียรติฯ สงขลา",
+      "อุทยานแห่งชาติเขาใหญ่"
+    ],
+    "n_zero_way": 3,
+    "sites_null_in_two_or_more_senses": [
+      "หอดูดาวเฉลิมพระเกียรติฯ สงขลา",
+      "อุทยานแห่งชาติเขาพระวิหาร",
+      "เกาะพะลวยบีชบังกะโล",
+      "โซเนวา คีรี รีสอร์ท"
+    ],
+    "n_multi": 4
+  },
+  "cross_check_day14": {
+    "day14_sites_outside_outline": 4,
+    "day14_sites_without_own_cell_vs_day3_grid": 7,
+    "day14_sites_without_own_cell_vs_ne10m_fill": 5,
+    "today_outside_outline": 4,
+    "today_no_own_cell_day3": 7,
+    "today_no_own_cell_ne10m": 5,
+    "note": "คำนวณใหม่จากทะเบียน + Natural Earth 10m + H3 res 5 แล้วเทียบกับ Day 14 ทั้งสองนิยาม (กริด GADM ของ Day 3 ให้ 7 จุด กริดที่เติมจาก NE 10m ให้ 5 จุด) — ตรงกันทุกตัว"
+  },
+  "cross_check_day16": {
+    "source": "day16_sites_osm.csv",
+    "zero_way_sites": 3,
+    "note": "จำนวน way ในรัศมี 1 กม. รอบจุด (นิยามเดียวกับ Day 16)"
+  },
+  "figures": [
+    "day18_null.png",
+    "day18_matrix.png",
+    "day18_fake_nulls.png"
+  ],
+  "metric_definitions": {
+    "blank": "เซลล์ที่ค่า (หลังตัดช่องว่างหัวท้าย) เป็นสตริงว่าง — นับว่า *ไม่มีข้อมูล* ไม่ใช่ 0",
+    "blank_fields": "จำนวนฟิลด์ (จาก 19) ที่ว่างของแต่ละจุด",
+    "completeness_pct": "(19 − จำนวนฟิลด์ว่าง) ÷ 19 × 100 (ร้อยละ) ของแต่ละจุด",
+    "registration_year.is_range": "จำนวนจุดที่ค่ามีเครื่องหมายช่วง (– หรือ -) ซึ่งหมายถึง *ระยะเวลาที่ใช้ได้* ไม่ใช่ปีที่ลงทะเบียนตามที่ชื่อคอลัมน์บอก",
+    "sky_quality_sqm.integer_form / decimal_form": "จำนวนจุดที่ค่าเขียนเป็นจำนวนเต็ม เทียบกับทศนิยม ในคอลัมน์เดียวกัน (ความละเอียดปนกัน)",
+    "contact.duplicated_values": "จำนวนค่า contact ที่ถูกใช้ซ้ำในหลายจุด (ฟิลด์ที่ควรมีต่อจุด)",
+    "outside_outline": "จุดที่พิกัดไม่อยู่ใน polygon ประเทศไทยของ Natural Earth 10m",
+    "no_own_cell": "จุดที่เซลล์ H3 res 5 ของตัวเองไม่อยู่ในกริด 1,738 เซลล์ของ Day 3 (เพราะจุดกลางเซลล์อยู่นอกประเทศ)",
+    "zero_way_map": "จุดที่ไม่มี way ใดใน OpenStreetMap ที่จุดศูนย์กลางอยู่ภายใน 1 กม. (ต่อจาก Day 16)",
+    "sites_null_in_two_or_more_senses": "จุดที่ว่างพร้อมกันตั้งแต่สองความหมายขึ้นไป (นอกเส้นขอบ / ไม่มี hex / ไม่มีวัตถุในแผนที่)"
+  },
+  "note": "ทะเบียนอ่านด้วย keep_default_na=False เพื่อให้ค่าว่างเป็นสตริงว่างจริง ๆ ไม่ถูก pandas แปลงเป็น NaN แล้วนับตกหล่น"
+}

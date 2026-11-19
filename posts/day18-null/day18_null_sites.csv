@@ -1,0 +1,84 @@
+idx,name,province,holder,region,blank_fields,filled_fields,completeness_pct,blank_columns,registration_year,sky_quality_sqm,sqm_precision,contact_duplicated,outside_outline,no_own_cell,zero_way_map
+0,ญาติกา บูทีค,เชียงใหม่,ที่ดินส่วนบุคคล,ภาคเหนือ,2,17,89.5,events_held;details_note,พ.ศ. 2569 – 2571,20,จำนวนเต็ม,False,False,False,False
+1,ซอมพอ วิลเลจ,เชียงใหม่,ที่ดินส่วนบุคคล,ภาคเหนือ,2,17,89.5,events_held;details_note,พ.ศ. 2569 – 2571,20,จำนวนเต็ม,False,False,False,False
+2,อุทยานแห่งชาติภูเรือ,เลย,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,3,16,84.2,address;events_held;details_note,พ.ศ. 2569 – 2571,20,จำนวนเต็ม,False,False,False,False
+3,อุทยานแห่งชาติภูผาเทิบ,มุกดาหาร,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,2,17,89.5,events_held;details_note,พ.ศ. 2569 – 2571,20,จำนวนเต็ม,False,False,False,False
+4,อุทยานแห่งชาติน้ำพอง,ขอนแก่น,อุทยานแห่งชาติ,ภาคตะวันออกเฉียงเหนือ,2,17,89.5,events_held;details_note,พ.ศ. 2569 – 2571,20,จำนวนเต็ม,False,False,False,False
+5,อุทยานแห่งชาติขุนสถาน,น่าน,อุทยานท้องฟ้ามืด,ภาคเหนือ,4,15,78.9,address;events_held;tourism_types;facilities,พ.ศ. 2569 – 2571,20,จำนวนเต็ม,False,False,False,False
+6,อุทยานวิทยาศาสตร์พระจอมเกล้า ณ หว้ากอ จังหวัดประจวบคีรีขันธ์,ประจวบคีรีขันธ์,อุทยานท้องฟ้ามืด,ภาคตะวันตก,2,17,89.5,events_held;details_note,พ.ศ. 2569 – 2571,20,จำนวนเต็ม,False,False,False,False
+7,หาดชมตะวัน อุทยานแห่งชาติทับลาน,นครราชสีมา,อุทยานแห่งชาติ,ภาคตะวันออกเฉียงเหนือ,3,16,84.2,events_held;tourism_types;facilities,พ.ศ. 2569 – 2571,21,จำนวนเต็ม,False,False,False,False
+8,สิริน วิลล์ แม่ริม เชียงใหม่,เชียงใหม่,ที่ดินส่วนบุคคล,ภาคเหนือ,2,17,89.5,events_held;details_note,พ.ศ. 2569 – 2571,20,จำนวนเต็ม,False,False,False,False
+9,สวนเทพพนา,ชัยภูมิ,ส่วนบุคคล+ชุมชน,ภาคตะวันออกเฉียงเหนือ,2,17,89.5,events_held;details_note,พ.ศ. 2569 – 2570,21,จำนวนเต็ม,False,False,False,False
+10,ผางามแคมป์ & วารีบำบัด,ปราจีนบุรี,ที่ดินส่วนบุคคล,ภาคตะวันออก,2,17,89.5,events_held;details_note,พ.ศ. 2569 – 2571,20,จำนวนเต็ม,False,False,False,False
+11,ปลายแหลมแคมป์,สงขลา,ที่ดินส่วนบุคคล,ภาคใต้,3,16,84.2,events_held;tourism_types;details_note,พ.ศ. 2569 – 2571,20,จำนวนเต็ม,False,False,False,False
+12,โนนขันหมาก (บ่อเกลือพันขันฑ์),ร้อยเอ็ด,ชุมชน,ภาคตะวันออกเฉียงเหนือ,4,15,78.9,address;events_held;facilities;details_note,พ.ศ. 2569 – 2571,21,จำนวนเต็ม,False,False,False,False
+13,ขุนเขา ตำนานไพร รีสอร์ท,ราชบุรี,ที่ดินส่วนบุคคล,ภาคตะวันตก,3,16,84.2,events_held;tourism_types;details_note,พ.ศ. 2569 – 2570,21,จำนวนเต็ม,False,False,False,False
+14,เกาะพะลวยบีชบังกะโล,สุราษฎร์ธานี,ที่ดินส่วนบุคคล,ภาคใต้,2,17,89.5,events_held;details_note,พ.ศ. 2569 – 2571,21,จำนวนเต็ม,False,True,True,False
+15,ฉ่ำเก่ปอ,เชียงใหม่,ที่ดินส่วนบุคคล,ภาคเหนือ,4,15,78.9,address;tourism_types;facilities;details_note,พ.ศ. 2567 – 2569,21,จำนวนเต็ม,False,False,False,False
+16,ภูคำหอม รีสอร์ท,นครราชสีมา,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,2,17,89.5,tourism_types;details_note,พ.ศ. 2567 – 2569,20,จำนวนเต็ม,False,False,False,False
+17,อธิการ์เด้นแคมป์ปิ้ง,พังงา,ที่ดินส่วนบุคคล,ภาคใต้,3,16,84.2,events_held;tourism_types;details_note,พ.ศ. 2567 – 2569,21,จำนวนเต็ม,False,False,False,False
+18,ภาวนานิเวศน์ แคมป์,นครสวรรค์,ที่ดินส่วนบุคคล,ภาคกลาง,3,16,84.2,tourism_types;facilities;details_note,พ.ศ. 2567 – 2569,19,จำนวนเต็ม,False,False,False,False
+19,พร้าวแคมป์ปิ้ง วิลเลจ,เชียงใหม่,ที่ดินส่วนบุคคล,ภาคเหนือ,2,17,89.5,tourism_types;details_note,พ.ศ. 2567 – 2569,21,จำนวนเต็ม,False,False,False,False
+20,สวนไพลินชมดารา,นครราชสีมา,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,3,16,84.2,tourism_types;facilities;details_note,พ.ศ. 2567 – 2569,19,จำนวนเต็ม,False,False,False,False
+21,ฮ่อมลมจอย,เชียงราย,ที่ดินส่วนบุคคล,ภาคเหนือ,3,16,84.2,events_held;tourism_types;details_note,พ.ศ. 2567 – 2569,19,จำนวนเต็ม,False,False,False,False
+22,โซเนวา คีรี รีสอร์ท,ตราด,ที่ดินส่วนบุคคล,ภาคตะวันออก,1,18,94.7,details_note,พ.ศ. 2567 – 2569,21,จำนวนเต็ม,False,True,True,False
+23,สวนวลัยรุกขเวช มหาวิทยาลัยมหาสารคาม,มหาสารคาม,ชานเมือง,ภาคตะวันออกเฉียงเหนือ,4,15,78.9,address;events_held;tourism_types;details_note,พ.ศ. 2568 – 2570,20,จำนวนเต็ม,False,False,False,False
+24,โกลเด้น คลิฟ บีช รีสอร์ท,ตราด,ที่ดินส่วนบุคคล,ภาคตะวันออก,2,17,89.5,events_held;details_note,พ.ศ. 2568 – 2570,21,จำนวนเต็ม,False,False,True,False
+25,ทุ่งโนนป่าก่อ เขตรักษาพันธุ์สัตว์ป่าภูสีฐาน,มุกดาหาร,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,4,15,78.9,address;events_held;tourism_types;facilities,พ.ศ. 2568 – 2570,21,จำนวนเต็ม,False,False,False,True
+26,ภูพร้อมดาว ฟาร์มสเตย์,ชัยภูมิ,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,4,15,78.9,events_held;tourism_types;facilities;details_note,พ.ศ. 2568 – 2570,21,จำนวนเต็ม,False,False,False,False
+27,ฟาวน์เท่นทรี รีสอร์ท,นครราชสีมา,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,3,16,84.2,events_held;tourism_types;details_note,พ.ศ. 2568 – 2570,19,จำนวนเต็ม,False,False,False,False
+28,สวนแม่ฟ้าหลวง,เชียงราย,ที่ดินส่วนบุคคล,ภาคเหนือ,2,17,89.5,events_held;details_note,พ.ศ. 2568 – 2570,21,จำนวนเต็ม,False,False,True,False
+29,อุทยานแห่งชาติภูหินร่องกล้า,พิษณุโลก,อุทยานท้องฟ้ามืด,ภาคกลาง,4,15,78.9,address;events_held;tourism_types;facilities,พ.ศ. 2568 – 2570,21,จำนวนเต็ม,False,False,False,False
+30,คชอาณาจักรสุรินทร์,สุรินทร์,ชานเมือง,ภาคตะวันออกเฉียงเหนือ,3,16,84.2,events_held;tourism_types;facilities,พ.ศ. 2568 – 2570,21,จำนวนเต็ม,False,False,False,False
+31,วนธารา รีสอร์ท,พิษณุโลก,ที่ดินส่วนบุคคล,ภาคกลาง,2,17,89.5,events_held;tourism_types,พ.ศ. 2568 – 2570,19,จำนวนเต็ม,False,False,False,False
+32,บ้านไร่นายเขียว,ขอนแก่น,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,2,17,89.5,events_held;tourism_types,พ.ศ. 2568 – 2570,20,จำนวนเต็ม,False,False,False,False
+33,ดารกะ เชียงดาว,เชียงใหม่,ที่ดินส่วนบุคคล,ภาคเหนือ,2,17,89.5,events_held;details_note,พ.ศ. 2568 – 2570,20,จำนวนเต็ม,False,False,False,False
+34,สวนป่าแม่ละเมา องค์การอุตสาหกรรมป่าไม้,ตาก,ที่ดินส่วนบุคคล,ภาคตะวันตก,4,15,78.9,address;events_held;tourism_types;facilities,พ.ศ. 2568 – 2570,20,จำนวนเต็ม,False,False,False,False
+35,ดาราควิซีน,ภูเก็ต,ที่ดินส่วนบุคคล,ภาคใต้,3,16,84.2,events_held;tourism_types;details_note,พ.ศ. 2568 – 2570,19,จำนวนเต็ม,False,False,True,False
+36,อุทยานแห่งชาติแม่ปิง,ลำพูน,อุทยานท้องฟ้ามืด,ภาคเหนือ,3,16,84.2,events_held;tourism_types;facilities,พ.ศ. 2567 – 2570,22,จำนวนเต็ม,False,False,False,False
+37,อุทยานแห่งชาติภูสวนทราย,เลย,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,3,16,84.2,events_held;tourism_types;facilities,พ.ศ. 2568 – 2570,21,จำนวนเต็ม,False,False,False,False
+38,อุทยานแห่งชาติเขาพระวิหาร,ศรีสะเกษ,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,4,15,78.9,address;events_held;tourism_types;facilities,พ.ศ. 2568 – 2570,22,จำนวนเต็ม,False,True,True,False
+39,อุทยานแห่งชาติภูเวียง,ขอนแก่น,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,3,16,84.2,address;tourism_types;facilities,พ.ศ. 2567 – 2569,20,จำนวนเต็ม,False,False,False,False
+40,ป่าสนวัดจันทร์ อ.อ.ป. กัลยาณิวัฒนา,เชียงใหม่,อุทยานท้องฟ้ามืด,ภาคเหนือ,4,15,78.9,address;events_held;tourism_types;facilities,พ.ศ. 2567 – 2569,21,จำนวนเต็ม,True,False,False,False
+41,อุทยานแห่งชาติภูผายล,สกลนคร,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,3,16,84.2,address;tourism_types;facilities,พ.ศ. 2567 – 2569,21,จำนวนเต็ม,False,False,False,False
+42,อุทยานแห่งชาติไทรทอง,ชัยภูมิ,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,2,17,89.5,tourism_types;facilities,พ.ศ. 2567 – 2569,21,จำนวนเต็ม,False,False,False,False
+43,อุทยานแห่งชาติตาดโตน,ชัยภูมิ,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,4,15,78.9,address;events_held;tourism_types;facilities,พ.ศ. 2567 – 2569,20,จำนวนเต็ม,False,False,False,False
+44,สวนสัตว์เปิดเขาเขียว องค์การสวนสัตว์แห่งประเทศไทย ในพระบรมราชูปถัมภ์,ชลบุรี,ชานเมือง,ภาคตะวันออก,2,17,89.5,tourism_types;facilities,พ.ศ. 2567 – 2569,19,จำนวนเต็ม,False,False,False,False
+45,อุ่นฟ้าอิงดาวแคมป์ปิ้ง,นครราชสีมา,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,2,17,89.5,tourism_types;facilities,พ.ศ. 2567 – 2569,19,จำนวนเต็ม,False,False,False,False
+46,บ่อแสนวิลล่า,พังงา,ที่ดินส่วนบุคคล,ภาคใต้,2,17,89.5,events_held;tourism_types,พ.ศ. 2567 – 2569,19,จำนวนเต็ม,False,False,False,False
+47,อุทยานแห่งชาติถ้ำปลา – น้ำตกผาเสื่อ,แม่ฮ่องสอน,อุทยานท้องฟ้ามืด,ภาคเหนือ,3,16,84.2,events_held;tourism_types;facilities,พ.ศ. 2566 – 2568,20,จำนวนเต็ม,False,False,False,False
+48,อุทยานแห่งชาติศรีน่าน,น่าน,อุทยานท้องฟ้ามืด,ภาคเหนือ,3,16,84.2,address;tourism_types;facilities,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",21,จำนวนเต็ม,True,False,False,False
+49,อุทยานแห่งชาติแม่วงก์,กำแพงเพชร,อุทยานท้องฟ้ามืด,ภาคกลาง,2,17,89.5,tourism_types;facilities,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",21,จำนวนเต็ม,False,False,False,False
+50,อุทยานแห่งชาติตาพระยา,สระแก้ว,อุทยานท้องฟ้ามืด,ภาคตะวันออก,2,17,89.5,tourism_types;facilities,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",21,จำนวนเต็ม,True,False,False,False
+51,อุทยานแห่งชาติเขาใหญ่,นครราชสีมา,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,1,18,94.7,details_note,พ.ศ. 2566 – 2568 และ พ.ศ. 2569 – 2571,21,จำนวนเต็ม,False,False,False,True
+52,จุดชมวิว อ่าวโต๊ะหลี,พังงา,ที่ดินส่วนบุคคล,ภาคใต้,3,16,84.2,address;tourism_types;facilities,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",20,จำนวนเต็ม,False,False,False,False
+53,สวนสัตว์ขอนแก่น,ขอนแก่น,ชานเมือง,ภาคตะวันออกเฉียงเหนือ,2,17,89.5,tourism_types;facilities,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",19,จำนวนเต็ม,False,False,False,False
+54,วิลลา เดอ วิว บูทีค รีสอร์ท เชียงดาว,เชียงใหม่,ที่ดินส่วนบุคคล,ภาคเหนือ,1,18,94.7,tourism_types,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",19,จำนวนเต็ม,False,False,False,False
+55,วนอุทยานน้ำตกผาหลวง,อุบลราชธานี,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,3,16,84.2,address;tourism_types;facilities,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",21,จำนวนเต็ม,False,False,False,False
+56,ไร่เขาน้อยสุวณา,นครราชสีมา,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,0,19,100.0,,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",20,จำนวนเต็ม,False,False,False,False
+57,มีลา การ์เดน รีทรีท คอทเทจ,สระบุรี,ที่ดินส่วนบุคคล,ภาคกลาง,1,18,94.7,tourism_types,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",20,จำนวนเต็ม,False,False,False,False
+58,ฟาร์มแสงสุข,ระยอง,ที่ดินส่วนบุคคล,ภาคตะวันออก,1,18,94.7,details_note,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",20,จำนวนเต็ม,False,False,False,False
+59,พูโตะ,เชียงใหม่,ที่ดินส่วนบุคคล,ภาคเหนือ,1,18,94.7,address,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",20,จำนวนเต็ม,True,False,False,False
+60,บ้านสวนป่าโป่งดอย,เชียงใหม่,ที่ดินส่วนบุคคล,ภาคเหนือ,2,17,89.5,tourism_types;facilities,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",20,จำนวนเต็ม,False,False,False,False
+61,ต้นข้าวหอมบ้านอ้อมดอย,เชียงใหม่,ที่ดินส่วนบุคคล,ภาคเหนือ,2,17,89.5,tourism_types;facilities,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",20,จำนวนเต็ม,False,False,False,False
+62,เดอะทีค รีสอร์ท,เชียงใหม่,ที่ดินส่วนบุคคล,ภาคเหนือ,1,18,94.7,tourism_types,พ.ศ. 2566 – 2568,19,จำนวนเต็ม,False,False,False,False
+63,ซัมมิท กรีน วัลเล่ย์ เชียงใหม่ คันทรี คลับ,เชียงใหม่,ชานเมือง,ภาคเหนือ,2,17,89.5,tourism_types;facilities,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",19,จำนวนเต็ม,False,False,False,False
+64,เชียงดาวฟาร์มสเตย์,เชียงใหม่,ที่ดินส่วนบุคคล,ภาคเหนือ,3,16,84.2,events_held;tourism_types;facilities,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",20,จำนวนเต็ม,False,False,False,False
+65,คีรีมาลา อีโค่ แคมป์,ราชบุรี,ที่ดินส่วนบุคคล,ภาคตะวันตก,2,17,89.5,tourism_types;facilities,"พ.ศ. 2566 – 2568, พ.ศ. 2569 – 2571",20,จำนวนเต็ม,False,False,True,False
+66,อุทยานแห่งชาติผาแต้ม,อุบลราชธานี,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,2,17,89.5,events_held;details_note,พ.ศ. 2568 – 2570,21,จำนวนเต็ม,False,False,False,False
+67,อุทยานแห่งชาติป่าหินงาม,ชัยภูมิ,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,5,14,73.7,address;events_held;tourism_types;facilities;details_note,พ.ศ. 2568 – 2570,21,จำนวนเต็ม,False,False,False,False
+68,เขตรักษาพันธุ์สัตว์ป่าภูเขียว,ชัยภูมิ,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,5,14,73.7,address;events_held;tourism_types;facilities;details_note,พ.ศ. 2568 – 2570,21,จำนวนเต็ม,False,False,False,False
+69,อุทยานแห่งชาติภูแลนคา,ชัยภูมิ,อุทยานท้องฟ้ามืด,ภาคตะวันออกเฉียงเหนือ,4,15,78.9,address;events_held;tourism_types;details_note,พ.ศ. 2568 – 2570,21,จำนวนเต็ม,False,False,False,False
+70,ไร่องุ่นไวน์กราน-มอนเต้,นครราชสีมา,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,4,15,78.9,events_held;tourism_types;facilities;details_note,พ.ศ. 2564,21.28,ทศนิยม,False,False,False,False
+71,บ้านไร่ยายชะพลู,นครราชสีมา,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,4,15,78.9,events_held;tourism_types;facilities;details_note,พ.ศ. 2565 – 2567,21.06,ทศนิยม,False,False,False,False
+72,หอดูดาวเฉลิมพระเกียรติฯ ขอนแก่น,ขอนแก่น,ชานเมือง,ภาคตะวันออกเฉียงเหนือ,2,17,89.5,tourism_types;facilities,พ.ศ. 2568 – 2570,20,จำนวนเต็ม,False,False,False,False
+73,หอดูดาวเฉลิมพระเกียรติฯ สงขลา,สงขลา,ชานเมือง,ภาคใต้,1,18,94.7,tourism_types,"พ.ศ. 2565- 2567, พ.ศ. 2568 – 2570",19,จำนวนเต็ม,False,True,False,True
+74,หอดูดาวเฉลิมพระเกียรติฯ นครราชสีมา,นครราชสีมา,ชานเมือง,ภาคตะวันออกเฉียงเหนือ,2,17,89.5,tourism_types;facilities,"พ.ศ. 2565- 2567, พ.ศ. 2568 – 2570",19,จำนวนเต็ม,False,False,False,False
+75,หอดูดาวเฉลิมพระเกียรติฯ ฉะเชิงเทรา,ฉะเชิงเทรา,ชานเมือง,ภาคกลาง,2,17,89.5,tourism_types;facilities,"พ.ศ. 2565 – 2567, พ.ศ. 2568 – 2570",19,จำนวนเต็ม,False,False,False,False
+76,อุทยานดาราศาสตร์สิรินธร,เชียงใหม่,ชานเมือง,ภาคเหนือ,1,18,94.7,details_note,พ.ศ. 2565- 2567 และ พ.ศ. 2568 – 2570,19,จำนวนเต็ม,False,False,False,False
+77,โรงแรมเรนทรี เขาใหญ่,นครราชสีมา,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,3,16,84.2,events_held;tourism_types;details_note,พ.ศ. 2565 – 2567,21.10,ทศนิยม,False,False,False,False
+78,สนามมวกเหล็กเอทีวี,นครราชสีมา,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,4,15,78.9,events_held;tourism_types;facilities;details_note,พ.ศ. 2565 -2567,21.11,ทศนิยม,False,False,False,False
+79,ไร่องุ่นไวน์ อัลซิดินี่,นครราชสีมา,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,4,15,78.9,events_held;tourism_types;facilities;details_note,พ.ศ. 2565 – 2567,21.42,ทศนิยม,False,False,False,False
+80,โรงแรม เดอะเปียโน รีสอร์ท เขาใหญ่,นครราชสีมา,ที่ดินส่วนบุคคล,ภาคตะวันออกเฉียงเหนือ,2,17,89.5,events_held;details_note,พ.ศ. 2565 – 2567,20.50,ทศนิยม,False,False,False,False
+81,บ้านออนใต้ สันกำแพง,เชียงใหม่,ชุมชน,ภาคเหนือ,4,15,78.9,address;events_held;facilities;details_note,พ.ศ. 2565 – 2567,20,จำนวนเต็ม,False,False,False,False
+82,อุทยานแห่งชาติห้วยน้ำดัง,เชียงใหม่,อุทยานท้องฟ้ามืด,ภาคเหนือ,5,14,73.7,address;events_held;tourism_types;facilities;details_note,พ.ศ. 2568 – 2570,21,จำนวนเต็ม,False,False,False,False
