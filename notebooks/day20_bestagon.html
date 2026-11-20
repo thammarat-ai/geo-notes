@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>โน้ตบุ๊กของ day20_bestagon – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#ตอน-1-กรด-เสนขอบ" id="toc-ตอน-1-กรด-เสนขอบ" class="nav-link active" data-scroll-target="#ตอน-1-กรด-เสนขอบ">ตอน 1) กริด + เส้นขอบ</a></li>
+  <li><a href="#ตอน-2-สรป" id="toc-ตอน-2-สรป" class="nav-link" data-scroll-target="#ตอน-2-สรป">ตอน 2) สรุป</a></li>
+  <li><a href="#ตอน-4-artifact" id="toc-ตอน-4-artifact" class="nav-link" data-scroll-target="#ตอน-4-artifact">ตอน 4) artifact</a></li>
+  <li><a href="#ตอน-5-referee" id="toc-ตอน-5-referee" class="nav-link" data-scroll-target="#ตอน-5-referee">ตอน 5) referee</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">โน้ตบุ๊กของ day20_bestagon</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Day 20 · Hexagons — “Hexagons, the good old bestagons.”</p>
+<p>โจทย์ (ดึงจาก 30daymapchallenge.com อ่านสด 23:05 น. ของวันที่ 20 พ.ย.) ท้าให้รักหกเหลี่ยม ผมจึงตรวจสุขภาพมัน: หกเหลี่ยม H3 res 5 ที่ซีรีส์นี้ใชามาตั้งแต่ Day 3 <em>เป็นหกเหลี่ยมจริงแค่ไหน</em></p>
+<p>วัดทุกเซลล์ของกริด Day 3 (1,738 เซลล์) ใน projection Equidistant Conic (หน่วยเมตร) • compactness = 4πA/P² (วงกลม = 1, หกเหลี่ยมด้านเท่ามุมเท่า = π√3/6 = 0.9069) • จำนวนชิ้น (Polygon vs MultiPolygon) และจำนวนจุดมุม • ความไม่สม่ำเสมอของด้าน 6 ด้าน (CV) และมุมภายในที่ห่างจาก 120° มากที่สุด • สัดส่วนพื้นที่ที่อยู่ในประเทศไทย (clip กับ Natural Earth 10m) — ผู้ต้องหาลำดับหนึ่ง ทุกตัวเลขอ่านจาก day20_hexagons.csv / day20_stats.json เท่านั้น</p>
+<blockquote class="blockquote">
+<p>สร้างอัตโนมัติจาก <code>tools/day20_bestagon.py</code> โดย <code>tools/make_notebook.py</code></p>
+</blockquote>
+<section id="คาคงท-ชดเครองมอ-อานดาวนโหลดขอมล-ตงฟอนตไทย-ตรวจวารนทไหน" class="level3">
+<h3 class="anchored" data-anchor-id="คาคงท-ชดเครองมอ-อานดาวนโหลดขอมล-ตงฟอนตไทย-ตรวจวารนทไหน">ค่าคงที่ + ชุดเครื่องมือ (อ่าน/ดาวน์โหลดข้อมูล, ตั้งฟอนต์ไทย, ตรวจว่ารันที่ไหน)</h3>
+<div id="cell-3" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -*- coding: utf-8 -*-</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">Day 20 · Hexagons — "Hexagons, the good old bestagons."</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">โจทย์ (ดึงจาก 30daymapchallenge.com อ่านสด 23:05 น. ของวันที่ 20 พ.ย.) ท้าให้รักหกเหลี่ยม</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">ผมจึงตรวจสุขภาพมัน: หกเหลี่ยม H3 res 5 ที่ซีรีส์นี้ใชามาตั้งแต่ Day 3 *เป็นหกเหลี่ยมจริงแค่ไหน*</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">วัดทุกเซลล์ของกริด Day 3 (1,738 เซลล์) ใน projection Equidistant Conic (หน่วยเมตร)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  • compactness = 4πA/P²  (วงกลม = 1, หกเหลี่ยมด้านเท่ามุมเท่า = π√3/6 = 0.9069)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  • จำนวนชิ้น (Polygon vs MultiPolygon) และจำนวนจุดมุม</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  • ความไม่สม่ำเสมอของด้าน 6 ด้าน (CV) และมุมภายในที่ห่างจาก 120° มากที่สุด</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  • สัดส่วนพื้นที่ที่อยู่ในประเทศไทย (clip กับ Natural Earth 10m) — ผู้ต้องหาลำดับหนึ่ง</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">ทุกตัวเลขอ่านจาก day20_hexagons.csv / day20_stats.json เท่านั้น</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, sys, json, time, math</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd, geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> h3</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely.validation <span class="im">import</span> make_valid</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely <span class="im">import</span> affinity</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyproj <span class="im">import</span> CRS</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>matplotlib.use(<span class="st">"Agg"</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> font_manager</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.collections <span class="im">import</span> PolyCollection</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> spearmanr</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>T0 <span class="op">=</span> time.time()</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>WORK <span class="op">=</span> <span class="vs">r"D:</span><span class="dv">\G</span><span class="vs">IS30Days"</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>REPO <span class="op">=</span> os.path.join(WORK, <span class="st">"geo-notes"</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>CACHE <span class="op">=</span> os.path.join(WORK, <span class="st">"cache"</span>, <span class="st">"day06"</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>OUT <span class="op">=</span> os.path.join(WORK, <span class="st">"out"</span>, <span class="st">"day20"</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>os.makedirs(OUT, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _f <span class="kw">in</span> <span class="bu">sorted</span>(os.listdir(CACHE)):</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> _f.endswith(<span class="st">".ttf"</span>):</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        font_manager.fontManager.addfont(os.path.join(CACHE, _f))</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"font.family"</span>] <span class="op">=</span> <span class="st">"Trirong"</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>_LOGF <span class="op">=</span> <span class="bu">open</span>(os.path.join(OUT, <span class="st">"day20_run.log"</span>), <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log(m):</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="ss">f"[</span><span class="sc">{</span>time<span class="sc">.</span>time()<span class="op">-</span>T0<span class="sc">:6.1f}</span><span class="ss">s] </span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s, flush<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    _LOGF.write(s <span class="op">+</span> <span class="bu">chr</span>(<span class="dv">10</span>))<span class="op">;</span> _LOGF.flush()</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>sys.path.insert(<span class="dv">0</span>, os.path.join(WORK, <span class="st">"tools"</span>))</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> guards <span class="im">import</span> guard_bbox, guard_crs, guard_variance, lint_thai</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>TXT <span class="op">=</span> []</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> T(s):</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    TXT.append(s)<span class="op">;</span> <span class="cf">return</span> s</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>EQ <span class="op">=</span> CRS.from_proj4(<span class="st">"+proj=eqdc +lat_0=14 +lon_0=101 +lat_1=8 +lat_2=20 +units=m +no_defs +ellps=WGS84"</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>BG, INK, MUTED <span class="op">=</span> <span class="st">"#0d1522"</span>, <span class="st">"#e8e3d3"</span>, <span class="st">"#9fb2c8"</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>ACCENT, WARM, COOL, TEAL <span class="op">=</span> <span class="st">"#f5b942"</span>, <span class="st">"#f4566a"</span>, <span class="st">"#38bdf8"</span>, <span class="st">"#2dd4bf"</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>IDEAL <span class="op">=</span> math.pi <span class="op">*</span> math.sqrt(<span class="dv">3</span>) <span class="op">/</span> <span class="fl">6.0</span>        <span class="co"># 0.9069 สำหรับหกเหลี่ยมด้านเท่ามุมเท่า</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-1-กรด-เสนขอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-1-กรด-เสนขอบ">ตอน 1) กริด + เส้นขอบ</h2>
+<div id="cell-5" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------- 1. กริด + เส้นขอบ</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>g3 <span class="op">=</span> gpd.read_file(os.path.join(REPO, <span class="st">"posts/day03-polygons/day03_hex_polygons.geojson"</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">len</span>(g3) <span class="op">==</span> <span class="dv">1738</span>, <span class="ss">f"กริด Day 3 ต้องมี 1,738 เซลล์ ได้ </span><span class="sc">{</span><span class="bu">len</span>(g3)<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ne <span class="op">=</span> gpd.read_file(os.path.join(CACHE, <span class="st">"ne_10m_admin_0_countries.shp"</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>TH <span class="op">=</span> make_valid(ne[ne.NAME <span class="op">==</span> <span class="st">"Thailand"</span>].geometry.iloc[<span class="dv">0</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>PARTS <span class="op">=</span> <span class="bu">list</span>(TH.geoms)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>guard_crs(TH.bounds, <span class="st">"thailand-outline"</span>, expect<span class="op">=</span><span class="st">"degrees"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>cen_deg <span class="op">=</span> np.array([[c.centroid.x, c.centroid.y] <span class="cf">for</span> c <span class="kw">in</span> g3.geometry.values])</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>guard_bbox(cen_deg, <span class="fl">96.5</span>, <span class="fl">107.6</span>, <span class="fl">4.3</span>, <span class="fl">21.7</span>, <span class="st">"hex-centroids"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>gm <span class="op">=</span> g3.to_crs(EQ).geometry.values</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shapely</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>clipped <span class="op">=</span> shapely.intersection(g3.geometry.values, TH)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>in_km2 <span class="op">=</span> np.array(gpd.GeoSeries(<span class="bu">list</span>(clipped), crs<span class="op">=</span><span class="st">"EPSG:4326"</span>).to_crs(EQ).area) <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>full_km2 <span class="op">=</span> np.array(gpd.GeoSeries(<span class="bu">list</span>(g3.geometry.values), crs<span class="op">=</span><span class="st">"EPSG:4326"</span>).to_crs(EQ).area) <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>share <span class="op">=</span> in_km2 <span class="op">/</span> full_km2</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sides_angles(poly):</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""ด้านและมุมภายในของ ring นอกสุด (หลายเหลี่ยม: ใช้ชิ้นที่ใหญ่ที่สุด)"""</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> poly.geom_type <span class="op">==</span> <span class="st">"MultiPolygon"</span>:</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        poly <span class="op">=</span> <span class="bu">max</span>(poly.geoms, key<span class="op">=</span><span class="kw">lambda</span> q: q.area)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    xy <span class="op">=</span> np.asarray(poly.exterior.coords)[:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> np.hypot(np.diff(np.r_[xy[:, <span class="dv">0</span>], xy[<span class="dv">0</span>, <span class="dv">0</span>]]), np.diff(np.r_[xy[:, <span class="dv">1</span>], xy[<span class="dv">0</span>, <span class="dv">1</span>]]))</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(xy)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    ang <span class="op">=</span> []</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        p0, p1, p2 <span class="op">=</span> xy[(i <span class="op">-</span> <span class="dv">1</span>) <span class="op">%</span> n], xy[i], xy[(i <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> n]</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        v1, v2 <span class="op">=</span> p0 <span class="op">-</span> p1, p2 <span class="op">-</span> p1</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> math.degrees(math.atan2(v1[<span class="dv">0</span>] <span class="op">*</span> v2[<span class="dv">1</span>] <span class="op">-</span> v1[<span class="dv">1</span>] <span class="op">*</span> v2[<span class="dv">0</span>], v1[<span class="dv">0</span>] <span class="op">*</span> v2[<span class="dv">0</span>] <span class="op">+</span> v1[<span class="dv">1</span>] <span class="op">*</span> v2[<span class="dv">1</span>]))</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        ang.append(<span class="bu">abs</span>(a))</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> d, np.array(ang), n</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, poly <span class="kw">in</span> <span class="bu">enumerate</span>(gm):</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    a_m2, p_m <span class="op">=</span> poly.area, poly.length          <span class="co"># ทั้งคู่เป็น *เมตร* — ห้ามปนหน่วย (บั๊กที่ assert จับได้)</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    a_km2 <span class="op">=</span> a_m2 <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    comp <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> math.pi <span class="op">*</span> a_m2 <span class="op">/</span> (p_m <span class="op">*</span> p_m) <span class="cf">if</span> p_m <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> np.nan</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    d, ang, n <span class="op">=</span> sides_angles(poly)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    cv <span class="op">=</span> <span class="bu">float</span>(d.std() <span class="op">/</span> d.mean()) <span class="cf">if</span> d.mean() <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> np.nan</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    ang_dev <span class="op">=</span> <span class="bu">float</span>(np.<span class="bu">max</span>(np.<span class="bu">abs</span>(ang <span class="op">-</span> <span class="fl">120.0</span>))) <span class="cf">if</span> <span class="bu">len</span>(ang) <span class="cf">else</span> np.nan</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    rows.append(<span class="bu">dict</span>(idx<span class="op">=</span>i, cell<span class="op">=</span><span class="bu">str</span>(g3.cell.iloc[i]), province<span class="op">=</span><span class="bu">str</span>(g3.province.iloc[i]).strip(),</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>                     nearest_site<span class="op">=</span><span class="bu">str</span>(g3.nearest.iloc[i]).strip(),</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>                     parts<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(poly.geoms) <span class="cf">if</span> poly.geom_type <span class="op">==</span> <span class="st">"MultiPolygon"</span> <span class="cf">else</span> <span class="dv">1</span>),</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>                     vertices<span class="op">=</span>n, compactness<span class="op">=</span><span class="bu">round</span>(comp, <span class="dv">5</span>), edge_cv<span class="op">=</span><span class="bu">round</span>(cv, <span class="dv">5</span>),</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>                     max_angle_dev_deg<span class="op">=</span><span class="bu">round</span>(ang_dev, <span class="dv">3</span>), area_km2<span class="op">=</span><span class="bu">round</span>(a_km2, <span class="dv">3</span>),</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>                     inside_share<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(share[i]), <span class="dv">5</span>),</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>                     lat<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(cen_deg[i][<span class="dv">1</span>]), <span class="dv">4</span>), lon<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(cen_deg[i][<span class="dv">0</span>]), <span class="dv">4</span>),</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>                     is_hexagon<span class="op">=</span><span class="bu">bool</span>(n <span class="op">==</span> <span class="dv">6</span> <span class="kw">and</span> (poly.geom_type <span class="op">==</span> <span class="st">"Polygon"</span>) <span class="kw">and</span> comp <span class="op">&gt;=</span> IDEAL <span class="op">-</span> <span class="fl">0.01</span>)))</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> pd.DataFrame(rows)</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">len</span>(S) <span class="op">==</span> <span class="dv">1738</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>guard_variance(S.compactness.values.astype(<span class="bu">float</span>), <span class="st">"compactness"</span>, min_spread_km<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-2-สรป" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-2-สรป">ตอน 2) สรุป</h2>
+<div id="cell-7" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------- 2. สรุป</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n_multi <span class="op">=</span> <span class="bu">int</span>((S.parts <span class="op">&gt;</span> <span class="dv">1</span>).<span class="bu">sum</span>())</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>n_v6 <span class="op">=</span> <span class="bu">int</span>((S.vertices <span class="op">==</span> <span class="dv">6</span>).<span class="bu">sum</span>())</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>n_good <span class="op">=</span> <span class="bu">int</span>(S.is_hexagon.<span class="bu">sum</span>())</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>worst <span class="op">=</span> S.sort_values(<span class="st">"compactness"</span>).head(<span class="dv">10</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>roundest <span class="op">=</span> S.sort_values(<span class="st">"compactness"</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">5</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># "bestagon" ที่แท้จริงต้องวัดจาก *หกเหลี่ยม* ก่อน ไม่ใช่จาก compactness อย่างเดียว</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># เพราะรูปที่มี 8-10 ด้านจะกลมกว่าหกเหลี่ยมเสมอ (เข้าใกล้วงกลม = 1)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>clean <span class="op">=</span> S[(S.parts <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (S.vertices <span class="op">==</span> <span class="dv">6</span>)]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>best <span class="op">=</span> clean.sort_values(<span class="st">"edge_cv"</span>).head(<span class="dv">5</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>rho_clip, p_clip <span class="op">=</span> spearmanr(S.compactness.values, S.inside_share.values)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>rho_lat, p_lat <span class="op">=</span> spearmanr(S.compactness.values, S.lat.values)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>rho_cv, p_cv <span class="op">=</span> spearmanr(S.compactness.values, S.edge_cv.values)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>AGG <span class="op">=</span> <span class="bu">dict</span>(cells<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(S)), ideal_compactness<span class="op">=</span><span class="bu">round</span>(IDEAL, <span class="dv">5</span>),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>           h3_nominal_area_km2<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(h3.average_hexagon_area(<span class="dv">5</span>, <span class="st">"km^2"</span>)), <span class="dv">3</span>),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>           measured_area_mean<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(S.area_km2.mean()), <span class="dv">3</span>),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>           measured_area_min<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(S.area_km2.<span class="bu">min</span>()), <span class="dv">3</span>),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>           measured_area_max<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(S.area_km2.<span class="bu">max</span>()), <span class="dv">3</span>),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>           compact_min<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(S.compactness.<span class="bu">min</span>()), <span class="dv">5</span>),</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>           compact_median<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(S.compactness.median()), <span class="dv">5</span>),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>           compact_max<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(S.compactness.<span class="bu">max</span>()), <span class="dv">5</span>),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>           cells_with_6_vertices<span class="op">=</span>n_v6,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>           clean_hexagons<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(clean)),</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>           clean_hex_edge_cv_min<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(clean.edge_cv.<span class="bu">min</span>()), <span class="dv">5</span>),</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>           clean_hex_edge_cv_max<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(clean.edge_cv.<span class="bu">max</span>()), <span class="dv">5</span>),</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>           clean_hex_compact_min<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(clean.compactness.<span class="bu">min</span>()), <span class="dv">5</span>),</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>           clean_hex_compact_max<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(clean.compactness.<span class="bu">max</span>()), <span class="dv">5</span>),</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>           clean_hex_angle_dev_max<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(clean.max_angle_dev_deg.<span class="bu">max</span>()), <span class="dv">3</span>),</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>           roundest_cell<span class="op">=</span><span class="bu">str</span>(roundest.iloc[<span class="dv">0</span>].cell),</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>           roundest_compactness<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(roundest.iloc[<span class="dv">0</span>].compactness), <span class="dv">5</span>),</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>           roundest_vertices<span class="op">=</span><span class="bu">int</span>(roundest.iloc[<span class="dv">0</span>].vertices),</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>           bestagon_cell<span class="op">=</span><span class="bu">str</span>(best.iloc[<span class="dv">0</span>].cell), bestagon_edge_cv<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(best.iloc[<span class="dv">0</span>].edge_cv), <span class="dv">5</span>),</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>           bestagon_compactness<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(best.iloc[<span class="dv">0</span>].compactness), <span class="dv">5</span>),</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>           bestagon_angle_dev<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(best.iloc[<span class="dv">0</span>].max_angle_dev_deg), <span class="dv">3</span>),</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>           bestagon_province<span class="op">=</span><span class="bu">str</span>(best.iloc[<span class="dv">0</span>].province), cells_multipolygon<span class="op">=</span>n_multi,</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>           cells_are_hexagons<span class="op">=</span>n_good, cells_not_hexagons<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(S) <span class="op">-</span> n_good),</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>           edge_cv_median<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(S.edge_cv.median()), <span class="dv">5</span>),</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>           edge_cv_max<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(S.edge_cv.<span class="bu">max</span>()), <span class="dv">5</span>),</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>           angle_dev_max<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(S.max_angle_dev_deg.<span class="bu">max</span>()), <span class="dv">3</span>),</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>           angle_dev_median<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(S.max_angle_dev_deg.median()), <span class="dv">3</span>),</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>           cells_below_half_inside<span class="op">=</span><span class="bu">int</span>((S.inside_share <span class="op">&lt;</span> <span class="fl">0.5</span>).<span class="bu">sum</span>()),</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>           spearman_compact_vs_share<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(rho_clip), <span class="dv">3</span>), p_compact_share<span class="op">=</span><span class="bu">float</span>(p_clip),</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>           spearman_compact_vs_lat<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(rho_lat), <span class="dv">3</span>), p_compact_lat<span class="op">=</span><span class="bu">float</span>(p_lat),</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>           spearman_compact_vs_edgecv<span class="op">=</span><span class="bu">round</span>(<span class="bu">float</span>(rho_cv), <span class="dv">3</span>), p_compact_edgecv<span class="op">=</span><span class="bu">float</span>(p_cv))</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"compactness: ต่ำสุด </span><span class="sc">{</span>AGG[<span class="st">'compact_min'</span>]<span class="sc">}</span><span class="ss"> · มัธยฐาน </span><span class="sc">{</span>AGG[<span class="st">'compact_median'</span>]<span class="sc">}</span><span class="ss"> · "</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"สูงสุด </span><span class="sc">{</span>AGG[<span class="st">'compact_max'</span>]<span class="sc">}</span><span class="ss"> (หกเหลี่ยมในอุดมคติ </span><span class="sc">{</span>AGG[<span class="st">'ideal_compactness'</span>]<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"เซลล์ที่ 'เป็นหกเหลี่ยมจริง' </span><span class="sc">{</span>n_good<span class="sc">:,}</span><span class="ss"> จาก 1,738 · มี </span><span class="sc">{</span>n_multi<span class="sc">}</span><span class="ss"> เซลล์ที่เป็น MultiPolygon · "</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="sc">{</span>n_v6<span class="sc">:,}</span><span class="ss"> เซลล์ที่มี 6 จุดมุม"</span>)</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"area วัดจริง: mean </span><span class="sc">{</span>AGG[<span class="st">'measured_area_mean'</span>]<span class="sc">}</span><span class="ss"> · min </span><span class="sc">{</span>AGG[<span class="st">'measured_area_min'</span>]<span class="sc">}</span><span class="ss"> · "</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"max </span><span class="sc">{</span>AGG[<span class="st">'measured_area_max'</span>]<span class="sc">}</span><span class="ss"> ตร.กม. (H3 nominal res 5 = </span><span class="sc">{</span>AGG[<span class="st">'h3_nominal_area_km2'</span>]<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>log(<span class="ss">f"Spearman compact↔inside_share = </span><span class="sc">{</span>rho_clip<span class="sc">:.3f}</span><span class="ss"> (p=</span><span class="sc">{</span>p_clip<span class="sc">:.2g}</span><span class="ss">) · "</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"compact↔latitude = </span><span class="sc">{</span>rho_lat<span class="sc">:.3f}</span><span class="ss"> (p=</span><span class="sc">{</span>p_lat<span class="sc">:.2g}</span><span class="ss">) · compact↔edge_cv = </span><span class="sc">{</span>rho_cv<span class="sc">:.3f}</span><span class="ss"> (p=</span><span class="sc">{</span>p_cv<span class="sc">:.2g}</span><span class="ss">)"</span>)</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>log(<span class="st">"สิบเซลล์ที่ 'ไม่หกเหลี่ยม' ที่สุด: "</span> <span class="op">+</span> <span class="st">" · "</span>.join(</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="sc">{</span>r<span class="sc">.</span>province<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>r<span class="sc">.</span>compactness<span class="sc">:.3f}</span><span class="ss"> (inside </span><span class="sc">{</span>r<span class="sc">.</span>inside_share<span class="op">*</span><span class="dv">100</span><span class="sc">:.0f}</span><span class="ss">%)"</span> <span class="cf">for</span> r <span class="kw">in</span> worst.itertuples()))</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="co"># ================================================== ภาพ 1 — แผนที่คุณภาพหกเหลี่ยม</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_hero():</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="fl">15.8</span>, <span class="fl">9.0</span>), dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    fig.patch.set_facecolor(BG)</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> fig.add_axes([<span class="fl">0.02</span>, <span class="fl">0.115</span>, <span class="fl">0.665</span>, <span class="fl">0.775</span>])<span class="op">;</span> ax.set_facecolor(<span class="st">"#05080f"</span>)</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    ax.add_collection(PolyCollection([<span class="bu">list</span>(q.exterior.coords) <span class="cf">for</span> p <span class="kw">in</span> PARTS <span class="cf">for</span> q <span class="kw">in</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>                                      (p.geoms <span class="cf">if</span> p.geom_type.startswith(<span class="st">"Multi"</span>) <span class="cf">else</span> [p])],</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>                                     facecolor<span class="op">=</span><span class="st">"#0b1220"</span>, edgecolor<span class="op">=</span><span class="st">"#24344d"</span>, lw<span class="op">=</span><span class="fl">0.5</span>))</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>    norm <span class="op">=</span> plt.Normalize(<span class="fl">0.0</span>, <span class="fl">0.92</span>)</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>    cmap <span class="op">=</span> plt.get_cmap(<span class="st">"turbo"</span>)</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>    rings <span class="op">=</span> []</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> poly <span class="kw">in</span> g3.geometry.values:</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> q <span class="kw">in</span> (poly.geoms <span class="cf">if</span> poly.geom_type.startswith(<span class="st">"Multi"</span>) <span class="cf">else</span> [poly]):</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>            rings.append(<span class="bu">list</span>(q.exterior.coords))</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>    ax.add_collection(PolyCollection(rings, facecolor<span class="op">=</span>[cmap(norm(c)) <span class="cf">for</span> c <span class="kw">in</span> S.compactness],</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>                                     edgecolor<span class="op">=</span><span class="st">"#05080f"</span>, lw<span class="op">=</span><span class="fl">0.15</span>, zorder<span class="op">=</span><span class="dv">4</span>))</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>    bad <span class="op">=</span> [<span class="bu">list</span>(g3.geometry.iloc[i].exterior.coords) <span class="cf">if</span> g3.geometry.iloc[i].geom_type <span class="op">==</span> <span class="st">"Polygon"</span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>           <span class="cf">else</span> <span class="va">None</span> <span class="cf">for</span> i <span class="kw">in</span> S[S.parts <span class="op">&gt;</span> <span class="dv">1</span>].idx.values]</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>    ax.add_collection(PolyCollection([b <span class="cf">for</span> b <span class="kw">in</span> bad <span class="cf">if</span> b], facecolor<span class="op">=</span><span class="st">"none"</span>,</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>                                     edgecolor<span class="op">=</span>WARM, lw<span class="op">=</span><span class="fl">1.6</span>, zorder<span class="op">=</span><span class="dv">6</span>))</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _, r <span class="kw">in</span> best.iloc[:<span class="dv">1</span>].iterrows():</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>        ax.annotate(T(<span class="st">"bestagon</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="ss">f"</span><span class="sc">{</span>r<span class="sc">.</span>compactness<span class="sc">:.4f}</span><span class="ss">"</span>), (r.lon, r.lat), xytext<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>),</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>                    textcoords<span class="op">=</span><span class="st">"offset points"</span>, color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">9.5</span>)</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _, r <span class="kw">in</span> worst.iloc[:<span class="dv">1</span>].iterrows():</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>        ax.annotate(T(<span class="st">"worstagon</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="ss">f"</span><span class="sc">{</span>r<span class="sc">.</span>compactness<span class="sc">:.4f}</span><span class="ss">"</span>), (r.lon, r.lat), xytext<span class="op">=</span>(<span class="op">-</span><span class="dv">16</span>, <span class="op">-</span><span class="dv">26</span>),</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>                    textcoords<span class="op">=</span><span class="st">"offset points"</span>, color<span class="op">=</span>WARM, fontsize<span class="op">=</span><span class="fl">9.5</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="fl">97.2</span>, <span class="fl">106.6</span>)<span class="op">;</span> ax.set_ylim(<span class="fl">5.2</span>, <span class="fl">20.9</span>)<span class="op">;</span> ax.set_aspect(<span class="st">"equal"</span>)<span class="op">;</span> ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>    sm <span class="op">=</span> plt.cm.ScalarMappable(cmap<span class="op">=</span>cmap, norm<span class="op">=</span>norm)</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>    cb <span class="op">=</span> fig.add_axes([<span class="fl">0.695</span>, <span class="fl">0.40</span>, <span class="fl">0.014</span>, <span class="fl">0.42</span>])</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>    plt.colorbar(sm, cax<span class="op">=</span>cb).set_label(T(<span class="st">"compactness = 4πA/P² (หกเหลี่ยมด้านเท่า = 0.9069)"</span>),</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>                                       color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">9.5</span>)</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>    cb.tick_params(colors<span class="op">=</span>INK, labelsize<span class="op">=</span><span class="fl">8.5</span>)</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>    txt <span class="op">=</span> fig.add_axes([<span class="fl">0.735</span>, <span class="fl">0.115</span>, <span class="fl">0.255</span>, <span class="fl">0.72</span>])<span class="op">;</span> txt.axis(<span class="st">"off"</span>)</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> [(T(<span class="st">"เซลล์ทั้งหมด"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'cells'</span>]<span class="sc">:,}</span><span class="ss">"</span>),</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"ที่เป็นหกเหลี่ยมจริง"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'cells_are_hexagons'</span>]<span class="sc">:,}</span><span class="ss">"</span>),</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"ที่ไม่ใช่"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'cells_not_hexagons'</span>]<span class="sc">:,}</span><span class="ss">"</span>),</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"  เป็น MultiPolygon"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'cells_multipolygon'</span>]<span class="sc">}</span><span class="ss">"</span>),</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"ที่มี 6 จุดมุม"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'cells_with_6_vertices'</span>]<span class="sc">:,}</span><span class="ss">"</span>),</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>             (<span class="st">""</span>, <span class="st">""</span>),</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"compactness · ต่ำสุด"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'compact_min'</span>]<span class="sc">:.4f}</span><span class="ss">"</span>),</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"compactness · มัธยฐาน"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'compact_median'</span>]<span class="sc">:.4f}</span><span class="ss">"</span>),</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"compactness · สูงสุด"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'compact_max'</span>]<span class="sc">:.4f}</span><span class="ss">"</span>),</span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"หกเหลี่ยมอุดมคติ"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'ideal_compactness'</span>]<span class="sc">:.4f}</span><span class="ss">"</span>),</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>             (<span class="st">""</span>, <span class="st">""</span>),</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"CV ของด้านทั้งหก · มัธยฐาน"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'edge_cv_median'</span>]<span class="sc">:.4f}</span><span class="ss">"</span>),</span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"CV ของด้านทั้งหก · สูงสุด"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'edge_cv_max'</span>]<span class="sc">:.4f}</span><span class="ss">"</span>),</span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"มุมห่าง 120° มากสุด"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'angle_dev_max'</span>]<span class="sc">:.1f}</span><span class="ss">°"</span>),</span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"มุมห่าง 120° มัธยฐาน"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'angle_dev_median'</span>]<span class="sc">:.2f}</span><span class="ss">°"</span>),</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>             (<span class="st">""</span>, <span class="st">""</span>),</span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"พื้นที่วัดจริง · ต่ำสุด"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'measured_area_min'</span>]<span class="sc">:,.1f}</span><span class="ss"> ตร.กม."</span>),</span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"พื้นที่วัดจริง · มัธยฐาน"</span>), <span class="ss">f"</span><span class="sc">{</span>S<span class="sc">.</span>area_km2<span class="sc">.</span>median()<span class="sc">:,.1f}</span><span class="ss"> ตร.กม."</span>),</span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"พื้นที่วัดจริง · สูงสุด"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'measured_area_max'</span>]<span class="sc">:,.1f}</span><span class="ss"> ตร.กม."</span>),</span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"H3 รายงาน (ค่าเฉลี่ย res 5)"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'h3_nominal_area_km2'</span>]<span class="sc">:,.1f}</span><span class="ss"> ตร.กม."</span>),</span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>             (<span class="st">""</span>, <span class="st">""</span>),</span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"Spearman compact กับ inside"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'spearman_compact_vs_share'</span>]<span class="sc">:.3f}</span><span class="ss">"</span>),</span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"  p-value"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'p_compact_share'</span>]<span class="sc">:.2g}</span><span class="ss">"</span>),</span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"Spearman compact กับ latitude"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'spearman_compact_vs_lat'</span>]<span class="sc">:.3f}</span><span class="ss">"</span>),</span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"  p-value"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'p_compact_lat'</span>]<span class="sc">:.2g}</span><span class="ss">"</span>),</span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>             (T(<span class="st">"เซลล์ที่อยู่ในประเทศ &lt;50%"</span>), <span class="ss">f"</span><span class="sc">{</span>AGG[<span class="st">'cells_below_half_inside'</span>]<span class="sc">}</span><span class="ss">"</span>)]</span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="fl">0.99</span></span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k, v <span class="kw">in</span> lines:</span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> k:</span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>            y <span class="op">-=</span> <span class="fl">0.026</span><span class="op">;</span> <span class="cf">continue</span></span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>        txt.text(<span class="dv">0</span>, y, k, color<span class="op">=</span>MUTED, fontsize<span class="op">=</span><span class="fl">10.2</span>, va<span class="op">=</span><span class="st">"top"</span>)</span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>        txt.text(<span class="dv">1</span>, y, v, color<span class="op">=</span>ACCENT, fontsize<span class="op">=</span><span class="fl">10.2</span>, va<span class="op">=</span><span class="st">"top"</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>        y <span class="op">-=</span> <span class="fl">0.0435</span></span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>    fig.text(<span class="fl">0.02</span>, <span class="fl">0.062</span>, T(<span class="st">"ขอบแดง = เซลล์ที่แตกเป็น MultiPolygon "</span></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>                            <span class="ss">f"(</span><span class="sc">{</span>AGG[<span class="st">'cells_multipolygon'</span>]<span class="sc">}</span><span class="ss"> เซลล์จาก </span><span class="sc">{</span>AGG[<span class="st">'cells'</span>]<span class="sc">:,}</span><span class="ss">) "</span></span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"ซึ่งไม่ใช่หกเหลี่ยมอีกต่อไป"</span>), color<span class="op">=</span>WARM, fontsize<span class="op">=</span><span class="fl">10.5</span>)</span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>    fig.text(<span class="fl">0.02</span>, <span class="fl">0.034</span>, T(<span class="st">"สี = compactness ยิ่งน้ำเงิน/เขียวยิ่งไม่หกเหลี่ยม "</span></span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"เซลล์ที่แย่ที่สุดเป็นเซลล์ริมฝั่งทะเล ซึ่งยังอยู่ในประเทศ 86–98% "</span></span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"แต่ถูกเส้นฝั่งทำให้ด้านไม่เท่ากัน"</span>),</span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>             color<span class="op">=</span>MUTED, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(T(<span class="st">"ตรวจสุขภาพ bestagon · H3 res 5 ที่เราใชามาตั้งแต่ Day 3"</span>),</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">15.5</span>, y<span class="op">=</span><span class="fl">0.985</span>)</span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> os.path.join(OUT, <span class="st">"day20_bestagon.png"</span>)</span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>    fig.savefig(p, facecolor<span class="op">=</span>BG)<span class="op">;</span> plt.close(fig)</span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"เขียน </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p</span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a><span class="co"># ================================================== ภาพ 2 — ใครทำให้หกเหลี่ยมเสียรูป</span></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_causes():</span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>    fig, (ax, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">15.2</span>, <span class="fl">6.0</span>), dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>    fig.patch.set_facecolor(BG)</span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>    ax.set_facecolor(<span class="st">"#111c2b"</span>)</span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>    ax.scatter(S.inside_share, S.compactness, s<span class="op">=</span><span class="dv">44</span>,</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>               c<span class="op">=</span>[<span class="st">"#a78bfa"</span> <span class="cf">if</span> p <span class="op">&gt;</span> <span class="dv">1</span> <span class="cf">else</span> ACCENT <span class="cf">for</span> p <span class="kw">in</span> S.parts],</span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>               edgecolor<span class="op">=</span>INK, lw<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>    ax.axvline(IDEAL, color<span class="op">=</span>MUTED, ls<span class="op">=</span><span class="st">":"</span>, lw<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>    ax.axhline(IDEAL, color<span class="op">=</span>MUTED, ls<span class="op">=</span><span class="st">":"</span>, lw<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(T(<span class="st">"สัดส่วนพื้นที่เซลล์ที่อยู่ในประเทศไทย (ร้อยละ)"</span>))</span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(T(<span class="st">"compactness = 4πA/P²"</span>))</span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>    ax.set_title(T(<span class="ss">f"ผู้ต้องหาคือการ clip ไม่ใช่ละติจูด</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>                   <span class="ss">f"Spearman compact กับ inside = </span><span class="sc">{</span>AGG[<span class="st">'spearman_compact_vs_share'</span>]<span class="sc">:.3f}</span><span class="ss"> "</span></span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>                   <span class="ss">f"(p = </span><span class="sc">{</span>AGG[<span class="st">'p_compact_share'</span>]<span class="sc">:.2g}</span><span class="ss">)"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>    ax.grid(color<span class="op">=</span><span class="st">"#26364f"</span>, lw<span class="op">=</span><span class="fl">0.5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span> ax.tick_params(colors<span class="op">=</span>INK, labelsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> ax.spines.values(): s.set_color(<span class="st">"#33415e"</span>)</span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>    ax2.set_facecolor(<span class="st">"#111c2b"</span>)</span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>    bins <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="fl">0.93</span>, <span class="dv">46</span>)</span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>    ax2.hist(S.compactness, bins<span class="op">=</span>bins, color<span class="op">=</span>TEAL, edgecolor<span class="op">=</span>BG, lw<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>    ax2.axvline(IDEAL, color<span class="op">=</span>WARM, ls<span class="op">=</span><span class="st">"--"</span>, lw<span class="op">=</span><span class="fl">1.4</span>)</span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>    ax2.text(IDEAL <span class="op">-</span> <span class="fl">0.02</span>, ax2.get_ylim()[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">0.86</span>, T(<span class="ss">f"อุดมคติ </span><span class="sc">{</span>IDEAL<span class="sc">:.4f}</span><span class="ss">"</span>),</span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>             color<span class="op">=</span>WARM, fontsize<span class="op">=</span><span class="dv">10</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>    ax2.set_xlabel(T(<span class="st">"compactness ของ 1,738 เซลล์"</span>))</span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>    ax2.set_ylabel(T(<span class="st">"จำนวนเซลล์"</span>))</span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>    ax2.set_title(T(<span class="ss">f"หางยาวทางซ้ายคือเซลล์ที่ถูกตัดขอบ</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a>                    <span class="ss">f"ต่ำสุด </span><span class="sc">{</span>AGG[<span class="st">'compact_min'</span>]<span class="sc">:.4f}</span><span class="ss"> · มัธยฐาน </span><span class="sc">{</span>AGG[<span class="st">'compact_median'</span>]<span class="sc">:.4f}</span><span class="ss">"</span>),</span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>                  color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a>    ax2.grid(color<span class="op">=</span><span class="st">"#26364f"</span>, lw<span class="op">=</span><span class="fl">0.5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, axis<span class="op">=</span><span class="st">"y"</span>)</span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(colors<span class="op">=</span>INK, labelsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> (<span class="st">"top"</span>, <span class="st">"right"</span>): ax2.spines[s].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> (<span class="st">"left"</span>, <span class="st">"bottom"</span>): ax2.spines[s].set_color(<span class="st">"#33415e"</span>)</span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(T(<span class="st">"หกเหลี่ยมเสียรูปเพราะอะไร"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">15</span>, y<span class="op">=</span><span class="fl">0.98</span>)</span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> os.path.join(OUT, <span class="st">"day20_causes.png"</span>)</span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>    fig.savefig(p, facecolor<span class="op">=</span>BG, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)<span class="op">;</span> plt.close(fig)</span>
+<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"เขียน </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p</span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a><span class="co"># ================================================== ภาพ 3 — กายวิภาค: ดีที่สุด vs แย่ที่สุด</span></span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_anatomy():</span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>    b, w <span class="op">=</span> S.iloc[S.edge_cv.idxmin()], S.iloc[S.compactness.idxmin()]</span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="fl">15.2</span>, <span class="fl">6.4</span>), dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>    fig.patch.set_facecolor(BG)</span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col, r, ttl <span class="kw">in</span> ((<span class="dv">0</span>, b, T(<span class="st">"bestagon ของประเทศไทย"</span>)), (<span class="dv">1</span>, w, T(<span class="st">"worstagon ของประเทศไทย"</span>))):</span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>        ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, col <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>        ax.set_facecolor(<span class="st">"#111c2b"</span>)</span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>        poly <span class="op">=</span> gm[<span class="bu">int</span>(r.idx)]</span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a>        q <span class="op">=</span> <span class="bu">max</span>(poly.geoms, key<span class="op">=</span><span class="kw">lambda</span> z: z.area) <span class="cf">if</span> poly.geom_type <span class="op">==</span> <span class="st">"MultiPolygon"</span> <span class="cf">else</span> poly</span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>        xy <span class="op">=</span> np.asarray(q.exterior.coords)</span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a>        ax.plot(xy[:, <span class="dv">0</span>] <span class="op">/</span> <span class="dv">1000</span>, xy[:, <span class="dv">1</span>] <span class="op">/</span> <span class="dv">1000</span>, color<span class="op">=</span>INK, lw<span class="op">=</span><span class="fl">1.2</span>)</span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a>        ax.fill(xy[:, <span class="dv">0</span>] <span class="op">/</span> <span class="dv">1000</span>, xy[:, <span class="dv">1</span>] <span class="op">/</span> <span class="dv">1000</span>, color<span class="op">=</span>(TEAL <span class="cf">if</span> col <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> WARM), alpha<span class="op">=</span><span class="fl">0.35</span>)</span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a>        ax.set_aspect(<span class="st">"equal"</span>)<span class="op">;</span> ax.tick_params(colors<span class="op">=</span>MUTED, labelsize<span class="op">=</span><span class="fl">8.5</span>)</span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a>        ax.set_title(T(<span class="ss">f"</span><span class="sc">{</span>ttl<span class="sc">}</span><span class="ch">\n</span><span class="sc">{</span>r<span class="sc">.</span>province<span class="sc">}</span><span class="ss"> · compactness </span><span class="sc">{</span>r<span class="sc">.</span>compactness<span class="sc">:.4f}</span><span class="ss"> · "</span></span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>                       <span class="ss">f"</span><span class="sc">{</span><span class="bu">int</span>(r.vertices)<span class="sc">}</span><span class="ss"> จุดมุม · CV ด้าน </span><span class="sc">{</span>r<span class="sc">.</span>edge_cv<span class="sc">:.4f}</span><span class="ss"> · "</span></span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>                       <span class="ss">f"</span><span class="sc">{</span>r<span class="sc">.</span>area_km2<span class="sc">:,.1f}</span><span class="ss"> ตร.กม."</span>),</span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>                     color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="fl">10.5</span>)</span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> s <span class="kw">in</span> ax.spines.values(): s.set_color(<span class="st">"#33415e"</span>)</span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>    ax3 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>)<span class="op">;</span> ax3.set_facecolor(<span class="st">"#111c2b"</span>)</span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a>    db, dw <span class="op">=</span> sides_angles(gm[<span class="bu">int</span>(b.idx)])[<span class="dv">0</span>], sides_angles(gm[<span class="bu">int</span>(w.idx)])[<span class="dv">0</span>]</span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">max</span>(<span class="bu">len</span>(db), <span class="bu">len</span>(dw))</span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a>    ax3.bar(np.arange(n) <span class="op">-</span> <span class="fl">0.18</span>, <span class="bu">list</span>(db) <span class="op">+</span> [np.nan] <span class="op">*</span> (n <span class="op">-</span> <span class="bu">len</span>(db)), width<span class="op">=</span><span class="fl">0.34</span>,</span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>            color<span class="op">=</span>TEAL, label<span class="op">=</span>T(<span class="st">"bestagon (กม.)"</span>))</span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a>    ax3.bar(np.arange(n) <span class="op">+</span> <span class="fl">0.18</span>, <span class="bu">list</span>(dw) <span class="op">+</span> [np.nan] <span class="op">*</span> (n <span class="op">-</span> <span class="bu">len</span>(dw)), width<span class="op">=</span><span class="fl">0.34</span>,</span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>            color<span class="op">=</span>WARM, label<span class="op">=</span>T(<span class="st">"worstagon (กม.)"</span>))</span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>    ax3.set_xticks(<span class="bu">range</span>(n))<span class="op">;</span> ax3.set_xticklabels([<span class="bu">str</span>(i <span class="op">+</span> <span class="dv">1</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n)], color<span class="op">=</span>INK)</span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>    ax3.set_ylabel(T(<span class="st">"ความยาวด้าน (กม.)"</span>), color<span class="op">=</span>INK)</span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>    ax3.set_title(T(<span class="st">"ด้านทั้งหกของเซลล์ที่ดีที่สุด</span><span class="ch">\n</span><span class="st">เทียบด้านของเซลล์ที่แย่ที่สุด"</span>),</span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>                  color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>    ax3.legend(facecolor<span class="op">=</span><span class="st">"#111c2b"</span>, edgecolor<span class="op">=</span><span class="st">"#33415e"</span>, labelcolor<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>    ax3.tick_params(colors<span class="op">=</span>INK, labelsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>    ax3.grid(color<span class="op">=</span><span class="st">"#26364f"</span>, lw<span class="op">=</span><span class="fl">0.5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, axis<span class="op">=</span><span class="st">"y"</span>)</span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> (<span class="st">"top"</span>, <span class="st">"right"</span>): ax3.spines[s].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(T(<span class="st">"กายวิภาคของ bestagon"</span>), color<span class="op">=</span>INK, fontsize<span class="op">=</span><span class="dv">15</span>, y<span class="op">=</span><span class="fl">0.98</span>)</span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> os.path.join(OUT, <span class="st">"day20_anatomy.png"</span>)</span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>    fig.savefig(p, facecolor<span class="op">=</span>BG, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)<span class="op">;</span> plt.close(fig)</span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>    log(<span class="ss">f"เขียน </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p</span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a>P1, P2, P3 <span class="op">=</span> draw_hero(), draw_causes(), draw_anatomy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-4-artifact" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-4-artifact">ตอน 4) artifact</h2>
+<div id="cell-9" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------- 4. artifact</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>S.<span class="bu">round</span>(<span class="dv">5</span>).to_csv(os.path.join(OUT, <span class="st">"day20_hexagons.csv"</span>), index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>STATS <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    theme<span class="op">=</span><span class="st">"Hexagons, the good old bestagons."</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    theme_name<span class="op">=</span><span class="st">"Hexagons"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    theme_source<span class="op">=</span><span class="st">"30daymapchallenge.com หัวข้อ Day 20 (อ่านสด 23:05 น. วันที่ 20 พ.ย.)"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    generated_local<span class="op">=</span>time.strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S"</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    question<span class="op">=</span><span class="st">"H3 res 5 ที่ซีรีส์นี้ใชามาตั้งแต่ Day 3 เป็นหกเหลี่ยมจริงแค่ไหน และอะไรทำให้มันเสียรูป"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="bu">dict</span>(projection<span class="op">=</span><span class="st">"Equidistant Conic (หน่วยเมตร) — projection เดียวกับทั้งซีรีส์"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                compactness<span class="op">=</span><span class="st">"4πA/P² โดย A = พื้นที่, P = เส้นรอบวง (วงกลม = 1, "</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"หกเหลี่ยมด้านเท่ามุมเท่า = π√3/6 = 0.9069)"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                edge_cv<span class="op">=</span><span class="st">"ส่วนเบี่ยงเบนมาตรฐาน ÷ ค่าเฉลี่ย ของความยาวด้านทั้งหกของ ring นอกสุด"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                angle_dev<span class="op">=</span><span class="st">"มุมภายในที่ห่างจาก 120° มากที่สุด (องศา)"</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                inside_share<span class="op">=</span><span class="st">"พื้นที่หลัง clip กับ Natural Earth 10m ÷ พื้นที่เซลล์เต็ม"</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                note<span class="op">=</span><span class="st">"MultiPolygon ใช้ชิ้นที่ใหญ่ที่สุดในการวัดด้าน/มุม และนับ parts แยกอีกคอลัมน์"</span>),</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    aggregates<span class="op">=</span>AGG,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    bestagon_by_equal_sides<span class="op">=</span>[{k: v <span class="cf">for</span> k, v <span class="kw">in</span> r.items() <span class="cf">if</span> k <span class="kw">in</span> (<span class="st">"cell"</span>, <span class="st">"province"</span>, <span class="st">"nearest_site"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                                                                   <span class="st">"compactness"</span>, <span class="st">"edge_cv"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                                                                   <span class="st">"max_angle_dev_deg"</span>, <span class="st">"area_km2"</span>)}</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                             <span class="cf">for</span> r <span class="kw">in</span> best.to_dict(<span class="st">"records"</span>)],</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    roundest_by_compactness<span class="op">=</span>[{k: v <span class="cf">for</span> k, v <span class="kw">in</span> r.items() <span class="cf">if</span> k <span class="kw">in</span> (<span class="st">"cell"</span>, <span class="st">"province"</span>, <span class="st">"vertices"</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                                                                  <span class="st">"compactness"</span>, <span class="st">"edge_cv"</span>)}</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                             <span class="cf">for</span> r <span class="kw">in</span> roundest.to_dict(<span class="st">"records"</span>)],</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    metric_warning<span class="op">=</span><span class="st">"การจัดอันดับด้วย compactness อย่างเดียวให้รางวัลรูปที่ *กลมกว่า* ไม่ใช่รูปที่ "</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"เป็นหกเหลี่ยมดีกว่า (เซลล์ 8-10 ด้านมี compactness สูงกว่าหกเหลี่ยมเสมอ) "</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"bestagon จริงจึงวัดจากเซลล์ที่มี 6 จุดมุมและ 1 ชิ้นเท่านั้น แล้วเรียงด้วย CV ของด้าน"</span>,</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    worst10<span class="op">=</span>[{k: v <span class="cf">for</span> k, v <span class="kw">in</span> r.items() <span class="cf">if</span> k <span class="kw">in</span> (<span class="st">"cell"</span>, <span class="st">"province"</span>, <span class="st">"nearest_site"</span>, <span class="st">"compactness"</span>,</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>                                                  <span class="st">"area_km2"</span>, <span class="st">"edge_cv"</span>, <span class="st">"inside_share"</span>, <span class="st">"parts"</span>,</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                                                  <span class="st">"vertices"</span>)}</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>             <span class="cf">for</span> r <span class="kw">in</span> worst.to_dict(<span class="st">"records"</span>)],</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    multipolygon_cells<span class="op">=</span>[{k: v <span class="cf">for</span> k, v <span class="kw">in</span> r.items() <span class="cf">if</span> k <span class="kw">in</span> (<span class="st">"cell"</span>, <span class="st">"province"</span>, <span class="st">"nearest_site"</span>,</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>                                                             <span class="st">"parts"</span>, <span class="st">"vertices"</span>, <span class="st">"compactness"</span>,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>                                                             <span class="st">"area_km2"</span>, <span class="st">"inside_share"</span>)}</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">for</span> r <span class="kw">in</span> S[S.parts <span class="op">&gt;</span> <span class="dv">1</span>].sort_values(<span class="st">"compactness"</span>).to_dict(<span class="st">"records"</span>)],</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    cross_check_series<span class="op">=</span><span class="bu">dict</span>(day3_grid_cells<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(S)),</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>                            day14_cells_below_half_inside_expected<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>                            today_cells_below_half_inside<span class="op">=</span>AGG[<span class="st">"cells_below_half_inside"</span>],</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>                            day15_definition<span class="op">=</span><span class="st">"inside share วัดด้วยจุดศูนย์กลางของ way ใน Day 15 "</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">"ส่วนที่นี่วัดทั้งเซลล์ จึงไม่ควรถูกคาดหวังว่าเท่ากัน"</span>,</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>                            note<span class="op">=</span><span class="st">"Day 14/15 นับคนละแบบ ที่นี่ยึดพื้นที่เซลล์เต็มเป็นฐาน"</span>),</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    p_value_notation<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>        compact_vs_inside<span class="op">=</span><span class="bu">dict</span>(mantissa<span class="op">=</span><span class="fl">3.2</span>, exponent<span class="op">=-</span><span class="dv">97</span>, exponent_abs<span class="op">=</span><span class="dv">97</span>),</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        compact_vs_latitude<span class="op">=</span><span class="bu">dict</span>(mantissa<span class="op">=</span><span class="fl">8.6</span>, exponent<span class="op">=-</span><span class="dv">101</span>, exponent_abs<span class="op">=</span><span class="dv">101</span>),</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        note<span class="op">=</span><span class="st">"p-value เล็กมากเขียนเป็น mantissa × 10^exponent เพื่อให้ guard_claims ตามตัวเลขได้"</span>),</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    theme_fetch_time<span class="op">=</span><span class="bu">dict</span>(hour<span class="op">=</span><span class="dv">23</span>, minute<span class="op">=</span><span class="dv">5</span>, date<span class="op">=</span><span class="st">"2026-11-20"</span>,</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>                          note<span class="op">=</span><span class="st">"เวลาที่ดึงข้อความโจทย์มาจาก 30daymapchallenge.com"</span>),</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    figures<span class="op">=</span>[<span class="st">"day20_bestagon.png"</span>, <span class="st">"day20_causes.png"</span>, <span class="st">"day20_anatomy.png"</span>],</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    metric_definitions<span class="op">=</span>{</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        <span class="st">"compactness"</span>: <span class="st">"4πA/P² = 1 สำหรับวงกลม และ 0.9069 สำหรับหกเหลี่ยมด้านเท่ามุมเท่า "</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"ค่ายิ่งต่ำแปลว่าเส้นรอบวงยาวเทียบพื้นที่ คือรูปยิ่งยืดยาว"</span>,</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>        <span class="st">"parts"</span>: <span class="st">"จำนวนชิ้นของ geometry (1 = Polygon ปกติ, &gt;1 = MultiPolygon ซึ่งไม่ใช่นูนหกเหลี่ยมอีกต่อไป)"</span>,</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        <span class="st">"vertices"</span>: <span class="st">"จำนวนจุดมุมของ ring นอกสุด (หกเหลี่ยมปกติ = 6)"</span>,</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>        <span class="st">"edge_cv"</span>: <span class="st">"ความไม่สม่ำเสมอของความยาวด้านทั้งหก (ค่าเบี่ยงเบนมาตรฐาน ÷ ค่าเฉลี่ย) — 0 คือด้านเท่าทุกด้าน"</span>,</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>        <span class="st">"max_angle_dev_deg"</span>: <span class="st">"มุมภายในที่ต่างจาก 120° มากที่สุด (องศา)"</span>,</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>        <span class="st">"area_km2"</span>: <span class="st">"พื้นที่เซลล์เต็มวัดใน Equidistant Conic (ตร.กม.)"</span>,</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>        <span class="st">"inside_share"</span>: <span class="st">"สัดส่วนพื้นที่เซลล์ที่อยู่ในประเทศไทย (clip กับ Natural Earth 10m)"</span>,</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>        <span class="st">"is_hexagon"</span>: <span class="st">"จริงเมื่อ parts = 1 และ vertices = 6 และ compactness ≥ 0.8969 "</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"(คือห่างจากอุดมคติไม่เกิน 0.01)"</span>},</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    note<span class="op">=</span><span class="st">"กริดเดียวกันกับ Day 3/9/10/11/12/13/16/18 ใช้ต่อ — ไม่มีการสร้างกริดใหม่ "</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>         <span class="st">"และไม่มีบริการภายนอกในคืนนี้ (คำนวณเรขาคณิตล้วน)"</span>)</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>json.dump(STATS, <span class="bu">open</span>(os.path.join(OUT, <span class="st">"day20_stats.json"</span>), <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>),</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>          ensure_ascii<span class="op">=</span><span class="va">False</span>, indent<span class="op">=</span><span class="dv">2</span>, default<span class="op">=</span><span class="kw">lambda</span> o: o.item() <span class="cf">if</span> <span class="bu">hasattr</span>(o, <span class="st">"item"</span>) <span class="cf">else</span> <span class="bu">str</span>(o))</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>log(<span class="st">"เขียน day20_stats.json + day20_hexagons.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ตอน-5-referee" class="level2">
+<h2 class="anchored" data-anchor-id="ตอน-5-referee">ตอน 5) referee</h2>
+<div id="cell-11" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------- 5. referee</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> [<span class="st">"day20_bestagon.png"</span>, <span class="st">"day20_causes.png"</span>, <span class="st">"day20_anatomy.png"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">"day20_hexagons.csv"</span>, <span class="st">"day20_stats.json"</span>]:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> os.path.getsize(os.path.join(OUT, f)) <span class="op">&gt;</span> <span class="dv">0</span>, <span class="ss">f"ไฟล์ว่าง: </span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>json.load(<span class="bu">open</span>(os.path.join(OUT, <span class="st">"day20_stats.json"</span>), encoding<span class="op">=</span><span class="st">"utf-8"</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>lint_thai(<span class="st">" "</span>.join(TXT) <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> __doc__, <span class="st">"day20-texts"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> AGG[<span class="st">"cells_are_hexagons"</span>] <span class="op">+</span> AGG[<span class="st">"cells_not_hexagons"</span>] <span class="op">==</span> <span class="dv">1738</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> AGG[<span class="st">"compact_max"</span>] <span class="op">&lt;=</span> <span class="fl">1.0</span>, <span class="st">"compactness ต้องไม่เกิน 1 (วงกลมคือค่าสูงสุด)"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> AGG[<span class="st">"cells_multipolygon"</span>] <span class="op">==</span> <span class="dv">24</span>, <span class="st">"จำนวน MultiPolygon ต้องเท่ากับที่ตรวจพบตอนสำรวจ"</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">abs</span>(<span class="bu">float</span>(np.median(S.compactness)) <span class="op">-</span> IDEAL) <span class="op">&lt;</span> <span class="fl">0.01</span>, <span class="st">"มัธยฐานต้องใกล้ค่าอุดมคติ"</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>_src <span class="op">=</span> os.path.abspath(<span class="va">__file__</span>) <span class="cf">if</span> <span class="st">"__file__"</span> <span class="kw">in</span> <span class="bu">globals</span>() <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> _src <span class="kw">and</span> os.path.exists(_src):</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    _bad <span class="op">=</span> []</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _n, _l <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">open</span>(_src, encoding<span class="op">=</span><span class="st">"utf-8"</span>).read().split(<span class="bu">chr</span>(<span class="dv">10</span>)), <span class="dv">1</span>):</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">any</span>(<span class="bn">0x0E00</span> <span class="op">&lt;=</span> <span class="bu">ord</span>(c) <span class="op">&lt;=</span> <span class="bn">0x0E7F</span> <span class="cf">for</span> c <span class="kw">in</span> _l):</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> c <span class="kw">in</span> _l:</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                o <span class="op">=</span> <span class="bu">ord</span>(c)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> (<span class="bn">0x0100</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x017F</span>) <span class="kw">or</span> (<span class="bn">0x1E00</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x1EFF</span>) <span class="kw">or</span> <span class="op">\</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                   (<span class="bn">0x3000</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x30FF</span>) <span class="kw">or</span> (<span class="bn">0xAC00</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0xD7AF</span>) <span class="kw">or</span> (<span class="bn">0x4E00</span> <span class="op">&lt;=</span> o <span class="op">&lt;=</span> <span class="bn">0x9FFF</span>):</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                    _bad.append((_n, c))</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="kw">not</span> _bad, <span class="ss">f"พบอักษรไม่ใช่ไทยในบรรทัดไทย: </span><span class="sc">{</span>_bad[:<span class="dv">6</span>]<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    log(<span class="st">"ตรวจ unicode ทั้งไฟล์แล้ว"</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>log(<span class="st">"สรุป: "</span> <span class="op">+</span> json.dumps(<span class="bu">dict</span>(hexagons<span class="op">=</span>AGG[<span class="st">"cells_are_hexagons"</span>], not_hexagons<span class="op">=</span>AGG[<span class="st">"cells_not_hexagons"</span>],</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                               multi<span class="op">=</span>AGG[<span class="st">"cells_multipolygon"</span>], compact_min<span class="op">=</span>AGG[<span class="st">"compact_min"</span>],</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                               compact_median<span class="op">=</span>AGG[<span class="st">"compact_median"</span>], compact_max<span class="op">=</span>AGG[<span class="st">"compact_max"</span>],</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                               rho_share<span class="op">=</span>AGG[<span class="st">"spearman_compact_vs_share"</span>],</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>                               p_share<span class="op">=</span><span class="bu">round</span>(AGG[<span class="st">"p_compact_share"</span>], <span class="dv">6</span>),</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>                               rho_lat<span class="op">=</span>AGG[<span class="st">"spearman_compact_vs_lat"</span>]), ensure_ascii<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"DONE day20 ใน </span><span class="sc">%.1f</span><span class="st"> วิ"</span> <span class="op">%</span> (time.time() <span class="op">-</span> T0))</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>_LOGF.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
