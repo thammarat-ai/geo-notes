@@ -1,0 +1,536 @@
+{
+  "theme": "Hexagons, the good old bestagons.",
+  "theme_name": "Hexagons",
+  "theme_source": "30daymapchallenge.com หัวข้อ Day 20 (อ่านสด 23:05 น. วันที่ 20 พ.ย.)",
+  "generated_local": "2026-11-20 23:22:41",
+  "question": "H3 res 5 ที่ซีรีส์นี้ใชามาตั้งแต่ Day 3 เป็นหกเหลี่ยมจริงแค่ไหน และอะไรทำให้มันเสียรูป",
+  "method": {
+    "projection": "Equidistant Conic (หน่วยเมตร) — projection เดียวกับทั้งซีรีส์",
+    "compactness": "4πA/P² โดย A = พื้นที่, P = เส้นรอบวง (วงกลม = 1, หกเหลี่ยมด้านเท่ามุมเท่า = π√3/6 = 0.9069)",
+    "edge_cv": "ส่วนเบี่ยงเบนมาตรฐาน ÷ ค่าเฉลี่ย ของความยาวด้านทั้งหกของ ring นอกสุด",
+    "angle_dev": "มุมภายในที่ห่างจาก 120° มากที่สุด (องศา)",
+    "inside_share": "พื้นที่หลัง clip กับ Natural Earth 10m ÷ พื้นที่เซลล์เต็ม",
+    "note": "MultiPolygon ใช้ชิ้นที่ใหญ่ที่สุดในการวัดด้าน/มุม และนับ parts แยกอีกคอลัมน์"
+  },
+  "aggregates": {
+    "cells": 1738,
+    "ideal_compactness": 0.9069,
+    "h3_nominal_area_km2": 252.904,
+    "measured_area_mean": 285.884,
+    "measured_area_min": 77.333,
+    "measured_area_max": 302.666,
+    "compact_min": 0.0916,
+    "compact_median": 0.90685,
+    "compact_max": 0.91411,
+    "cells_with_6_vertices": 1495,
+    "clean_hexagons": 1495,
+    "clean_hex_edge_cv_min": 0.00053,
+    "clean_hex_edge_cv_max": 0.00829,
+    "clean_hex_compact_min": 0.90671,
+    "clean_hex_compact_max": 0.9069,
+    "clean_hex_angle_dev_max": 1.177,
+    "roundest_cell": "85416b9bfffffff",
+    "roundest_compactness": 0.91411,
+    "roundest_vertices": 9,
+    "bestagon_cell": "85643277fffffff",
+    "bestagon_edge_cv": 0.00053,
+    "bestagon_compactness": 0.9069,
+    "bestagon_angle_dev": 0.072,
+    "bestagon_province": "ประจวบคีรีขันธ์",
+    "cells_multipolygon": 24,
+    "cells_are_hexagons": 1495,
+    "cells_not_hexagons": 243,
+    "edge_cv_median": 0.00439,
+    "edge_cv_max": 2.1952,
+    "angle_dev_max": 120.0,
+    "angle_dev_median": 0.597,
+    "cells_below_half_inside": 3,
+    "spearman_compact_vs_share": 0.472,
+    "p_compact_share": 3.188713983416131e-97,
+    "spearman_compact_vs_lat": -0.48,
+    "p_compact_lat": 8.565498669166099e-101,
+    "spearman_compact_vs_edgecv": -0.967,
+    "p_compact_edgecv": 0.0
+  },
+  "bestagon_by_equal_sides": [
+    {
+      "cell": "85643277fffffff",
+      "province": "ประจวบคีรีขันธ์",
+      "nearest_site": "อุทยานวิทยาศาสตร์พระจอมเกล้า ณ หว้ากอ จังหวัดประจวบคีรีขันธ์",
+      "compactness": 0.9069,
+      "edge_cv": 0.00053,
+      "max_angle_dev_deg": 0.072,
+      "area_km2": 301.11
+    },
+    {
+      "cell": "85643223fffffff",
+      "province": "ประจวบคีรีขันธ์",
+      "nearest_site": "อุทยานวิทยาศาสตร์พระจอมเกล้า ณ หว้ากอ จังหวัดประจวบคีรีขันธ์",
+      "compactness": 0.9069,
+      "edge_cv": 0.00055,
+      "max_angle_dev_deg": 0.081,
+      "area_km2": 301.399
+    },
+    {
+      "cell": "85643237fffffff",
+      "province": "ประจวบคีรีขันธ์",
+      "nearest_site": "อุทยานวิทยาศาสตร์พระจอมเกล้า ณ หว้ากอ จังหวัดประจวบคีรีขันธ์",
+      "compactness": 0.9069,
+      "edge_cv": 0.0006,
+      "max_angle_dev_deg": 0.081,
+      "area_km2": 301.51
+    },
+    {
+      "cell": "856433cbfffffff",
+      "province": "สุราษฎร์ธานี",
+      "nearest_site": "เกาะพะลวยบีชบังกะโล",
+      "compactness": 0.9069,
+      "edge_cv": 0.00064,
+      "max_angle_dev_deg": 0.088,
+      "area_km2": 301.665
+    },
+    {
+      "cell": "856433dbfffffff",
+      "province": "สุราษฎร์ธานี",
+      "nearest_site": "เกาะพะลวยบีชบังกะโล",
+      "compactness": 0.9069,
+      "edge_cv": 0.00064,
+      "max_angle_dev_deg": 0.086,
+      "area_km2": 301.622
+    }
+  ],
+  "roundest_by_compactness": [
+    {
+      "cell": "85416b9bfffffff",
+      "province": "สกลนคร",
+      "vertices": 9,
+      "compactness": 0.91411,
+      "edge_cv": 0.59305
+    },
+    {
+      "cell": "85658ba7fffffff",
+      "province": "ประจวบคีรีขันธ์",
+      "vertices": 8,
+      "compactness": 0.9118,
+      "edge_cv": 0.51193
+    },
+    {
+      "cell": "8564b65bfffffff",
+      "province": "ขอนแก่น",
+      "vertices": 10,
+      "compactness": 0.91121,
+      "edge_cv": 0.71024
+    },
+    {
+      "cell": "85416b8bfffffff",
+      "province": "สกลนคร",
+      "vertices": 9,
+      "compactness": 0.91078,
+      "edge_cv": 0.59707
+    },
+    {
+      "cell": "8565884bfffffff",
+      "province": "ระยอง",
+      "vertices": 7,
+      "compactness": 0.91067,
+      "edge_cv": 0.36595
+    }
+  ],
+  "metric_warning": "การจัดอันดับด้วย compactness อย่างเดียวให้รางวัลรูปที่ *กลมกว่า* ไม่ใช่รูปที่ เป็นหกเหลี่ยมดีกว่า (เซลล์ 8-10 ด้านมี compactness สูงกว่าหกเหลี่ยมเสมอ) bestagon จริงจึงวัดจากเซลล์ที่มี 6 จุดมุมและ 1 ชิ้นเท่านั้น แล้วเรียงด้วย CV ของด้าน",
+  "worst10": [
+    {
+      "cell": "85643153fffffff",
+      "province": "พังงา",
+      "nearest_site": "อธิการ์เด้นแคมป์ปิ้ง",
+      "parts": 3,
+      "vertices": 174,
+      "compactness": 0.0916,
+      "edge_cv": 1.47376,
+      "area_km2": 204.721,
+      "inside_share": 0.93496
+    },
+    {
+      "cell": "85643183fffffff",
+      "province": "พังงา",
+      "nearest_site": "อธิการ์เด้นแคมป์ปิ้ง",
+      "parts": 2,
+      "vertices": 108,
+      "compactness": 0.10992,
+      "edge_cv": 1.41854,
+      "area_km2": 192.846,
+      "inside_share": 0.94673
+    },
+    {
+      "cell": "85658e3bfffffff",
+      "province": "ระยอง",
+      "nearest_site": "ฟาร์มแสงสุข",
+      "parts": 3,
+      "vertices": 140,
+      "compactness": 0.11897,
+      "edge_cv": 1.54659,
+      "area_km2": 200.364,
+      "inside_share": 0.88028
+    },
+    {
+      "cell": "85643537fffffff",
+      "province": "พังงา",
+      "nearest_site": "บ่อแสนวิลล่า",
+      "parts": 1,
+      "vertices": 152,
+      "compactness": 0.12002,
+      "edge_cv": 1.60945,
+      "area_km2": 239.583,
+      "inside_share": 0.96475
+    },
+    {
+      "cell": "85658e17fffffff",
+      "province": "ตราด",
+      "nearest_site": "โกลเด้น คลิฟ บีช รีสอร์ท",
+      "parts": 4,
+      "vertices": 40,
+      "compactness": 0.13412,
+      "edge_cv": 1.01676,
+      "area_km2": 117.867,
+      "inside_share": 0.85774
+    },
+    {
+      "cell": "8564318bfffffff",
+      "province": "พังงา",
+      "nearest_site": "อธิการ์เด้นแคมป์ปิ้ง",
+      "parts": 3,
+      "vertices": 147,
+      "compactness": 0.16375,
+      "edge_cv": 1.6831,
+      "area_km2": 237.03,
+      "inside_share": 0.95479
+    },
+    {
+      "cell": "856519dbfffffff",
+      "province": "สงขลา",
+      "nearest_site": "ปลายแหลมแคมป์",
+      "parts": 1,
+      "vertices": 126,
+      "compactness": 0.19228,
+      "edge_cv": 1.29554,
+      "area_km2": 200.775,
+      "inside_share": 0.87785
+    },
+    {
+      "cell": "8564315bfffffff",
+      "province": "สุราษฎร์ธานี",
+      "nearest_site": "เกาะพะลวยบีชบังกะโล",
+      "parts": 1,
+      "vertices": 119,
+      "compactness": 0.19388,
+      "edge_cv": 1.70624,
+      "area_km2": 232.544,
+      "inside_share": 0.96076
+    },
+    {
+      "cell": "85643533fffffff",
+      "province": "พังงา",
+      "nearest_site": "บ่อแสนวิลล่า",
+      "parts": 1,
+      "vertices": 113,
+      "compactness": 0.196,
+      "edge_cv": 1.82762,
+      "area_km2": 275.369,
+      "inside_share": 0.97938
+    },
+    {
+      "cell": "856435b3fffffff",
+      "province": "พังงา",
+      "nearest_site": "จุดชมวิว อ่าวโต๊ะหลี",
+      "parts": 2,
+      "vertices": 88,
+      "compactness": 0.20822,
+      "edge_cv": 1.74747,
+      "area_km2": 136.862,
+      "inside_share": 0.96034
+    }
+  ],
+  "multipolygon_cells": [
+    {
+      "cell": "85643153fffffff",
+      "province": "พังงา",
+      "nearest_site": "อธิการ์เด้นแคมป์ปิ้ง",
+      "parts": 3,
+      "vertices": 174,
+      "compactness": 0.0916,
+      "area_km2": 204.721,
+      "inside_share": 0.93496
+    },
+    {
+      "cell": "85643183fffffff",
+      "province": "พังงา",
+      "nearest_site": "อธิการ์เด้นแคมป์ปิ้ง",
+      "parts": 2,
+      "vertices": 108,
+      "compactness": 0.10992,
+      "area_km2": 192.846,
+      "inside_share": 0.94673
+    },
+    {
+      "cell": "85658e3bfffffff",
+      "province": "ระยอง",
+      "nearest_site": "ฟาร์มแสงสุข",
+      "parts": 3,
+      "vertices": 140,
+      "compactness": 0.11897,
+      "area_km2": 200.364,
+      "inside_share": 0.88028
+    },
+    {
+      "cell": "85658e17fffffff",
+      "province": "ตราด",
+      "nearest_site": "โกลเด้น คลิฟ บีช รีสอร์ท",
+      "parts": 4,
+      "vertices": 40,
+      "compactness": 0.13412,
+      "area_km2": 117.867,
+      "inside_share": 0.85774
+    },
+    {
+      "cell": "8564318bfffffff",
+      "province": "พังงา",
+      "nearest_site": "อธิการ์เด้นแคมป์ปิ้ง",
+      "parts": 3,
+      "vertices": 147,
+      "compactness": 0.16375,
+      "area_km2": 237.03,
+      "inside_share": 0.95479
+    },
+    {
+      "cell": "856435b3fffffff",
+      "province": "พังงา",
+      "nearest_site": "จุดชมวิว อ่าวโต๊ะหลี",
+      "parts": 2,
+      "vertices": 88,
+      "compactness": 0.20822,
+      "area_km2": 136.862,
+      "inside_share": 0.96034
+    },
+    {
+      "cell": "85658e07fffffff",
+      "province": "ระยอง",
+      "nearest_site": "ฟาร์มแสงสุข",
+      "parts": 3,
+      "vertices": 91,
+      "compactness": 0.21606,
+      "area_km2": 159.641,
+      "inside_share": 0.94381
+    },
+    {
+      "cell": "856519cbfffffff",
+      "province": "สงขลา",
+      "nearest_site": "ปลายแหลมแคมป์",
+      "parts": 3,
+      "vertices": 83,
+      "compactness": 0.22493,
+      "area_km2": 229.947,
+      "inside_share": 0.93599
+    },
+    {
+      "cell": "856431cffffffff",
+      "province": "พังงา",
+      "nearest_site": "อธิการ์เด้นแคมป์ปิ้ง",
+      "parts": 2,
+      "vertices": 93,
+      "compactness": 0.23254,
+      "area_km2": 253.478,
+      "inside_share": 0.99638
+    },
+    {
+      "cell": "856422d3fffffff",
+      "province": "ภูเก็ต",
+      "nearest_site": "ดาราควิซีน",
+      "parts": 3,
+      "vertices": 80,
+      "compactness": 0.28293,
+      "area_km2": 157.994,
+      "inside_share": 0.94482
+    },
+    {
+      "cell": "856422dbfffffff",
+      "province": "พังงา",
+      "nearest_site": "จุดชมวิว อ่าวโต๊ะหลี",
+      "parts": 2,
+      "vertices": 74,
+      "compactness": 0.32193,
+      "area_km2": 157.524,
+      "inside_share": 0.94401
+    },
+    {
+      "cell": "85651943fffffff",
+      "province": "สงขลา",
+      "nearest_site": "ปลายแหลมแคมป์",
+      "parts": 2,
+      "vertices": 86,
+      "compactness": 0.33328,
+      "area_km2": 232.626,
+      "inside_share": 0.96559
+    },
+    {
+      "cell": "85658e13fffffff",
+      "province": "ตราด",
+      "nearest_site": "โกลเด้น คลิฟ บีช รีสอร์ท",
+      "parts": 3,
+      "vertices": 45,
+      "compactness": 0.33864,
+      "area_km2": 281.345,
+      "inside_share": 0.98464
+    },
+    {
+      "cell": "8564225bfffffff",
+      "province": "พังงา",
+      "nearest_site": "อธิการ์เด้นแคมป์ปิ้ง",
+      "parts": 2,
+      "vertices": 43,
+      "compactness": 0.39398,
+      "area_km2": 186.252,
+      "inside_share": 0.99215
+    },
+    {
+      "cell": "85651baffffffff",
+      "province": "สงขลา",
+      "nearest_site": "ปลายแหลมแคมป์",
+      "parts": 2,
+      "vertices": 47,
+      "compactness": 0.4004,
+      "area_km2": 289.459,
+      "inside_share": 0.99642
+    },
+    {
+      "cell": "85658e03fffffff",
+      "province": "ตราด",
+      "nearest_site": "โกลเด้น คลิฟ บีช รีสอร์ท",
+      "parts": 4,
+      "vertices": 47,
+      "compactness": 0.40641,
+      "area_km2": 283.702,
+      "inside_share": 0.97276
+    },
+    {
+      "cell": "85649007fffffff",
+      "province": "เชียงราย",
+      "nearest_site": "สวนแม่ฟ้าหลวง",
+      "parts": 2,
+      "vertices": 20,
+      "compactness": 0.46063,
+      "area_km2": 208.81,
+      "inside_share": 0.96038
+    },
+    {
+      "cell": "85651873fffffff",
+      "province": "สงขลา",
+      "nearest_site": "หอดูดาวเฉลิมพระเกียรติฯ สงขลา",
+      "parts": 2,
+      "vertices": 27,
+      "compactness": 0.54403,
+      "area_km2": 247.328,
+      "inside_share": 0.98883
+    },
+    {
+      "cell": "8564a377fffffff",
+      "province": "กำแพงเพชร",
+      "nearest_site": "อุทยานแห่งชาติแม่วงก์",
+      "parts": 2,
+      "vertices": 41,
+      "compactness": 0.5523,
+      "area_km2": 139.575,
+      "inside_share": 0.98008
+    },
+    {
+      "cell": "85658a97fffffff",
+      "province": "ระยอง",
+      "nearest_site": "ฟาร์มแสงสุข",
+      "parts": 2,
+      "vertices": 36,
+      "compactness": 0.60007,
+      "area_km2": 295.959,
+      "inside_share": 1.0
+    },
+    {
+      "cell": "856434bbfffffff",
+      "province": "สุราษฎร์ธานี",
+      "nearest_site": "เกาะพะลวยบีชบังกะโล",
+      "parts": 2,
+      "vertices": 21,
+      "compactness": 0.60824,
+      "area_km2": 172.914,
+      "inside_share": 0.99561
+    },
+    {
+      "cell": "85658a2ffffffff",
+      "province": "ชลบุรี",
+      "nearest_site": "สวนสัตว์เปิดเขาเขียว องค์การสวนสัตว์แห่งประเทศไทย ในพระบรมราชูปถัมภ์",
+      "parts": 2,
+      "vertices": 34,
+      "compactness": 0.63496,
+      "area_km2": 186.49,
+      "inside_share": 0.97805
+    },
+    {
+      "cell": "85643197fffffff",
+      "province": "พังงา",
+      "nearest_site": "อธิการ์เด้นแคมป์ปิ้ง",
+      "parts": 2,
+      "vertices": 22,
+      "compactness": 0.70125,
+      "area_km2": 236.093,
+      "inside_share": 0.99928
+    },
+    {
+      "cell": "85658a2bfffffff",
+      "province": "ฉะเชิงเทรา",
+      "nearest_site": "หอดูดาวเฉลิมพระเกียรติฯ ฉะเชิงเทรา",
+      "parts": 2,
+      "vertices": 20,
+      "compactness": 0.70314,
+      "area_km2": 294.955,
+      "inside_share": 0.99368
+    }
+  ],
+  "cross_check_series": {
+    "day3_grid_cells": 1738,
+    "day14_cells_below_half_inside_expected": 3,
+    "today_cells_below_half_inside": 3,
+    "day15_definition": "inside share วัดด้วยจุดศูนย์กลางของ way ใน Day 15 ส่วนที่นี่วัดทั้งเซลล์ จึงไม่ควรถูกคาดหวังว่าเท่ากัน",
+    "note": "Day 14/15 นับคนละแบบ ที่นี่ยึดพื้นที่เซลล์เต็มเป็นฐาน"
+  },
+  "p_value_notation": {
+    "compact_vs_inside": {
+      "mantissa": 3.2,
+      "exponent": -97,
+      "exponent_abs": 97
+    },
+    "compact_vs_latitude": {
+      "mantissa": 8.6,
+      "exponent": -101,
+      "exponent_abs": 101
+    },
+    "note": "p-value เล็กมากเขียนเป็น mantissa × 10^exponent เพื่อให้ guard_claims ตามตัวเลขได้"
+  },
+  "theme_fetch_time": {
+    "hour": 23,
+    "minute": 5,
+    "date": "2026-11-20",
+    "note": "เวลาที่ดึงข้อความโจทย์มาจาก 30daymapchallenge.com"
+  },
+  "figures": [
+    "day20_bestagon.png",
+    "day20_causes.png",
+    "day20_anatomy.png"
+  ],
+  "metric_definitions": {
+    "compactness": "4πA/P² = 1 สำหรับวงกลม และ 0.9069 สำหรับหกเหลี่ยมด้านเท่ามุมเท่า ค่ายิ่งต่ำแปลว่าเส้นรอบวงยาวเทียบพื้นที่ คือรูปยิ่งยืดยาว",
+    "parts": "จำนวนชิ้นของ geometry (1 = Polygon ปกติ, >1 = MultiPolygon ซึ่งไม่ใช่นูนหกเหลี่ยมอีกต่อไป)",
+    "vertices": "จำนวนจุดมุมของ ring นอกสุด (หกเหลี่ยมปกติ = 6)",
+    "edge_cv": "ความไม่สม่ำเสมอของความยาวด้านทั้งหก (ค่าเบี่ยงเบนมาตรฐาน ÷ ค่าเฉลี่ย) — 0 คือด้านเท่าทุกด้าน",
+    "max_angle_dev_deg": "มุมภายในที่ต่างจาก 120° มากที่สุด (องศา)",
+    "area_km2": "พื้นที่เซลล์เต็มวัดใน Equidistant Conic (ตร.กม.)",
+    "inside_share": "สัดส่วนพื้นที่เซลล์ที่อยู่ในประเทศไทย (clip กับ Natural Earth 10m)",
+    "is_hexagon": "จริงเมื่อ parts = 1 และ vertices = 6 และ compactness ≥ 0.8969 (คือห่างจากอุดมคติไม่เกิน 0.01)"
+  },
+  "note": "กริดเดียวกันกับ Day 3/9/10/11/12/13/16/18 ใช้ต่อ — ไม่มีการสร้างกริดใหม่ และไม่มีบริการภายนอกในคืนนี้ (คำนวณเรขาคณิตล้วน)"
+}
