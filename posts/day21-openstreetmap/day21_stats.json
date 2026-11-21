@@ -1,0 +1,1195 @@
+{
+  "theme": "The awesome data source for mapping. You can also use this day to edit OSM.",
+  "theme_name": "OpenStreetMap",
+  "theme_source": "30daymapchallenge.com หัวข้อ Day 21 'OpenStreetMap' (อ่านสด 19:12 น. วันที่ 21 พ.ย. 2569)",
+  "theme_fetch_time": {
+    "hour": 19,
+    "minute": 12,
+    "day": 21,
+    "month": 11,
+    "year": 2569
+  },
+  "generated_local": "2026-11-21 21:33:54",
+  "question": "OSM เก็บชื่อและข้อมูลของ 83 แหล่งดูฟ้ามืดที่ราชการรับรองไว้แค่ไหน สองฐานข้อมูลนี้รู้เรื่องเดียวกันไม่เท่ากันตรงไหนบ้าง",
+  "provenance": {
+    "source": "Geofabrik Thailand extract (OSM PBF)",
+    "url": "https://download.geofabrik.de/asia/thailand/thailand-latest.osm.pbf",
+    "md5": "db3958a037ce717c462101b86e2f75f3",
+    "bytes": 330640775,
+    "pbf_mb": 330.6,
+    "overpass_http_errors": [
+      502,
+      504
+    ],
+    "overpass_first_attempt": {
+      "hour": 19,
+      "minute": 15
+    },
+    "overpass_give_up": {
+      "hour": 19,
+      "minute": 30
+    },
+    "extract_update_hour_utc": 1,
+    "extract_update_minute_utc": 0,
+    "day16_collect_day": 17,
+    "day16_collect_month": 11,
+    "extract_updated": "Sat, 21 Nov 2026 01:00:00 GMT",
+    "read_utc": "2026-11-21 12:37:15 UTC",
+    "read_by": "tools/collect_day21_pbf.py (pyosmium)",
+    "registry": "data/darksky_thailand.csv (ชุดเดียวกับ Day 3–20)",
+    "attribution": "© OpenStreetMap contributors (ODbL)",
+    "api_attempt": "เริ่มที่ยิง Overpass API (tools/collect_day21_osm.py) แต่ทุก mirror ตอบ 502/504 ติดกัน 20+ นาที จึงย้ายมาอ่านไฟล์ extract ในเครื่อง"
+  },
+  "thresholds": {
+    "similarity_min": 0.78,
+    "token_overlap_min": 0.5,
+    "cap_full_m": 1200,
+    "cap_similarity_m": 600,
+    "cap_token_m": 400,
+    "token_len_min": 3,
+    "token_generic_words": 21,
+    "thai_exact": "ต้องเท่ากันหลัง NFKC + ตัดช่อง"
+  },
+  "api_outage": {
+    "http_errors": [
+      502,
+      504
+    ],
+    "endpoints_tried": 4,
+    "first_attempt": {
+      "hour": 19,
+      "minute": 15
+    },
+    "abandoned": {
+      "hour": 19,
+      "minute": 30
+    },
+    "note": "คืน 21 พ.ย. ทั้งสี่ mirror ตอบ 502/504 ต่อเนื่อง ย้ายไปอ่าน extract"
+  },
+  "method": {
+    "disc": "สแกน node/way/relation ที่แตะจานรัศมี 2000 ม. รอบจุดทะเบียน 83 จุด",
+    "distance": "ระยะวัดจากจุดทะเบียน (projection เมตร) ถึงขอบวัตถุที่ใกล้ที่สุด ไม่ใช่จุดศูนย์กลางของ way อย่าง Day 16",
+    "matching": "4 การทดสอบเรียงความเข้ม: (1) ชื่อไทยตรงกันทุกตัวอักษรหลัง NFKC + ตัดช่อง (2) รูปละตินของ slug จาก URL ทางการตรงกับชื่อใน OSM  (3) คำหลักละตินตรงกันเกินครึ่งหลังตัดคำ GENERIC  (4) ความคล้ายลำดับตัวอักษร ≥ 0.78",
+    "relation_note": "relation (ขอบอุทยาน/เขตอนุรักษ์) ที่ *ใหญ่กว่าจานสแกน* ไม่โผล่มา ใน node/way ของ collect_day21_pbf.py จึงสแกนซ้ำด้วย collect_day21_polygons.py แล้วถามว่าจุดทะเบียนอยู่ *ใน* ผืนไหน (STRtree predicate=contains) — ชื่อของผืนถูกตรวจด้วย grade() ฟังก์ชันเดียวกับที่ใช้ตรวจชื่อ POI",
+    "protected_areas": "สแกน boundary=protected_area / leisure=nature_reserve|park / tourism=national_park / landuse=forest ทั้งแบบ way และ relation (784 relation ทั้งประเทศ + 13,769 way ที่เกี่ยวเนื่อง) แล้วทดสอบ contains ต่อ 83 จุด",
+    "editing": "อ่านไฟล์อย่างเดียว ไม่ล็อกอิน ไม่ส่ง changeset — คิอแก้คือ day21_edit_queue.csv ให้คนตรวจก่อนเสมอ"
+  },
+  "bug_found_and_fixed": {
+    "symptom": "รันแรกจัด อุทยานแห่งชาติเขาใหญ่ (กับอีก 1 จุด) เป็น class 5 'ไม่มีวัตถุเลยใน 1,200 ม.'",
+    "cause": "จานสแกน 2 กม. เก็บเฉพาะ node/way ที่แตะจาน ขอบอุทยานขนาดใหญ่จึงหลุดทั้งผืน การสรุปว่า 'OSM ไม่รู้จัก' จากพื้นที่ว่างในจานจึงเท็จ",
+    "fix": "เพิ่ม collect_day21_polygons.py สแกน polygon ทั่วประเทศที่เกี่ยวกับการปกป้อง แล้วทดสอบ contains ด้วย STRtree",
+    "lesson": "รัศมี search เป็นนิยามของคำถาม ไม่ใช่หลักฐานของการไม่มีอยู่"
+  },
+  "classes": {
+    "1-ชื่อตรงกัน": 15,
+    "2-ชื่อใกล้เคียง": 20,
+    "2n-อยู่ในผืน OSM แต่ชื่อไม่ตรง": 5,
+    "3-วัตถุประเภทเดียวกัน คนละชื่อ": 22,
+    "4-มีอย่างอื่น ไม่ใช่ที่นี่": 21,
+    "5-ไม่มีวัตถุเลย": 0
+  },
+  "by_type": [
+    {
+      "type": "ชุมชนอนุรักษ์ท้องฟ้ามืด",
+      "sites": 2,
+      "named": 0,
+      "in_prot": 0,
+      "elem_med": 73.5,
+      "named_pct": 0.0
+    },
+    {
+      "type": "อุทยานท้องฟ้ามืด",
+      "sites": 25,
+      "named": 18,
+      "in_prot": 16,
+      "elem_med": 19.0,
+      "named_pct": 72.0
+    },
+    {
+      "type": "อุทยานแห่งชาติ",
+      "sites": 2,
+      "named": 1,
+      "in_prot": 1,
+      "elem_med": 26.0,
+      "named_pct": 50.0
+    },
+    {
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ชานเมือง",
+      "sites": 10,
+      "named": 5,
+      "in_prot": 1,
+      "elem_med": 154.0,
+      "named_pct": 50.0
+    },
+    {
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "sites": 43,
+      "named": 11,
+      "in_prot": 7,
+      "elem_med": 44.0,
+      "named_pct": 25.6
+    },
+    {
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคลเขตชุมชน",
+      "sites": 1,
+      "named": 0,
+      "in_prot": 0,
+      "elem_med": 28.0,
+      "named_pct": 0.0
+    }
+  ],
+  "fields": [
+    {
+      "field": "เบอร์โทร",
+      "registry": 83,
+      "osm": 3,
+      "both": 3,
+      "registry_only": 80,
+      "osm_only": 0,
+      "neither": 0,
+      "note": "ทะเบียนมีช่อง contact"
+    },
+    {
+      "field": "ที่อยู่",
+      "registry": 61,
+      "osm": 5,
+      "both": 5,
+      "registry_only": 56,
+      "osm_only": 0,
+      "neither": 22,
+      "note": "ทะเบียนมีช่อง address"
+    },
+    {
+      "field": "เวลาเปิดทำการ",
+      "registry": 0,
+      "osm": 2,
+      "both": 0,
+      "registry_only": 0,
+      "osm_only": 2,
+      "neither": 81,
+      "note": "ทะเบียนไม่มีช่องนี้"
+    },
+    {
+      "field": "เว็บไซต์/เพจ",
+      "registry": 83,
+      "osm": 9,
+      "both": 9,
+      "registry_only": 74,
+      "osm_only": 0,
+      "neither": 0,
+      "note": "ทะเบียนมีแต่ URL ของ NARIT"
+    },
+    {
+      "field": "ชื่อภาษาอังกฤษ",
+      "registry": 83,
+      "osm": 30,
+      "both": 30,
+      "registry_only": 53,
+      "osm_only": 0,
+      "neither": 0,
+      "note": "ทะเบียนไม่มี แต่ slug จาก URL ก็เป็นละติน"
+    },
+    {
+      "field": "ระบุตัวด้วย Wikidata",
+      "registry": 0,
+      "osm": 1,
+      "both": 0,
+      "registry_only": 0,
+      "osm_only": 1,
+      "neither": 82,
+      "note": "ทะเบียนไม่มีช่องนี้"
+    },
+    {
+      "field": "อินเทอร์เน็ต",
+      "registry": 0,
+      "osm": 3,
+      "both": 0,
+      "registry_only": 0,
+      "osm_only": 3,
+      "neither": 80,
+      "note": "ทะเบียนไม่มีช่องนี้"
+    },
+    {
+      "field": "ห้องน้ำ",
+      "registry": 0,
+      "osm": 0,
+      "both": 0,
+      "registry_only": 0,
+      "osm_only": 0,
+      "neither": 83,
+      "note": "ทะเบียนไม่มีช่องนี้"
+    }
+  ],
+  "score_vs_activity": [
+    {
+      "lvl": 0,
+      "sites": 48,
+      "ways_med": 24.5,
+      "users_med": 4.0,
+      "pop_med": 0.0,
+      "elem_med": 38.0
+    },
+    {
+      "lvl": 1,
+      "sites": 15,
+      "ways_med": 18.0,
+      "users_med": 4.0,
+      "pop_med": 0.0,
+      "elem_med": 28.0
+    },
+    {
+      "lvl": 2,
+      "sites": 20,
+      "ways_med": 51.0,
+      "users_med": 7.5,
+      "pop_med": 0.0,
+      "elem_med": 47.0
+    }
+  ],
+  "top_tag_keys": {
+    "name": 32,
+    "name:en": 30,
+    "tourism": 15,
+    "website": 9,
+    "addr:postcode": 7,
+    "leisure": 5,
+    "email": 4,
+    "addr:housenumber": 4,
+    "name:th": 4,
+    "addr:city": 3,
+    "internet_access": 3,
+    "phone": 3,
+    "source": 3,
+    "addr:street": 3
+  },
+  "named_examples": [
+    {
+      "osm_name": "อุทยานแห่งชาติน้ำพอง",
+      "field": "area",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร (ในผืนที่ OSM วาด)",
+      "dist": 0.0,
+      "cls": "polygon",
+      "inside": true,
+      "tourism": "",
+      "amenity": "",
+      "name": "อุทยานแห่งชาติน้ำพอง",
+      "province": "ขอนแก่น"
+    },
+    {
+      "osm_name": "อุทยานแห่งชาติภูหินร่องกล้า",
+      "field": "area",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร (ในผืนที่ OSM วาด)",
+      "dist": 0.0,
+      "cls": "polygon",
+      "inside": true,
+      "tourism": "",
+      "amenity": "",
+      "name": "อุทยานแห่งชาติภูหินร่องกล้า",
+      "province": "พิษณุโลก"
+    },
+    {
+      "osm_name": "อุทยานแห่งชาติไทรทอง",
+      "field": "area",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร (ในผืนที่ OSM วาด)",
+      "dist": 0.0,
+      "cls": "polygon",
+      "inside": true,
+      "tourism": "",
+      "amenity": "",
+      "name": "อุทยานแห่งชาติไทรทอง",
+      "province": "ชัยภูมิ"
+    },
+    {
+      "osm_name": "อุทยานแห่งชาติตาดโตน",
+      "field": "area",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร (ในผืนที่ OSM วาด)",
+      "dist": 0.0,
+      "cls": "polygon",
+      "inside": true,
+      "tourism": "",
+      "amenity": "",
+      "name": "อุทยานแห่งชาติตาดโตน",
+      "province": "ชัยภูมิ"
+    },
+    {
+      "osm_name": "อุทยานแห่งชาติศรีน่าน",
+      "field": "area",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร (ในผืนที่ OSM วาด)",
+      "dist": 0.0,
+      "cls": "polygon",
+      "inside": true,
+      "tourism": "",
+      "amenity": "",
+      "name": "อุทยานแห่งชาติศรีน่าน",
+      "province": "น่าน"
+    },
+    {
+      "osm_name": "อุทยานแห่งชาติถ้ำปลา-น้ำตกผาเสื่อ",
+      "field": "area",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร (ในผืนที่ OSM วาด)",
+      "dist": 0.0,
+      "cls": "polygon",
+      "inside": true,
+      "tourism": "",
+      "amenity": "",
+      "name": "อุทยานแห่งชาติถ้ำปลา – น้ำตกผาเสื่อ",
+      "province": "แม่ฮ่องสอน"
+    },
+    {
+      "osm_name": "อุทยานแห่งชาติตาพระยา",
+      "field": "area",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร (ในผืนที่ OSM วาด)",
+      "dist": 0.0,
+      "cls": "polygon",
+      "inside": true,
+      "tourism": "",
+      "amenity": "",
+      "name": "อุทยานแห่งชาติตาพระยา",
+      "province": "สระแก้ว"
+    },
+    {
+      "osm_name": "อุทยานแห่งชาติเขาใหญ่",
+      "field": "area",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร (ในผืนที่ OSM วาด)",
+      "dist": 0.0,
+      "cls": "polygon",
+      "inside": true,
+      "tourism": "",
+      "amenity": "",
+      "name": "อุทยานแห่งชาติเขาใหญ่",
+      "province": "นครราชสีมา"
+    },
+    {
+      "osm_name": "อุทยานดาราศาสตร์สิรินธร",
+      "field": "name",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร",
+      "dist": 0.0,
+      "cls": "way",
+      "inside": true,
+      "tourism": "",
+      "amenity": "research_institute",
+      "name": "อุทยานดาราศาสตร์สิรินธร",
+      "province": "เชียงใหม่"
+    },
+    {
+      "osm_name": "อุทยานแห่งชาติภูแลนคา",
+      "field": "area",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร (ในผืนที่ OSM วาด)",
+      "dist": 0.0,
+      "cls": "polygon",
+      "inside": true,
+      "tourism": "",
+      "amenity": "",
+      "name": "อุทยานแห่งชาติภูแลนคา",
+      "province": "ชัยภูมิ"
+    },
+    {
+      "osm_name": "ไร่องุ่นไวน์กราน-มอนเต้",
+      "field": "name",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร",
+      "dist": 29.924046706672122,
+      "cls": "node",
+      "inside": false,
+      "tourism": "",
+      "amenity": "",
+      "name": "ไร่องุ่นไวน์กราน-มอนเต้",
+      "province": "นครราชสีมา"
+    },
+    {
+      "osm_name": "ขุนเขา ตำนานไพร รีสอร์ท",
+      "field": "name",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร",
+      "dist": 32.500322819346,
+      "cls": "node",
+      "inside": false,
+      "tourism": "hotel",
+      "amenity": "",
+      "name": "ขุนเขา ตำนานไพร รีสอร์ท",
+      "province": "ราชบุรี"
+    },
+    {
+      "osm_name": "สวนสัตว์ขอนแก่น",
+      "field": "name",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร",
+      "dist": 96.1076886910035,
+      "cls": "node",
+      "inside": false,
+      "tourism": "zoo",
+      "amenity": "",
+      "name": "สวนสัตว์ขอนแก่น",
+      "province": "ขอนแก่น"
+    },
+    {
+      "osm_name": "เขตรักษาพันธุ์สัตว์ป่าภูเขียว",
+      "field": "name",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร",
+      "dist": 287.85675254391566,
+      "cls": "node",
+      "inside": false,
+      "tourism": "attraction",
+      "amenity": "",
+      "name": "เขตรักษาพันธุ์สัตว์ป่าภูเขียว",
+      "province": "ชัยภูมิ"
+    },
+    {
+      "osm_name": "อุทยานแห่งชาติผาแต้ม",
+      "field": "name",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร",
+      "dist": 1110.8747087460717,
+      "cls": "node",
+      "inside": false,
+      "tourism": "attraction",
+      "amenity": "",
+      "name": "อุทยานแห่งชาติผาแต้ม",
+      "province": "อุบลราชธานี"
+    }
+  ],
+  "near_matches": [
+    {
+      "osm_name": "เขตรักษาพันธุ์สัตว์ป่าภูสีฐาน",
+      "why": "คล้ายตามลำดับตัวอักษร 0.82 (ในผืนที่ OSM วาด)",
+      "dist": 0.0,
+      "cls": "polygon",
+      "name": "ทุ่งโนนป่าก่อ เขตรักษาพันธุ์สัตว์ป่าภูสีฐาน",
+      "province": "มุกดาหาร"
+    },
+    {
+      "osm_name": "King Mongkut Memorial Park of Science and Technology",
+      "why": "คล้ายตามลำดับตัวอักษร 0.87",
+      "dist": 0.0,
+      "cls": "way",
+      "name": "อุทยานวิทยาศาสตร์พระจอมเกล้า ณ หว้ากอ จังหวัดประจวบคีรีขันธ์",
+      "province": "ประจวบคีรีขันธ์"
+    },
+    {
+      "osm_name": "ลานกางเต้นท์อุทยานแห่งชาติภูสวนทราย",
+      "why": "คล้ายตามลำดับตัวอักษร 0.79",
+      "dist": 0.0,
+      "cls": "way",
+      "name": "อุทยานแห่งชาติภูสวนทราย",
+      "province": "เลย"
+    },
+    {
+      "osm_name": "Mae Fah Luang Garden and Royal Villa",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 0.0,
+      "cls": "way",
+      "name": "สวนแม่ฟ้าหลวง",
+      "province": "เชียงราย"
+    },
+    {
+      "osm_name": "Khao Kheow Open Zoo",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 0.0,
+      "cls": "way",
+      "name": "สวนสัตว์เปิดเขาเขียว องค์การสวนสัตว์แห่งประเทศไทย ในพระบรมราชูปถัมภ์",
+      "province": "ชลบุรี"
+    },
+    {
+      "osm_name": "Mela Garden Retreat Cottage",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 0.0,
+      "cls": "way",
+      "name": "มีลา การ์เดน รีทรีท คอทเทจ",
+      "province": "สระบุรี"
+    },
+    {
+      "osm_name": "Summit Green Valley Chiangmai Country Club",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 0.0,
+      "cls": "way",
+      "name": "ซัมมิท กรีน วัลเล่ย์ เชียงใหม่ คันทรี คลับ",
+      "province": "เชียงใหม่"
+    },
+    {
+      "osm_name": "Doi Khun Sathan",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 6.574010373234209,
+      "cls": "way",
+      "name": "อุทยานแห่งชาติขุนสถาน",
+      "province": "น่าน"
+    },
+    {
+      "osm_name": "Soneva Kiri",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 16.39296031734993,
+      "cls": "node",
+      "name": "โซเนวา คีรี รีสอร์ท",
+      "province": "ตราด"
+    },
+    {
+      "osm_name": "Chiang Dao Farm Stay",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 43.69064877029567,
+      "cls": "node",
+      "name": "เชียงดาวฟาร์มสเตย์",
+      "province": "เชียงใหม่"
+    },
+    {
+      "osm_name": "Toh Li Viewpoint",
+      "why": "คล้ายตามลำดับตัวอักษร 0.79",
+      "dist": 90.05356204837891,
+      "cls": "node",
+      "name": "จุดชมวิว อ่าวโต๊ะหลี",
+      "province": "พังงา"
+    },
+    {
+      "osm_name": "Pha Luang Waterfall Forest Park",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 91.52370794142445,
+      "cls": "node",
+      "name": "วนอุทยานน้ำตกผาหลวง",
+      "province": "อุบลราชธานี"
+    },
+    {
+      "osm_name": "หอดูดาวเฉลิมพระเกียรติ 7 รอบพระชนมพรรษา นครราชสีมา",
+      "why": "คล้ายตามลำดับตัวอักษร 0.80",
+      "dist": 99.66216413680351,
+      "cls": "way",
+      "name": "หอดูดาวเฉลิมพระเกียรติฯ นครราชสีมา",
+      "province": "นครราชสีมา"
+    },
+    {
+      "osm_name": "Phu Pha Thoep National Park",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 140.83708462439247,
+      "cls": "way",
+      "name": "อุทยานแห่งชาติภูผาเทิบ",
+      "province": "มุกดาหาร"
+    },
+    {
+      "osm_name": "Mae Lamao",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 194.07778917876868,
+      "cls": "way",
+      "name": "สวนป่าแม่ละเมา องค์การอุตสาหกรรมป่าไม้",
+      "province": "ตาก"
+    },
+    {
+      "osm_name": "น้ำตกตาดฟ้า อุทยานแห่งชาติภูเวียง",
+      "why": "คล้ายตามลำดับตัวอักษร 0.79",
+      "dist": 299.3029185839911,
+      "cls": "node",
+      "name": "อุทยานแห่งชาติภูเวียง",
+      "province": "ขอนแก่น"
+    },
+    {
+      "osm_name": "Phu Ruea Campsite",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 327.0761547541838,
+      "cls": "node",
+      "name": "อุทยานแห่งชาติภูเรือ",
+      "province": "เลย"
+    },
+    {
+      "osm_name": "Golden Cliff Beach Resort",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 327.18215006028294,
+      "cls": "node",
+      "name": "โกลเด้น คลิฟ บีช รีสอร์ท",
+      "province": "ตราด"
+    },
+    {
+      "osm_name": "Yatika Boutique",
+      "why": "คล้ายตามลำดับตัวอักษร 0.86",
+      "dist": 348.3948704648178,
+      "cls": "node",
+      "name": "ญาติกา บูทีค",
+      "province": "เชียงใหม่"
+    },
+    {
+      "osm_name": "Fountain Tree Resort",
+      "why": "คล้ายตามลำดับตัวอักษร 0.83",
+      "dist": 419.906553574164,
+      "cls": "node",
+      "name": "ฟาวน์เท่นทรี รีสอร์ท",
+      "province": "นครราชสีมา"
+    }
+  ],
+  "false_positives_rejected": [
+    {
+      "site": 54,
+      "registry": "วิลลา เดอ วิว บูทีค รีสอร์ท เชียงดาว",
+      "osm_name": "Chiang Dao Wildlife Sanctuary boundary stone",
+      "dist_m": 1158.5,
+      "lvl": 2,
+      "kind": "tok",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "cap_m": 400
+    },
+    {
+      "site": 54,
+      "registry": "วิลลา เดอ วิว บูทีค รีสอร์ท เชียงดาว",
+      "osm_name": "Chiang Dao Wildlife Sanctuary boundary stone",
+      "dist_m": 1044.8,
+      "lvl": 2,
+      "kind": "tok",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "cap_m": 400
+    },
+    {
+      "site": 8,
+      "registry": "สิริน วิลล์ แม่ริม เชียงใหม่",
+      "osm_name": "Mae Rim Highway Office",
+      "dist_m": 1041.0,
+      "lvl": 2,
+      "kind": "tok",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "cap_m": 400
+    },
+    {
+      "site": 54,
+      "registry": "วิลลา เดอ วิว บูทีค รีสอร์ท เชียงดาว",
+      "osm_name": "Chiang Dao Wildlife Sanctuary boundary stone",
+      "dist_m": 1025.3,
+      "lvl": 2,
+      "kind": "tok",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "cap_m": 400
+    },
+    {
+      "site": 54,
+      "registry": "วิลลา เดอ วิว บูทีค รีสอร์ท เชียงดาว",
+      "osm_name": "Chiang Dao Wildlife Sanctuary boundary stone",
+      "dist_m": 992.0,
+      "lvl": 2,
+      "kind": "tok",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "cap_m": 400
+    },
+    {
+      "site": 54,
+      "registry": "วิลลา เดอ วิว บูทีค รีสอร์ท เชียงดาว",
+      "osm_name": "Chiang Dao Wildlife Sanctuary boundary stone",
+      "dist_m": 988.8,
+      "lvl": 2,
+      "kind": "tok",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "cap_m": 400
+    },
+    {
+      "site": 54,
+      "registry": "วิลลา เดอ วิว บูทีค รีสอร์ท เชียงดาว",
+      "osm_name": "Chiang Dao Wildlife Sanctuary boundary stone",
+      "dist_m": 987.7,
+      "lvl": 2,
+      "kind": "tok",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "cap_m": 400
+    },
+    {
+      "site": 54,
+      "registry": "วิลลา เดอ วิว บูทีค รีสอร์ท เชียงดาว",
+      "osm_name": "Chiang Dao Wildlife Sanctuary boundary stone เขตรักษาพันธุ์สัตว์ป่า",
+      "dist_m": 987.1,
+      "lvl": 2,
+      "kind": "tok",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "cap_m": 400
+    },
+    {
+      "site": 54,
+      "registry": "วิลลา เดอ วิว บูทีค รีสอร์ท เชียงดาว",
+      "osm_name": "Chiang Dao Wildlife Sanctuary boundary stone",
+      "dist_m": 982.8,
+      "lvl": 2,
+      "kind": "tok",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "cap_m": 400
+    },
+    {
+      "site": 54,
+      "registry": "วิลลา เดอ วิว บูทีค รีสอร์ท เชียงดาว",
+      "osm_name": "Chiang Dao Wildlife Sanctuary boundary stone",
+      "dist_m": 931.1,
+      "lvl": 2,
+      "kind": "tok",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "cap_m": 400
+    },
+    {
+      "site": 66,
+      "registry": "อุทยานแห่งชาติผาแต้ม",
+      "osm_name": "ที่ทำการอุทยานแห่งชาติผาแต้ม",
+      "dist_m": 905.3,
+      "lvl": 2,
+      "kind": "sim",
+      "why": "คล้ายตามลำดับตัวอักษร 0.83",
+      "cap_m": 600
+    },
+    {
+      "site": 66,
+      "registry": "อุทยานแห่งชาติผาแต้ม",
+      "osm_name": "ที่ทำการอุทยานแห่งชาติผาแต้ม",
+      "dist_m": 900.7,
+      "lvl": 2,
+      "kind": "sim",
+      "why": "คล้ายตามลำดับตัวอักษร 0.83",
+      "cap_m": 600
+    }
+  ],
+  "rejection_counts": {
+    "total_rejected": 23,
+    "sites_with_rejection": 7,
+    "max_rejected_dist_m": 1158.5
+  },
+  "far_matches": [
+    {
+      "osm_name": "อุทยานแห่งชาติผาแต้ม",
+      "why": "ชื่อไทยตรงกันทุกตัวอักษร",
+      "dist": 1110.8747087460717,
+      "cls": "node",
+      "name": "อุทยานแห่งชาติผาแต้ม",
+      "province": "อุบลราชธานี"
+    },
+    {
+      "osm_name": "Fountain Tree Resort",
+      "why": "คล้ายตามลำดับตัวอักษร 0.83",
+      "dist": 419.906553574164,
+      "cls": "node",
+      "name": "ฟาวน์เท่นทรี รีสอร์ท",
+      "province": "นครราชสีมา"
+    },
+    {
+      "osm_name": "Yatika Boutique",
+      "why": "คล้ายตามลำดับตัวอักษร 0.86",
+      "dist": 348.3948704648178,
+      "cls": "node",
+      "name": "ญาติกา บูทีค",
+      "province": "เชียงใหม่"
+    },
+    {
+      "osm_name": "Golden Cliff Beach Resort",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 327.18215006028294,
+      "cls": "node",
+      "name": "โกลเด้น คลิฟ บีช รีสอร์ท",
+      "province": "ตราด"
+    },
+    {
+      "osm_name": "Phu Ruea Campsite",
+      "why": "คำหลักละตินตรงกันเกินครึ่ง (สะกดต่างกัน)",
+      "dist": 327.0761547541838,
+      "cls": "node",
+      "name": "อุทยานแห่งชาติภูเรือ",
+      "province": "เลย"
+    }
+  ],
+  "unmatched": [
+    {
+      "name": "ดาราควิซีน",
+      "province": "ภูเก็ต",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 161,
+      "n_stay": 5,
+      "klass": "2n-อยู่ในผืน OSM แต่ชื่อไม่ตรง",
+      "road_min_m": 16.9,
+      "road_class": "service"
+    },
+    {
+      "name": "พร้าวแคมป์ปิ้ง วิลเลจ",
+      "province": "เชียงใหม่",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 75,
+      "n_stay": 0,
+      "klass": "2n-อยู่ในผืน OSM แต่ชื่อไม่ตรง",
+      "road_min_m": 16.8,
+      "road_class": "service"
+    },
+    {
+      "name": "วิลลา เดอ วิว บูทีค รีสอร์ท เชียงดาว",
+      "province": "เชียงใหม่",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 44,
+      "n_stay": 0,
+      "klass": "2n-อยู่ในผืน OSM แต่ชื่อไม่ตรง",
+      "road_min_m": 126.4,
+      "road_class": "path"
+    },
+    {
+      "name": "ผางามแคมป์ & วารีบำบัด",
+      "province": "ปราจีนบุรี",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 39,
+      "n_stay": 1,
+      "klass": "2n-อยู่ในผืน OSM แต่ชื่อไม่ตรง",
+      "road_min_m": 8.5,
+      "road_class": "unclassified"
+    },
+    {
+      "name": "อุ่นฟ้าอิงดาวแคมป์ปิ้ง",
+      "province": "นครราชสีมา",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 38,
+      "n_stay": 0,
+      "klass": "2n-อยู่ในผืน OSM แต่ชื่อไม่ตรง",
+      "road_min_m": 18.5,
+      "road_class": "residential"
+    },
+    {
+      "name": "สิริน วิลล์ แม่ริม เชียงใหม่",
+      "province": "เชียงใหม่",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 780,
+      "n_stay": 7,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 9.6,
+      "road_class": "residential"
+    },
+    {
+      "name": "หอดูดาวเฉลิมพระเกียรติฯ ฉะเชิงเทรา",
+      "province": "ฉะเชิงเทรา",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ชานเมือง",
+      "n_elem": 448,
+      "n_stay": 2,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 3.7,
+      "road_class": "residential"
+    },
+    {
+      "name": "สวนไพลินชมดารา",
+      "province": "นครราชสีมา",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 183,
+      "n_stay": 1,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 25.8,
+      "road_class": "residential"
+    },
+    {
+      "name": "เดอะทีค รีสอร์ท",
+      "province": "เชียงใหม่",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 175,
+      "n_stay": 10,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 54.4,
+      "road_class": "primary"
+    },
+    {
+      "name": "ภูพร้อมดาว ฟาร์มสเตย์",
+      "province": "ชัยภูมิ",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 157,
+      "n_stay": 1,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 13.8,
+      "road_class": "residential"
+    },
+    {
+      "name": "หอดูดาวเฉลิมพระเกียรติฯ ขอนแก่น",
+      "province": "ขอนแก่น",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ชานเมือง",
+      "n_elem": 143,
+      "n_stay": 1,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 81.4,
+      "road_class": "residential"
+    },
+    {
+      "name": "โรงแรม เดอะเปียโน รีสอร์ท เขาใหญ่",
+      "province": "นครราชสีมา",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 119,
+      "n_stay": 7,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 29.1,
+      "road_class": "unclassified"
+    },
+    {
+      "name": "ต้นข้าวหอมบ้านอ้อมดอย",
+      "province": "เชียงใหม่",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 115,
+      "n_stay": 7,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 43.5,
+      "road_class": "track"
+    },
+    {
+      "name": "ไร่เขาน้อยสุวณา",
+      "province": "นครราชสีมา",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 75,
+      "n_stay": 4,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 28.5,
+      "road_class": "residential"
+    },
+    {
+      "name": "โรงแรมเรนทรี เขาใหญ่",
+      "province": "นครราชสีมา",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 73,
+      "n_stay": 2,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 68.5,
+      "road_class": "residential"
+    },
+    {
+      "name": "บ่อแสนวิลล่า",
+      "province": "พังงา",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 58,
+      "n_stay": 1,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 23.9,
+      "road_class": "service"
+    },
+    {
+      "name": "โนนขันหมาก (บ่อเกลือพันขันฑ์)",
+      "province": "ร้อยเอ็ด",
+      "type": "ชุมชนอนุรักษ์ท้องฟ้ามืด",
+      "n_elem": 45,
+      "n_stay": 2,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 102.2,
+      "road_class": "unclassified"
+    },
+    {
+      "name": "ฉ่ำเก่ปอ",
+      "province": "เชียงใหม่",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 45,
+      "n_stay": 3,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 108.1,
+      "road_class": "unclassified"
+    },
+    {
+      "name": "อุทยานแห่งชาติภูผายล",
+      "province": "สกลนคร",
+      "type": "อุทยานท้องฟ้ามืด",
+      "n_elem": 38,
+      "n_stay": 1,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 32.3,
+      "road_class": "unclassified"
+    },
+    {
+      "name": "ไร่องุ่นไวน์ อัลซิดินี่",
+      "province": "นครราชสีมา",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 35,
+      "n_stay": 1,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 21.8,
+      "road_class": "residential"
+    },
+    {
+      "name": "คีรีมาลา อีโค่ แคมป์",
+      "province": "ราชบุรี",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 34,
+      "n_stay": 1,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 313.3,
+      "road_class": "track"
+    },
+    {
+      "name": "เกาะพะลวยบีชบังกะโล",
+      "province": "สุราษฎร์ธานี",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 29,
+      "n_stay": 1,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 51.2,
+      "road_class": "residential"
+    },
+    {
+      "name": "ป่าสนวัดจันทร์ อ.อ.ป. กัลยาณิวัฒนา",
+      "province": "เชียงใหม่",
+      "type": "อุทยานท้องฟ้ามืด",
+      "n_elem": 29,
+      "n_stay": 1,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 2.0,
+      "road_class": "service"
+    },
+    {
+      "name": "พูโตะ",
+      "province": "เชียงใหม่",
+      "type": "เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล",
+      "n_elem": 22,
+      "n_stay": 2,
+      "klass": "3-วัตถุประเภทเดียวกัน คนละชื่อ",
+      "road_min_m": 203.7,
+      "road_class": "track"
+    }
+  ],
+  "road_class_top": {
+    "service": 20,
+    "residential": 18,
+    "track": 14,
+    "unclassified": 11,
+    "tertiary": 8,
+    "secondary": 3,
+    "footway": 2,
+    "path": 2,
+    "primary": 2
+  },
+  "aggregates": {
+    "sites": 83,
+    "disc_m": 2000,
+    "match_m": 1200,
+    "near_m": 300,
+    "elements_geometry": 14120,
+    "roads_drawn": 9966,
+    "1-ชื่อตรงกัน": 15,
+    "2-ชื่อใกล้เคียง": 20,
+    "2n-อยู่ในผืน OSM แต่ชื่อไม่ตรง": 5,
+    "3-วัตถุประเภทเดียวกัน คนละชื่อ": 22,
+    "4-มีอย่างอื่น ไม่ใช่ที่นี่": 21,
+    "5-ไม่มีวัตถุเลย": 0,
+    "named_total": 35,
+    "named_pct": 42.17,
+    "elem_median": 34.0,
+    "elem_max": 780,
+    "elem_zero": 2,
+    "dist_n": 25,
+    "dist_min_m": 0.0,
+    "dist_median_m": 90.1,
+    "dist_mean_m": 158.5,
+    "dist_max_m": 1110.9,
+    "dist_over_near": 5,
+    "inside_poi_sites": 7,
+    "road_sites": 81,
+    "road_none": 2,
+    "road_min_m": 0.0,
+    "road_median_m": 39.3,
+    "road_mean_m": 94.1,
+    "road_max_m": 1017.8,
+    "road_over_1000": 1,
+    "spearman_score_ways": 0.042,
+    "p_score_ways": 0.7060507340755092,
+    "spearman_lvl_ways": 0.029,
+    "p_lvl_ways": 0.7955433448964053,
+    "spearman_pre_poly_ways": 0.206,
+    "p_pre_poly_ways": 0.06129553993618024,
+    "moved_by_polygon": 10,
+    "spearman_score_elems": 0.043,
+    "p_score_elems": 0.7018764160850792,
+    "spearman_score_pop": -0.025,
+    "p_score_pop": 0.8253866414003991,
+    "spearman_score_road": -0.135,
+    "p_score_road": 0.22232905508574766,
+    "poly_matches": 10,
+    "sites_in_protected": 25,
+    "protected_name_match": 10,
+    "edge_min_m": 0.0,
+    "edge_median_m": 740.2,
+    "edge_max_m": 8537.9,
+    "poly_draw_rings": 163,
+    "edit_queue_rows": 48,
+    "poly_records": 122,
+    "poly_contain_records": 42,
+    "polygons_way": 17948,
+    "polygons_relation": 1137,
+    "protected_relations_all": 1139,
+    "disc_nodes": 146646,
+    "named_geo_rows": 2137,
+    "node_matches": 14,
+    "way_matches": 11,
+    "polygon_matches": 10,
+    "counts_of_file": {
+      "file_nodes": 44124360,
+      "disc_nodes": 146646,
+      "tagged_nodes": 1963,
+      "file_ways": 5303991,
+      "kept_ways": 16353,
+      "file_relations": 25842,
+      "kept_relations": 139
+    },
+    "scan_md5": "db3958a037ce717c462101b86e2f75f3",
+    "scan_read_utc": "2026-11-21 12:37:15 UTC"
+  },
+  "filter_probe": {
+    "relations_broad": 1139,
+    "relations_strict_protected_area": 121,
+    "relations_missed": 1018,
+    "by_value": {
+      "boundary": 123,
+      "leisure": 85,
+      "tourism": 3,
+      "landuse": 815,
+      "natural": 20,
+      "boundary_national_park": 122
+    },
+    "khao_yai": {
+      "id": 2971358,
+      "name": "อุทยานแห่งชาติเขาใหญ่",
+      "keys": {
+        "boundary": "national_park",
+        "name": "อุทยานแห่งชาติเขาใหญ่",
+        "name:en": "Khao Yai National Park",
+        "operator": "Department of National Parks, Wildlife and Plant Conservation",
+        "website": "http://www.dnp.go.th/parkreserve/asp/style1/default.asp?npid=9&lg=2",
+        "wikidata": "Q386420"
+      },
+      "area_km2": 1360.145
+    },
+    "note": "ตัวเลขทั้งบล็อกนับจาก prot_ways.json.gz (แคชของ pass A) ไม่ใช่ประมาณการ"
+  },
+  "before_after_fix": {
+    "without_polygons": {
+      "rho": 0.206,
+      "p": 0.0613,
+      "moved_sites": 10
+    },
+    "with_polygons": {
+      "rho": 0.029,
+      "p": 0.7955
+    },
+    "note": "ก่อนสแกนผืน protection มีจุด 10 แห่งที่ถูกหาว่า 'OSM ไม่รู้จัก' ทั้งที่ OSM วาดผืนห่อไว้ และมีชื่อตรงกับทะเบียน — เมื่อแก้แล้ว ความสัมพันธ์กับปริมาณ map ของ Day 16 ก็เปลี่ยนตาม"
+  },
+  "p_value_notation": {
+    "score_vs_ways": {
+      "mantissa": 0.71,
+      "exponent": 0,
+      "exponent_abs": 0
+    },
+    "score_vs_pop": {
+      "mantissa": 0.83,
+      "exponent": 0,
+      "exponent_abs": 0
+    },
+    "score_vs_road": {
+      "mantissa": 0.22,
+      "exponent": 0,
+      "exponent_abs": 0
+    },
+    "note": "p-value เขียนเป็น mantissa × 10^exponent เพื่อให้ guard_claims ตามตัวเลขได้"
+  },
+  "cross_check_series": {
+    "day16_source": "Overpass API · ทุก way ใน 1,000 ม. วัดจากจุดศูนย์กลางของ way",
+    "day16_ways_median": 24.0,
+    "day21_ways_in_disc_median": 74.0,
+    "day20_cells_reused": "กริด H3 res 5 เดิมไม่ถูกใช้ในวันนี้ วันนี้วัดระยะจากขอบวัตถุจริง",
+    "equal_expected": false,
+    "note": "สองวันนับคนละนิยาม (รัศมี 1 vs 2 กม. · จุดศูนย์กลาง vs แตะจาน · way ทุกชนิด vs way ที่มีแท็กน่าสนใจ) จึงใช้เทียบแนวโน้ม ไม่ได้เทียบค่า"
+  },
+  "figures": [
+    "day21_two_sources.png",
+    "day21_fields.png",
+    "day21_roads.png"
+  ],
+  "metric_definitions": {
+    "lvl": "1 = ชื่อพิสูจน์ได้ (ไทยตรงกัน หรือรูปละตินของ slug ตรงกับชื่อ OSM) · 2 = ใกล้เคียง (คำหลักเกินครึ่ง หรือความคล้าย ≥ 0.78) · 0 = ไม่จับคู่กับ node/way",
+    "klass": "1-ชื่อตรงกัน: 15 || 2-ชื่อใกล้เคียง: 20 || 2n-อยู่ในผืน OSM แต่ชื่อไม่ตรง: 5 || 3-วัตถุประเภทเดียวกัน คนละชื่อ: 22 || 4-มีอย่างอื่น ไม่ใช่ที่นี่: 21 || 5-ไม่มีวัตถุเลย: 0",
+    "in_protected": "จริงเมื่อจุดทะเบียนอยู่ภายใน polygon ที่ OSM วาดเป็นพื้นที่คุ้มครอง (boundary=protected_area / leisure=nature_reserve / park / tourism=national_park / landuse=forest) — วัดจาก geometry ของผืน ไม่ขึ้นกับรัศมีจาน จึงต่างจาก class 4/5 โดยสิ้นเชิง",
+    "edge_m": "ระยะจากจุดทะเบียนถึงขอบ *พื้นที่คุ้มครองที่ OSM วาด* ใกล้ที่สุด (เมตร)",
+    "polygon match": "จับชื่อได้กับชื่อของผืนที่ห่อจุดทะเบียน (OSM รู้จักในฐานะพื้นที่ ไม่ใช่ POI) — รายงาน dist = 0 เพราะจุดอยู่ภายในผืน",
+    "dist": "ระยะจากจุดทะเบียนถึง *ขอบ* วัตถุที่จับคู่ได้ (เมตร) เฉพาะวัตถุภายใน 1200 ม.",
+    "n_elem": "จำนวนวัตถุ OSM ที่มีแท็กน่าสนใจภายใน 1200 ม. จากจุดทะเบียน",
+    "n_stay": "จำนวนวัตถุ tourism/amenity ในหมวดที่พัก/แหล่งเที่ยวภายใน 300 ม.",
+    "road_min_m": "ระยะจากจุดทะเบียนถึง way ที่เป็น highway ใกล้เคียงที่สุดภายในจาน 2000 ม.",
+    "inside": "จริงเมื่อจุดทะเบียนอยู่ภายใน polygon ของวัตถุที่ OSM วาด (ที่นี่ถูกวาดเป็นขอบเขต)"
+  },
+  "limitations": [
+    "การจับคู่ชื่อไทย-ละตินเป็น heuristics มีพลาดได้เมื่อสะต่างกันคนละเรื่อง จึงเปิดตัวอย่างที่จัดไว้ใน named_examples/near_matches ให้ตรวจตาม",
+    "relation เป็นขอบเขต ไม่ใช่จุด จึงไม่เอามาวัดระยะคลาด",
+    "จาน 2 กม. ไม่ได้แปลว่าไกลกว่านั้นไม่มีถนน — 'ไม่มี' ในที่นี้คือ OSM ไม่ได้วาดไว้ภายใน 2 กม.",
+    "OSM ไม่ใช่ทะเบียนสถานที่ การไม่พบไม่ได้แปลว่าผิด มันคือภาพว่าชุมชน mapper ยังไปบันทึกไม่ถึง"
+  ],
+  "note": "ภาพนี้ไม่มี tile ภายนอก: เส้นถนน/ขอบวัตถุทั้งหมดวาดจาก geometry ในไฟล์ extract ของ OSM เอง ขอบประเทศใช้ Natural Earth 10m"
+}

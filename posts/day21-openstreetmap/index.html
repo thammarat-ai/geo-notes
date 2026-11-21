@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="โจทย์ ‘The awesome data source for mapping. You can also use this day to edit OSM.’ คืนนี้ Overpass เต็มทุก mirror ผมจึงโหลด Geofabrik Thailand extract 330,640,775 ไบต์มาอ่านในเครื่อง (node 44,124,360 · way 5,303,991 · relation 25,842) แล้วถามว่า OSM รู้จัก 83 แหล่งดูฟ้ามืดที่ราชการรับรองไว้แค่ไหน: จับชื่อได้ตรง 15 ใกล้เคียง 20 รวม 35 จาก 83 (42.17%) · 25 จุดอยู่ในรูปหลายเหลี่ยมที่ OSM วาดเป็นพื้นที่คุ้มครอง · 48 จุดอยู่ในคิอแก้ที่ยังไม่ได้ส่ง · และบทเรียนสำคัญที่สุดคือบั๊กสองชั้นที่ทำให้ค่าสหสัมพันธ์เปลี่ยนจาก p 0.061 เป็น p 0.796">
+
+<title>Day 21 · OpenStreetMap — ทะเบียนราชการมี 83 แหล่งดูฟ้ามืด OSM รู้จักชื่อจริงกี่แห่ง (คำตอบคือ 35) และบั๊กสองชั้นที่เกือบทำให้ผมสรุปผิด – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#ทมาของขอมล-คนนตางจากทกวนทผานมา" id="toc-ทมาของขอมล-คนนตางจากทกวนทผานมา" class="nav-link active" data-scroll-target="#ทมาของขอมล-คนนตางจากทกวนทผานมา">ที่มาของข้อมูล (คืนนี้ต่างจากทุกวันที่ผ่านมา)</a></li>
+  <li><a href="#ผลลพธ-osm-รจก-35-จาก-83-แหง" id="toc-ผลลพธ-osm-รจก-35-จาก-83-แหง" class="nav-link" data-scroll-target="#ผลลพธ-osm-รจก-35-จาก-83-แหง">ผลลัพธ์: OSM รู้จัก 35 จาก 83 แห่ง</a></li>
+  <li><a href="#บกสองชน-ทเกอบทำใหผมเขยนอะไรทไมจรง" id="toc-บกสองชน-ทเกอบทำใหผมเขยนอะไรทไมจรง" class="nav-link" data-scroll-target="#บกสองชน-ทเกอบทำใหผมเขยนอะไรทไมจรง">บั๊กสองชั้น ที่เกือบทำให้ผมเขียนอะไรที่ไม่จริง</a></li>
+  <li><a href="#หนงสถานท-สองฐานขอมลรไมเทากน" id="toc-หนงสถานท-สองฐานขอมลรไมเทากน" class="nav-link" data-scroll-target="#หนงสถานท-สองฐานขอมลรไมเทากน">หนึ่งสถานที่ สองฐานข้อมูลรู้ไม่เท่ากัน</a></li>
+  <li><a href="#และถาจะขบรถไปดดาว-osm-พาไปไดไหม" id="toc-และถาจะขบรถไปดดาว-osm-พาไปไดไหม" class="nav-link" data-scroll-target="#และถาจะขบรถไปดดาว-osm-พาไปไดไหม">และถ้าจะขับรถไปดูดาว OSM พาไปได้ไหม</a></li>
+  <li><a href="#ประโยคทสองของโจทย-you-can-also-use-this-day-to-edit-osm" id="toc-ประโยคทสองของโจทย-you-can-also-use-this-day-to-edit-osm" class="nav-link" data-scroll-target="#ประโยคทสองของโจทย-you-can-also-use-this-day-to-edit-osm">ประโยคที่สองของโจทย์: “you can also use this day to edit OSM”</a></li>
+  <li><a href="#วธทำแบบยอ" id="toc-วธทำแบบยอ" class="nav-link" data-scroll-target="#วธทำแบบยอ">วิธีทำแบบย่อ</a></li>
+  <li><a href="#ขอจำกดทตองบอกตรง-ๆ" id="toc-ขอจำกดทตองบอกตรง-ๆ" class="nav-link" data-scroll-target="#ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
+  <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 21 · OpenStreetMap — ทะเบียนราชการมี 83 แหล่งดูฟ้ามืด OSM รู้จักชื่อจริงกี่แห่ง (คำตอบคือ 35) และบั๊กสองชั้นที่เกือบทำให้ผมสรุปผิด</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">30DayMapChallenge</div>
+    <div class="quarto-category">openstreetmap</div>
+    <div class="quarto-category">geofabrik</div>
+    <div class="quarto-category">data-quality</div>
+    <div class="quarto-category">overpass</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    โจทย์ ‘The awesome data source for mapping. You can also use this day to edit OSM.’ คืนนี้ Overpass เต็มทุก mirror ผมจึงโหลด Geofabrik Thailand extract 330,640,775 ไบต์มาอ่านในเครื่อง (node 44,124,360 · way 5,303,991 · relation 25,842) แล้วถามว่า OSM รู้จัก 83 แหล่งดูฟ้ามืดที่ราชการรับรองไว้แค่ไหน: จับชื่อได้ตรง 15 ใกล้เคียง 20 รวม 35 จาก 83 (42.17%) · 25 จุดอยู่ในรูปหลายเหลี่ยมที่ OSM วาดเป็นพื้นที่คุ้มครอง · 48 จุดอยู่ในคิอแก้ที่ยังไม่ได้ส่ง · และบทเรียนสำคัญที่สุดคือบั๊กสองชั้นที่ทำให้ค่าสหสัมพันธ์เปลี่ยนจาก p 0.061 เป็น p 0.796
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">21 พฤศจิกายน 2569</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day21_osm.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>โจทย์ทางการวันนี้คือ <strong>“The awesome data source for mapping. You can also use this day to edit OSM.”</strong> (หัวข้อ <em>OpenStreetMap</em> — ดึงข้อความมาจากหน้า 30daymapchallenge.com อ่านสด 19:12 น. ของวันที่ 21 พ.ย.)</p>
+<p>สองประโยคนั้นเปิดทางคนละทิศ ประโยคแรกชวนใช้ OSM เป็นแหล่งข้อมูล ประโยคหลังชวน <em>แก้</em> มัน ผมทำประโยคแรกจนจบ ส่วนประโยคหลังผมเตรียมไว้เป็นไฟล์แต่<strong>ไม่ได้ส่งขึ้นระบบ</strong> — เหตุผลอยู่ท้ายโพสต์</p>
+<p>คำถามที่ผมถาม OSM คืนนี้: <strong>ทะเบียนแหล่งดูฟ้ามืดของประเทศไทยมี 83 แห่งที่ราชการรับรอง แล้ว OpenStreetMap รู้จักกี่แห่ง?</strong></p>
+<section id="ทมาของขอมล-คนนตางจากทกวนทผานมา" class="level2">
+<h2 class="anchored" data-anchor-id="ทมาของขอมล-คนนตางจากทกวนทผานมา">ที่มาของข้อมูล (คืนนี้ต่างจากทุกวันที่ผ่านมา)</h2>
+<p>แผนวันแรกคือยิง Overpass API แบบ Day 16 แต่ตั้งแต่ 19:15 น. ทุก mirror ตอบ 502/504 ต่อเนื่อง <code>overpass-api.de</code>, <code>maps.mail.ru</code>, <code>overpass.kumi.systems</code>, <code>overpass.private.coffee</code> ล้มพร้อมกัน (มีคนทำ Day 21 ทั่วโลกพร้อมกันพอดี) ผมจึงเปลี่ยนไปใช้เส้นทางที่คนที่ทำงานกับ OSM ทั้งประเทศใช้: ดาวน์โหลดไฟล์ extract ของประเทศไทยจาก Geofabrik มาอ่านในเครื่อง</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>ค่า</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ไฟล์</td>
+<td><code>thailand-latest.osm.pbf</code> จาก Geofabrik</td>
+</tr>
+<tr class="even">
+<td>ขนาด</td>
+<td>330,640,775 ไบต์</td>
+</tr>
+<tr class="odd">
+<td>md5</td>
+<td><code>db3958a037ce717c462101b86e2f75f3</code></td>
+</tr>
+<tr class="even">
+<td>ข้อมูลในไฟล์มีถึง</td>
+<td>21 พ.ย. 2026 01:00 GMT (HTTP Last-Modified)</td>
+</tr>
+<tr class="odd">
+<td>จำนวน object ที่อ่าน</td>
+<td>node 44,124,360 · way 5,303,991 · relation 25,842</td>
+</tr>
+<tr class="even">
+<td>สิ่งที่ได้จากจาน 2,000 ม. รอบ 83 จุด</td>
+<td>node ที่มีแท็ก 1,963 · way 16,353 · relation 139</td>
+</tr>
+<tr class="odd">
+<td>วัตถุที่นำมาวัดระยะจริง</td>
+<td>14,120 ชิ้น</td>
+</tr>
+</tbody>
+</table>
+<p>สองอย่างที่ Overpass ให้ไม่ได้ในรูปแบบนี้: <strong>แท็กทั้งหมด</strong>ของวัตถุ และ <strong>geometry จริงของ way</strong> — Day 16 วัดระยะจาก <em>จุดศูนย์กลางของ way</em> ซึ่งทำให้ way ยาว อย่างถนนสายเดียวถูกนับว่า “อยู่ใกล้” ทั้งที่เส้นของมันลากผ่านไปไกล คืนนี้ผมวัดจากจุดทะเบียนไปถึง <strong>ขอบวัตถุที่ใกล้ที่สุด</strong> ใน projection Equidistant Conic หน่วยเมตร เดียวกับการ์ดวันอื่นทั้งซีรีส์</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>นิยาม</th>
+<th>ความหมายที่ใช้ในโพสต์นี้</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>จานสแกน</td>
+<td>รัศมี 2,000 ม. รอบจุดทะเบียน (วัตถุแตะจาน = เข้าชุดข้อมูล)</td>
+</tr>
+<tr class="even">
+<td>ระยะจับคู่</td>
+<td>ภายใน 1,200 ม. จึงนับว่า “วัตถุนี้อยู่ที่นี่”</td>
+</tr>
+<tr class="odd">
+<td>ระยะประเภทรายวัน</td>
+<td>ภายใน 300 ม. จึงนับว่ามีวัตถุประเภทที่พัก/แหล่งเที่ยวอยู่ตรงนั้นจริง</td>
+</tr>
+<tr class="even">
+<td>การจับชื่อ</td>
+<td>4 การทดสอบเรียงความเข้ม: ชื่อไทยตรงกันทุกตัวอักษร · รูปละตินของ slug จาก URL ทางการตรงกับชื่อใน OSM · คำหลักละตินตรงกันเกินครึ่ง · ความคล้ายลำดับตัวอักษร ≥ 0.78</td>
+</tr>
+<tr class="odd">
+<td>เพดานระยะแยกตามหลักฐาน</td>
+<td>ชื่อเต็มตรง = ได้ถึง 1,200 ม. · คล้ายตามตัวอักษร = ถึง 600 ม. · คำหลักตรงกัน = ถึง 400 ม.</td>
+</tr>
+</tbody>
+</table>
+<p>เพดานสามค่าไม่ได้มาจากการคิดเอาเอง ผมตั้งหลัง<strong>ตรวจคู่ชื่อทุกคู่ด้วยตา</strong> — กลไกนี้ตัดทิ้ง <strong>23 คู่จาก 7 จุด</strong> ที่ชื่อคล้ายแต่ไกลเกินเพดาน เช่น “สิริน วิลล์ แม่ริม เชียงใหม่” ที่ไปชนกับ <em>Mae Rim Highway Office</em> คนละสถานที่ ที่ระยะ 1,041.0 ม. (คู่ที่ถูกตัดทั้งหมดพร้อมระยะเก็บไว้ใน <code>day21_stats.json</code> ใต้ <code>false_positives_rejected</code> ไกลสุด 1,158.5 ม. และคู่ที่ผ่านเกณฑ์ทั้งหมดอยู่ใน <code>day21_sites_osm.csv</code>)</p>
+</section>
+<section id="ผลลพธ-osm-รจก-35-จาก-83-แหง" class="level2">
+<h2 class="anchored" data-anchor-id="ผลลพธ-osm-รจก-35-จาก-83-แหง">ผลลัพธ์: OSM รู้จัก 35 จาก 83 แห่ง</h2>
+<p><img src="day21_two_sources.png" class="img-fluid"></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ระดับ</th>
+<th>จำนวน</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1 · ชื่อตรงกัน (พิสูจน์ได้จากตัวชื่อ)</td>
+<td><strong>15</strong></td>
+</tr>
+<tr class="even">
+<td>2 · ชื่อใกล้เคียง</td>
+<td><strong>20</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>รวมที่ OSM รู้ชื่อ</strong></td>
+<td><strong>35 (42.17%)</strong></td>
+</tr>
+<tr class="even">
+<td>2n · อยู่ในผืนที่ OSM วาด แต่ชื่อไม่ตรงกับทะเบียน</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>3 · มีวัตถุประเภทเดียวกันใน 300 ม. แต่คนละชื่อ</td>
+<td>22</td>
+</tr>
+<tr class="even">
+<td>4 · มีวัตถุอื่นใน 1,200 ม. แต่ไม่ใช่ที่นี่</td>
+<td>21</td>
+</tr>
+<tr class="odd">
+<td>5 · ไม่มีวัตถุเลยใน 1,200 ม.</td>
+<td><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>ตัวเลข 0 ในแถวสุดท้ายคือของจริงที่เพิ่งเป็นจริงตอนสองทุ่มกว่า — ดูหัวข้อ “บั๊กสองชั้น” ข้างล่าง</p>
+<p>เมื่อแยกตามประเภทแหล่ง คำตอบน่าสนใจกว่าค่ารวมมาก:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ประเภทแหล่งในทะเบียน</th>
+<th>จุด</th>
+<th>OSM รู้จักชื่อ</th>
+<th>อยู่ในผืนคุ้มครองที่ OSM วาด</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>อุทยานท้องฟ้ามืด (อุทยานแห่งชาติ/อุทยานวิทยาศาสตร์)</td>
+<td>25</td>
+<td>18 (72%)</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td>เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ชานเมือง</td>
+<td>10</td>
+<td>5 (50%)</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>เขตอนุรักษ์ท้องฟ้ามืดในพื้นที่ส่วนบุคคล</td>
+<td>43</td>
+<td>11 (25.6%)</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>ชุมชนอนุรักษ์ท้องฟ้ามืด</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>OSM รู้จักสถานที่ที่เป็นสถาบันมากกว่าที่เป็นธุรกิจส่วนตัว</strong> — อุทยานแห่งชาติมีชื่อใน OSM ถึง 72% แต่ลานกางเต็นท์/รีสอร์ตส่วนบุคคลมีแค่ 25.6% ซึ่งสมเหตุสมผลกับธรรมชาติของแหล่งข้อมูลนี้: คนที่ map พื้นที่ส่วนบุคคลคือคนที่ไปที่นั่น และชุมชน mapper ไทยยังไม่ได้ไปที่นั่นกันมาก</p>
+</section>
+<section id="บกสองชน-ทเกอบทำใหผมเขยนอะไรทไมจรง" class="level2">
+<h2 class="anchored" data-anchor-id="บกสองชน-ทเกอบทำใหผมเขยนอะไรทไมจรง">บั๊กสองชั้น ที่เกือบทำให้ผมเขียนอะไรที่ไม่จริง</h2>
+<p>รันแรกสุดผมได้ class 5 = 2 จุด คือ <strong>อุทยานแห่งชาติเขาใหญ่</strong> กับ <strong>ทุ่งโนนป่าก่อ เขตรักษาพันธุ์สัตว์ป่าภูสีฐาน</strong> (มุกดาหาร) ถ้าผมโพสต์ตอนนี้ ผมจะเขียนว่า “OSM ไม่มีอะไรเลยรอบเขาใหญ่ในระยะ 1,200 ม.” ซึ่ง<strong>เท็จ</strong> — เพราะรันที่สองที่สแกน polygon ทั้งประเทศพบผืน <code>อุทยานแห่งชาติเขาใหญ่</code> (relation 2971358) เนื้อที่ <strong>1,360.145 ตร.กม.</strong> ห่อจุดทะเบียนอยู่นั่นเอง แค่เส้นขอบของมันอยู่ไกลกว่าจาน 2 กม. ที่ผมสแกนรอบแรก</p>
+<p>ชั้นที่ 1 — ขอบเขตใหญ่กว่าจานสแกน: จาน 2,000 ม. เก็บเฉพาะ node/way ที่ <em>แตะ</em> จาน เส้นขอบอุทยานแห่งชาติซึ่งอยู่ไกลกว่านั้นจึงหลุดไปทั้งผืน ผมจึงสแกนเพิ่มอีกไฟล์หนึ่ง (<code>collect_day21_polygons.py</code>) เก็บทุก relation/way ที่เป็นพื้นที่คุ้มครอง ประกอบเป็นรูปหลายเหลี่ยมแล้วถามว่า <strong>จุดทะเบียนอยู่ภายในผืนไหน</strong> ด้วย STRtree ผล: มี <strong>25 จุดทะเบียนที่อยู่ในผืนที่ OSM วาดไว้</strong> (เส้นขอบ 163 วงที่วาดลงแผนที่) class 5 กลายเป็น 0 ทันที และ <strong>10 จุดในจำนวนนั้นจับชื่อได้ผ่านชื่อผืนเท่านั้น</strong> เพราะรอบตัวมันไม่มี POI ที่ชื่อตรงเลย — ระยะจากจุดทะเบียนไปหาขอบผืน protection ที่ใกล้ที่สุด มัธยฐาน <strong>740.2 ม.</strong> และไกลที่สุดที่วัดได้ในจาน 10 กม. คือ <strong>8,537.9 ม.</strong> (ต่ำสุด 0 ม. คือจุดที่อยู่บนเส้นขอบพอดี)</p>
+<p>ชั้นที่ 2 — ค่าที่ผมใช้กรอง “พื้นที่คุ้มครอง” ก็ผิดต่อประเทศไทย: รอบแรกผมรับเฉพาะ <code>boundary=protected_area</code> ตามที่คู่มือ OSM สอนไว้ แต่ในไฟล์จริงวิธีนั้นเห็นเพียง <strong>121 จาก 1,139</strong> relation ที่เป็นพื้นที่คุ้มครอง อีก <strong>1,018</strong> ตัวถูกมองข้าม โดยแยกเป็น <code>landuse=forest</code> 815 · <code>boundary=national_park</code> 122 · <code>leisure</code> 85 · <code>natural</code> 20 · <code>tourism</code> 3 (รวมแล้วมากกว่า 1,018 เพราะหนึ่ง relation ถือได้หลายคีย์) หลักฐานชัดที่สุดคือ <strong>อุทยานแห่งชาติเขาใหญ่ = relation 2971358</strong> ซึ่งใส่ <code>boundary=national_park</code> (ค่าเก่า) ไม่ใช่ <code>protected_area</code> พร้อม <code>name:en</code> = <em>Khao Yai National Park</em>, <code>operator</code> = กรมอุทยานแห่งชาติ สัตว์ป่า และพันธุ์พืช, <code>wikidata</code> = <code>Q386420</code> และเนื้อที่ที่ OSM วาดไว้ <strong>1,360.145 ตร.กม.</strong> พอยอมรับค่าได้หลายแบบ polygon ที่ประกอบได้เพิ่มเป็น 17,948 ผืนฝั่ง way กับ 1,137 ผืนฝั่ง relation · บันทึกที่ได้จากการทดสอบ contains ทั้งหมด 122 คู่ (จุด×ผืน) ในจำนวนนั้น 42 คู่เป็น “จุดอยู่ภายในผืน” จริง (ตัวเลขชุดนี้ นับจาก <code>prot_ways.json.gz</code> ที่สคริปต์สแกนไว้ ไม่ใช่ประมาณการ — ดู <code>filter_probe</code> ใน <code>day21_stats.json</code>)</p>
+<p>บั๊กนี้ไม่ใช่เรื่องจัดป้ายผิดเฉย ๆ — มัน<strong>เปลี่ยนข้อสรุปทางสถิติ</strong> ความสัมพันธ์ระหว่าง “ระดับที่ OSM รู้จัก” กับ “จำนวน way รอบจุดจาก Day 16”</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ช่วง</th>
+<th>Spearman (rho)</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ก่อนสแกนผืน protection (10 จุดยังถูกนับว่า “ไม่รู้จัก”)</td>
+<td>0.206</td>
+<td>0.061</td>
+</tr>
+<tr class="even">
+<td>หลังแก้แล้ว (นับชื่อจากผืน protection ด้วย)</td>
+<td>0.029</td>
+<td>0.796</td>
+</tr>
+<tr class="odd">
+<td>ใช้ 6 ระดับเป็นอันดับ (0–5) หลังแก้</td>
+<td>0.042</td>
+<td>0.706</td>
+</tr>
+</tbody>
+</table>
+<p>ก่อนแก้ ผมเกือบเขียนว่า “ยิ่งชุมชน map แถวนั้นหนาแน่น OSM ยิ่งรู้จักสถานที่นี้ (ใกล้จะมีนัยสำคัญ)” หลังแก้ คำตอบคือ <strong>ไม่มีความสัมพันธ์</strong> — เพราะ 10 จุดที่ผมเพิ่งรู้ว่า OSM รู้จักผ่านชื่อผืนล้วนเป็นอุทยานที่อยู่ห่างไกล ซึ่งมี way น้อยมาก (ค่ามัธยฐานของ ways ที่กลุ่มจับชื่อไม่ได้อยู่ที่ 24.5 เส้น กลุ่มที่จับชื่อได้ตรงอยู่ที่ 18.0 เส้น) การนับกลุ่มผิดจึงดึงค่าสหสัมพันธ์ขึ้นทั้งดุ้น</p>
+<p>ข้อที่สองที่น่าอายพอกัน: ค่ามัธยฐานของระยะคลาดระหว่างสองแหล่ง (POI 25 คู่ที่วัดได้) คือ <strong>90.1 ม.</strong> ค่าเฉลี่ย 158.5 ม. และไกลสุด <strong>1,110.9 ม.</strong> (กรณีอุทยานแห่งชาติผาแต้ม ที่ทะเบียน point ไปตั้งคนละจุดกับ POI ใน OSM ทั้งที่ชื่อตรงกันทุกตัวอักษร) มี 5 คู่ที่จับชื่อได้แต่ไกลเกิน 300 ม. — คือ “รู้ว่ามีที่นี่ แต่ไม่รู้ว่าตรงไหน” ส่วนจุดทะเบียนที่ <em>ตกลงไปอยู่ใน</em> polygon ที่ OSM วาดเป็น POI โดยตรงมี 7 จุด</p>
+</section>
+<section id="หนงสถานท-สองฐานขอมลรไมเทากน" class="level2">
+<h2 class="anchored" data-anchor-id="หนงสถานท-สองฐานขอมลรไมเทากน">หนึ่งสถานที่ สองฐานข้อมูลรู้ไม่เท่ากัน</h2>
+<p><img src="day21_fields.png" class="img-fluid"></p>
+<p>นับเฉพาะช่องที่เทียบกันได้จริง (ฝั่ง OSM นับจากวัตถุที่จับคู่ได้):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ช่องข้อมูล</th>
+<th>ทะเบียนมี</th>
+<th>OSM มี</th>
+<th>มีทั้งสอง</th>
+<th>ทะเบียนอย่างเดียว</th>
+<th>OSMอย่างเดียว</th>
+<th>ไม่มีสักแหล่ง</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>เบอร์โทร</td>
+<td>83</td>
+<td>3</td>
+<td>3</td>
+<td>80</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>ที่อยู่</td>
+<td>61</td>
+<td>5</td>
+<td>5</td>
+<td>56</td>
+<td>0</td>
+<td>22</td>
+</tr>
+<tr class="odd">
+<td>ชื่อภาษาอังกฤษ</td>
+<td>83 (จาก slug ใน URL)</td>
+<td>30</td>
+<td>30</td>
+<td>53</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>เว็บไซต์/เพจ</td>
+<td>83 (URL ของ NARIT)</td>
+<td>9</td>
+<td>9</td>
+<td>74</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>เวลาเปิดทำการ</td>
+<td>0 (ไม่มีช่องนี้)</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>81</td>
+</tr>
+<tr class="even">
+<td>ระบุตัวตนด้วย Wikidata</td>
+<td>0 (ไม่มีช่องนี้)</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>82</td>
+</tr>
+<tr class="odd">
+<td>อินเทอร์เน็ต</td>
+<td>0 (ไม่มีช่องนี้)</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>80</td>
+</tr>
+<tr class="even">
+<td>ห้องน้ำ</td>
+<td>0 (ไม่มีช่องนี้)</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>83</td>
+</tr>
+</tbody>
+</table>
+<p>อ่านตารางนี้ทางแนวนอนก็ได้สองบทเรียน:</p>
+<ul>
+<li><strong>ทะเบียนราชการรู้ “จะติดต่ออย่างไร” ส่วน OSM รู้ “ที่นี่เปิดเมื่อไร มี Wi-Fi ไหม”</strong> ช่องที่ทะเบียนไม่มีให้กรอกเลย (เวลาเปิด · Wikidata · อินเทอร์เน็ต · ห้องน้ำ) OSM มีข้อมูลบ้าง และช่องที่ OSM แทบไม่มีเลย (เบอร์โทร 3 จาก 35 จุดที่จับได้) ทะเบียนมีครบ 83</li>
+<li><strong>ไม่มีแหล่งไหน “ครบ”</strong> — ช่องที่อยู่มีในทะเบียน 61 จุด แต่ใน OSM มีเพียง 5 และ 22 จุดที่ไม่มีที่อยู่จากไหนเลย ซึ่งตรงกับที่ Day 18 นับช่องว่างในทะเบียน (null 219 จาก 1,577 ช่อง)</li>
+</ul>
+<p>คีย์ที่ถูกใช้มากที่สุดบนวัตถุที่จับคู่ได้: <code>name</code> 32 · <code>name:en</code> 30 · <code>tourism</code> 15 · <code>website</code> 9 · <code>addr:postcode</code> 7 · <code>leisure</code> 5 · <code>email</code> 4 · <code>addr:housenumber</code> 4 · <code>name:th</code> 4</p>
+</section>
+<section id="และถาจะขบรถไปดดาว-osm-พาไปไดไหม" class="level2">
+<h2 class="anchored" data-anchor-id="และถาจะขบรถไปดดาว-osm-พาไปไดไหม">และถ้าจะขับรถไปดูดาว OSM พาไปได้ไหม</h2>
+<p><img src="day21_roads.png" class="img-fluid"></p>
+<p>วัดจาก geometry ของ way ที่เป็น <code>highway</code> จริง (ไม่ใช้จุดศูนย์กลางแบบ Day 16):</p>
+<ul>
+<li><strong>81 จาก 83 จุด</strong> มีถนนที่ OSM วาดไว้ภายในจาน 2,000 ม. อีก 2 จุดไม่มีเลย</li>
+<li>ระยะจากจุดทะเบียนไปถึงถนนใกล้ที่สุด: <strong>มัธยฐาน 39.3 ม. · ค่าเฉลี่ย 94.1 ม. · ไกลสุด 1,017.8 ม.</strong> มี 1 จุดที่ไกลเกิน 1,000 ม.</li>
+<li>ประเภทของถนนที่ใกล้ที่สุด: <code>service</code> 20 · <code>residential</code> 18 · <code>track</code> 14 · <code>unclassified</code> 11 · <code>tertiary</code> 8 · <code>secondary</code> 3 · <code>footway</code> 2 · <code>path</code> 2 · <code>primary</code> 2</li>
+</ul>
+<p>หมวด <code>track</code> (ทางลูกรัง/ทางเข้าไร่) 14 จุดกับ <code>service</code> 20 จุดคือคำตอบของคำถามที่ตั้งไว้ตั้งแต่ต้น ว่า OSM ใช้เดินทางได้จริงไหม — สำหรับแหล่งดูฟ้ามืด คำตอบคือ “พาไปถึงหน้าปากทาง แล้วแต่ว่าคุณกล้าขับตามทางลูกรังในแอป map ที่ใช้ข้อมูล OSM ต่ออีกกี่กิโล”</p>
+</section>
+<section id="ประโยคทสองของโจทย-you-can-also-use-this-day-to-edit-osm" class="level2">
+<h2 class="anchored" data-anchor-id="ประโยคทสองของโจทย-you-can-also-use-this-day-to-edit-osm">ประโยคที่สองของโจทย์: “you can also use this day to edit OSM”</h2>
+<p>สคริปต์นี้<strong>ไม่ล็อกอิน ไม่ส่ง changeset</strong> เข้า OpenStreetMap แม้แต่ครั้งเดียว สิ่งที่ทำแทนคือไฟล์ <code>day21_edit_queue.csv</code> ที่มี <strong>48 จุด</strong> = 83 จุดในทะเบียนลบด้วย 35 จุดที่จับชื่อได้ พร้อมคอลัมน์ <code>suggestion</code> และเบอร์โทรที่ดึงจากช่อง contact ของทะเบียน</p>
+<p>เหตุผลที่ปล่อยเป็นไฟล์ไม่ใช่เพราะขี้เกียจ แต่เพราะกฎของ OSM เอง: การเอาข้อมูลจากฐานข้อมูลอื่นมาใส่ OSM ทั้งชุดถือเป็น <strong>import</strong> ซึ่ง หน้า Import/Guidelines ของ OSM wiki ระบุไว้ตรง ๆ ว่า <em>“Review the import guidelines fully before beginning”</em>, <em>“You must obtain proper permissions and licenses to use the data in OSM from the data owner”</em>, ต้องมี “Step 4: Community Buy-in — Discuss your plan” และ <em>“Not following these guidelines puts your account at risk of being blocked.”</em> (<a href="https://wiki.openstreetmap.org/wiki/Import/Guidelines">แหล่งที่มา</a>)</p>
+<p>ทะเบียนฟ้ามืดเป็นข้อมูลราชการที่เปิดให้เข้าถึง แต่ไม่ได้หมายความว่าสัญญาอนุญาตจะเข้ากันได้กับ ODbL และการเอาชื่อ+เบอร์โทรจากเว็บอื่นมาสร้าง POI โดยไม่เคยยืนยันภาคพื้นก็เป็นสิ่งที่ ชุมชน mapper ถือว่าไม่ควรทำ สิ่งที่ทำได้คือ <strong>ตรวจทีละแห่ง</strong> — เปิดภาพถ่ายทางอากาศ เช็กว่าชื่อป้ายหน้าสถานที่เขียนตรงกันไหม แล้วค่อยเติม <code>name</code> / <code>name:en</code> / <code>tourism</code> ลงบนวัตถุที่ OSM มีอยู่แล้ว (ใน 48 จุดของคิอแก้ มี 22 จุดที่มีวัตถุประเภทเดียวกันในระยะ 300 ม. รออยู่แล้ว — กลุ่มนี้แค่ขาดชื่อ ไม่ได้ขาดสถานที่)</p>
+</section>
+<section id="วธทำแบบยอ" class="level2">
+<h2 class="anchored" data-anchor-id="วธทำแบบยอ">วิธีทำแบบย่อ</h2>
+<ol type="1">
+<li>โหลด Geofabrik Thailand extract → ตรวจ md5 → สแกน 3 passes ด้วย <code>pyosmium</code> (node ในจาน 2,000 ม. → way ที่แตะจานพร้อม geometry → relation ที่ชื่อ/ประเภทเกี่ยวข้อง)</li>
+<li>สแกนซ้ำรอบที่สองเฉพาะ “พื้นที่คุ้มครอง” ทั่วประเทศ → ประกอบ polygon → STRtree ถามว่าจุดทะเบียนอยู่ <em>ใน</em> ผืนไหน (นี่คือขั้นที่แก้บั๊กชั้นที่ 1)</li>
+<li>จับคู่ชื่อ 4 การทดสอบ + เพดานระยะตามความแรงของหลักฐาน แล้ว<strong>ตรวจคู่ที่ได้ทุกคู่ด้วยตา</strong></li>
+<li>จัด 83 จุดเข้า 6 ระดับ · วัดระยะถึงขอบวัตถุจริง · วัดระยะถึงถนนที่ OSM วาด</li>
+<li>เทียบช่องข้อมูลทีละฟิลด์ระหว่างสองฐานข้อมูล</li>
+<li>ตรวจความสอดคล้องกับวันก่อน: ใช้คอลัมน์ ways/users/pop จาก Day 16 · นับช่องว่างของทะเบียนแบบเดียวกับ Day 18 · ยืนยันว่า class 5 ต้องเป็น 0 เมื่อมีข้อมูล polygon</li>
+<li>assert ที่เขียนไว้หลังรู้บทเรียน: ผลรวม 6 ระดับต้องเท่า 83 · จำนวนการจับคู่ตามชนิดวัตถุ (node/way/polygon) ต้องรวมกันได้เท่ากับจุดที่จับชื่อได้ · ระยะที่รายงานต้องไม่เกินนิยาม · class 5 ต้องตรงกับ “ไม่มีวัตถุและไม่อยู่ในผืน” จริง</li>
+</ol>
+</section>
+<section id="ขอจำกดทตองบอกตรง-ๆ" class="level2">
+<h2 class="anchored" data-anchor-id="ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</h2>
+<ul>
+<li><strong>การจับคู่ชื่อไทย↔︎ละตินเป็น heuristics</strong> มีพลาดได้เมื่อสะกดต่างโดยสิ้นเชิง ผมเลือกตั้งเพดานระยะตามความแรงของหลักฐานและตรวจด้วยตาแล้ว แต่ยังมีความเสี่ยง false negative (OSM รู้ แต่สะกดคนละแบบจนผมหาไม่เจอ) มากกว่า false positive</li>
+<li><strong>polygon ที่ประกอบได้ต้องมี node ครบ</strong> — way ที่ node อยู่นอกขอบเขตไฟล์ถูกข้าม (สแกนได้ polygon ฝั่ง way 17,948 ผืน และฝั่ง relation 1,137 ผืน) จำนวนผืนที่ “หายไปเพราะข้อมูลไม่ครบ” จึงถูกนับเป็น “OSM ไม่รู้จัก” ไปโดยปริยาย</li>
+<li><strong>รัศมี 2,000 ม. เป็นนิยามของคำถาม ไม่ใช่ขอบเขตของความจริง</strong> — “ไม่มีถนนในระยะนี้” แปลว่า OSM ไม่ได้วาดถนนไว้ตรงนี้ ไม่ใช่ไม่มีถนน</li>
+<li><strong>ทะเบียนก็เป็นแค่แหล่งหนึ่ง</strong> — จุดทะเบียนอาจเป็นสำนักงาน/จุดขายบัตร ไม่ใช่จุดกางเต็นท์ ระยะคลาด 1,110.9 ม. ที่ผาแต้มอาจเป็นความผิดของฝ่ายใดฝ่ายหนึ่งก็ได้ ผมไม่ตัดสิน</li>
+<li><strong>เวลาของข้อมูล</strong>: extract มีถึง 21 พ.ย. 01:00 GMT ส่วนตัวเลข “จำนวน way/คนเขียน” ยืมมาจาก Day 16 ที่ยิง API เมื่อ 17 พ.ย. ทั้งสองช่วงเวลาไม่ตรงกัน</li>
+<li><strong>ค่าสหสัมพันธ์กับประชากรเมืองเป็นศูนย์จริง</strong> (−0.025, p 0.825) และกับระยะถึงถนน ก็ไม่มีนัย (−0.135, p 0.222) — ไม่ควรอ่านตารางว่า “เมืองใหญ่กว่าแล้ว OSM รู้จักดีกว่า” เพราะข้อค้นพบนี้วัดจากสถานที่ท่องเที่ยว 83 แห่งที่กระจายคนละแบบกับเมือง</li>
+</ul>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<ul>
+<li><a href="day21_two_sources.png">day21_two_sources.png</a> — แผนที่ 83 จุดพร้อมเส้นถนน/ขอบผืนที่ OSM วาด + สถิติหลัก</li>
+<li><a href="day21_fields.png">day21_fields.png</a> — หกระดับการรู้จัก และตารางเทียบสองฐานข้อมูลทีละช่อง</li>
+<li><a href="day21_roads.png">day21_roads.png</a> — ระยะถึงถนนที่ OSM วาด และประเภทถนนใกล้สุด</li>
+<li><a href="day21_sites_osm.csv">day21_sites_osm.csv</a> — ต่อจุด: ระดับการจับคู่ วัตถุที่ชน ชื่อ OSM ระยะ ถนนในจาน</li>
+<li><a href="day21_osm_named.geojson">day21_osm_named.geojson</a> — วัตถุ OSM 2,137 ชิ้นที่มีชื่อหรือเป็น tourism ในจาน 2,000 ม.</li>
+<li><a href="day21_fields.csv">day21_fields.csv</a> — ตารางฟิลด์สองแหล่ง (both / registry only / OSM only / neither)</li>
+<li><a href="day21_edit_queue.csv">day21_edit_queue.csv</a> — 48 จุดที่ OSM ยังไม่รู้จักชื่อ พร้อมข้อเสนอ (ยังไม่ได้ส่ง)</li>
+<li><a href="day21_stats.json">day21_stats.json</a> — ตัวเลขทั้งหมด + <code>bug_found_and_fixed</code> + <code>before_after_fix</code></li>
+</ul>
+<p>โค้ดสแกน: <code>tools/collect_day21_pbf.py</code> (จานรอบจุด) · <code>tools/collect_day21_polygons.py</code> (polygon คุ้มครอง) · <code>tools/day21_osm.py</code> (จับคู่ชื่อ + วัด + วาด) — สองไฟล์แรกต้องสแกนไฟล์ 330,640,775 ไบต์ รอบละหลายรอบ (node / way / relation) จึงกินเวลาหลายนาทีต่อรอบ แต่ไม่ต้องพึ่งเน็ตเลย</p>
+</section>
+<section id="บทเรยน" class="level2">
+<h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>
+<ul>
+<li><strong>ค่าว่างในผลลัพธ์ส่วนใหญ่เป็นค่าว่างของคำถาม ไม่ใช่ของข้อมูล</strong> — “ไม่มีวัตถุใน 1,200 ม.” กับ “OSM ไม่รู้จักที่นี่” ไม่ใช่ประโยคเดียวกัน ผมเกือบตีพิมพ์ประโยคหลังเพราะเขียนโค้ดชิ้นแรก จากความเคยใจ (จานสแกนแบบ Day 16) ทั้งที่คำถามเรื่องพื้นที่คุ้มครองต้องใช้ polygon ไม่ใช่ disc</li>
+<li><strong>มาตรฐานสากลไม่ได้เท่ากับข้อมูลจริงในพื้นที่</strong> — <code>boundary=protected_area</code> คือค่าที่ OSM แนะนำ แต่มันไม่ใช่ค่าที่ถูกใช้จริงในไทย เขายืนยันว่า <code>boundary=national_park</code> ยังใช้อยู่มาก การกรองข้อมูลตาม “คู่มือ” อย่างเดียวจึงหล่นทั้งอุทยาน</li>
+<li><strong>บั๊กจัดกลุ่มเปลี่ยนสถิติได้</strong> — p-value ขยับจาก 0.061 ไป 0.796 จากการนับใหม่ 10 จุด ถ้าผมไม่เปิดดูว่า “จุดที่ไม่มีอะไรเลย” คือเขาใหญ่ ผมจะโพสต์ข้อความที่ผิดทั้งข้อสรุป</li>
+<li><strong>“ใช้ OSM เป็นแหล่งข้อมูล” กับ “แก้ OSM” ไม่เหมือนการ import</strong> — คิอแก้ที่ตรวจแล้วคือสิ่งที่ควรทำ การยิงข้อมูลราชการ 48 แถวลงไปทั้งชุดคือสิ่งที่ไม่ควรทำ โดยไม่ผ่านชุมชนและไม่ดูเรื่องสัญญาอนุญาต</li>
+<li><strong>คืนที่ API ตายคือวันที่ได้เครื่องมือใหม่</strong> — ถ้า Overpass ไม่ล่มคืนนี้ ผมจะไม่มี polygon ของพื้นที่คุ้มครองทั้งประเทศในเครื่อง และไม่รู้ว่า OSM ในเมืองไทยใช้ค่าแท็กแบบไหนจริง</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
