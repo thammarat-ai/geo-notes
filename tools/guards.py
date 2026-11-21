@@ -153,6 +153,7 @@ def guard_claims(post_text, facts, whitelist=(), name="claims", percent_toleranc
         try: v = float(v)
         except Exception: return
         import math
+        if not math.isfinite(v): return      # NaN/Inf ไม่ใช่ข้อเท็จจริง (json เขียนลงมาได้)
         for x in (v, round(v), int(math.floor(v + 0.5)), int(math.ceil(v - 0.5)),
                   round(v, 1), round(v, 2), round(v, 6),
                   round(v * 100, 1), round(v * 100, 2),          # percent form
