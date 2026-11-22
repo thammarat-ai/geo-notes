@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="โจทย์ ‘The different ways of representing a globe on a flat surface. What does your favourite map projection say about you?’ ผมเอา Equidistant Conic ที่ใชามาตั้งแต่ Day 6 เอามาตรวจอย่างจริงจังกับอีก 11 วิธี โดยเทียบกับ geodesic บนทรงรี WGS84 ล้วน: พื้นที่ไทย geodesic 514,453.7 ตร.กม. ส่วน eqdc รายงาน 512,593.1 (−0.3617%) · Tissot 182 จุด · 3,403 คู่จุดทะเบียน · 7 จาก 12 วิธีผิดต่ำกว่า 0.5% เรื่องพื้นที่ · Mercator แบบเว็บทำให้พื้นที่ไทยใหญ่ขึ้น 8.299% และทำให้กรีนแลนด์ดูเป็น 63.16 เท่าของไทย (ความจริง 4.1877) · Albers ให้ 0.0000% ตามสัญญา · และเลข 13% ที่ Day 20 ทิ้งไว้ ถูกแยกองค์ประกอบสำเร็จ: projection −0.365% + ทรงกลม→ทรงรี −3.172% + H3 ตามละติจูด +17.171%">
+
+<title>Day 22 · Projections — 12 วิธีแบนโลกให้ไทย และคำตอบว่า projection ที่ซีรีส์นี้ใชามาตั้งแต่ Day 6 โกหกเรื่องพื้นที่ไป 0.36% (กับบั๊กที่ทำให้ Mercator รักษามุมไม่ได้) – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#ตงสเปกกอน-เทยบกบอะไร" id="toc-ตงสเปกกอน-เทยบกบอะไร" class="nav-link active" data-scroll-target="#ตงสเปกกอน-เทยบกบอะไร">ตั้งสเปกก่อน: เทียบกับอะไร</a></li>
+  <li><a href="#วธแบนโลก" id="toc-วธแบนโลก" class="nav-link" data-scroll-target="#วธแบนโลก">12 วิธีแบนโลก</a></li>
+  <li><a href="#มม-คำวา-conformal-ทำงานจรงไหม" id="toc-มม-คำวา-conformal-ทำงานจรงไหม" class="nav-link" data-scroll-target="#มม-คำวา-conformal-ทำงานจรงไหม">มุม: คำว่า “conformal” ทำงานจริงไหม</a></li>
+  <li><a href="#กบดกท-xkcd-ลอ-ตาเทากน-ไมเทากบ-ใหญเทากน" id="toc-กบดกท-xkcd-ลอ-ตาเทากน-ไมเทากบ-ใหญเทากน" class="nav-link" data-scroll-target="#กบดกท-xkcd-ลอ-ตาเทากน-ไมเทากบ-ใหญเทากน">กับดักที่ xkcd ล้อ: “ตาเท่ากัน” ไม่เท่ากับ “ใหญ่เท่ากัน”</a></li>
+  <li><a href="#บกทเกอบทำให-mercator-ไมรกษามม-ขนเวบ" id="toc-บกทเกอบทำให-mercator-ไมรกษามม-ขนเวบ" class="nav-link" data-scroll-target="#บกทเกอบทำให-mercator-ไมรกษามม-ขนเวบ">๑. บั๊กที่เกือบทำให้ “Mercator ไม่รักษามุม” ขึ้นเว็บ</a></li>
+  <li><a href="#ปดเคส-13-ของ-day-20" id="toc-ปดเคส-13-ของ-day-20" class="nav-link" data-scroll-target="#ปดเคส-13-ของ-day-20">๒. ปิดเคส 13% ของ Day 20</a></li>
+  <li><a href="#projection-ของผมบอกอะไรเกยวกบผม" id="toc-projection-ของผมบอกอะไรเกยวกบผม" class="nav-link" data-scroll-target="#projection-ของผมบอกอะไรเกยวกบผม">projection ของผมบอกอะไรเกี่ยวกับผม</a></li>
+  <li><a href="#วธทำแบบยอ" id="toc-วธทำแบบยอ" class="nav-link" data-scroll-target="#วธทำแบบยอ">วิธีทำแบบย่อ</a></li>
+  <li><a href="#ขอจำกดทตองบอกตรง-ๆ" id="toc-ขอจำกดทตองบอกตรง-ๆ" class="nav-link" data-scroll-target="#ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
+  <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 22 · Projections — 12 วิธีแบนโลกให้ไทย และคำตอบว่า projection ที่ซีรีส์นี้ใชามาตั้งแต่ Day 6 โกหกเรื่องพื้นที่ไป 0.36% (กับบั๊กที่ทำให้ Mercator รักษามุมไม่ได้)</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">30DayMapChallenge</div>
+    <div class="quarto-category">cartography</div>
+    <div class="quarto-category">projection</div>
+    <div class="quarto-category">pyproj</div>
+    <div class="quarto-category">tissot</div>
+    <div class="quarto-category">h3</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    โจทย์ ‘The different ways of representing a globe on a flat surface. What does your favourite map projection say about you?’ ผมเอา Equidistant Conic ที่ใชามาตั้งแต่ Day 6 เอามาตรวจอย่างจริงจังกับอีก 11 วิธี โดยเทียบกับ geodesic บนทรงรี WGS84 ล้วน: พื้นที่ไทย geodesic 514,453.7 ตร.กม. ส่วน eqdc รายงาน 512,593.1 (−0.3617%) · Tissot 182 จุด · 3,403 คู่จุดทะเบียน · 7 จาก 12 วิธีผิดต่ำกว่า 0.5% เรื่องพื้นที่ · Mercator แบบเว็บทำให้พื้นที่ไทยใหญ่ขึ้น 8.299% และทำให้กรีนแลนด์ดูเป็น 63.16 เท่าของไทย (ความจริง 4.1877) · Albers ให้ 0.0000% ตามสัญญา · และเลข 13% ที่ Day 20 ทิ้งไว้ ถูกแยกองค์ประกอบสำเร็จ: projection −0.365% + ทรงกลม→ทรงรี −3.172% + H3 ตามละติจูด +17.171%
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">22 พฤศจิกายน 2569</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day22_projections.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>โจทย์ทางการวันนี้คือ <strong>“The different ways of representing a globe on a flat surface. What does your favourite map projection say about you?”</strong> (หัวข้อ <em>Projections</em> — ดึงข้อความมาจากหน้า 30daymapchallenge.com อ่านสด 19:50 น. ของวันที่ 22 พ.ย. ในโจทย์มีลิงก์ไปการ์ด xkcd #977 ที่ล้อการเถียงเรื่อง projection ว่าใครถูก)</p>
+<p>เหตุผลที่โพสต์นี้ต้องมีอยู่ คือประโยคที่สองของโจทย์ — เพราะซีรีส์นี้ใช้ projection <strong>ตัวเดียว</strong> มาตั้งแต่ Day 6 — Equidistant Conic ขนานมาตรฐาน 8°/20° จุดศูนย์กลางลองจิจูด 101° ผมวาดแผนที่ไทยด้วยมันมาตั้งแต่ Day 6 โดยไม่เคยถามว่ามันโกหกอะไรไว้บ้าง วันนี้จึงเอามันมาวัดจริงจัง พร้อมอีก 11 วิธี และถามกลับว่า “ตัวเลขที่โพสต์ไปก่อนหน้าผิดไปเท่าไหร่”</p>
+<section id="ตงสเปกกอน-เทยบกบอะไร" class="level2">
+<h2 class="anchored" data-anchor-id="ตงสเปกกอน-เทยบกบอะไร">ตั้งสเปกก่อน: เทียบกับอะไร</h2>
+<p>กติกาข้อเดียวที่บังคับทั้งโพสต์: <strong>ทุกตัวเลขเทียบกับ geodesic บนทรงรี WGS84</strong> ที่คำนวณด้วย <code>Geod(ellps="WGS84").geometry_area_perimeter()</code> ของวงเดียวกันนั้น ไม่มีการเทียบ projection กับ projection เพราะแบบนั้นคือการเลือกพยานที่เข้าข้างตัวเอง</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>geodesic reference (Natural Earth 10m, WGS84)</th>
+<th>ค่า</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>พื้นที่ประเทศไทย</td>
+<td><strong>514,453.7 ตร.กม.</strong></td>
+</tr>
+<tr class="even">
+<td>พื้นที่กรีนแลนด์</td>
+<td>2,154,380.8 ตร.กม.</td>
+</tr>
+<tr class="odd">
+<td>กรีนแลนด์ ÷ ไทย (ความจริง)</td>
+<td><strong>4.1877 เท่า</strong></td>
+</tr>
+<tr class="even">
+<td>เซลล์ H3 res 5 ในกริด Day 3 (1,738 เซลล์)</td>
+<td>ค่าเฉลี่ย 286.931 · ต่ำสุด 77.366 · สูงสุด 303.042 ตร.กม.</td>
+</tr>
+<tr class="odd">
+<td>คู่จุดทะเบียนแหล่งฟ้ามืด 83 แห่ง</td>
+<td>3,403 คู่ · ระยะ geodesic มัธยฐาน 430.5 กม.</td>
+</tr>
+</tbody>
+</table>
+<p>หมายเหตุที่ควรบอกก่อนเริ่ม: เส้นขอบประเทศมาจาก Natural Earth 10m ไม่ใช่แนวเขตกรมที่ดิน ตัวเลขทางราชการที่อ้างกันทั่วไปคือ 513,120 ตร.กม. ซึ่ง geodesic ของเราใหญ่กว่า <strong>+0.2599%</strong> (ผลต่างระดับเดียวกันกับที่ projection สร้างให้ — ตารางข้างล่างจึงใช้เทียบ <em>ระหว่าง projection</em> ไม่ใช่เอายอดเงินไปเทียบกับเลขราชการ)</p>
+<p>ตัววัดที่ใช้ 5 เกณฑ์ (นิยามเดียวกับใน <code>day22_stats.json</code>):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>เกณฑ์</th>
+<th>วัดอย่างไร</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>พื้นที่</strong></td>
+<td>พื้นที่ polygon ใน projection ÷ พื้นที่ geodesic ของ polygon เดียวกัน − 1</td>
+</tr>
+<tr class="even">
+<td><strong>มุม</strong></td>
+<td>Tissot’s indicatrix: Jacobian ของ projection ที่ 182 จุด (กริด 9×11 ครอบคลุมกล่องไทย + 83 จุดทะเบียน) แล้ว SVD → <code>a</code>, <code>b</code> คือ scale ตามแกนหลัก · <code>ω = 2·asin((a−b)/(a+b))</code> คือมุมบิดสูงสุด (max) ที่จุดนั้น</td>
+</tr>
+<tr class="odd">
+<td><strong>ระยะ</strong></td>
+<td>ระยะตรงระหว่าง 83 จุดทะเบียน 3,403 คู่บนแผนที่ หารด้วยระยะ geodesic ของคู่เดียวกัน</td>
+</tr>
+<tr class="even">
+<td><strong>ทิศ</strong></td>
+<td>azimuth จากจุดกลางกริด (15.112°N 101.020°E) ไปยังทุกจุด บนแผนที่ − บนทรงรี</td>
+</tr>
+<tr class="odd">
+<td><strong>คำสัญญาของชื่อ</strong></td>
+<td><code>h</code> = scale ตามแนวเมอริเดียน · <code>k</code> = ตามแนวขนาน — ตัวที่บอกว่าการันตีในชื่อ projection เป็นจริงแค่ไหน</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="วธแบนโลก" class="level2">
+<h2 class="anchored" data-anchor-id="วธแบนโลก">12 วิธีแบนโลก</h2>
+<p><img src="day22_twelve.png" class="img-fluid"></p>
+<p><code>aeqd</code> (Azimuthal Equidistant) ตั้งศูนย์กลางที่จุดกลางของกริด Day 3 เองไม่ใช่ที่เมืองหลวง มันชนะสองเกณฑ์คือ “ระยะ” (0.0129%) กับ “ทิศ” (0.0000°) — และนี่คือ projection ที่ผม <em>ควรใช้</em> ถ้าจะวาด rose of the Leonids ของ Day 17 จริง ๆ เพราะสิ่งที่ rose ต้องการคือ ทิศกับระยะจากจุดกลาง ซึ่งเป็นสองสิ่งที่ aeqd ให้ตรงโดยนิยาม (Day 17 วันนั้นคำนวณ azimuth/distances แบบ geodesic บนพื้นหลัง eqdc ไม่ได้วาดเป็น aeqd)</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>projection</th>
+<th>พื้นที่ไทยที่รายงาน</th>
+<th>ผิดจากจริง</th>
+<th><code>ω</code> สูงสุด</th>
+<th>ระยะผิดเฉลี่ย</th>
+<th>ทิศผิดสูงสุด</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>eqdc-ซีรีส์</strong> (ตัวที่ใช้จริง)</td>
+<td>512,593.1</td>
+<td><strong>−0.3617%</strong></td>
+<td>0.3127°</td>
+<td>0.1543%</td>
+<td>0.1682°</td>
+</tr>
+<tr class="even">
+<td>lcc</td>
+<td>510,750.8</td>
+<td>−0.7198%</td>
+<td>0.0000°</td>
+<td>0.4070%</td>
+<td>0.0714°</td>
+</tr>
+<tr class="odd">
+<td>albers</td>
+<td>514,453.8</td>
+<td><strong>0.0000%</strong></td>
+<td>0.6254°</td>
+<td>0.2620%</td>
+<td>0.3230°</td>
+</tr>
+<tr class="even">
+<td>utm47n</td>
+<td>515,154.4</td>
+<td>+0.1362%</td>
+<td>0.0000°</td>
+<td>0.0615%</td>
+<td>0.5970°</td>
+</tr>
+<tr class="odd">
+<td>utm48n</td>
+<td>516,923.6</td>
+<td>+0.4801%</td>
+<td>0.0000°</td>
+<td>0.2320%</td>
+<td>1.2297°</td>
+</tr>
+<tr class="even">
+<td>tmerc-101</td>
+<td>514,565.4</td>
+<td>+0.0217%</td>
+<td>0.0000°</td>
+<td>0.0260%</td>
+<td>0.0597°</td>
+</tr>
+<tr class="odd">
+<td>webmerc</td>
+<td>557,147.9</td>
+<td><strong>+8.2990%</strong></td>
+<td>0.3807°</td>
+<td>4.3574%</td>
+<td>0.5652°</td>
+</tr>
+<tr class="even">
+<td>merc-elips</td>
+<td>553,682.4</td>
+<td>+7.6253%</td>
+<td>0.0000°</td>
+<td>3.9544%</td>
+<td>0.5888°</td>
+</tr>
+<tr class="odd">
+<td>aeqd</td>
+<td>514,829.1</td>
+<td>+0.0730%</td>
+<td>0.3021°</td>
+<td><strong>0.0129%</strong></td>
+<td><strong>0.0000°</strong></td>
+</tr>
+<tr class="even">
+<td>gall-peters</td>
+<td>514,453.5</td>
+<td>−0.0000%</td>
+<td><strong>36.5639°</strong></td>
+<td>20.8572%</td>
+<td>17.0395°</td>
+</tr>
+<tr class="odd">
+<td>eqc</td>
+<td>533,657.1</td>
+<td>+3.7328%</td>
+<td>3.7242°</td>
+<td>1.5936%</td>
+<td>1.6870°</td>
+</tr>
+<tr class="even">
+<td>natearth2</td>
+<td>467,033.2</td>
+<td><strong>−9.2176%</strong></td>
+<td>12.4063°</td>
+<td>4.7809%</td>
+<td>9.1864°</td>
+</tr>
+</tbody>
+</table>
+<p>สรุปจากตาราง: <strong>7 จาก 12 วิธี ผิดไม่เกิน 0.5% เรื่องพื้นที่</strong> ค่ามัธยฐานของ ความผิดพลาดสัมบูรณ์คือ 0.4209% — ตัวที่หลุดคือ Mercator สองตัว (บวม 7.6–8.3%) กับ Natural Earth II (แฟบ 9.2%) ซึ่งเป็น projection ทั้งโลก ไม่ได้ตั้งใจให้ประเทศเดียว</p>
+</section>
+<section id="มม-คำวา-conformal-ทำงานจรงไหม" class="level2">
+<h2 class="anchored" data-anchor-id="มม-คำวา-conformal-ทำงานจรงไหม">มุม: คำว่า “conformal” ทำงานจริงไหม</h2>
+<p><img src="day22_tissot.png" class="img-fluid"></p>
+<p>วงกลมจริงรัศมี 100 กม. บนพื้นผิว ถูกวาดเป็น ellipse ในแต่ละ projection ผลที่ได้ตรงตามทฤษฎีเป๊ะ: มี <strong>5 วิธีที่ให้ ω = 0.0000°</strong> (lcc, utm47n, utm48n, tmerc-101, merc-elips) ส่วน <strong>albers กับ gall-peters ให้ areal scale = 1.00000 ทุกจุด</strong> ตามสัญญา equal-area แต่ gall-peters ต้องแลกมาด้วยมุมบิดสูงสุด <strong>36.5639°</strong> และทิศเพี้ยนถึง <strong>17.0395°</strong> — นี่คือราคาจริงของ “พื้นที่ถูกทุกแห่งแต่รูปเสียหมด”</p>
+<p>เคสที่สนุกที่สุดคือ <code>webmerc</code>: มันคือ conformal ตามทฤษฎี แต่ ω ที่วัดได้ = 0.3807° ไม่ใช่ 0 เหตุผลไม่ใช่บั๊ก — <code>EPSG:3857</code> จำลองโลกเป็น <em>ทรงกลม</em> ขณะที่ค่าจริงที่เราวัดกันทั้งโพสต์อยู่บน <em>ทรงรี</em> WGS84 ความต่างของสองแบบจำลองโผล่ออกมาเป็น angular deformation เล็กน้อย ซึ่ง Mercator บนทรงรี (<code>EPSG:3395</code>) ไม่มี (0.0000°)</p>
+<p>ส่วน projection ที่ซีรีส์นี้ใช้อยู่: <code>ω</code> มัธยฐาน 0.1984° สูงสุด 0.3127° คือรักษา “ความตั้งฉากของกริด” ได้เกือบดีแต่ไม่ได้ perfect — และนี่คือตัวเลขที่บอกว่า แผนที่ทุกแผ่นที่ทำมาไม่ได้บิดจนกว่าเราจะวัดมันขึ้นมา</p>
+</section>
+<section id="กบดกท-xkcd-ลอ-ตาเทากน-ไมเทากบ-ใหญเทากน" class="level2">
+<h2 class="anchored" data-anchor-id="กบดกท-xkcd-ลอ-ตาเทากน-ไมเทากบ-ใหญเทากน">กับดักที่ xkcd ล้อ: “ตาเท่ากัน” ไม่เท่ากับ “ใหญ่เท่ากัน”</h2>
+<p><img src="day22_tradeoff.png" class="img-fluid"></p>
+<p>เอากรีนแลนด์ ÷ ไทย มาถาม projection แต่ละตัว (ความจริง <strong>4.1877 เท่า</strong>)</p>
+<ul>
+<li>Albers กับ Gall–Peters ตอบ <strong>4.1877 เท่า</strong> — ตรงเป๊ะ เพราะรักษาพื้นที่</li>
+<li>Web Mercator ตอบ <strong>63.1565 เท่า</strong> · Mercator ทรงรีตอบ 63.5257 เท่า</li>
+<li>Equirectangular 15.3626 เท่า · LCC 25.3660 เท่า · eqdc ที่เราใช้ 11.3500 เท่า</li>
+</ul>
+<p>ข้อสุดท้ายต้องบอกให้ตรง: <code>eqdc</code>/<code>lcc</code> เป็น conic ระดับภูมิภาค เอามาวัดข้ามทวีปไม่มีความหมายตั้งแต่ต้น (กรีนแลนด์ไปอยู่ไกลจาก standard parallels จนบิดมหาศาล) ตัวเลข 11.3500 กับ 25.3660 จึงเป็น <em>คำเตือน</em> ไม่ใช่ผลค้นพบ บทเรียนที่ใช้ได้จริงคือ: <strong>ถ้าจะเถียงเรื่องขนาดข้ามทวีป ต้องใช้ projection ทั้งโลกเท่านั้น</strong> และในบรรดา projection ทั้งโลกที่มี equal-area เป็นคุณสมบัติ กรีนแลนด์ ÷ ไทย จะตอบได้ 4.1877 ทุกครั้ง</p>
+</section>
+<section id="บกทเกอบทำให-mercator-ไมรกษามม-ขนเวบ" class="level2">
+<h2 class="anchored" data-anchor-id="บกทเกอบทำให-mercator-ไมรกษามม-ขนเวบ">๑. บั๊กที่เกือบทำให้ “Mercator ไม่รักษามุม” ขึ้นเว็บ</h2>
+<p>รันแรกได้ผลแบบที่ขัดทฤษฎีชัด ๆ: <strong>ω ของทุก projection เป็น ~179.8° หมด</strong> รวม Mercator และ Lambert ซึ่งต้องได้ 0° — ค่า 12 ตัวกระจายกันเพียง 0.027°</p>
+<p><code>guard_variance</code> ใน <code>tools/guards.py</code> (ฟังก์ชันที่ตั้งไว้จับ “ตัวเลขที่เท่ากันผิดปกติ”) ฟ้องทันทีที่ผมรันจบทั้งรอบ</p>
+<p>ต้นเหตุไม่ใช่คณิตศาสตร์ แต่เป็นลำดับ argument:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ผิด — เรียง (lons, lats, azimuths, distances) ไม่ถูก</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>lons, lats, _ <span class="op">=</span> GEOD.fwd(np.full(NZIP, lon), np.full(NZIP, la0),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                         np.full(NZIP, R_KM <span class="op">*</span> <span class="fl">1000.0</span>), np.degrees(brg))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>Geod.fwd</code> รับ <code>(lons, lats, azimuths, distances)</code> ผมใส่ระยะทาง 100,000 ม. ไปในตำแหน่ง azimuth และใส่ค่าทิศทาง (0 ถึง 360) ในตำแหน่งระยะทาง “วงกลมรัศมี 100 กม.” จึงกลายเป็นกลุ่มจุดรัศมีประมาณ 6 เมตร covariance ที่ใช้หาแกน ellipse จึงบีบเป็นเส้น → <code>b ≈ 0</code> → <code>ω = 180°</code> ทุกตัว</p>
+<p>วิธีแก้ทำให้ตัวเลขดีขึ้นด้วย: เลิกวัดจากวงกลม แล้วคำนวณ <strong>Jacobian ของ projection ด้วย central difference 0.02° แล้วทำ SVD</strong> ซึ่งตรงนิยาม textbook ของ Tissot กว่า และไม่ขึ้นกับจำนวนซี่ของวงกลมเลย — <code>a</code>, <code>b</code> ที่รายงานคือแกนของ ellipse ที่เกิดจาก การแปลง “วงกลมหน่วยในระนาบสัมผัสพื้นผิว” ซึ่งเป็นนิยามของมันเอง หลังแก้ <code>lcc</code> ให้ <code>ω = 0.0000°</code> ตรงตามทฤษฎี (ทั้งสิบสองตัวก่อนแก้ได้ค่าใกล้ 179.8° หมด — ซึ่งไม่มี projection ไหนในธรรมชาติควรได้) และค่าที่ผิดทั้ง 12 ตัวถูกเขียนทับใน <code>day22_stats.json</code> ผ่านบล็อก <code>bug_found</code> (มี <code>observed_omega_wrong_deg = 179.8</code> กับ <code>observed_spread_deg = 0.027</code> เก็บไว้ เพื่อที่คนอ่านจะตรวจซ้ำได้ว่าบั๊กมีอยู่จริง ไม่ใช่เรื่องที่เล่าทีหลัง)</p>
+<p>และเพราะ guard ตัวเดิมจับกรณี “ω เท่ากันหมดแต่ไม่ใกล้ 180” ไม่ได้ ผมเพิ่ม assert ใหม่ในสคริปต์: ทุก projection ที่อ้างว่า conformal (lcc, utm47n, utm48n, tmerc-101, merc-elips) ต้องมี <code>ω</code> สูงสุดต่ำกว่า 0.005° ไม่อย่างนั้นให้รันล้ม — บทเรียนซ้ำของซีรีส์นี้: <strong>assert ต้องเกิดหลังจากความเข้าใจใหม่ ไม่ใช่ตอนเขียนโค้ดครั้งแรก</strong></p>
+</section>
+<section id="ปดเคส-13-ของ-day-20" class="level2">
+<h2 class="anchored" data-anchor-id="ปดเคส-13-ของ-day-20">๒. ปิดเคส 13% ของ Day 20</h2>
+<p>Day 20 ทิ้งคำถามไว้ประโยคเดียว: เซลล์ H3 res 5 ในไทยวัดได้เฉลี่ย <strong>285.884 ตร.กม.</strong> ใหญ่กว่า <code>average_hexagon_area(5)</code> = <strong>252.904 ตร.กม.</strong> ราว 13% ตอนนั้นผมแค่บอกว่า “ใช้ตัวเลขที่วัดจริงแทน nominal” แต่ไม่ได้อธิบายว่า 13% มาจากไหน</p>
+<p>วันนี้อุปกรณ์พร้อมแล้ว (geodesic + H3 เอง + projection) จึงแยกองค์ประกอบได้:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>องค์ประกอบ</th>
+<th>ค่า</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>projection (eqdc เทียบ geodesic)</td>
+<td><strong>−0.365%</strong></td>
+</tr>
+<tr class="even">
+<td>H3 ใช้ทรงกลม แต่เราวัดบนทรงรี</td>
+<td><strong>−3.172%</strong></td>
+</tr>
+<tr class="odd">
+<td>ค่า nominal เป็นค่าเฉลี่ยทั่วโลก ไม่ใช่ค่าเฉลี่ยแถวละติจูดเรา</td>
+<td><strong>+17.171%</strong></td>
+</tr>
+<tr class="even">
+<td>คูณกลับทั้งสามชิ้น</td>
+<td><strong>+13.041%</strong></td>
+</tr>
+<tr class="odd">
+<td>ช่องว่างจริงที่ Day 20 รายงาน</td>
+<td><strong>+13.041%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>พูดใหม่ให้เป็นประโยค: 13% นั้น<strong>ไม่ได้มาจาก projection เลย</strong> (projection มีส่วนแค่ 0.365%) มันมาจากข้อเท็จจริงสองข้อ — H3 คำนวณบนทรงกลม (−3.172%) และ <code>average_hexagon_area()</code> เป็นค่าเฉลี่ยทั่วโลก ซึ่งเซลล์แถวละติจูดต่ำ อย่างประเทศไทย (6–20°N) ใหญ่กว่าค่าเฉลี่ยนั้นมาก หลักฐานคือ <code>cell_area()</code> รายเซลล์ของไทยอยู่ระหว่าง 287.782–304.383 ตร.กม. ไม่มีสักเซลล์ที่ใกล้ 252.904 และสหสัมพันธ์ Spearman ระหว่างพื้นที่เซลล์ (แบบทรงกลมของ H3) กับละติจูด ภายในกริดเดียวกันคือ <strong>−0.7977</strong> (เหนือขึ้น = เซลล์เล็กลง)</p>
+<p>ของแถมของการตรวจซ้ำ: <code>day20_reproduced = true</code> — วัด eqdc ซ้ำวันนี้ได้ ค่าเฉลี่ย 285.884 เท่ากับที่ Day 20 รายงานเป๊ะ และพื้นที่ไทยใน eqdc ได้ 512,593.1 ตรงกับที่ใช้ใน Day 10/12/14 (traceable ครบ)</p>
+</section>
+<section id="projection-ของผมบอกอะไรเกยวกบผม" class="level2">
+<h2 class="anchored" data-anchor-id="projection-ของผมบอกอะไรเกยวกบผม">projection ของผมบอกอะไรเกี่ยวกับผม</h2>
+<p>จัดอันดับ 12 วิธีด้วย 5 เกณฑ์ (อันดับ 1 = ดีที่สุด):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>พื้นที่</th>
+<th>มุม</th>
+<th>ระยะ</th>
+<th>ทิศ</th>
+<th>Scale ตามเมอริเดียน</th>
+<th>รวมอันดับ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>eqdc-ซีรีส์</strong></td>
+<td>6</td>
+<td>7</td>
+<td>4</td>
+<td>4</td>
+<td><strong>1</strong></td>
+<td>22</td>
+</tr>
+<tr class="even">
+<td>tmerc-101</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+<td><strong>14</strong></td>
+</tr>
+<tr class="odd">
+<td>aeqd</td>
+<td>4</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>lcc</td>
+<td>8</td>
+<td>1</td>
+<td>7</td>
+<td>3</td>
+<td>5</td>
+<td>24</td>
+</tr>
+<tr class="odd">
+<td>albers</td>
+<td><strong>1</strong></td>
+<td>9</td>
+<td>6</td>
+<td>5</td>
+<td>6</td>
+<td>27</td>
+</tr>
+<tr class="even">
+<td>gall-peters</td>
+<td>2</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td>natearth2</td>
+<td>12</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>9</td>
+<td>54</td>
+</tr>
+</tbody>
+</table>
+<p>อ่านตารางนี้แบบซื่อ ๆ: projection ที่ผมใช้อยู่ <strong>ชนะเกณฑ์เดียว</strong> คือ <code>ns_scale_dev_max = 0.00000</code> — ระยะตามแนวเมอริเดียนจริง 100% ทุกจุดใน 182 จุด (มีแค่ eqdc กับ eqc เท่านั้นที่ทำได้) เกณฑ์ที่เหลือมันอยู่อันดับกลาง ๆ และคนที่ชนะรวมอันดับคือ <code>tmerc-101</code> Transverse Mercator ที่ตั้ง central meridian เหนือกลางประเทศเราเอง (พื้นที่ผิด +0.0217%, ω 0.0000°, ระยะผิด 0.0260%)</p>
+<p>สรุปว่า projection ของผมบอกอะไร? สามอย่าง</p>
+<ol type="1">
+<li><strong>ผมเลือกตามธรรมเนียม ไม่ใช่ตามการวัด</strong> — conic + standard parallels 8°/20° คือคำตอบแบบตำราสำหรับประเทศที่ยืดยาวเหนือ-ใต้ และมันไม่ได้ <em>ผิด</em> (พื้นที่หายไป 0.36% มุมบิด 0.31°) แค่ไม่ได้ <em>ดีที่สุด</em></li>
+<li><strong>ผมให้น้ำหนักกับ “ระยะทาง” มากกว่า “ขนาด”</strong> — ซีรีส์นี้วัดระยะจากจุดทะเบียนถึงถนน ถึงถนน ถึงเซลล์ที่ใกล้ที่สุดมาตลอด (Day 3, 9, 16) ซึ่งคือสิ่งที่ eqdc สัญญา และมันรักษาข้อสัญญานั้นจริงแบบตัวเลขศูนย์ทศนิยมห้าตำแหน่ง</li>
+<li><strong>ผมปล่อยผ่าน 2 เรื่องที่ควรตรวจตั้งนานแล้ว</strong> — ไม่เคยตรวจ geodesic reference (จึงเข้าใจผิดเรื่อง 13% มาตั้งแต่วันนั้น และใช้ Mercator ทั้งเว็บ (webmerc) ในหัวโดยลืมว่าตัวเลข 8.299% ที่มันเติมให้ประเทศไทยนั้น มากกว่า error ทุกอย่างที่ projection ระดับภูมิภาคสร้างขึ้น</li>
+</ol>
+<p>ถ้าให้เลือกใหม่เพื่อทำซีรีส์นี้ต่อ: <strong><code>tmerc-101</code> สำหรับแผนที่ประเทศ</strong> (ชนะ 4 จาก 5 เกณฑ์เมื่อคิดรวม) และ <strong><code>albers</code> ทุกครั้งที่รายงาน “เนื้อที่”</strong> เพราะมันให้ 0.0000% แบบไม่ต้องอธิบาอะไรเลย — แต่ผมจะไม่เปลี่ยน เพราะทุกแผนที่ของซีรีส์นี้ใช้ eqdc และโพสต์นี้คือหลักฐานว่า มันสร้าง error ให้เรากี่เปอร์เซ็นต์ ไม่ใช่ทิ้งงานเก่าแล้วเริ่มใหม่</p>
+</section>
+<section id="วธทำแบบยอ" class="level2">
+<h2 class="anchored" data-anchor-id="วธทำแบบยอ">วิธีทำแบบย่อ</h2>
+<ol type="1">
+<li>อ่านกริด H3 res 5 จาก Day 3 (1,738 เซลล์) + ขอบประเทศ Natural Earth 10m
+<ul>
+<li>จุดทะเบียน 83 แห่งจากไฟล์ชุดเดิมที่ทั้งซีรีส์ใช้</li>
+</ul></li>
+<li>คำนวณ <strong>reference บน WGS84</strong>: <code>Geod(ellps="WGS84").geometry_area_perimeter()</code> ของ polygon จริง, <code>line_lengths</code> ของทุกคู่จุดทะเบียน (3,403 คู่)</li>
+<li>สร้าง 12 projection ด้วย proj4 string + lookup EPSG (32647, 32648, 3395, 3857)</li>
+<li>ต่อ projection: reproject polygon → คิดพื้นที่ → หาร reference · reproject 1,738 เซลล์ → ดูการกระจายของ error (ไม่แค่ค่าเฉลี่ย) · สแกน 182 จุดด้วย Jacobian (central difference 0.02°) → SVD → <code>a, b, ω, h, k, areal</code> · reproject จุดทะเบียนแล้ววัดคู่ 3,403 คู่ · วัด azimuth จากจุดกลาง</li>
+<li>จัดอันดับ 5 เกณฑ์แล้วรวมเป็น rank_sum เพื่อตอบคำถาม “projection ของคุณบอกอะไร”</li>
+<li>แยกองค์ประกอบตัวเลข 13% ของ Day 20 เป็น projection × ทรงกลม/ทรงรี × ค่าเฉลี่ยละติจูด แล้วคูณกลับว่าครบ 13.041% พอดี</li>
+<li>assert ที่ใส่เพิ่มหลังเจอบั๊ก: conformal ต้อง ω &lt; 0.005° · albers ต้อง พื้นที่ error &lt; 0.005% · eqdc ต้อง <code>ns_scale_dev_max &lt; 1e-4</code> · ผลคูณสามองค์ประกอบต้องตรงกับช่องว่างจริง · และเลข Day 20 ต้อง reproduce ได้</li>
+</ol>
+</section>
+<section id="ขอจำกดทตองบอกตรง-ๆ" class="level2">
+<h2 class="anchored" data-anchor-id="ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</h2>
+<ul>
+<li><strong>grid Tissot 182 จุด</strong> (99 กริด + 83 ทะเบียน) ไม่ครอบคลุมเกาะ/ชายฝั่งทุกละติจูด <code>ω</code> ที่รายงานจึงเป็น “สูงสุดจากที่สุ่มกริดไว้” ไม่ใช่ supremum ของทั้ง projection</li>
+<li><strong>central difference 0.02°</strong> (ประมาณ 2 กม.) เป็นค่า step ที่ผมเลือก step ใหญ่ไปจะปน curvature, เล็กไปจะจม numerical noise — ไม่ได้ทดสอบ step size อื่น</li>
+<li><strong>aeqd ตั้งศูนย์กลางที่ centroid ของกริด Day 3</strong> (15.112°N 101.020°E) ถ้าย้ายจุดกลาง ตัวเลข “ทิศผิด 0.0000°” จะเปลี่ยนทันที (เพราะเกณฑ์นี้วัดจากจุดนั้น)</li>
+<li><strong>UTM มีเขตเดียวต่อ zone</strong>: utm47n ครอบคลุมไทยได้ทั้งประเทศแต่ utm48n ไม่ใช่ ตัวเลือจริงของคนทำแผนที่ไทย การใส่มาเพื่อแสดง edge distortion เท่านั้น</li>
+<li><strong>เทียบตัวเลขข้ามทวีปจาก projection ระดับภูมิภาคไม่ได้</strong> — ค่า gl_th_ratio ของ eqdc/lcc ในที่นี้คือคำเตือน ไม่ใช่ผลสรุป (เขียนไว้ให้ชัดเพราะตารางอาจถูกตัดไปใช้ต่อ)</li>
+<li><strong>ขอบประเทศมาจาก Natural Earth 10m</strong> ซึ่งต่างจากตัวเลขทางราชการ +0.2599% ใหญ่กว่าผลของ projection หลายตัวในตัวมันเอง</li>
+</ul>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<ul>
+<li><a href="day22_twelve.png">day22_twelve.png</a> — 12 small multiples พร้อม error ราย panel (กรอบเหลือง = eqdc ที่ซีรีส์นี้ใช้)</li>
+<li><a href="day22_tissot.png">day22_tissot.png</a> — Tissot’s indicatrix 4 panel: eqdc · lcc · webmerc · gall-peters</li>
+<li><a href="day22_tradeoff.png">day22_tradeoff.png</a> — เกณฑ์ระยะทางเทียบกับเกณฑ์มุม, อันดับความเพี้ยนด้านพื้นที่, กับดักกรีนแลนด์</li>
+<li><a href="day22_projections.csv">day22_projections.csv</a> — เมทริกซ์หลัก 12 แถว (ทุกตัวเลขในโพสต์อยู่ในนี้)</li>
+<li><a href="day22_tissot.csv">day22_tissot.csv</a> — <code>a, b, areal, ω, h, k</code> รายจุด 182 จุด × 12 วิธี = 2,184 บรรทัด</li>
+<li><a href="day22_ranks.csv">day22_ranks.csv</a> — อันดับ 5 เกณฑ์ + rank_sum</li>
+<li><a href="day22_cells.csv">day22_cells.csv</a> — รายเซลล์ 1,738: พื้นที่ geodesic, พื้นที่ H3 (ทรงกลม), พื้นที่ใน eqdc / albers / utm47n / webmerc / gall-peters / aeqd / lcc พร้อมอัตราส่วน</li>
+<li><a href="day22_stats.json">day22_stats.json</a> — นิยามทั้งหมด + <code>bug_found</code> + <code>decomposition_of_day20</code>
+<ul>
+<li><code>external_reference</code> + <code>cross_check_day20</code></li>
+</ul></li>
+</ul>
+<p>ไฟล์สคริปต์: <code>tools/day22_projections.py</code> (คำนวณ + วาด + referee ในไฟล์เดียว) และ <code>notebooks/day22_projections.ipynb</code> ที่สร้างจากไฟล์เดียวกัน</p>
+</section>
+<section id="บทเรยน" class="level2">
+<h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>
+<ul>
+<li><strong>assert ต้องเขียนหลังเข้าใจ ไม่ใช่ก่อน</strong> — ผมมี guard 25 เคสใน <code>guards.py</code> แต่ไม่มีข้อไหนบอกว่า “conformal ต้องได้ ω เป็นศูนย์” จึงปล่อยให้บั๊ก ลำดับ argument ของ <code>Geod.fwd</code> ผลิตตัวเลขที่ผิดพร้อมกันทั้ง 12 ตัว โดยไม่มีตัวไหน “ดูเพี้ยน” ในสายตาคณิต — ดีที่มี guard_variance</li>
+<li><strong>guard ตัวเดียวจับบั๊กได้หนึ่งระดับ</strong> — ครึ่งแรกของบั๊ก (ω = 179.8° ทุกตัว) คือ “ค่าไม่กระจาย” ซึ่ง <code>guard_variance</code> เห็น · ครึ่งหลัง (กรณีที่ไม่เพี้ยนหนัก แต่ผิด criteria) ต้องใช้ domain assert เพิ่ม ซึ่งผมใส่ไว้แล้ว</li>
+<li><strong>ตัวเลขเก่าในซีรีส์ควรตรวจซ้ำได้</strong> — ข้อดีของการเก็บทุกอย่างเป็น artifact คือ 13% ของ Day 20 วันนี้กลายเป็น “3 ชิ้นคูณกัน = 13.041%” ที่ปิดเคสได้ และ 285.884 / 512,593.1 ยัง reproduce ตรงเป๊ะ (ไม่มี drift)</li>
+<li><strong>“ชื่อ projection” เป็นคำสัญญา ไม่ใช่ความจริง</strong> — equidistant ของ eqdc เป็นจริงเฉพาะตามแนวเมอริเดียน (dev 0.00000) และเป็นเท็จตามแนวขนาน (dev สูงสุด 0.00544 = 0.544%) การรายงานแบบไม่ระบุทิศคือวิธีหลอกตัวเองที่เสถียรที่สุด</li>
+<li><strong>คำตอบของ “projection ของคุณบอกอะไรเกี่ยวกับคุณ” ควรวัดได้</strong> ผมตอบว่า: ผมเลือกตามธรรมเนียม, ผมให้ค่ากับระยะทางมากกว่าขนาด และมี projection ที่ดีกว่า 4 ใน 5 เกณฑ์อยู่ห่างไปแค่การเปลี่ยน string หนึ่งบรรทัด</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
