@@ -29,7 +29,7 @@ What does your favourite map projection say about you?"
 ของแถมที่ต้องทำ: แยกองค์ประกอบ "13%" ที่ Day 20 รายงานว่าเซลล์ใหญ่กว่าค่า nominal ของไลบรารี
   → ส่วนไหนคือ projection error · ส่วนไหนคือค่าเฉลี่ยทั่วโลกของ H3 ไม่ใช่ค่าเฉลี่ยแถวละติจูดเรา
 """
-import os, sys, json, time, math, re
+import os, sys, json, time, math, re, subprocess, zipfile, urllib.request
 import numpy as np, pandas as pd, geopandas as gpd
 import h3, pyproj
 from pyproj import CRS, Geod, Transformer
@@ -43,36 +43,72 @@ from matplotlib.gridspec import GridSpec
 from matplotlib.patches import Ellipse
 
 T0 = time.time()
-COLAB = not os.path.isdir(r"D:\GIS30Days\geo-notes")
+# ---- รันได้ทั้งบนเครื่องของผู้เขียนและบน Colab (รูปแบบเดียวกับ Day 6/15) -------------
+# บน Colab จะไม่มีโฟลเดอร์รีโป ให้ดึง *ไฟล์เฉพาะที่ใช้* จาก raw.githubusercontent
+# + Natural Earth 10m จาก naciscdn + ฟอนต์ Trirong จาก google/fonts
+# ตั้ง DAY22_FORCE_COLAB=1 เพื่อทดสอบเส้นทาง Colab บนเครื่องตัวเอง (ดึงทุกไฟล์จากเน็ต)
+COLAB = (os.environ.get("DAY22_FORCE_COLAB") == "1") or not os.path.isdir(
+    os.path.join(r"D:\GIS30Days", "geo-notes"))
 WORK = os.getcwd() if COLAB else r"D:\GIS30Days"
 REPO = os.path.join(WORK, "geo-notes")
-FONTS = os.path.join(WORK, "cache", "day06")
+CACHE = os.path.join(WORK, "day22_cache") if COLAB else os.path.join(WORK, "cache", "day06")
 OUT = os.path.join(WORK, "out", "day22")
-os.makedirs(OUT, exist_ok=True)
+os.makedirs(CACHE, exist_ok=True); os.makedirs(OUT, exist_ok=True)
+RAW = "https://raw.githubusercontent.com/thammarat-ai/geo-notes/main/"
+GFF = "https://github.com/google/fonts/raw/main/ofl/"
+
+
+def ensure(url, dst):
+    if not os.path.exists(dst):
+        urllib.request.urlretrieve(url, dst)
+    return dst
+
+
+def ensure_shp(stem, sub="cultural"):
+    """Natural Earth 10m แบบเดียวกับที่ Day 15 ใช้ (naciscdn เป็น mirror ทางการ)"""
+    shp = os.path.join(CACHE, stem + ".shp")
+    if not os.path.exists(shp):
+        ensure_shp_zip = os.path.join(CACHE, stem + ".zip")
+        ensure(f"https://naciscdn.org/naturalearth/10m/{sub}/{stem}.zip", ensure_shp_zip)
+        zipfile.ZipFile(ensure_shp_zip).extractall(CACHE)
+    return shp
+
+
+def repo_file(rel):
+    """ไฟล์ในรีโป (ทะเบียน / กริด Day 3 / stats Day 20) — บน Colab ดึงจาก raw GitHub"""
+    if not COLAB:
+        return os.path.join(REPO, rel)
+    dst = os.path.join(CACHE, os.path.basename(rel))
+    ensure(RAW + rel, dst)
+    return dst
+
+
 if COLAB:
-    # บน Colab: กัด repo มาทั้งลูก (มีทั้ง csv ทะเบียน + กริด Day 3) แล้วดึง
-    # Natural Earth 10m countries + ฟอนต์ Trirong ที่สคริปต์นี้ต้องใช้
-    import subprocess, zipfile, urllib.request
-    if not os.path.isdir(REPO):
-        subprocess.run(["git", "clone", "--depth", "1",
-                        "https://github.com/thammarat-ai/geo-notes"], check=True)
-    os.makedirs(FONTS, exist_ok=True)
-    import shutil as _sh
-    for d in ("site/fonts", "assets/fonts", "fonts"):
-        src = os.path.join(REPO, d)
-        if os.path.isdir(src):
-            for f in os.listdir(src):
-                if f.endswith(".ttf"):
-                    _sh.copy(os.path.join(src, f), os.path.join(FONTS, f))
-    NE_ZIP = "https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_admin_0_countries.zip"
-    if not os.path.exists(os.path.join(FONTS, "ne_10m_admin_0_countries.shp")):
-        urllib.request.urlretrieve(NE_ZIP, "/tmp/ne.zip")
-        with zipfile.ZipFile("/tmp/ne.zip") as z:
-            z.extractall(FONTS)
-for _f in sorted(os.listdir(FONTS)):
+    for fn in ("Trirong-Regular.ttf", "Trirong-Bold.ttf", "Trirong-SemiBold.ttf"):
+        ensure(GFF + "trirong/" + fn, os.path.join(CACHE, fn))
+    ensure(GFF + "chonburi/Chonburi-Regular.ttf", os.path.join(CACHE, "Chonburi-Regular.ttf"))
+    print("Colab: ดึงฟอนต์ไทยครบแล้ว → ", CACHE)
+for _f in sorted(os.listdir(CACHE)):
     if _f.endswith(".ttf"):
-        font_manager.fontManager.addfont(os.path.join(FONTS, _f))
+        font_manager.fontManager.addfont(os.path.join(CACHE, _f))
 plt.rcParams["font.family"] = "Trirong"
+
+try:
+    import h3                                    # Colab ไม่ได้ติดตั้ง h3 มาให้
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "-q", "install", "h3==4.5.0"])
+    import h3
+
+for _td in (os.path.join(WORK, "tools"), os.path.join(REPO, "tools")):
+    if os.path.isdir(_td):
+        sys.path.insert(0, _td)
+        break
+try:
+    from guards import guard_crs, guard_area, guard_bbox, guard_variance, lint_thai
+except ModuleNotFoundError:                        # บน Colab: ดึง guards.py จากรีโป
+    ensure(RAW + "tools/guards.py", os.path.join(CACHE, "guards.py"))
+    sys.path.insert(0, CACHE)
+    from guards import guard_crs, guard_area, guard_bbox, guard_variance, lint_thai
 _LOGF = open(os.path.join(OUT, "day22_run.log"), "w", encoding="utf-8")
 def log(m):
     s = f"[{time.time()-T0:6.1f}s] {m}"
@@ -119,7 +155,7 @@ PJ = [
 NAMES = [p[0] for p in PJ]
 
 # ================================================== 2. วัตถุดิบ
-ne = gpd.read_file(os.path.join(FONTS, "ne_10m_admin_0_countries.shp"))
+ne = gpd.read_file(ensure_shp("ne_10m_admin_0_countries"))
 TH_raw = ne[ne.NAME == "Thailand"].geometry.iloc[0]
 GL_raw = ne[ne.NAME == "Greenland"].geometry.iloc[0]
 TH_raw = make_valid(TH_raw); GL_raw = make_valid(GL_raw)
@@ -131,7 +167,7 @@ assert 500_000 < area_th_geo < 530_000, (
 log(f"reference geodesic: ไทย {area_th_geo:,.1f} ตร.กม. · กรีนแลนด์ {area_gl_geo:,.1f} ตร.กม."
     f" · อัตราส่วนความจริง {area_gl_geo/area_th_geo:.2f} เท่า")
 
-g3 = gpd.read_file(os.path.join(REPO, "posts/day03-polygons/day03_hex_polygons.geojson"))
+g3 = gpd.read_file(repo_file("posts/day03-polygons/day03_hex_polygons.geojson"))
 assert len(g3) == 1738, f"กริด Day 3 ต้องมี 1,738 เซลล์ ได้ {len(g3)}"
 cell_geo = np.array([abs(GEOD.geometry_area_perimeter(geom)[0]) / 1e6
                      for geom in g3.geometry.values])
@@ -141,7 +177,7 @@ lat_of_cell = np.array([h3.cell_to_boundary(c)[0][0] for c in g3.cell.values])
 log(f"เซลล์ 1,738 · geodesic เฉลี่ย {cell_geo.mean():.3f} · H3 cell_area() เฉลี่ย "
     f"{h3_per_cell.mean():.3f} · ค่าเฉลี่ยทั่วโลกของไลบรารี {h3_nominal:.3f}")
 
-D = pd.read_csv(os.path.join(REPO, "data", "darksky_thailand.csv"))
+D = pd.read_csv(repo_file("data/darksky_thailand.csv"))
 D["name"] = D["name"].astype(str).str.strip()
 P_ll = np.array([[float(r.longitude), float(r.latitude)] for _, r in D.iterrows()])
 guard_bbox(P_ll, 96.5, 107.6, 4.3, 21.7, "darksky-points")
@@ -304,7 +340,7 @@ guard_variance(PR.omega_max_deg.values, "omega-across-projections")
 # ================================================== 4. แยกองค์ประกอบ "13%" ของ Day 20
 # Day 20 รายงานว่าเซลล์ res 5 ในไทยวัดได้ 285.884 ตร.กม. ใหญ่กว่าค่า nominal ของไลบรารี
 # (252.904) ราว 13% และทิ้งคำถามไว้ว่าเพราะอะไร — วันนี้มีเครื่องมือแยกองค์ประกอบแล้ว
-d20 = json.load(open(os.path.join(REPO, "posts/day20-hexagons/day20_stats.json"), encoding="utf-8"))
+d20 = json.load(open(repo_file("posts/day20-hexagons/day20_stats.json"), encoding="utf-8"))
 A20 = d20["aggregates"]
 day20_mean = float(A20["measured_area_mean"])
 day20_min = float(A20["measured_area_min"])
