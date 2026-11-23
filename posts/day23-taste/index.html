@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="โจทย์ ‘Food, drink or something else which you can taste.’ ในธีมอาหารภาคเหนือที่อาจารย์ขอ ผมสแกน Geofabrik Thailand extract ทั้งประเทศ (object อาหาร 59,703 ชิ้น = node 51,062 + way 8,641) แล้วพบว่า OSM ไม่ได้บันทึก ‘รส’ ไว้เป็นหมวดหมู่: แท็ก cuisine มี 665 ค่าที่คนไทยใช้จริง รวม 25,388 ครั้ง แต่ค่าที่เอ่ยถึงอาหารเมืองมีแค่ 9 ครั้ง (เทียบกับ ‘อีสาน’ 28 ครั้ง) และแท็ก diet ถูกใช้ 0 ค่า · ทางเดียวที่เหลือคืออ่าน ‘ป้ายชื่อร้าน’ — ข้าวซอย 60 ร้าน (80.00% อยู่ใน 17 จังหวัดเหนือ) แต่ ลาบ 130 ร้านมีแค่ 51.54% ที่เป็นเหนือ · น้ำพริกหนุ่ม แกงแค ตำขนุน แอ็บ จิ้นส้ม หน่อไม้ = 0 ร้านทั้งประเทศ · แหล่งฟ้ามืดภาคเหนือ 23 แห่งอยู่ใกล้อาหารทั่วไปมัธยฐาน 0.68 กม. แต่ไกลจากร้านรสเมืองมัธยฐาน 11.34 กม. และ 4 แห่งหาไม่เจอใน 40 กม. · ของย่างกับ CO: rho 0.653 แต่พอใส่ตัวควบคุม (ย่าง↔ประชากรเมือง 0.767) ก็เห็นว่าเป็นผลของเมือง ไม่ใช่ควัน">
+
+<title>Day 23 · Senses: Taste — อาหารเหนือในแผนที่ไทย: OSM รู้จักข้าวซอย 60 ร้าน แต่ไม่รู้จักรสเลยสักครั้ง (และ 4 แหล่งดูฟ้ามืดที่หาร้านเมืองไม่เจอใน 40 กม.) – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#ปญหาแรก-รส-ไมมทอยในหมวดหมของ-osm" id="toc-ปญหาแรก-รส-ไมมทอยในหมวดหมของ-osm" class="nav-link active" data-scroll-target="#ปญหาแรก-รส-ไมมทอยในหมวดหมของ-osm">๐. ปัญหาแรก: “รส” ไม่มีที่อยู่ในหมวดหมู่ของ OSM</a></li>
+  <li><a href="#อาน-รส-จากชอราน-และกบดกแรกของภาษาไทย" id="toc-อาน-รส-จากชอราน-และกบดกแรกของภาษาไทย" class="nav-link" data-scroll-target="#อาน-รส-จากชอราน-และกบดกแรกของภาษาไทย">๑. อ่าน “รส” จากชื่อร้าน — และกับดักแรกของภาษาไทย</a></li>
+  <li><a href="#นบแบบไหนกไดคำตอบไมเหมอนกน" id="toc-นบแบบไหนกไดคำตอบไมเหมอนกน" class="nav-link" data-scroll-target="#นบแบบไหนกไดคำตอบไมเหมอนกน">๒. นับแบบไหนก็ได้คำตอบไม่เหมือนกัน</a></li>
+  <li><a href="#จากจดดดาวยาวไปหารสเมอง" id="toc-จากจดดดาวยาวไปหารสเมอง" class="nav-link" data-scroll-target="#จากจดดดาวยาวไปหารสเมอง">๓. จากจุดดูดาวยาวไปหารสเมือง</a></li>
+  <li><a href="#ของยางกบควน-อยาเพงรบสรป" id="toc-ของยางกบควน-อยาเพงรบสรป" class="nav-link" data-scroll-target="#ของยางกบควน-อยาเพงรบสรป">๔. ของย่างกับควัน: อย่าเพิ่งรีบสรุป</a></li>
+  <li><a href="#วธทำแบบยอ" id="toc-วธทำแบบยอ" class="nav-link" data-scroll-target="#วธทำแบบยอ">วิธีทำแบบย่อ</a></li>
+  <li><a href="#ขอจำกดทตองบอกตรง-ๆ" id="toc-ขอจำกดทตองบอกตรง-ๆ" class="nav-link" data-scroll-target="#ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
+  <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 23 · Senses: Taste — อาหารเหนือในแผนที่ไทย: OSM รู้จักข้าวซอย 60 ร้าน แต่ไม่รู้จักรสเลยสักครั้ง (และ 4 แหล่งดูฟ้ามืดที่หาร้านเมืองไม่เจอใน 40 กม.)</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">30DayMapChallenge</div>
+    <div class="quarto-category">openstreetmap</div>
+    <div class="quarto-category">thailand</div>
+    <div class="quarto-category">food</div>
+    <div class="quarto-category">geodata-quality</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    โจทย์ ‘Food, drink or something else which you can taste.’ ในธีมอาหารภาคเหนือที่อาจารย์ขอ ผมสแกน Geofabrik Thailand extract ทั้งประเทศ (object อาหาร 59,703 ชิ้น = node 51,062 + way 8,641) แล้วพบว่า OSM ไม่ได้บันทึก ‘รส’ ไว้เป็นหมวดหมู่: แท็ก cuisine มี 665 ค่าที่คนไทยใช้จริง รวม 25,388 ครั้ง แต่ค่าที่เอ่ยถึงอาหารเมืองมีแค่ 9 ครั้ง (เทียบกับ ‘อีสาน’ 28 ครั้ง) และแท็ก diet ถูกใช้ 0 ค่า · ทางเดียวที่เหลือคืออ่าน ‘ป้ายชื่อร้าน’ — ข้าวซอย 60 ร้าน (80.00% อยู่ใน 17 จังหวัดเหนือ) แต่ ลาบ 130 ร้านมีแค่ 51.54% ที่เป็นเหนือ · น้ำพริกหนุ่ม แกงแค ตำขนุน แอ็บ จิ้นส้ม หน่อไม้ = 0 ร้านทั้งประเทศ · แหล่งฟ้ามืดภาคเหนือ 23 แห่งอยู่ใกล้อาหารทั่วไปมัธยฐาน 0.68 กม. แต่ไกลจากร้านรสเมืองมัธยฐาน 11.34 กม. และ 4 แห่งหาไม่เจอใน 40 กม. · ของย่างกับ CO: rho 0.653 แต่พอใส่ตัวควบคุม (ย่าง↔︎ประชากรเมือง 0.767) ก็เห็นว่าเป็นผลของเมือง ไม่ใช่ควัน
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">23 พฤศจิกายน 2569</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day23_lanna.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>โจทย์ทางการวันนี้คือ <strong>“Food, drink or something else which you can taste.”</strong> (หัวข้อ <em>Senses: Taste</em> — ดึงข้อความมาจากหน้า 30daymapchallenge.com อ่านสด 20:55 น. ของวันที่ 23 พ.ย. เป็น senses วันที่สี่ของซีรีส์ต่อจาก Day 5 sight · Day 12 sound · Day 19 smell)</p>
+<p>อาจารย์ขอธีมเป็น <strong>อาหารภาคเหนือ — ลาบ ข้าวซอย</strong> ผมเลยตั้งคำถามที่ตอบได้ด้วยข้อมูลจริงว่า</p>
+<blockquote class="blockquote">
+<p><strong>แผนที่ที่คนช่วยกันวาดทั้งใบนี้ “รู้รส” ขนาดไหน และมันอยู่ไกลจากจุดที่เราไปดูดาวยาวแค่ไหน</strong></p>
+</blockquote>
+<p>คำตอบสั้นคือ: OSM ไม่รู้รสเลย แต่ <em>ชื่อร้าน</em> รู้ — และชื่อร้านอยู่ที่เชียงใหม่กับเชียงรายเป็นหลัก</p>
+<section id="ปญหาแรก-รส-ไมมทอยในหมวดหมของ-osm" class="level2">
+<h2 class="anchored" data-anchor-id="ปญหาแรก-รส-ไมมทอยในหมวดหมของ-osm">๐. ปัญหาแรก: “รส” ไม่มีที่อยู่ในหมวดหมู่ของ OSM</h2>
+<p>OSM มีแท็กสำหรับเรื่องนี้โดยตรงคือ <code>cuisine</code> (หมวด/ประเภทของอาหารที่ขาย) ผมสแกน <strong>Geofabrik Thailand extract ทั้งประเทศ</strong> (ไฟล์เดียวกับ Day 21–22, md5 <code>db3958a037ce717c462101b86e2f75f3</code>) แล้วเก็บทุก object ที่เข้าหมวด อาหาร/เครื่องดื่ม/ของกิน = <strong>59,703 ชิ้น</strong> (node 51,062 · way 8,641 — 85.53% เป็นจุด)</p>
+<p>ผลที่ได้คือ</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>สิ่งที่ OSM บันทึกเรื่อง “รส”</th>
+<th>ค่าที่วัดได้</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ค่า <code>cuisine</code> ที่ใช้จริงทั้งประเทศ</td>
+<td><strong>665 ค่า</strong> รวม <strong>25,388 ครั้ง</strong></td>
+</tr>
+<tr class="even">
+<td>ค่าที่ใช้บ่อย 5 อันดับแรก</td>
+<td><code>thai</code> 5,989 · <code>coffee_shop</code> 4,386 · <code>burger</code> 761 · <code>pizza</code> 744 · <code>chicken</code> 711</td>
+</tr>
+<tr class="odd">
+<td>ครั้งที่ <code>cuisine</code> เอ่ยถึงอาหารเมือง (ข้าวซอย/ลาบ/ไส้อั่ว/แคบหมู/ฮังเล/น้ำเงี้ยว/Lanna/northern)</td>
+<td><strong>9 ครั้ง</strong></td>
+</tr>
+<tr class="even">
+<td>ครั้งที่ <code>cuisine</code> เอ่ยถึง “อีสาน” (ไว้เทียบ)</td>
+<td><strong>28 ครั้ง</strong></td>
+</tr>
+<tr class="odd">
+<td>แท็ก <code>diet</code> (vegetarian / vegan / halal / kosher)</td>
+<td><strong>0 ค่า</strong> — ไม่มีใครใช้เลย</td>
+</tr>
+<tr class="even">
+<td>object ที่มี <code>opening_hours</code></td>
+<td>11,028 ชิ้น</td>
+</tr>
+</tbody>
+</table>
+<p>ใน 9 ครั้งของการเอ่ยถึงอาหารเมืองนั้น ละเอียดขนาดนี้: <code>cuisine=ข้าวซอย</code> 1 ครั้ง, <code>cuisine=ลาบ</code> 4 ครั้ง, <code>ลาบอีสาน</code> 1, <code>ลาบหมู</code> 1, <code>northern_thai</code> 1, <code>northern_thai_food</code> 1 และ <strong>ไส้อั่ว / แคบหมู / ฮังเล / น้ำเงี้ยว / แกงแค / จิ้นส้ม = 0 ครั้ง</strong></p>
+<p>พูดให้โหดหน่อย: ถ้าเชื่อหมวดหมู่ของ OSM ประเทศไทยมีอาหารประเภท “thai” กับ “coffee” แต่ไม่มี “อาหารเหนือ” เป็นรสแยกต่างหาก และไม่มีข้อมูลมังสวิรัติแม้แต่น้อย (ซึ่งไม่ใช่เรื่องแปลก — <code>cuisine</code> ถูกกรอกตอนคน map สนใจจะจำแนก ไม่ใช่ตามตำราอาหาร)</p>
+<p><strong>ที่เหลือจึงมีที่เดียว: ป้ายชื่อร้าน</strong></p>
+<p><img src="day23_lanna_map.png" class="img-fluid"></p>
+</section>
+<section id="อาน-รส-จากชอราน-และกบดกแรกของภาษาไทย" class="level2">
+<h2 class="anchored" data-anchor-id="อาน-รส-จากชอราน-และกบดกแรกของภาษาไทย">๑. อ่าน “รส” จากชื่อร้าน — และกับดักแรกของภาษาไทย</h2>
+<p>ผมค้นหา 13 คำในช่องชื่อของ object (รวม <code>name</code>, <code>name:en</code>, <code>alt_name</code>, <code>official_name</code>, <code>sig</code>, <code>brand</code>) แบ่งเป็น 11 คำเมือง + 2 คำควบคุม</p>
+<p>รอบแรกได้ 380 คู่ (คำ×ร้าน) แต่เปิดดูแล้วรู้ว่า <strong>substring ในภาษาไทยคือกับดัก</strong> คำว่า “ลาบ” ชนกับ</p>
+<ul>
+<li><em>บ้านแม่สะลาบ</em> · <em>โรงเรียนวัดแม่สะลาบ</em> (ชื่อหมู่บ้าน)</li>
+<li><em>13. กุหลาบพันปี</em> (ดอกไม้)</li>
+<li><em>บึงบอระเพ็ด … อุโมงค์ปลาบึก</em>, <em>ตลาดปลาบางแสน</em> (ปลา + บ)</li>
+<li><em>บริษัท เลาบราเดอร์ส อินเตอร์ เนชั่นแนล</em> ( Labrador!)</li>
+<li><em>ถนนบ้านฉาง–พลาบูรพาพัฒน์</em> (ชื่อถนน)</li>
+</ul>
+<p>จึงใส่ negative lookbehind ห้ามตัวอักษร 9 ตัวนำหน้าคำว่า “ลาบ” ตามรายการใน <code>tools/day23_lanna.py</code> (บรรทัด <code>WORD_RE["ลาบ"]</code>) ผล: คู่คำ×ร้านลดจาก <strong>380 เหลือ 231</strong> · ตัดร้านทิ้ง <strong>149 แห่ง</strong> · เหลือร้านที่ OSM ระบุว่าเป็นอาหารจริง (มี <code>amenity</code>/<code>shop</code> หมวดอาหาร หรือมี <code>cuisine</code>) <strong>201 ร้าน</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>คำ</th>
+<th>ร้านทั้งประเทศ</th>
+<th>ใน 17 จังหวัดเหนือ</th>
+<th>สัดส่วนที่เป็นเหนือ</th>
+<th>จังหวัดเหนือที่เจอ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>ข้าวซอย</strong></td>
+<td><strong>60</strong></td>
+<td><strong>48</strong></td>
+<td><strong>80.00%</strong></td>
+<td>เชียงใหม่ 25 · เชียงราย 8 · ลำปาง 7 · น่าน 3</td>
+</tr>
+<tr class="even">
+<td>ลาบ <em>(คำควบคุม)</em></td>
+<td>130</td>
+<td>67</td>
+<td>51.54%</td>
+<td>เชียงใหม่ 29 · เชียงราย 9 · ลำปาง 6 · นครสวรรค์ 6</td>
+</tr>
+<tr class="odd">
+<td>น้ำเงี้ยว</td>
+<td>6</td>
+<td>5</td>
+<td>83.33%</td>
+<td>เชียงราย 3 · เชียงใหม่ 2</td>
+</tr>
+<tr class="even">
+<td>ไส้อั่ว</td>
+<td>3</td>
+<td>3</td>
+<td>100.00%</td>
+<td>แม่ฮ่องสอน 1 · เชียงใหม่ 1 · ลำพูน 1</td>
+</tr>
+<tr class="odd">
+<td>แคบหมู</td>
+<td>2</td>
+<td>2</td>
+<td>100.00%</td>
+<td>เชียงราย 2</td>
+</tr>
+<tr class="even">
+<td>ฮังเล</td>
+<td>1</td>
+<td>1</td>
+<td>100.00%</td>
+<td>แพร่ 1</td>
+</tr>
+<tr class="odd">
+<td>น้ำพริกหนุ่ม · น้ำพริกอ่อง · แกงแค · ตำขนุน · แอ็บ · จิ้นส้ม · หน่อไม้</td>
+<td><strong>0</strong></td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>รวมแล้ว <strong>125 จาก 201 ร้าน (62.19%)</strong> ตกอยู่ใน 17 จังหวัดภาคเหนือ (เนื้อที่ 171,810 ตร.กม. ตาม Natural Earth admin_1)</p>
+<p>สามเรื่องที่ตารางนี้บอก — และสองเรื่องผมไม่คิดว่าจะเจอ</p>
+<ol type="1">
+<li><strong>ข้าวซอยเป็น “เครื่องหมายภูมิภาค” ที่ชัดจริง</strong> — 80.00% ของร้านที่ใช้ชื่อนี้อยู่ในเหนือ ที่เหลือนอกเหนือเป็นกรุงเทพฯ 6 แห่งกับขอนแก่น/ระยอง/จันทบุรีจังหวัดละ 1 ซึ่งสมเหตุสมผล (คนเหนือไปเปิดร้านต่างถิ่น)</li>
+<li><strong>ลาบใช้บอก “เหนือ” ไม่ได้</strong> — คำควบคุมทำงานตามหน้าที่: มีแค่ 51.54% ที่เป็นเหนือ และนอกเหนือนั้นไปกระจุกที่ <em>ขอนแก่น 15 · กรุงเทพฯ 14 · ระยอง 8 · ชลบุรี 6</em> ซึ่งเป็นร้านลาบ<strong>อีสาน</strong> ไม่ใช่ร้านลาบเมือง → ถ้าใครทำแผนที่ “อาหารเหนือ” ด้วยคำว่าลาบ จะได้แผนที่ที่ครึ่งหนึ่งไม่เกี่ยวกับภาคเหนือเลย</li>
+<li><strong>อาหารเมืองที่คนกินจริงแทบไม่โผล่ในชื่อร้าน</strong> — น้ำพริกหนุ่ม แคบหมู แกงแค ตำขนุน แอ็บ จิ้นส้ม มี 0–2 ร้านทั้งประเทศ (มีเพียงแคบหมู 2 ฮังเล 1 ไส้อั่ว 3) เพราะของพวกนี้เป็น <em>เมนู</em> ไม่ใช่ <em>ชื่อร้าน</em> — คนเขียนป้ายว่า “ร้านอาหารตามสั่ง” หรือ “ก๋วยเตี๋ยวเรือ” แล้วขายไส้อั่วข้างกัน → <strong>OSM บันทึกสิ่งที่มองเห็นจากถนน ไม่ใช่สิ่งที่สั่งในเมนู</strong> และผมไม่มีทางแก้ข้อนี้ด้วยการหา keyword เพิ่ม</li>
+</ol>
+</section>
+<section id="นบแบบไหนกไดคำตอบไมเหมอนกน" class="level2">
+<h2 class="anchored" data-anchor-id="นบแบบไหนกไดคำตอบไมเหมอนกน">๒. นับแบบไหนก็ได้คำตอบไม่เหมือนกัน</h2>
+<p><img src="day23_words.png" class="img-fluid"></p>
+<p>จังหวัดเหนือ 7 จังหวัดมีร้านชื่ออาหารเมือง อีก <strong>10 จังหวัดเป็น 0</strong> (รวม 8 จังหวัด “เหนือล่าง” ตามนิยาม 17 จังหวัด: อุตรดิตถ์ พิจิตร พิษณุโลก สุโขทัย อุทัยธานี กำแพงเพชร นครสวรรค์ ตาก เพชรบูรณ์ และพะเยา)</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>จังหวัด (Natural Earth)</th>
+<th>object อาหารที่ OSM รู้จัก</th>
+<th>ร้านชื่ออาหารเมือง</th>
+<th>% ของร้านอาหารในจังหวัด</th>
+<th>ต่อ 1,000 ตร.กม.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>เชียงใหม่</td>
+<td>6,600</td>
+<td>28</td>
+<td>0.424%</td>
+<td>1.230</td>
+</tr>
+<tr class="even">
+<td>เชียงราย</td>
+<td>1,514</td>
+<td>12</td>
+<td>0.793%</td>
+<td>1.064</td>
+</tr>
+<tr class="odd">
+<td>ลำปาง</td>
+<td>446</td>
+<td>7</td>
+<td>1.570%</td>
+<td>0.559</td>
+</tr>
+<tr class="even">
+<td>แพร่</td>
+<td>134</td>
+<td>4</td>
+<td>2.985%</td>
+<td>0.606</td>
+</tr>
+<tr class="odd">
+<td>น่าน</td>
+<td>346</td>
+<td>3</td>
+<td>0.867%</td>
+<td>0.256</td>
+</tr>
+<tr class="even">
+<td>แม่ฮ่องสอน</td>
+<td>688</td>
+<td>2</td>
+<td>0.291%</td>
+<td>0.147</td>
+</tr>
+<tr class="odd">
+<td>ลำพูน</td>
+<td>205</td>
+<td>2</td>
+<td>0.976%</td>
+<td>0.492</td>
+</tr>
+</tbody>
+</table>
+<p>อ่านสามแบบได้สามคำตอบ: <strong>จำนวนจริง</strong> ชี้เชียงใหม่ · <strong>ต่อเนื้อที่</strong> ชี้เชียงใหม่กับเชียงราย สูสีกัน (1.230 vs 1.064) · <strong>สัดส่วนต่อร้านอาหารที่ OSM รู้จัก</strong> ชี้ <em>แพร่</em> (2.985%) กับ <em>ลำปาง</em> (1.570%) ซึ่งไม่ใช่จังหวัดที่คนนึกถึงก่อนเลย</p>
+<p>และต้องบอกตรง ๆ ว่าแบบสุดท้ายอ่านยาก: ตัวส่วนคือ “ร้านอาหารที่ OSM map ไว้” ซึ่งขึ้นกับว่าจังหวัดนั้นมี mapper กี่คน (Day 16 เคยวัดไว้ว่าจำนวน way รอบแหล่งดูดาวย่าง ต่างกันตั้งแต่ 0 ถึง 589 ชิ้น) — ลำปางมี object อาหาร 446 ชิ้นเทียบกับเชียงใหม่ 6,600 จึงไม่ใช่หลักฐานว่า “ลำปางขายไส้อั่วมากกว่า” แต่คือหลักฐานว่า <strong>ลำปางถูก map น้อยกว่า</strong></p>
+</section>
+<section id="จากจดดดาวยาวไปหารสเมอง" class="level2">
+<h2 class="anchored" data-anchor-id="จากจดดดาวยาวไปหารสเมอง">๓. จากจุดดูดาวยาวไปหารสเมือง</h2>
+<p><img src="day23_sites.png" class="img-fluid"></p>
+<p>แหล่งดูฟ้ามืดในทะเบียนราชการที่อยู่ภาคเหนือมี <strong>23 แห่ง</strong> (เชียงใหม่ 17 · น่าน 2 · เชียงราย 2 · ลำพูน 1 · แม่ฮ่องสอน 1 — นับจากคอลัมน์ province ของทะเบียน) วัดระยะจากจุดทะเบียนไปถึง <strong>ขอบวัตถุที่ใกล้ที่สุด</strong> ใน projection เดียวกับทั้งซีรีส์ (Day 22 ตรวจแล้วว่า projection นี้ทำให้พื้นที่คลาด −0.3617% ซึ่งจิ๊บจ๊อยเมื่อเทียบกับสิ่งที่เห็น)</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>ระยะ (กม.)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ร้านอาหารทั่วไป (ทุกประเภท) · มัธยฐานของ 23 จุด</td>
+<td><strong>0.68</strong></td>
+</tr>
+<tr class="even">
+<td>ร้านที่ชื่อโฆษณาอาหารเมือง · มัธยฐาน</td>
+<td><strong>11.34</strong></td>
+</tr>
+<tr class="odd">
+<td>ค่าสูงสุดที่วัดได้ (ป่าสนวัดจันทร์ อ.อ.ป. กัลยาณิวัฒนา → ข้าวซอยพี่น้อง)</td>
+<td>33.63</td>
+</tr>
+<tr class="even">
+<td>จุดที่ไม่พบร้านรสเมืองเลยในรัศมี 40 กม.</td>
+<td><strong>4 จาก 23</strong></td>
+</tr>
+</tbody>
+</table>
+<p>ค่าต่ำสุด (min) ของระยะไปหาร้านรสเมือง: <strong>สิริน วิลล์ แม่ริม</strong> 1.08 กม. (ลาบไก่บ้านโอ่ง) และ <strong>อุทยานดาราศาสตร์สิรินธร</strong> 2.69 กม. (ลาบไก่บ้านโอ่ง — ร้านเดียวกันคิดเป็นระยะจากสองจุด) จุดที่มีร้านรสเมืองใน 10 กม. เยอะสุดคือ สิริน วิลล์ 29 ร้าน กับ อุทยานดาราศาสตร์สิรินธร 27 ร้าน</p>
+<p>ส่วน 4 จุดที่หาไม่เจอ (ใน 40 กม.) คือ <strong>อุทยานแห่งชาติขุนสถาน (น่าน) · อุทยานแห่งชาติแม่ปิง (ลำพูน) · อุทยานแห่งชาติถ้ำปลา–น้ำตกผาเสื่อ (แม่ฮ่องสอน) · อุทยานแห่งชาติศรีน่าน (น่าน)</strong> ทั้งสี่เป็นอุทยานที่อยู่ห่างชุมชน และมีนัยตรง ๆ กับคนไปกางเต็นท์: <em>ของกินต้องพกไปเอง</em> (ซึ่ง Day 21 ก็เพิ่งพบว่ารอบ ๆ เขามี object ใน OSM น้อยมาก — ตรงกัน)</p>
+</section>
+<section id="ของยางกบควน-อยาเพงรบสรป" class="level2">
+<h2 class="anchored" data-anchor-id="ของยางกบควน-อยาเพงรบสรป">๔. ของย่างกับควัน: อย่าเพิ่งรีบสรุป</h2>
+<p>อาจารย์อยากได้ของย่าง (ลาบ · ไส้อั่ว · แคบหมู) ผมจึงทดสอบว่าจุดที่มี “ร้านของย่างในชื่อร้าน” สัมพันธ์กับค่าฝุ่น/ควันที่วัดไว้ Day 19 (CO และ PM2.5 เฉลี่ย 16–19 พ.ย. จาก CAMS) ไหม</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>คู่ที่ทดสอบ (Spearman, n = 23 จุดภาคเหนือ)</th>
+<th>rho</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ร้านของย่างใน 10 กม. ↔︎ CO</td>
+<td><strong>0.653</strong></td>
+<td>0.00073</td>
+</tr>
+<tr class="even">
+<td>ร้านของย่างใน 10 กม. ↔︎ PM2.5</td>
+<td>0.673</td>
+<td>0.00043</td>
+</tr>
+<tr class="odd">
+<td><strong>ตัวควบคุม:</strong> ร้านของย่าง ↔︎ ประชากรเมือง 30 กม.</td>
+<td><strong>0.767</strong></td>
+<td>2.0e-05</td>
+</tr>
+<tr class="even">
+<td><strong>ตัวควบคุม:</strong> ประชากรเมือง ↔︎ CO</td>
+<td><strong>0.593</strong></td>
+<td>0.0029</td>
+</tr>
+<tr class="odd">
+<td>ร้านรสเมืองใน 40 กม. ↔︎ จำนวน way รอบจุด (Day 16)</td>
+<td>0.624</td>
+<td>0.0015</td>
+</tr>
+</tbody>
+</table>
+<p>ลำดับนี้พูดอะไร: ตัวแปรร่วม (ขนาดของเมืองที่ตั้งอยู่ใกล้) สัมพันธ์กับ <em>ทั้งสองฝั่ง</em> มากกว่า ตัวมันเองเสียอีก — ร้านของย่างอยู่ใกล้เมืองใหญ่ และ CO ใน CAMS ก็สูงใกล้เมืองใหญ่ (จากจราจร/เผา/อุตสาหกรรม) <strong>ดังนั้นrho 0.653 ไม่ได้บอกว่า “กลิ่นลาบทำให้ CO สูง”</strong> มันบอกว่า “จุดที่ OSM รู้จักร้านของย่าง คือจุดที่อยู่ใกล้เมือง” ซึ่งเป็นคำตอบแบบเดียวกับ คอลัมน์ last ในตาราง (0.624 กับจำนวน way)</p>
+<p>ถ้าจะยืนยันเรื่องควันจริง ต้องมีข้อมูลวันที่/เวลาปิ้งย่างหรือทะเบียนร้านอาหารที่ย่างถ่าน ไม่ใช่ชื่อร้านในแผนที่ — และนี่คือขอบเขตที่ข้อมูลชุดนี้ไปไม่ถึง</p>
+</section>
+<section id="วธทำแบบยอ" class="level2">
+<h2 class="anchored" data-anchor-id="วธทำแบบยอ">วิธีทำแบบย่อ</h2>
+<ol type="1">
+<li>สแกน PBF สองรอบด้วย <code>pyosmium</code> (เหมือน Day 21): <code>collect_day23_food.py</code> เอา object อาหาร + counters ของ <code>cuisine</code>/<code>diet</code> ทั้งประเทศ, <code>collect_day23_dishes.py</code> เอา object ที่ <em>ชื่อ</em> ตรงคำอาหารเมือง (พร้อมเก็บ string ที่ใช้ค้นหาไว้ตรวจซ้ำ)</li>
+<li>สร้าง geometry จริงของ way จาก node (ไม่ใช้ centroid แบบ Day 16) แล้ว reproject เป็น Equidistant Conic ครั้งเดียว</li>
+<li>จับจังหวัดด้วย <code>STRtree.query(pt, predicate="within")</code> บน Natural Earth admin_1 (77 จังหวัด · นับพื้นที่ด้วย geodesic ตามวิธี Day 22)</li>
+<li>กรอง false positive ของคำว่า “ลาบ” ด้วย negative lookbehind แล้วตรวจชื่อที่ตกค้างทุกแถว</li>
+<li>วัด 3 อย่างต่อคำ: จำนวนทั้งประเทศ · ส่วนที่อยู่ใน 17 จังหวัดเหนือ · ความหนาแน่น/สัดส่วน ต่อร้านอาหารที่ OSM รู้จักในจังหวัดนั้น</li>
+<li>วัดระยะจาก 23 จุดทะเบียนฟ้ามืดภาคเหนือไปหาร้านรสเมือง (รัศมี 40 กม. · วัดถึงขอบวัตถุ)</li>
+<li>ทดสอบสมมติฐาน “ของย่าง = ควัน” ด้วย Spearman <strong>พร้อมตัวควบคุม</strong> (ประชากรเมือง) เพื่อดูว่าความสัมพันธ์มาจากไหน</li>
+<li>assert: ผลรวมต่อคำต้อง ≥ จำนวนร้าน (ร้านหนึ่งมีได้หลายคำ) · สัดส่วน ≤ 100% · ทุกระยะที่รายงานต้องไม่เกินรัศมีที่ประกาศ · จำนวนจังหวัดต้อง 17 · และถ้าจะอ้างว่า “ไม่พบ” รัศมีค้นต้องกว้างพอ (40 กม.)</li>
+</ol>
+</section>
+<section id="ขอจำกดทตองบอกตรง-ๆ" class="level2">
+<h2 class="anchored" data-anchor-id="ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</h2>
+<ul>
+<li><strong>นี่คือ “รสที่ OSM บันทึก” ไม่ใช่ “รสที่มีอยู่จริง”</strong> — ตลาดสดและรถเร่ขายน้ำพริกหนุ่ม แทบไม่ปรากฏใน OSM เลย การที่คำหนึ่งได้ 0 ครั้งจึงแปลว่า <em>ไม่มีใคร map ไว้</em> ไม่ใช่ไม่มีของ</li>
+<li><strong>การ match เป็น substring</strong> — ภาษาไทยไม่มีช่องคำ ผมตัดเฉพาะตัวหน้าที่ยืนยันได้ว่าพบบ่อยในข้อมูล ว่าทำให้เกิดคำผิด (กุหลาบ/สะลาบ/ปลาบึก/เลาบราเดอร์ส/พลาบูรพา) ซึ่งยังอาจมีกรณีอื่นเหลืออยู่ และในทางกลับกันก็อาจเผลอตัดชื่อที่สะกดแปลกออกไป (recall ลดลง) — ตรวจได้ทุกแถวใน <code>day23_lanna_places.geojson</code></li>
+<li><strong>จังหวัดมาจาก Natural Earth admin_1</strong> ซึ่งเส้นขอบหยาบกว่าเขตราชการ ร้านที่ติดขอบ อาจถูกนับผิดจังหวัด (มี flag <code>edge</code> ในไฟล์ geojson)</li>
+<li><strong>ตัวส่วน (จำนวนร้านอาหารในจังหวัด) ไม่เท่าเทียมกันเชิงคุณภาพ</strong> เพราะความหนาแน่นของ mapping ขึ้นกับจำนวน mapper (Day 16) ไม่ใช่จำนวนร้านจริง</li>
+<li><strong>17 จังหวัดเหนือ</strong> ใช้เกณฑ์ตามหน้า Wikipedia ของ Northern Thailand (9 จังหวัดกลุ่มบน บวก 8 จังหวัดกลุ่มล่าง) ซึ่งเป็นเขตการปกครอง ไม่ใช่เขตวัฒนธรรม Lanna — ในตาราง 10 จังหวัดมีร้านชื่ออาหารเมืองเป็น 0 (รวมถึง 8 จังหวัดกลุ่มล่างทั้งหมด) แต่บางจังหวัดในนั้นมีร้าน “ลาบ” (อุตรดิตถ์ 3 · พิจิตร 1) ซึ่งเป็นอาหารอีสาน ไม่ใช่ของเมือง และเนื้อที่จังหวัดที่ผมใช้คิดความหนาแน่นก็มาจาก Natural Earth เช่นกัน จึงใช้เทียบระหว่างจังหวัดได้ ไม่ใช่เทียบกับตัวเลขทางราชการ</li>
+<li><strong>CO/PM2.5 จาก CAMS grid ~0.1°</strong> เฉลี่ย 96 ชม. (Day 19) — ละเอียดไม่พอเห็นควันจากเตาเดียว</li>
+<li><strong>ข้อมูล snapshot เดียวกับ Day 21/22 (21 พ.ย. 2569)</strong> — ร้านเปิดใหม่หลังวันนั้นไม่มีในนี้</li>
+</ul>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<ul>
+<li><a href="day23_lanna_map.png">day23_lanna_map.png</a> — แผนที่ 17 จังหวัดเหนือพร้อมร้านที่ชื่อมีคำอาหารเมือง
+<ul>
+<li>แหล่งดูฟ้ามืด 23 จุด + สถิติหลัก</li>
+</ul></li>
+<li><a href="day23_words.png">day23_words.png</a> — นับคำแบบในเหนือ vs ทั้งประเทศ และแบบต่อ 1,000 ตร.กม.</li>
+<li><a href="day23_sites.png">day23_sites.png</a> — ดัมเบลพล็อต 23 จุด: ระยะไปหาร้านอาหารทั่วไป เทียบกับร้านรสเมือง
+<ul>
+<li>scatter ของร้านของย่างกับ CO พร้อมตัวควบคุม</li>
+</ul></li>
+<li><a href="day23_words.csv">day23_words.csv</a> — ต่อคำ: hits · in_north · สัดส่วน · จังหวัดอันดับต้น · ตัวอย่างชื่อ</li>
+<li><a href="day23_provinces.csv">day23_provinces.csv</a> — ต่อจังหวัดเหนือ 17 แห่ง: เนื้อที่ · object อาหาร · จำนวนร้านต่อคำ</li>
+<li><a href="day23_sites_north.csv">day23_sites_north.csv</a> — ต่อจุดทะเบียน 23 แห่ง: ระยะใกล้สุดแต่ละคำ ฯลฯ</li>
+<li><a href="day23_lanna_places.geojson">day23_lanna_places.geojson</a> — ทุกจุดที่ match (พร้อมคำที่เจอ/จังหวัด/ชื่อร้าน) ให้ตรวจเอง</li>
+<li><a href="day23_stats.json">day23_stats.json</a> — ตัวเลขทั้งหมด + <code>bug_found</code> + <code>confounder</code> + <code>false_positive_filter</code></li>
+</ul>
+<p>โค้ด: <code>tools/collect_day23_food.py</code> · <code>tools/collect_day23_dishes.py</code> · <code>tools/day23_lanna.py</code> (รันบน Colab ได้ — cell แรกมี bootstrap ดึงรีโป + Natural Earth + ฟอนต์ Trirong และเทสต์บนเครื่องได้ด้วย <code>DAY23_FORCE_COLAB=1</code>)</p>
+</section>
+<section id="บทเรยน" class="level2">
+<h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>
+<ul>
+<li><strong>แผนที่เก็บ “สิ่งที่มองเห็น” ไม่ใช่ “สิ่งที่ลิ้ม”</strong> — OSM บันทึกป้ายร้านได้ดีมาก แต่บันทึกเมนูได้น้อยจนแทบเป็นศูนย์ (665 ค่า <code>cuisine</code> มีอาหารเมือง 9 ครั้ง, <code>diet</code> 0 ครั้ง) งานวิเคราะห์ที่ถามเรื่อง “รส” จึงต้องเริ่มจากการยอมรับว่าเรากำลังวัด <em>ป้าย</em> ไม่ใช่อาหาร</li>
+<li><strong>คำที่คิดว่าเป็นเอกลักษณ์ภูมิภาค อาจเป็นแค่คำที่ใช้กันทั้งประเทศ</strong> — ลาบ 130 ร้าน มีเพียง 51.54% ในเหนือ ที่เหลือคือขอนแก่น/กรุงเทพฯ/ระยอง (ลาบอีสาน) การใส่ <em>คำควบคุม</em> ลงไปในชุดคำค้นตั้งแต่แรก คือสิ่งที่ทำให้ข้อสรุปไม่เพี้ยน</li>
+<li><strong>ภาษาไทยไม่มีช่องคำ → substring คือกับดักประจำภาษา</strong> — “ลาบ” ฝังอยู่ใน กุหลาบ สะลาบ ปลาบึก เลาบราเดอร์ส พลาบูรพา ผมตรวจเห็นจากตัวอย่างชื่อ (149 แห่งถูกตัดทิ้ง) ไม่ใช่จากสมมติฐาน และนี่คือเหตุผลที่ artifact ต้องมีตัวอย่างชื่อแนบไปด้วยเสมอ</li>
+<li><strong>ตัวเลข 0 หลายตัวเป็นข้อมูล ไม่ใช่ช่องว่าง</strong> — “น้ำพริกหนุ่ม = 0 ร้าน” คือคำบอกเล่า เรื่องวิธีตั้งชื่อร้านของคนเหนือ (ขายหลายอย่าง ไม่เอาชื่อน้ำพริกมาทำป้าย) ซึ่งมีประโยชน์กับการตีความมากกว่าการไปหา dataset อื่นมาเสริม</li>
+<li><strong>ความสัมพันธ์ต้องมียาแก้ คือตัวควบคุม</strong> — rho 0.653 กับร้านของย่างฟังดูมีเรื่องเล่า แต่พอใส่ประชากรเมืองเข้าไป (0.767 / 0.593) เรื่องราวกลายเป็น “จุดที่อยู่ใกล้เมือง มีข้อมูล map มากกว่า” ซึ่งตรงกับ Day 16 และ Day 21 — สามวันสามวิธีเจอกำแพงเดียวกัน</li>
+<li><strong>ของแถมจากการตรวจตาราง: 4 แหล่งดูฟ้ามืดที่หาของกินไม่เจอ</strong> คือข้อสรุปที่เอาไปใช้จริงได้ (ขุนสถาน · แม่ปิง · ถ้ำปลา–ผาเสื่อ · ศรีน่าน) และนี่คือครั้งแรกในซีรีส์ที่ คำตอบของแผนที่กลายเป็นคำแนะนำว่า “พกข้าวไปเอง”</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

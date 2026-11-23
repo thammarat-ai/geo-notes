@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/day23-taste/index.html",
       "/posts/day22-projections/index.html",
       "/posts/day21-openstreetmap/index.html",
       "/posts/day20-hexagons/index.html",
