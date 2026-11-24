@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="โจทย์ ‘Route network, transit network, human network or something completely different.’ ผมสร้างสองกราฟจากข้อมูลที่ซีรีส์นี้เก็บไว้: เครือข่ายคน (bipartite 5,495 way × 299 editor × 83 จุด จากแคช Day 16) และเครือข่ายถนน (กราฟจาก Geofabrik extract ทั้งประเทศ: 2,944,183 way ที่มีแท็ก highway → 430,464 ขอบในจาน 5 กม. รอบ 83 จุด) ผล: editor network = 3,472 ขอบ · 2 components (297 กับ 2) · clustering 0.8731; กรองด้วยช่วงปีที่ map ทับกันเหลือ 1,163 ขอบ (33.5%) และ 24 components; site network 79 จุดต่อกันเป็นหมู่เดียว อีก 4 จุดที่ไม่เชื่อมกับใคร; ถนน: 82/83 จุดมีกราฟ (เขาใหญ่ไม่มี node ถนนใน 5 กม.), components เฉลี่ย 8.67, dead-end มัธยฐาน 4.66%, bridges รวม 157,625, และ 16 จุดที่ลบจุดตัดเดียวภายใน 2 กม. แล้วเหลือเครือข่ายไม่ถึงครึ่ง — 3 จุดเหลือ 0%">
+
+<title>Day 24 · Network — สองเครือข่ายของแหล่งดูฟ้ามืดไทย: คนวาด 299 คนเป็นกราฟเดียวกัน (แต่ 2 ใน 3 ของเส้นเชื่อมหายไปกับเวลา) และ 16 จุดที่ถนนสายเดียวพาออกไปไม่ได้ – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#ขอมลสองชดทไมตองยง-api-เลย" id="toc-ขอมลสองชดทไมตองยง-api-เลย" class="nav-link active" data-scroll-target="#ขอมลสองชดทไมตองยง-api-เลย">๐. ข้อมูลสองชุดที่ไม่ต้องยิง API เลย</a></li>
+  <li><a href="#เครอขายคน-เปนกราฟเดยวกนทงดน" id="toc-เครอขายคน-เปนกราฟเดยวกนทงดน" class="nav-link" data-scroll-target="#เครอขายคน-เปนกราฟเดยวกนทงดน">๑. เครือข่ายคน: เป็นกราฟเดียวกันทั้งดุ้น</a></li>
+  <li><a href="#เครอขายถนน-ตาขาย-หรอ-กงกาน" id="toc-เครอขายถนน-ตาขาย-หรอ-กงกาน" class="nav-link" data-scroll-target="#เครอขายถนน-ตาขาย-หรอ-กงกาน">๒. เครือข่ายถนน: ตาข่าย หรือ กิ่งก้าน</a></li>
+  <li><a href="#จดท-จดตดเดยว-ตดขาดทงเสนทาง" id="toc-จดท-จดตดเดยว-ตดขาดทงเสนทาง" class="nav-link" data-scroll-target="#จดท-จดตดเดยว-ตดขาดทงเสนทาง">๓. จุดที่ “จุดตัดเดียว” ตัดขาดทั้งเส้นทาง</a></li>
+  <li><a href="#ตรวจกลบสองวนกอนหนา" id="toc-ตรวจกลบสองวนกอนหนา" class="nav-link" data-scroll-target="#ตรวจกลบสองวนกอนหนา">๔. ตรวจกลับสองวันก่อนหน้า</a></li>
+  <li><a href="#วธทำแบบยอ" id="toc-วธทำแบบยอ" class="nav-link" data-scroll-target="#วธทำแบบยอ">วิธีทำแบบย่อ</a></li>
+  <li><a href="#ขอจำกดทตองบอกตรง-ๆ" id="toc-ขอจำกดทตองบอกตรง-ๆ" class="nav-link" data-scroll-target="#ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
+  <li><a href="#บทเรยน" id="toc-บทเรยน" class="nav-link" data-scroll-target="#บทเรยน">บทเรียน</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 24 · Network — สองเครือข่ายของแหล่งดูฟ้ามืดไทย: คนวาด 299 คนเป็นกราฟเดียวกัน (แต่ 2 ใน 3 ของเส้นเชื่อมหายไปกับเวลา) และ 16 จุดที่ถนนสายเดียวพาออกไปไม่ได้</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">30DayMapChallenge</div>
+    <div class="quarto-category">network</div>
+    <div class="quarto-category">graph-theory</div>
+    <div class="quarto-category">openstreetmap</div>
+    <div class="quarto-category">networkx</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    โจทย์ ‘Route network, transit network, human network or something completely different.’ ผมสร้างสองกราฟจากข้อมูลที่ซีรีส์นี้เก็บไว้: เครือข่ายคน (bipartite 5,495 way × 299 editor × 83 จุด จากแคช Day 16) และเครือข่ายถนน (กราฟจาก Geofabrik extract ทั้งประเทศ: 2,944,183 way ที่มีแท็ก highway → 430,464 ขอบในจาน 5 กม. รอบ 83 จุด) ผล: editor network = 3,472 ขอบ · 2 components (297 กับ 2) · clustering 0.8731; กรองด้วยช่วงปีที่ map ทับกันเหลือ 1,163 ขอบ (33.5%) และ 24 components; site network 79 จุดต่อกันเป็นหมู่เดียว อีก 4 จุดที่ไม่เชื่อมกับใคร; ถนน: 82/83 จุดมีกราฟ (เขาใหญ่ไม่มี node ถนนใน 5 กม.), components เฉลี่ย 8.67, dead-end มัธยฐาน 4.66%, bridges รวม 157,625, และ 16 จุดที่ลบจุดตัดเดียวภายใน 2 กม. แล้วเหลือเครือข่ายไม่ถึงครึ่ง — 3 จุดเหลือ 0%
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">24 พฤศจิกายน 2569</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day24_network.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>โจทย์ทางการวันนี้คือ <strong>“Route network, transit network, human network or something completely different.”</strong> (หัวข้อ <em>Network</em> — ดึงข้อความมาจากหน้า 30daymapchallenge.com อ่านสด 20:18 น. ของวันที่ 24 พ.ย.)</p>
+<p>ซีรีส์นี้พูดเรื่อง “จุด” มา 23 วัน — วันนี้ผมถามว่า <strong>แล้วจุดเหล่านี้เชื่อมกันเป็นอะไร</strong> และคำตอบมีสองชั้นที่ต่างกันโดยสิ้นเชิง:</p>
+<ul>
+<li><strong>เครือข่ายคน</strong> — ใครคือคนที่ map รอบแหล่งดูฟ้ามืดไทย และคนเหล่านั้นรู้จักกันทางอ้อมไหม</li>
+<li><strong>เครือข่ายถนน</strong> — ถนนที่พาไปหาแหล่งดูฟ้ามืดเป็น <em>ตาข่าย</em> หรือเป็น <em>กิ่งก้านที่ขาดที่จุดเดียว</em></li>
+</ul>
+<section id="ขอมลสองชดทไมตองยง-api-เลย" class="level2">
+<h2 class="anchored" data-anchor-id="ขอมลสองชดทไมตองยง-api-เลย">๐. ข้อมูลสองชุดที่ไม่ต้องยิง API เลย</h2>
+<p>ชั้นที่ 1 มาจาก <strong>แคชของ Day 16</strong> ซึ่งเก็บไว้ตั้งแต่วันที่ 17 พ.ย.: object 5,495 way พร้อม <code>user</code> และ <code>timestamp</code> ในรัศมี 1,000 ม. รอบ 83 จุดทะเบียน → 299 editor (ตัวเลขตรงกับที่ Day 16 รายงาน: 5,495 way · 299 คน · 76 คนที่เขียนเกิน 1 จุด = 25.42%)</p>
+<p>ชั้นที่ 2 มาจาก <strong>Geofabrik Thailand extract</strong> ไฟล์เดียวกับ Day 21–23 (md5 <code>db3958a0…</code>) สแกน way ที่มีแท็ก <code>highway</code> ทั้งหมด 2,944,183 way จาก 5,303,991 way ในไฟล์ (ตัวเลขทั้งสองอยู่ใน <code>day24_stats.json</code> ภายใต้ <code>pbf_highway_ways</code> / <code>pbf_ways_in_file</code>) แล้วเก็บเฉพาะท่อนที่ปลายทั้งสองอยู่ในจาน 5,000 ม. ของจุดเดียวกัน → <strong>node 413,758 slot · ขอบ 430,464 (ไม่ซ้ำกันจริง 329,707) · ประเภททาง 25 ค่า</strong></p>
+<p>เหตุผลที่เก็บเฉพาะขอบที่อยู่ในจาน: ถ้าปล่อย way ยาว ๆ จากจังหวัดข้างเคียงเข้ามา กราฟจะ “เชื่อม” เพราะเส้นผ่าน ไม่ใช่เพราะถนนของพื้นที่นั้นจริง</p>
+</section>
+<section id="เครอขายคน-เปนกราฟเดยวกนทงดน" class="level2">
+<h2 class="anchored" data-anchor-id="เครอขายคน-เปนกราฟเดยวกนทงดน">๑. เครือข่ายคน: เป็นกราฟเดียวกันทั้งดุ้น</h2>
+<p><img src="day24_networks.png" class="img-fluid"></p>
+<p>สร้างกราฟสองแบบจากข้อมูล bipartite เดิม</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>กราฟ</th>
+<th>โหนด</th>
+<th>ขอบ</th>
+<th>components</th>
+<th>ค่าอื่น</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>editor↔︎editor (map รอบจุดเดียวกัน)</td>
+<td>299</td>
+<td><strong>3,472</strong></td>
+<td><strong>2</strong> (297 + 2)</td>
+<td>clustering เฉลี่ย <strong>0.8731</strong></td>
+</tr>
+<tr class="even">
+<td>editor↔︎editor (กรองว่าช่วงปีทับกัน)</td>
+<td>281 ที่มีขอบ</td>
+<td><strong>1,163</strong></td>
+<td><strong>24</strong> (ใหญ่สุด 269)</td>
+<td>เหลือขอบแค่ <strong>33.5%</strong></td>
+</tr>
+<tr class="odd">
+<td>site↔︎site (มี editor ร่วม)</td>
+<td>79</td>
+<td><strong>950</strong></td>
+<td><strong>1</strong></td>
+<td>เฉลี่ย <strong>1.37 คน/คู่จุด</strong></td>
+</tr>
+</tbody>
+</table>
+<p>สามเรื่องที่ตารางนี้บอก</p>
+<p><strong>หนึ่ง — ชุมชนนี้เชื่อมถึงกันหมด</strong> ไม่มี editor ที่โดดเดี่ยว (0 isolated) และ 297 จาก 299 คน อยู่ใน component เดียว หมู่อีกหมู่มี 2 คน คือ <code>Balthus★MC</code> กับ <code>StefDeGreef</code> ซึ่ง map อยู่จุดเดียวทั้งประเทศ: <strong>อุทยานแห่งชาติเขาพระวิหาร</strong> แปลว่าในเชิงคนที่map แล้ว <em>แหล่งดูฟ้ามืดไทยคือเครือข่ายเดียว</em> ไม่ใช่กลุ่มเล็กกลุ่มน้อย</p>
+<p><strong>สอง — แต่ “ร่วมกัน” ส่วนใหญ่ไม่ได้เกิดขึ้นพร้อมกัน</strong> พอกรองว่าช่วงปีที่สองคน map จริงต้องทับกัน (first–last year overlap) ขอบหายไปถึง 2 ใน 3 และกราฟแตกจาก 2 components เป็น 24 — คนที่ map จุดเดียวกันส่วนมากคือ <em>มาต่อกันคนละปี</em> ไม่ใช่มาช่วยกัน ซึ่งเป็นคำอธิบายที่ต่างออกไปมาก (ผมใส่ไว้เป็น limitation ด้วย: year range เป็นค่าประมาณบนของการ “ทำงานร่วมกัน”)</p>
+<p><strong>สาม — มีคนที่เป็น ” สะพาน ” ชัด</strong> เรียงด้วย betweenness: <code>Russ McD</code> 0.1747 (23 จุด), <code>julcnx</code> 0.1683 (26 จุด), <code>Kri_ttt</code> 0.0853 (10 จุด), <code>AlaskaDave</code> 0.0768 (18 จุด) และเมื่อมองฝั่งจุด จุดที่เชื่อมกับจุดอื่นมากที่สุดคือ <strong>อุทยานวิทยาศาสตร์พระจอมเกล้า ณ หว้ากอ (59)</strong> กับ <strong>อุทยานดาราศาสตร์สิรินธร (59)</strong> ตามด้วย <strong>สิริน วิลล์ แม่ริม (57)</strong> — เป็นจุดที่คนซึ่ง map ที่อื่นด้วย แวะมา map ด้วย (มักเป็นหอดูดาว/สถานที่ราชการที่ mapper สายดาราศาสตร์รู้จัก)</p>
+<p>และ 4 จุดที่ <strong>ไม่มีใคร map ร่วมกับจุดอื่นเลย</strong>: ทุ่งโนนป่าก่อ (ภูสีฐาน) · เขาพระวิหาร · <strong>อุทยานแห่งชาติเขาใหญ่</strong> · หอดูดาวเฉลิมพระเกียรติฯ สงขลา ในเชิงบริหารข้อมูล นี่คือจุดที่ <em>bus factor = 1</em> — ถ้าคนที่ map ไว้หายไป จะไม่มีใครในเครือข่ายที่รู้จักสถานที่นี้เหลืออยู่</p>
+</section>
+<section id="เครอขายถนน-ตาขาย-หรอ-กงกาน" class="level2">
+<h2 class="anchored" data-anchor-id="เครอขายถนน-ตาขาย-หรอ-กงกาน">๒. เครือข่ายถนน: ตาข่าย หรือ กิ่งก้าน</h2>
+<p><img src="day24_roads.png" class="img-fluid"></p>
+<p>กราฟถนนรอบแต่ละจุด (node = จุดตัดของ OSM, edge = ท่อนถนน) วัด 4 อย่าง: จำนวน components, สัดส่วนขอบที่อยู่ใน component ใหญ่สุด, dead-end ratio (สัดส่วน node ดีกรี 1 = ทางตัน), และจำนวน <code>bridges</code> (ขอบที่ตัดแล้วกราฟขาด) กับ <code>articulation points</code> (จุดที่ลบแล้วกราฟขาด)</p>
+<ul>
+<li><strong>82 จาก 83 จุดมีกราฟถนนใน 5 กม.</strong> จุดที่ไม่มีคือ <strong>อุทยานแห่งชาติเขาใหญ่</strong> — ซึ่งตรงกับ Day 21 ที่ว่ารอบเขามี object น้อยมาก (คราวนั้นวัดใน 2 กม.) และจุดที่ไกลถนนที่สุดคือ ทุ่งโนนป่าก่อ (ภูสีฐาน) ที่ <strong>3,429.7 ม.</strong></li>
+<li><strong>components เฉลี่ย 8.67 (มัธยฐาน 6.5, สูงสุด 53)</strong> — 76 จาก 82 จุด “ขาดเป็นเสี่ยง” แต่อย่าเพิ่งตกใจ: ขอบส่วนใหญ่อยู่ใน component ใหญ่ (largest_edge_share มัธยฐาน ~0.99) เสี่ยงเล็ก ๆ เหล่านั้นคือทางเท้า/บันได/ทางเดินในสวนที่ map ไว้ไม่ต่อกับถนน จุดที่เสี่ยงใหญ่จริงคือ <strong>อุทยานแห่งชาติเขาพระวิหาร</strong> ที่ largest_edge_share = <strong>0.4422</strong> (ครึ่งหนึ่งของถนนในรัศมี 5 กม. เข้าถึงจากจุดทะเบียนไม่ได้)</li>
+<li><strong>dead-end ratio มัธยฐาน 4.66%</strong> (ต่ำสุด 0.54% · สูงสุด 12.54% ที่ หอดูดาวเฉลิมพระเกียรติฯ ฉะเชิงเทรา) และ <strong>bridges รวม 157,625 เส้น</strong> เฉพาะจุดที่มีมากสุด (สิริน วิลล์ แม่ริม) มี bridge เดี่ยว ๆ ถึง 10,207 เส้น = ถนนที่ถ้าปิดหนึ่งท่อน มีจุดที่เข้าถึงไม่ได้ทันที</li>
+<li>ถนนที่โผล่มาเป็นประเภทหลักของกราฟรอบจุด: <strong>residential 41 จุด · track 23 จุด · secondary 5 · tertiary 4 · path 4 · unclassified 3</strong> — สายดูดาวจำนวนไม่ใช่น้อย ลงท้ายด้วยทางลูกรัง (สอดคล้องกับ Day 23 ที่ว่าของกินอยู่ไกลออกไป 11 กม.)</li>
+</ul>
+</section>
+<section id="จดท-จดตดเดยว-ตดขาดทงเสนทาง" class="level2">
+<h2 class="anchored" data-anchor-id="จดท-จดตดเดยว-ตดขาดทงเสนทาง">๓. จุดที่ “จุดตัดเดียว” ตัดขาดทั้งเส้นทาง</h2>
+<p><img src="day24_fragile.png" class="img-fluid"></p>
+<p>ทดสอบต่อ: ลบ articulation point ที่อยู่ในระยะ 2 กม. จากจุดทะเบียนทีละจุด (สูงสุด 40 จุด) แล้วดูว่าขอบที่ยังเดินถึงจากจุดทะเบียนเหลือกี่เปอร์เซ็นต์ของเดิม — ผลคือตัวเลขที่ใช้วางแผนได้จริง</p>
+<ul>
+<li><strong>16 จุด</strong> เหลือเครือข่ายไม่ถึง <strong>50%</strong> เมื่อจุดตัดสำคัญหายไปหนึ่งจุด</li>
+<li><strong>3 จุดเหลือ 0%</strong> — คือตัดจุดเดียวแล้ว <em>ออกไม่ได้เลย</em> จากมุมมองของกราฟ: <strong>โซเนวา คีรี รีสอร์ท (ตราด) · บ่อแสนวิลล่า (พังงา) · เขตรักษาพันธุ์สัตว์ป่าภูเขียว (ชัยภูมิ)</strong></li>
+<li>จุดที่ “ไม่มีจุดตัดสำคัญใกล้ตัวเลย” มี 1 จุด — แปลว่าทางเข้าถึงเป็นตาข่ายจริง ไม่ใช่กิ่งเดี่ยว</li>
+</ul>
+<p>ข้อจำกัดของตัวเลขนี้ต้องพูดให้หมด: มันคือ <strong>ความเชื่อมโยงเชิงทอพอโลยีของกราฟที่ตัดขอบไว้ ที่รัศมี 5 กม.</strong> ไม่ใช่การจำลองการจราจร ไม่มี one-way, ไม่มีการปิดถนนจริง, และ components ที่มากกว่า 1 บางส่วนเกิดจากกรอบจานตัดถนนที่ยื่นเข้ามา — ผมเก็บคอลัมน์ <code>nodes</code>, <code>edges</code>, <code>components</code> ไว้ใน csv เพื่อให้ตรวจย้อนได้ว่าเสี่ยงจริงหรือเสี่ยงเพราะกรอบ</p>
+</section>
+<section id="ตรวจกลบสองวนกอนหนา" class="level2">
+<h2 class="anchored" data-anchor-id="ตรวจกลบสองวนกอนหนา">๔. ตรวจกลับสองวันก่อนหน้า</h2>
+<p><img src="day24_people.png" class="img-fluid"></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>การตรวจ</th>
+<th>ผล</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>way · editor · คนที่เขียนเกิน 1 จุด</td>
+<td>5,495 · 299 · 76 (25.42%) ตรงกับที่ Day 16 รายงาน</td>
+</tr>
+<tr class="even">
+<td>ระยะไปหาถนน: Day 21 (ถึง <em>ขอบ</em> ใน 2 กม.) vs Day 24 (ถึง <em>node</em> ใน 5 กม.)</td>
+<td><strong>rho 0.915</strong> (p 6.0e-33) · ต่างกันมัธยฐาน <strong>0.8 ม.</strong> · สูงสุด 87.5 ม.</td>
+</tr>
+<tr class="odd">
+<td>จำนวนขอบถนน 5 กม. ↔︎ จำนวน way ที่คนเขียน 1 กม. (Day 16)</td>
+<td>rho <strong>0.536</strong> (p 1.8e-07)</td>
+</tr>
+<tr class="even">
+<td>dead-end ratio ↔︎ ประชากรเมืองในรัศมี 30 กม. (Day 9)</td>
+<td>rho <strong>+0.358</strong> (p 0.00097)</td>
+</tr>
+<tr class="odd">
+<td>จำนวน components ↔︎ ประชากรเมือง</td>
+<td>rho +0.303 (p 0.0057)</td>
+</tr>
+</tbody>
+</table>
+<p>สองบรรทัดสุดท้ายน่าสนใจเพราะเครื่องหมาย: <strong>เมืองใหญ่กว่า = ทางตันมากกว่าและกราฟเสี่ยงกว่า</strong> ซึ่งสมเหตุสมผล — หมู่บ้านจัดสรร/ซอยตัน/ทางเดินในโครงการถูก map ละเอียดกว่า ส่วนพื้นที่เกษตรรอบนอกเป็นตาข่ายเส้นตรงยาว ๆ</p>
+</section>
+<section id="วธทำแบบยอ" class="level2">
+<h2 class="anchored" data-anchor-id="วธทำแบบยอ">วิธีทำแบบย่อ</h2>
+<ol type="1">
+<li>โหลดแคช Day 16 (way + user + timestamp ของ 83 จุด) → สร้าง 3 กราฟ: bipartite, editor↔︎editor (ร่วมจุด), site↔︎site (ร่วมคน)</li>
+<li>กราฟ “คน” แบบที่สองกรองเพิ่มด้วยช่วงปีที่ map ทับกัน (first–last year) เพื่อแยก “ร่วมงาน” ออกจาก “มาทีหลัง”</li>
+<li>สแกน <code>highway</code> จาก PBF ด้วย <code>locations=True</code> ของ pyosmium (libosmium สร้าง index ของ node ให้เอง → สแกนรอบเดียว) เก็บเฉพาะขอบที่ปลายทั้งสองอยู่ในจาน 5,000 ม. เดียวกัน</li>
+<li>ต่อจุด: สร้างกราฟ, นับ components, dead-end, <code>nx.bridges</code>, <code>nx.articulation_points</code> แล้วลบจุดทีละตัวเพื่อหา <code>worst_cut_keep</code></li>
+<li>ตรวจกลับกับ Day 21 (ระยะไปถนน) และ Day 16 (ปริมาณ way ที่คนเขียน)</li>
+<li>assert ที่ใส่ไว้: way ต้องได้ 5,495 · editor 299 · ผลรวม component ต้องเท่าจำนวน node · จุดรวม 83 ต้อง = ที่เชื่อม + ที่ isolated · กรองเวลาต้องเหลือขอบน้อยลง · node-slot ต้องตรงกับที่สแกน · <code>worst_cut_keep</code> อยู่ในช่วง 0–1</li>
+</ol>
+</section>
+<section id="ขอจำกดทตองบอกตรง-ๆ" class="level2">
+<h2 class="anchored" data-anchor-id="ขอจำกดทตองบอกตรง-ๆ">ข้อจำกัดที่ต้องบอกตรง ๆ</h2>
+<ul>
+<li><strong>กราฟคนสร้างจากรัศมี 1,000 ม. รอบจุดทะเบียน</strong> (ของเดิมจาก Day 16) ไม่ได้ใช้ขอบเขต พื้นที่ทำงานจริงของ mapper แต่ละคน → สองคนที่ map ติดกันมากอาจไม่ถูกนับว่าร่วมจุด และคนเดียวกันที่ map คนละด้านของอำเภออาจถูกนับว่า “รู้จักกัน”</li>
+<li><strong>จาน 5,000 ม. ตัดถนนที่ยื่นเข้ามา</strong> → <code>components &gt; 1</code> บางส่วนคือกรอบของการศึกษา ไม่ใช่ความขาดจริง ผมจึงรายงาน <code>largest_edge_share</code> ควบคู่เสมอ</li>
+<li><strong>กราฟถนนเป็น 2D จาก OSM</strong> ไม่มี one-way, weight, ระดับถนน หรือเวลาปิด-เปิด <code>worst_cut_keep</code> จึงตอบว่า “โครงสร้างขาดไหม” ไม่ใช่ “รถไปไม่ได้จริงไหม”</li>
+<li>ทดสอบจุดตัดเพียง 40 จุดใกล้สุดต่อจุดทะเบียน (<code>MAX_CUT_TRIALS</code>) เพื่อคุมเวลา</li>
+<li><strong>ระหว่าง 17 พ.ย. (แคช Day 16) กับ 21 พ.ย. (extract)</strong> มีคน map เพิ่ม — สองชั้นข้อมูล ไม่ได้อยู่เวลาเดียวกันเป๊ะ</li>
+<li>ตัวเลขระหว่างประเทศ (เช่นจำนวน way 2.94 ล้าน) เป็นของ <em>ไฟล์ extract</em> ไม่ใช่ของทั้งโลก</li>
+</ul>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<ul>
+<li><a href="day24_networks.png">day24_networks.png</a> — แผนที่ site network (เส้น = มีคน map ร่วม) + graph ของ editor + สถิติหลัก</li>
+<li><a href="day24_roads.png">day24_roads.png</a> — การกระจายของ components, dead-end ratio และ ประเภทถนนที่สร้างกราฟรอบ 83 จุด</li>
+<li><a href="day24_fragile.png">day24_fragile.png</a> — 12 จุดที่เปราะที่สุด (เหลือเครือข่ายกี่ % เมื่อ จุดตัดหายไปหนึ่งจุด) + ความสอดคล้องกับปริมาณ map ของ Day 16</li>
+<li><a href="day24_people.png">day24_people.png</a> — ช่วงเวลา map ของแต่ละคน (ก่อน-หลังกรองเวลา) และ การกระจายดีกรีของเครือข่ายคน</li>
+<li><a href="day24_roads.csv">day24_roads.csv</a> — ต่อจุด: nodes, edges, components, dead-end, bridges, articulations, ระยะไปถนน, worst_cut_keep, ประเภทถนนหลัก</li>
+<li><a href="day24_editors.csv">day24_editors.csv</a> — ต่อ editor: ดีกรี, จำนวนจุดที่ map, ปีแรก–ปีสุดท้าย, betweenness, component, ขอบที่ยังอยู่หลังกรองเวลา</li>
+<li><a href="day24_sites.csv">day24_sites.csv</a> — ต่อจุดทะเบียน: จำนวน editor, ดีกรีใน site network, component, จำนวน node/edge ของกราฟถนน</li>
+<li><a href="day24_site_edges.csv">day24_site_edges.csv</a> — คู่จุดที่เชื่อมกัน + จำนวนคน map ร่วม</li>
+<li><a href="day24_stats.json">day24_stats.json</a> — นิยามทั้งหมด + <code>cross_check_day16</code> + <code>cross_check_day21</code> + ตัวเลขทุกคู่ที่ทดสอบ</li>
+</ul>
+<p>โค้ด: <code>tools/collect_day24_roads.py</code> (สแกน PBF → npz) และ <code>tools/day24_network.py</code> (สร้างกราฟ + วาด + referee) — โน้ตบุ๊กมี Colab bootstrap แบบเดียวกับ Day 22–23 (<code>DAY24_FORCE_COLAB=1</code> ใช้ทดสอบเส้นทาง Colab บนเครื่องตัวเอง)</p>
+</section>
+<section id="บทเรยน" class="level2">
+<h2 class="anchored" data-anchor-id="บทเรยน">บทเรียน</h2>
+<ul>
+<li><strong>“เครือข่ายเดียวกัน” กับ “ทำงานร่วมกัน” ไม่ใช่คำเดียวกัน</strong> — 297/299 คนเชื่อมถึงกันจริง แต่พอกำหนดว่าช่วงปีของสองคนต้องทับกันจริง ขอบเหลือ 33.5% และกราฟแตกเป็น 24 หมู่ งานเชิง community ที่อ่านจาก co-occurrence อย่างเดียวจะเหมาเกินไปเสมอ</li>
+<li><strong>กราฟทำให้เห็นจุดที่ตารางมองไม่เห็น</strong>: เขาใหญ่ไม่ใช่แค่ “ไม่มีถนนใน 2 กม.” (Day 21) แต่ <em>ไม่มี node ถนนใน 5 กม.</em> และ <em>ไม่มีใคร map ร่วมกับจุดอื่นเลย</em> — สามวันสามกราฟชี้ไปที่จุดเดียวกันว่าเป็นขอบของข้อมูล</li>
+<li><strong>ความเสี่ยงของการเข้าถึงมักอยู่ที่จุดเดียว</strong> — 3 จุดที่ตัดจุดตัดหนึ่งแล้วออกไม่ได้ คือข้อมูลที่เอาไปใช้จริงได้ (ควรสำรองเส้นทางไว้/แจ้งผู้ไปจริง) มากกว่าค่าเฉลี่ยใด ๆ</li>
+<li><strong>อย่าเชื่อ components ที่มากกว่า 1 โดยไม่ดูกรอบ</strong> — ผมจึงเก็บ <code>largest_edge_share</code> ไว้ทุกแถว เพราะ 76 จุดที่ “ขาดเป็นเสี่ยง” แทบทั้งหมด เป็นทางเดินในสวน ไม่ใช่ถนนที่เข้าไม่ถึง</li>
+<li><strong>ตรวจกลับวันเก่าคือวิธีที่ถูกที่สุด</strong> — rho 0.915 กับส่วนต่างมัธยฐาน 0.8 ม. ระหว่างสองวิธีวัด (ขอบ vs node) ทำให้เชื่อได้ว่าวันนี้เราไม่ได้เปลี่ยนคำตอบ แค่เปลี่ยนคำถาม</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
