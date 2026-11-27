@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="โจทย์ ‘The challenge has always been about learning things. Try out a new tool in your mapmaking workflow.’ เครื่องมือใหม่ของซีรีส์นี้คือ DuckDB 1.5.5 + duckdb-spatial (eb1e57c, ฟังก์ชัน ST_* 158 ชื่อ) ผมยกงาน 4 ข้อที่ตอบไปแล้วด้วย geopandas/shapely/pyproj ไปทำใน SQL ล้วน ๆ แล้วเทียบคำตอบ — A จังหวัดของ 83 จุด (ST_Contains join กับ NE admin_1 4,596 polygon ที่อ่านด้วย ST_Read) ได้ผลตรงกับ geopandas 83/83 รวม 3 จุดที่ทั้งสองวิธีไม่พบ polygon · B จุดในเขตพื้นที่คุ้มครอง (163 ห่วงจาก Day 21) ได้ 40 คู่ = shapely 40 คู่ แต่ 24 จุด เทียบกับ 25 จุดที่ Day 21 รายงาน เพราะห่วงชุดนี้คือเวอร์ชันลดรายละเอียด (มัธยฐาน 8 จุด/ห่วง) ต่างกันที่การเตรียมข้อมูล ไม่ใช่เครื่องมือ · C ระยะจากจุดไปโหนดลำน้ำใกล้สุด (56,946 โหนด) SQL กับ pyproj ต่างสูงสุด 0.000 ม. rho 1.000000 ตรวจข้ามวันกับ Day 26 ต่างสูงสุด 0.048 ม. แต่คนละนิยาม: ระยะระนาบ EQ ต่าง geodesic มัธยฐาน 0.643 ม. (0.1399%) สูงสุด 26.757 ม. · D พื้นที่ประเทศไทย SQL 514,453.7 = pyproj 514,453.7 ตร.กม. และทำซ้ำค่าคลาดของ Equidistant Conic ที่ Day 22 วัดไว้ −0.3617% ได้ตรง กับดักสองตัวที่วัดจำนวนไว้: ป้อน (lon,lat) ตามมาตรฐาน GeoJSON ให้ตระกูล *_Spheroid ได้ NaN 4/4 เคสระยะ และ 40/40 ห่วง (ไม่ขึ้น error) ส่วน ST_Transform ใน build นี้คืน inf ทุก EPSG ที่ต้องแปลงจริง 4/4 และไม่รับ proj4 string">
+
+<title>Day 27 · New tool — DuckDB + spatial: SQL ให้คำตอบตรงกับ Python ทุกจุด (83/83 จังหวัด, 40/40 คู่, ระยะต่าง 0.000 ม.) แต่กับดักคือตระกูล spheroid รับพิกัด (lat, lon) แล้วโกหกเงียบ ๆ เป็น NaN – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#เครองมอและขอมล" id="toc-เครองมอและขอมล" class="nav-link active" data-scroll-target="#เครองมอและขอมล">๐. เครื่องมือและข้อมูล</a></li>
+  <li><a href="#กบดกท-1-ตระกล-spheroid-รบพกด-ละตจด-ลองจจด-แลวโกหกเงยบ-ๆ" id="toc-กบดกท-1-ตระกล-spheroid-รบพกด-ละตจด-ลองจจด-แลวโกหกเงยบ-ๆ" class="nav-link" data-scroll-target="#กบดกท-1-ตระกล-spheroid-รบพกด-ละตจด-ลองจจด-แลวโกหกเงยบ-ๆ">๑. กับดักที่ 1 — ตระกูล spheroid รับพิกัด (ละติจูด, ลองจิจูด) แล้วโกหกเงียบ ๆ</a></li>
+  <li><a href="#กบดกท-2-st_transform-ใน-build-นแปลงพกดไมไดเลย" id="toc-กบดกท-2-st_transform-ใน-build-นแปลงพกดไมไดเลย" class="nav-link" data-scroll-target="#กบดกท-2-st_transform-ใน-build-นแปลงพกดไมไดเลย">๒. กับดักที่ 2 — <code>ST_Transform</code> ใน build นี้แปลงพิกัดไม่ได้เลย</a></li>
+  <li><a href="#งาน-a-จงหวดของ-83-จด-sql-กบ-geopandas-ตรงกน-8383" id="toc-งาน-a-จงหวดของ-83-จด-sql-กบ-geopandas-ตรงกน-8383" class="nav-link" data-scroll-target="#งาน-a-จงหวดของ-83-จด-sql-กบ-geopandas-ตรงกน-8383">๓. งาน A — จังหวัดของ 83 จุด: SQL กับ geopandas ตรงกัน 83/83</a></li>
+  <li><a href="#งาน-b-จดในเขตพนทคมครอง-40-ค-40-ค-แต-24-จด-25-จด" id="toc-งาน-b-จดในเขตพนทคมครอง-40-ค-40-ค-แต-24-จด-25-จด" class="nav-link" data-scroll-target="#งาน-b-จดในเขตพนทคมครอง-40-ค-40-ค-แต-24-จด-25-จด">๔. งาน B — จุดในเขตพื้นที่คุ้มครอง: 40 คู่ = 40 คู่ แต่ 24 จุด ≠ 25 จุด</a></li>
+  <li><a href="#งาน-c-ระยะไปนำ-เครองมอตรงกนเปะ-แตนยามตางกน-0.14" id="toc-งาน-c-ระยะไปนำ-เครองมอตรงกนเปะ-แตนยามตางกน-0.14" class="nav-link" data-scroll-target="#งาน-c-ระยะไปนำ-เครองมอตรงกนเปะ-แตนยามตางกน-0.14">๕. งาน C — ระยะไปน้ำ: เครื่องมือตรงกันเป๊ะ แต่นิยามต่างกัน 0.14%</a></li>
+  <li><a href="#งาน-d-พนท-ทำซำตวเลขของ-day-22-ไดตรง" id="toc-งาน-d-พนท-ทำซำตวเลขของ-day-22-ไดตรง" class="nav-link" data-scroll-target="#งาน-d-พนท-ทำซำตวเลขของ-day-22-ไดตรง">๖. งาน D — พื้นที่: ทำซ้ำตัวเลขของ Day 22 ได้ตรง</a></li>
+  <li><a href="#แลวเรองความเรว" id="toc-แลวเรองความเรว" class="nav-link" data-scroll-target="#แลวเรองความเรว">๗. แล้วเรื่องความเร็ว?</a></li>
+  <li><a href="#วาดวยคำศพท" id="toc-วาดวยคำศพท" class="nav-link" data-scroll-target="#วาดวยคำศพท">ว่าด้วยคำศัพท์</a></li>
+  <li><a href="#ขอจำกด" id="toc-ขอจำกด" class="nav-link" data-scroll-target="#ขอจำกด">ข้อจำกัด</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 27 · New tool — DuckDB + spatial: SQL ให้คำตอบตรงกับ Python ทุกจุด (83/83 จังหวัด, 40/40 คู่, ระยะต่าง 0.000 ม.) แต่กับดักคือตระกูล spheroid รับพิกัด (lat, lon) แล้วโกหกเงียบ ๆ เป็น NaN</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">30DayMapChallenge</div>
+    <div class="quarto-category">duckdb</div>
+    <div class="quarto-category">sql</div>
+    <div class="quarto-category">spatial-analysis</div>
+    <div class="quarto-category">openstreetmap</div>
+    <div class="quarto-category">tooling</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    โจทย์ ‘The challenge has always been about learning things. Try out a new tool in your mapmaking workflow.’ เครื่องมือใหม่ของซีรีส์นี้คือ DuckDB 1.5.5 + duckdb-spatial (eb1e57c, ฟังก์ชัน ST_* 158 ชื่อ) ผมยกงาน 4 ข้อที่ตอบไปแล้วด้วย geopandas/shapely/pyproj ไปทำใน SQL ล้วน ๆ แล้วเทียบคำตอบ — A จังหวัดของ 83 จุด (ST_Contains join กับ NE admin_1 4,596 polygon ที่อ่านด้วย ST_Read) ได้ผลตรงกับ geopandas 83/83 รวม 3 จุดที่ทั้งสองวิธีไม่พบ polygon · B จุดในเขตพื้นที่คุ้มครอง (163 ห่วงจาก Day 21) ได้ 40 คู่ = shapely 40 คู่ แต่ 24 จุด เทียบกับ 25 จุดที่ Day 21 รายงาน เพราะห่วงชุดนี้คือเวอร์ชันลดรายละเอียด (มัธยฐาน 8 จุด/ห่วง) ต่างกันที่การเตรียมข้อมูล ไม่ใช่เครื่องมือ · C ระยะจากจุดไปโหนดลำน้ำใกล้สุด (56,946 โหนด) SQL กับ pyproj ต่างสูงสุด 0.000 ม. rho 1.000000 ตรวจข้ามวันกับ Day 26 ต่างสูงสุด 0.048 ม. แต่คนละนิยาม: ระยะระนาบ EQ ต่าง geodesic มัธยฐาน 0.643 ม. (0.1399%) สูงสุด 26.757 ม. · D พื้นที่ประเทศไทย SQL 514,453.7 = pyproj 514,453.7 ตร.กม. และทำซ้ำค่าคลาดของ Equidistant Conic ที่ Day 22 วัดไว้ −0.3617% ได้ตรง กับดักสองตัวที่วัดจำนวนไว้: ป้อน (lon,lat) ตามมาตรฐาน GeoJSON ให้ตระกูล *_Spheroid ได้ NaN 4/4 เคสระยะ และ 40/40 ห่วง (ไม่ขึ้น error) ส่วน ST_Transform ใน build นี้คืน inf ทุก EPSG ที่ต้องแปลงจริง 4/4 และไม่รับ proj4 string
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">27 พฤศจิกายน 2569</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day27_duckdb.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>โจทย์ทางการวันนี้คือ <strong>“The challenge has always been about learning things. Try out a new tool in your mapmaking workflow.”</strong> (หัวข้อ <em>New tool</em> — ดึงข้อความมาจากหน้า 30daymapchallenge.com อ่านสดวันที่ 27 พ.ย. เก็บสำเนาไว้ที่ <code>scratch/chal27.html</code>)</p>
+<p>ผมใช้เครื่องมือใหม่มา 26 วันแล้ว (pyosmium, networkx, pyproj, shapely, h3, geopandas…) ดังนั้น “ใหม่” ของวันนี้ต้องเป็นของที่ผม <strong>ยังไม่เคยใช้จริงในซีรีส์นี้</strong> ซึ่งผมเลือก <strong>DuckDB พร้อมส่วนเสริม <code>spatial</code></strong> — เครื่องมือที่ทำงานกับข้อมูลแบบตารางและทำ <em>ทุกอย่างเป็น SQL</em></p>
+<p>คำถามที่ผมถามเครื่องมือใหม่ไม่ใช่ “มันเร็วกว่าไหม” แต่เป็น</p>
+<blockquote class="blockquote">
+<p>ถ้าให้ SQL ตอบคำถามเดียวกับที่ Python เคยตอบ คำตอบจะตรงกันไหม และถ้าไม่ตรง ต่างกันเพราะ <em>เครื่องมือ</em> หรือเพราะ <em>นิยาม/การเตรียมข้อมูล</em></p>
+</blockquote>
+<section id="เครองมอและขอมล" class="level2">
+<h2 class="anchored" data-anchor-id="เครองมอและขอมล">๐. เครื่องมือและข้อมูล</h2>
+<p>DuckDB <strong>1.5.5</strong> + duckdb-spatial <strong><code>eb1e57c</code></strong> (ติดตั้งจาก repository อัตโนมัติ, มีฟังก์ชัน <code>ST_*</code> <strong>158 ชื่อ</strong> ใน build นี้) บน windows_amd64</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ข้อมูล</th>
+<th>ที่มา</th>
+<th>ขนาด</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>จุดทะเบียน 83 จุด</td>
+<td><code>data/darksky_thailand.csv</code> (ใช้ทุกวันตั้งแต่ Day 1)</td>
+<td>65.2 KB</td>
+</tr>
+<tr class="even">
+<td>ขอบจังหวัด</td>
+<td>Natural Earth 10m admin_1 อ่านตรงเข้า SQL ด้วย <code>ST_Read</code></td>
+<td>4,596 polygon</td>
+</tr>
+<tr class="odd">
+<td>ห่วงเขตพื้นที่คุ้มครอง</td>
+<td><code>data/day27_rings.json.gz</code> (export จาก Day 21)</td>
+<td>0.07 MB · <strong>163 ห่วง</strong></td>
+</tr>
+<tr class="even">
+<td>โหนดลำน้ำ</td>
+<td><code>data/day26_water.npz</code> (Day 26)</td>
+<td>56,946 โหนด</td>
+</tr>
+<tr class="odd">
+<td>โหนดถนน</td>
+<td><code>data/day25_graphs.npz</code> (Day 24/25)</td>
+<td>413,758 โหนด</td>
+</tr>
+<tr class="even">
+<td>คำตอบเดิมของ Python</td>
+<td><code>posts/day21-openstreetmap/day21_sites_osm.csv</code>, <code>posts/day26-water/day26_sites.csv</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>ห่วง 163 เส้นนั้นเก็บในรูป <strong>WKT สองลำดับ</strong> (มาตรฐาน <code>lon lat</code> และกลับด้าน <code>lat lon</code>) ซึ่งกลายเป็นหัวใจของโพสต์นี้</p>
+</section>
+<section id="กบดกท-1-ตระกล-spheroid-รบพกด-ละตจด-ลองจจด-แลวโกหกเงยบ-ๆ" class="level2">
+<h2 class="anchored" data-anchor-id="กบดกท-1-ตระกล-spheroid-รบพกด-ละตจด-ลองจจด-แลวโกหกเงยบ-ๆ">๑. กับดักที่ 1 — ตระกูล spheroid รับพิกัด (ละติจูด, ลองจิจูด) แล้วโกหกเงียบ ๆ</h2>
+<p><code>ST_Distance_Spheroid</code>, <code>ST_Area_Spheroid</code>, <code>ST_Length_Spheroid</code>, <code>ST_Distance_Sphere</code> ใน DuckDB spatial <strong>ตีความตัวเลขตัวแรกเป็นละติจูด</strong> ซึ่งกลับด้านกับ <code>ST_Point</code>, <code>ST_Contains</code>, <code>ST_Area</code> (planar) และกลับด้านกับมาตรฐาน GeoJSON/WKT ที่ทั้งโลกใช้</p>
+<p>ผลคือเมื่อป้อนตามมาตรฐาน มัน <strong>ไม่ error</strong> — มันคืน <code>NaN</code></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>สิ่งที่ทดสอบ</th>
+<th>ป้อน <code>(lon, lat)</code> ตามมาตรฐาน</th>
+<th>ป้อน <code>(lat, lon)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ระยะทางระหว่างจุด (4 เคส)</td>
+<td><strong>NaN 4/4</strong></td>
+<td>ตรงกับ pyproj ต่างสูงสุด <strong>0.000 ม.</strong></td>
+</tr>
+<tr class="even">
+<td>พื้นที่ห่วงพื้นที่คุ้มครอง (40 ห่วง)</td>
+<td><strong>NaN 40/40</strong></td>
+<td>ตรงกับ pyproj ต่างสูงสุด <strong>0.0000 ตร.กม.</strong></td>
+</tr>
+<tr class="odd">
+<td>พื้นที่ประเทศไทย (1 polygon)</td>
+<td><strong>NaN</strong></td>
+<td><strong>514,453.7 ตร.กม.</strong> = ค่า pyproj เป๊ะ</td>
+</tr>
+</tbody>
+</table>
+<p>ผมคิดว่านี่คือบทเรียนที่แพงที่สุดของการลองเครื่องมือใหม่: <strong>ความล้มเหลวที่เงียบที่สุด คือค่าที่ type ถูกต้อง</strong> NaN หนึ่งตัวในคอลัมน์พื้นที่ไม่ทำให้สคริปต์ล้ม มันแค่ทำให้ <code>median()</code> เป็น 0 แล้วคุณเขียนโพสต์ต่อโดยไม่รู้ตัว (และถ้าใครเคยอ่าน Day 22 จะจำได้ว่า ผมเคยพลาดเรื่อง “ป้อนพิกัดผิดระบบให้ pyproj” มาแล้วครั้งหนึ่ง — คราวนี้พลาดซ้ำในเครื่องมือใหม่ แต่จับได้เพราะตั้ง assert ไว้ว่า “ค่าที่ออกต้องไม่ใช่ NaN”)</p>
+</section>
+<section id="กบดกท-2-st_transform-ใน-build-นแปลงพกดไมไดเลย" class="level2">
+<h2 class="anchored" data-anchor-id="กบดกท-2-st_transform-ใน-build-นแปลงพกดไมไดเลย">๒. กับดักที่ 2 — <code>ST_Transform</code> ใน build นี้แปลงพิกัดไม่ได้เลย</h2>
+<p>ผมขอแปลงจุดหนึ่งไป EPSG ที่ต้องใช้ในงานนี้ 4 ตัว ผลคือ <strong><code>inf</code> ทั้ง 4 ตัว</strong> (EPSG:3857, 32647, 32648, 6857) และมีเพียง 4326→4326 ที่ “สำเร็จ” เพราะไม่ต้องแปลงจริง ส่วน proj4 string แบบที่ซีรีส์นี้ใช้อยู่ (<code>+proj=eqdc +lat_0=14 …</code>) DuckDB ปฏิเสธตั้งแต่ parse: <em>“The ‘target_crs’ parameter … is not a recognized coordinate reference”</em></p>
+<p>ผลข้างเคียงต่องานนี้คือ <strong>SQL วัดระยะในระนาบ Equidistant Conic ของซีรีส์ไม่ได้</strong> ผมจึงต้องวัดด้วยสูตร spheroid (ซึ่งกลับกลายเป็นข้อดี เพราะได้เทียบ “นิยาม” ไปในตัว — ดูข้อ ๕) และผมใส่ assert ที่บังคับให้โพสต์นี้ต้องอัปเดตไว้ด้วย: ถ้าวันไหน <code>ST_Transform</code> ใช้ได้ หรือถ้าวันไหนกับดักลำดับพิกัดหายไป สคริปต์จะล้มทันที ไม่ใช่เงียบไป</p>
+</section>
+<section id="งาน-a-จงหวดของ-83-จด-sql-กบ-geopandas-ตรงกน-8383" class="level2">
+<h2 class="anchored" data-anchor-id="งาน-a-จงหวดของ-83-จด-sql-กบ-geopandas-ตรงกน-8383">๓. งาน A — จังหวัดของ 83 จุด: SQL กับ geopandas ตรงกัน 83/83</h2>
+<p>SQL ฝั่งเดียวทำเสร็จใน 2 ประโยค (join ด้วย <code>ST_Contains</code> แล้ว <code>any_value</code>)</p>
+<ul>
+<li><strong>จังหวัดตรงกัน 83 จาก 83 จุด</strong> — นับทั้งจุดที่ <em>ทั้งสองวิธีไม่พบ polygon ครอบคลุม</em> ด้วย ซึ่งมี 3 จุด: <em>เกาะพะลวยบีชบังกะโล</em> (สุราษฎร์ธานี), <em>โซเนวา คีรี รีสอร์ท</em> (ตราด), <em>หอดูดาวเฉลิมพระเกียรติฯ สงขลา</em> — ทั้งสามเป็นเกาะ/ชายฝั่งที่ NE 10m ไม่มี polygon ครอบคลุม</li>
+<li>เวลา: SQL 0.011 วิ · geopandas <code>sjoin</code> 0.012 วิ (พอ ๆ กันในงานขนาดนี้)</li>
+<li><strong>ทะเบียน (ชื่อไทย) กับ NE (ชื่ออังกฤษ) ตรงกัน 75 จุด ไม่ตรง 5 จุด</strong> และนี่คือส่วนที่น่าสนใจ เพราะผมต้องสร้าง <em>ตารางเทียบชื่อ</em> ขึ้นมาก่อน โดยไม่ hardcode — ใช้เสียงข้างมากของ 83 จุดเอง ผลคือได้ 32 จังหวัด และ <strong>5 ชื่อที่กำกวม</strong> (Buri Ram, Lop Buri, Mae Hong Son, Prachin Buri, Tak)</li>
+<li>ทั้ง 5 จุดที่ทะเบียนไม่ตรง NE <strong>ล้วนอยู่ในชื่อที่กำกวม</strong> ซึ่งไม่ใช่เรื่องบังเอิญ: จุดที่ “เห็นต่าง” ทำให้ชื่อ NE นั้นมีชื่อไทยมากกว่าหนึ่งโดยนิยาม</li>
+<li>แต่ใน 5 จุดนั้นมี 2 จุดที่ผมคิดว่า <em>NE ต่างหากที่ผิด</em> (หรืออย่างน้อยต่างจริง): อุทยานแห่งชาติเขาใหญ่ —ทะเบียนว่า นครราชสีมา แต่ NE 10m วางเส้นแบ่งจังหวัดไว้จนจุดนี้ ตกใน <strong>Prachin Buri</strong>; และอุทยานแห่งชาติแม่ปิง — ทะเบียนว่า ลำพูน แต่ NE ว่า <strong>Tak</strong> เส้นขอบ NE 10m หยาบกว่าเขตราชการ (เคยเตือนไว้ใน Day 23 แล้ว)</li>
+</ul>
+</section>
+<section id="งาน-b-จดในเขตพนทคมครอง-40-ค-40-ค-แต-24-จด-25-จด" class="level2">
+<h2 class="anchored" data-anchor-id="งาน-b-จดในเขตพนทคมครอง-40-ค-40-ค-แต-24-จด-25-จด">๔. งาน B — จุดในเขตพื้นที่คุ้มครอง: 40 คู่ = 40 คู่ แต่ 24 จุด ≠ 25 จุด</h2>
+<p>SQL กับ shapely ใช้ห่วงชุดเดียวกัน (163 ห่วง) ให้ <strong>คู่ (จุด, ห่วง) ตรงกันทุกคู่ 40 = 40</strong> ไม่มีข้างใดข้างหนึ่งได้มากกว่าเลย — แปลว่าตัว <em>อัลกอริทึม containment</em> ของทั้งสองเครื่องมือเห็นตรงกัน</p>
+<p>แต่จำนวน <strong>จุด</strong> ที่ Day 21 รายงานไว้คือ <strong>25 จุด</strong> ส่วนวันนี้ได้ <strong>24 จุด</strong> สาเหตุไม่ใช่เครื่องมือ แต่คือ <strong>ห่วงที่ผมให้ SQL ใช้เป็นเวอร์ชันลดรายละเอียด</strong> — <code>poly_draw.json</code> ของ Day 21 เก็บเส้นขอบไว้สำหรับ <em>วาด</em> (มัธยฐาน <strong>8 จุดต่อห่วง</strong> สูงสุด 261 รวม 5,531 จุด) ขณะที่การตรวจ containment ตอนนั้นใช้เรขาคณิตเต็ม พูดอีกอย่าง: <strong>การเตรียมข้อมูลเปลี่ยนคำตอบได้มากกว่าการเปลี่ยนเครื่องมือ</strong> และนี่คือเหตุผลที่ผมต้อง export ห่วงชุดนี้เป็นไฟล์แยก (<code>data/day27_rings.json.gz</code>) แล้วบอกไว้ชัด ๆ แทนที่จะให้คนอ่านคิดว่า SQL ทำผิด</p>
+</section>
+<section id="งาน-c-ระยะไปนำ-เครองมอตรงกนเปะ-แตนยามตางกน-0.14" class="level2">
+<h2 class="anchored" data-anchor-id="งาน-c-ระยะไปนำ-เครองมอตรงกนเปะ-แตนยามตางกน-0.14">๕. งาน C — ระยะไปน้ำ: เครื่องมือตรงกันเป๊ะ แต่นิยามต่างกัน 0.14%</h2>
+<ul>
+<li>SQL (<code>ST_Distance_Spheroid</code> ป้อนกลับด้าน) กับ pyproj (<code>Geod.inv</code>) ต่างสูงสุด <strong>0.000 ม.</strong> จาก 69 จุดที่วัดได้ และ rho = <strong>1.000000</strong> — สอง implementation ของสูตรเดียวกันต้องตรงกัน ถ้าไม่ตรงคือมีบั๊ก ไม่ใช่ “ความต่างของเครื่องมือ”</li>
+<li><strong>ตรวจข้ามวัน</strong>: ระยะระนาบ EQ ที่คำนวณซ้ำวันนี้ต่างจาก <code>dist_line_m</code> ของ Day 26 สูงสุด <strong>0.048 ม.</strong> — ยืนยันว่าตัวเลขเก่าสร้างซ้ำได้</li>
+<li>แต่เมื่อเทียบ <em>นิยาม</em>: ระยะระนาบใน Equidistant Conic กับระยะ geodesic จริง ต่างกัน มัธยฐาน <strong>0.643 ม.</strong> (0.1399%) สูงสุด <strong>26.757 ม.</strong> — เล็กจนไม่มีผลกับข้อสรุปของ Day 26 แต่มันคือตัวเลขที่ผมควรเขียนกำกับไว้ตั้งแต่แรก ไม่ใช่เพิ่งมาวัดวันนี้</li>
+<li>ข้อค้นพบเพิ่มจากการไม่จำกัดจาน: ระยะไปโหนดลำน้ำใกล้สุด <strong>มัธยฐาน 805.6 ม.</strong> และ มีเพียง <strong>3 จุด</strong> ที่ไกลน้ำเกิน 5,000 ม. — <em>อุ่นฟ้าอิงดาวแคมป์ปิ้ง</em> (5,877 ม.), <em>โรงแรม เดอะเปียโน รีสอร์ท เขาใหญ่</em> (6,479 ม.), <em>บ้านไร่ยายชะพลู</em> (8,038 ม.) ทั้งสามอยู่ในกลุ่ม 17 จุดที่ Day 26 ว่า “ไม่มีน้ำในจาน” → <strong>14 จุดจาก 17 จุดมีน้ำอยู่ห่างออกไป 5–8 กม.</strong> ขอบจาน 5 กม. เป็นตัวกำหนดคำตอบ ไม่ใช่ภูมิประเทศ</li>
+</ul>
+</section>
+<section id="งาน-d-พนท-ทำซำตวเลขของ-day-22-ไดตรง" class="level2">
+<h2 class="anchored" data-anchor-id="งาน-d-พนท-ทำซำตวเลขของ-day-22-ไดตรง">๖. งาน D — พื้นที่: ทำซ้ำตัวเลขของ Day 22 ได้ตรง</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>วิธี</th>
+<th>พื้นที่ประเทศไทย (ตร.กม.)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SQL <code>ST_Area_Spheroid</code> (ป้อนกลับด้าน)</td>
+<td><strong>514,453.7</strong></td>
+</tr>
+<tr class="even">
+<td>pyproj geodesic (<code>Geod.geometry_area_perimeter</code>)</td>
+<td><strong>514,453.7</strong> (ต่าง 0.00)</td>
+</tr>
+<tr class="odd">
+<td>ค่าที่ซีรีส์ใช้จริง (ระนาบ Equidistant Conic)</td>
+<td><strong>512,593.1</strong> = ต่ำกว่า geodesic <strong>−0.3617%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>บรรทัดสุดท้ายคือตัวเลขที่ผมวัดไว้ใน Day 22 (คลาดพื้นที่ของ projection ที่ซีรีส์ใช้) และวันนี้เครื่องมือใหม่คำนวณอิสระแล้วได้ค่าเดิมเป๊ะ — สำหรับผม นี่คือหลักฐานว่า “ลองเครื่องมือใหม่” ไม่ได้แปลว่า “เปลี่ยนคำตอบ” แต่แปลว่า “มีพยานอีกปาก”</p>
+<p>(สำหรับจังหวัดเชียงใหม่ pyproj ให้ <strong>22,759.6 ตร.กม.</strong> ส่วน SQL ที่ป้อนลำดับมาตรฐานได้ NaN ตามกับดักข้อ ๑)</p>
+</section>
+<section id="แลวเรองความเรว" class="level2">
+<h2 class="anchored" data-anchor-id="แลวเรองความเรว">๗. แล้วเรื่องความเร็ว?</h2>
+<p>งานขนาดนี้ (83 จุด × 4,596 polygon, 83 × 163 ห่วง, 83 × 56,946 โหนด) SQL ไม่ได้ชนะแบบน่าตื่นเต้น: A 0.011 วิ vs 0.012 วิ · B 0.002 วิ vs 0.007 วิ · C 0.21 วิ vs 0.31 วิ กรณีเดียวที่ต่างกันชัดคือ “นับจำนวนห่วงประเภท relation” — SQL 0.001 วิ เทียบกับการทำ mask ด้วย numpy ที่ 0.07 วิ (แต่คนละปริมาณงานกัน จึงไม่ใช่การเทียบที่ยุติธรรม) ผมจึงไม่เอาความเร็วมาเป็นเหตุผลในการเปลี่ยนเครื่องมือ — เหตุผลคือ <strong>สิ่งที่ได้เรียนรู้ 2 ข้อข้างบน</strong></p>
+</section>
+<section id="วาดวยคำศพท" class="level2">
+<h2 class="anchored" data-anchor-id="วาดวยคำศพท">ว่าด้วยคำศัพท์</h2>
+<ul>
+<li><strong>DuckDB</strong> — ฐานข้อมูลแบบฝัง (in-process) ที่ประมวลผลเป็นคอลัมน์ ใช้ SQL กับไฟล์ CSV/Parquet/GeoJSON/shapefile ได้ตรง ๆ โดยไม่ต้อง import เข้า Python</li>
+<li><strong>duckdb-spatial</strong> — ส่วนเสริมที่เพิ่มฟังก์ชัน <code>ST_*</code> (GEOS + PROJ) เข้ามาใน SQL</li>
+<li><strong>spheroid / ellipsoid</strong> — ทรงกลมรีที่ใช้แทนผิวโลก (ที่นี่คือ WGS84) ต่างจาก “planar” ที่วัดบนระนาบพิกัดฉาก</li>
+<li><strong>geodesic</strong> — ระยะ/พื้นที่จริงบนผิว ellipsoid ตามอัลกอริทึมของ Karney ซึ่งทั้งซีรีส์ใช้ ผ่านคลาส <code>Geod</code> ของ pyproj</li>
+<li><strong>NaN ที่เงียบ (silent NaN)</strong> — ค่าที่ผิดแต่ไม่ error ทำให้การคำนวณถัดไปไหลต่อได้จนผิดทั้งสาย</li>
+<li><strong>Bland–Altman</strong> — กราฟพลอต “ผลต่างระหว่างสองวิธีวัด” เทียบกับค่าเฉลี่ย ใช้ตอบว่า เครื่องมือสองตัววัดเหมือนกันไหม แทนที่จะดูแค่สหสัมพันธ์</li>
+</ul>
+</section>
+<section id="ขอจำกด" class="level2">
+<h2 class="anchored" data-anchor-id="ขอจำกด">ข้อจำกัด</h2>
+<ul>
+<li>ผลทั้งหมดเป็นของ <strong>build นี้</strong>: DuckDB 1.5.5 + spatial <code>eb1e57c</code> บน windows_amd64 — เครื่องอื่น/เวอร์ชันอื่น <code>ST_Transform</code> อาจใช้ได้ ซึ่งจะทำให้กับดักที่ 2 หายไป (สคริปต์มี assert ที่ล้มเมื่อกับดักหายไป เพื่อบังคับให้อัปเดตโพสต์ ไม่ใช่ปล่อยให้อ่านผิด)</li>
+<li>งาน C วัดระยะไป <strong>โหนด</strong> ของขอบลำน้ำ ไม่ใช่ตั้งฉากกับตัวเส้น — เป็นนิยามเดียวกับ Day 26 และใช้กล่อง 0.06° เป็น prefilter (สี่เหลี่ยม ไม่ใช่จานกลม) ซึ่งตัดโหนดที่มุมกล่อง ที่ไกลกว่า 5 กม. อยู่แล้วออกไป จึงไม่มีผลกับค่า <em>ต่ำสุด</em></li>
+<li>ตารางเทียบชื่อจังหวัดไทย↔︎อังกฤษเกิดจากเสียงข้างมากของ 83 จุด ไม่ใช่ gazetteer จึงมี 5 ชื่อที่กำกวม และตัวเลข “ทะเบียนไม่ตรง NE 5 จุด” ต้องอ่านคู่กับข้อนี้เสมอ</li>
+<li>ห่วง 163 เส้นเป็นเวอร์ชันลดรายละเอียดของ Day 21 (median 8 จุด/ห่วง) ผล containment จึงต่ำกว่าที่ Day 21 รายงาน 1 จุด — <strong>นี่คือข้อค้นพบ ไม่ใช่ข้อผิดพลาด</strong></li>
+<li>benchmark วัดบนเครื่องเดียว ไฟล์ที่ยังไม่ถูกโหลดเข้าหน่วยความจำครั้งแรกจะช้ากว่ามาก และงานเหล่านี้เล็กเกินกว่าจะวัดความต่างของเครื่องมือได้อย่างยุติธรรม</li>
+</ul>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<ul>
+<li><a href="day27_duckdb.png">day27_duckdb.png</a> — แผนที่ที่ <em>เกิดจากผล-query ของ SQL ล้วน</em> (ขอบจังหวัดผ่าน <code>ST_AsGeoJSON</code> + ห่วง 163 เส้น) พร้อมตารางสรุป 15 บรรทัด</li>
+<li><a href="day27_agree.png">day27_agree.png</a> — จำนวนจุด/คู่ที่ตรงกัน, Bland–Altman ของระยะ, ฮิสโตแกรมส่วนต่างนิยาม, และสามวิธีวัดพื้นที่ไทย</li>
+<li><a href="day27_traps.png">day27_traps.png</a> — กับดักสองตัวนับเป็นจำนวนครั้งที่ทดสอบ</li>
+<li><a href="day27_speed.png">day27_speed.png</a> — เวลา SQL vs Python รายงาน (log)</li>
+<li><a href="day27_agree.csv">day27_agree.csv</a> — 7 การเทียบ: ที่ทดสอบกี่จุด ตรงกันกี่จุด ต่างสูงสุดเท่าไร</li>
+<li><a href="day27_sites.csv">day27_sites.csv</a> — ต่อจุด: จังหวัดจาก SQL / จาก Python / จากทะเบียน, ระยะน้ำสามแบบ, จำนวนห่วงที่ครอบคลุม</li>
+<li><a href="day27_trap_distance.csv">day27_trap_distance.csv</a> · <a href="day27_trap_area.csv">day27_trap_area.csv</a> — เคสที่ป้อนลำดับผิดแล้วได้ NaN ทีละรายการ</li>
+<li><a href="day27_bench.csv">day27_bench.csv</a> — เวลาและจำนวนแถวที่ประมวลผล</li>
+<li><a href="day27_stats.json">day27_stats.json</a> — ต้นทางของตัวเลขทุกตัวในโพสต์นี้</li>
+<li><a href="../../data/day27_rings.json.gz">day27_rings.json.gz</a> — ห่วง 163 เส้นพร้อม WKT สองลำดับ (0.07 MB)</li>
+<li><a href="../../notebooks/day27_duckdb.html">โน้ตบุ๊กฉบับรันได้</a> — สร้างจาก <code>tools/day27_duckdb.py</code> ไฟล์เดียว (<code>notebooks/day27_duckdb.ipynb</code>) รันบน Colab จบใน ~23 วินาที: <code>pip install duckdb</code> แล้ว <code>INSTALL spatial</code> ดึงข้อมูลจากรีโปทั้งหมด</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
