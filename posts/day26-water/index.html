@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="โจทย์ ‘About 71% of the Earth’s surface. That wet thing, you know?’ ผมสร้างกราฟสองชิ้นบนกติกาเดียวกันเป๊ะรอบจุดดูฟ้ามืด 83 จุด (จาน 5,000 ม. เก็บเฉพาะขอบที่ปลายทั้งสองอยู่ในจานของจุดเดียวกัน — นิยามเดียวกับ Day 24): กราฟถนน 413,758 โหนด-slot / 430,457 เส้นไม่ซ้ำ กับกราฟลำน้ำ 56,946 โหนด-slot / 56,550 ขอบ ผล: cyclomatic number μ = E − V + หมู่ มัธยฐาน ถนน 94 (สูงสุด 2,375) เทียบ ลำน้ำ 0 (สูงสุด 7) — มีวงวน 77 จาก 82 จุดถนน แต่เพียง 25 จาก 66 จุดของน้ำ และจุดที่น้ำมีวงวนคือ คลองชลประทาน ไม่ใช่ลำธารธรรมชาติ วัดความคดเคี้ยวจาก ระยะตามลำน้ำ ÷ ระยะตรง ระหว่างปลายสองข้างของเส้นผ่านศูนย์กลาง: มัธยฐาน 1.6385 สูงสุด 15.841 (ญาติกา บูทีค: 16.797 กม. ตามน้ำ เทียบ 1.060 กม. เส้นตรง) Horton–Strahler มัธยฐาน 2 สูงสุด 4 พื้นที่น้ำในจานมัธยฐาน 0.152% สูงสุด 3.483% (อุทยานดาราศาสตร์สิรินธร ซึ่งแปลงน้ำใหญ่สุดคือคลองชลประทาน) ระยะไปเส้นน้ำใกล้สุดมัธยฐาน 792.7 ม. ไกลสุด 4,143.2 ม. (ภูพร้อมดาว ฟาร์มสเตย์) และ 17 จุดที่ไม่มีเส้นน้ำใน 5 กม. เทียบกับ Natural Earth 10m: มีทั้งคู่ 13 · OSM เท่านั้น 53 · NE เท่านั้น 0 · ไม่มีทั้งคู่ 17 โดย 17 จุดนั้นอยู่ไกลจากลำน้ำของ NE มัธยฐาน 85,995 ม. ระดับประเทศ OSM Thailand มี way ติดแท็ก highway 2,944,183 เส้น แต่ waterway แค่ 59,338 เส้น = อัตราส่วน 49.6 : 1">
+
+<title>Day 26 · Water — น้ำเป็นกิ่งไม้ ถนนเป็นตาข่าย: μ มัธยฐานของกราฟลำน้ำ 0 เทียบกราฟถนน 94 (สูงสุด 2,375) และ 17 จุดที่ทั้งสองแผนที่เห็นตรงกันว่าไม่มีน้ำ – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#สองกราฟบนกตกาเดยวกนเปะ" id="toc-สองกราฟบนกตกาเดยวกนเปะ" class="nav-link active" data-scroll-target="#สองกราฟบนกตกาเดยวกนเปะ">๐. สองกราฟบนกติกาเดียวกันเป๊ะ</a></li>
+  <li><a href="#รปทรง-ตาขายกบกงไม" id="toc-รปทรง-ตาขายกบกงไม" class="nav-link" data-scroll-target="#รปทรง-ตาขายกบกงไม">๑. รูปทรง: ตาข่ายกับกิ่งไม้</a></li>
+  <li><a href="#ความคดเคยว-เดนตามนำไกลกวาเสนตรงกเทา" id="toc-ความคดเคยว-เดนตามนำไกลกวาเสนตรงกเทา" class="nav-link" data-scroll-target="#ความคดเคยว-เดนตามนำไกลกวาเสนตรงกเทา">๒. ความคดเคี้ยว: เดินตามน้ำไกลกว่าเส้นตรงกี่เท่า</a></li>
+  <li><a href="#นำอยใกลจดดฟามดแคไหน" id="toc-นำอยใกลจดดฟามดแคไหน" class="nav-link" data-scroll-target="#นำอยใกลจดดฟามดแคไหน">๓. น้ำอยู่ใกล้จุดดูฟ้ามืดแค่ไหน</a></li>
+  <li><a href="#นำหายไปจากแผนท-หรอไมมใครไป-map" id="toc-นำหายไปจากแผนท-หรอไมมใครไป-map" class="nav-link" data-scroll-target="#นำหายไปจากแผนท-หรอไมมใครไป-map">๔. น้ำหายไปจากแผนที่ หรือไม่มีใครไป map</a></li>
+  <li><a href="#นำถก-map-นอยกวาถนนแคไหน-ทงประเทศ" id="toc-นำถก-map-นอยกวาถนนแคไหน-ทงประเทศ" class="nav-link" data-scroll-target="#นำถก-map-นอยกวาถนนแคไหน-ทงประเทศ">๕. น้ำถูก map น้อยกว่าถนนแค่ไหน (ทั้งประเทศ)</a></li>
+  <li><a href="#นำกบความมด" id="toc-นำกบความมด" class="nav-link" data-scroll-target="#นำกบความมด">๖. น้ำกับความมืด</a></li>
+  <li><a href="#วาดวยคำศพท" id="toc-วาดวยคำศพท" class="nav-link" data-scroll-target="#วาดวยคำศพท">ว่าด้วยคำศัพท์</a></li>
+  <li><a href="#ขอจำกด" id="toc-ขอจำกด" class="nav-link" data-scroll-target="#ขอจำกด">ข้อจำกัด</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 26 · Water — น้ำเป็นกิ่งไม้ ถนนเป็นตาข่าย: μ มัธยฐานของกราฟลำน้ำ 0 เทียบกราฟถนน 94 (สูงสุด 2,375) และ 17 จุดที่ทั้งสองแผนที่เห็นตรงกันว่าไม่มีน้ำ</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">30DayMapChallenge</div>
+    <div class="quarto-category">water</div>
+    <div class="quarto-category">graph-theory</div>
+    <div class="quarto-category">openstreetmap</div>
+    <div class="quarto-category">hydrology</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    โจทย์ ‘About 71% of the Earth’s surface. That wet thing, you know?’ ผมสร้างกราฟสองชิ้นบนกติกาเดียวกันเป๊ะรอบจุดดูฟ้ามืด 83 จุด (จาน 5,000 ม. เก็บเฉพาะขอบที่ปลายทั้งสองอยู่ในจานของจุดเดียวกัน — นิยามเดียวกับ Day 24): กราฟถนน 413,758 โหนด-slot / 430,457 เส้นไม่ซ้ำ กับกราฟลำน้ำ 56,946 โหนด-slot / 56,550 ขอบ ผล: cyclomatic number μ = E − V + หมู่ มัธยฐาน ถนน 94 (สูงสุด 2,375) เทียบ ลำน้ำ 0 (สูงสุด 7) — มีวงวน 77 จาก 82 จุดถนน แต่เพียง 25 จาก 66 จุดของน้ำ และจุดที่น้ำมีวงวนคือ <em>คลองชลประทาน</em> ไม่ใช่ลำธารธรรมชาติ วัดความคดเคี้ยวจาก ระยะตามลำน้ำ ÷ ระยะตรง ระหว่างปลายสองข้างของเส้นผ่านศูนย์กลาง: มัธยฐาน 1.6385 สูงสุด 15.841 (ญาติกา บูทีค: 16.797 กม. ตามน้ำ เทียบ 1.060 กม. เส้นตรง) Horton–Strahler มัธยฐาน 2 สูงสุด 4 พื้นที่น้ำในจานมัธยฐาน 0.152% สูงสุด 3.483% (อุทยานดาราศาสตร์สิรินธร ซึ่งแปลงน้ำใหญ่สุดคือคลองชลประทาน) ระยะไปเส้นน้ำใกล้สุดมัธยฐาน 792.7 ม. ไกลสุด 4,143.2 ม. (ภูพร้อมดาว ฟาร์มสเตย์) และ 17 จุดที่ไม่มีเส้นน้ำใน 5 กม. เทียบกับ Natural Earth 10m: มีทั้งคู่ 13 · OSM เท่านั้น 53 · NE เท่านั้น 0 · ไม่มีทั้งคู่ 17 โดย 17 จุดนั้นอยู่ไกลจากลำน้ำของ NE มัธยฐาน 85,995 ม. ระดับประเทศ OSM Thailand มี way ติดแท็ก highway 2,944,183 เส้น แต่ waterway แค่ 59,338 เส้น = อัตราส่วน 49.6 : 1
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">26 พฤศจิกายน 2569</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day26_water.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>โจทย์ทางการวันนี้คือ <strong>“About 71% of the Earth’s surface. That wet thing, you know?”</strong> (หัวข้อ <em>Water</em> — ดึงข้อความมาจากหน้า 30daymapchallenge.com อ่านสดวันที่ 27 พ.ย. เก็บสำเนาไว้ที่ <code>scratch/chal26.html</code>)</p>
+<p>ซีรีส์นี้เงยหน้ามองฟ้ามา 25 วัน วันนี้ผมก้มมองน้ำ และคำถามที่ถามได้จริงด้วยข้อมูลที่มีคือ</p>
+<blockquote class="blockquote">
+<p>ลำน้ำกับถนน <em>ต่างกันแค่ความหนาแน่น</em> หรือต่างกันที่ <strong>รูปทรงของเครือข่าย</strong> เลย</p>
+</blockquote>
+<section id="สองกราฟบนกตกาเดยวกนเปะ" class="level2">
+<h2 class="anchored" data-anchor-id="สองกราฟบนกตกาเดยวกนเปะ">๐. สองกราฟบนกติกาเดียวกันเป๊ะ</h2>
+<p>ข้อมูลชุดเดียวกับ Day 21–25 (Geofabrik Thailand extract, md5 <code>db3958a0…</code>, snapshot 21 พ.ย. 2569) สแกนด้วย pyosmium รอบเดียว ~63 วินาที แล้วเก็บเป็นไฟล์เล็กลง repo:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>กราฟถนน</th>
+<th>กราฟลำน้ำ</th>
+<th>แปลงน้ำ (polygon)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ที่มา</td>
+<td><code>data/day25_graphs.npz</code> (Day 24/25)</td>
+<td><code>data/day26_water.npz</code> (0.42 MB)</td>
+<td><code>data/day26_areas.json.gz</code> (0.24 MB)</td>
+</tr>
+<tr class="even">
+<td>โหนดในจาน 5 กม.</td>
+<td>413,758 slot</td>
+<td><strong>56,946 slot</strong></td>
+<td>way ที่แตะจาน 1,885 แปลง</td>
+</tr>
+<tr class="odd">
+<td>ขอบในจาน</td>
+<td>430,457 เส้นไม่ซ้ำ</td>
+<td><strong>56,550 ขอบ</strong></td>
+<td>ทับจานจริง 2,442 ชิ้น</td>
+</tr>
+<tr class="even">
+<td>จุดทะเบียนที่มี</td>
+<td>82 จาก 83</td>
+<td><strong>66 จาก 83</strong></td>
+<td>69 จาก 83</td>
+</tr>
+</tbody>
+</table>
+<p>กติกาเก็บขอบเหมือนกันทุกตัวอักษร: เก็บเฉพาะขอบที่ปลาย <em>ทั้งสอง</em> อยู่ในจานของจุดเดียวกัน (ตัดถนน/ลำน้ำที่วิ่งมาจากนอกจานทิ้ง) ดังนั้นทุกตัวเลขข้างล่างเป็น “เครือข่ายหน้าต่าง 5 กม.” ไม่ใช่ของทั้งลุ่มน้ำ — ข้อจำกัดนี้เขียนไว้ใน <code>limitations</code> ของ stats ด้วย</p>
+</section>
+<section id="รปทรง-ตาขายกบกงไม" class="level2">
+<h2 class="anchored" data-anchor-id="รปทรง-ตาขายกบกงไม">๑. รูปทรง: ตาข่ายกับกิ่งไม้</h2>
+<p>เครื่องมือคือ <strong>cyclomatic number</strong> จากทฤษฎีกราฟพื้นฐาน μ = E − V + จำนวนหมู่ μ = 0 แปลว่ากราฟเป็น <em>ป่า</em> (tree) — เดินตามกิ่งแล้วไม่มีทางกลับมาที่เก่า μ &gt; 0 คือมีวงวนที่นับได้เป็นอิสระกี่วง</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>มัธยฐาน</th>
+<th>สูงสุด</th>
+<th>จุดที่มีวงวน (μ &gt; 0)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>กราฟถนน</td>
+<td><strong>94</strong></td>
+<td>2,375</td>
+<td><strong>77 จาก 82</strong></td>
+</tr>
+<tr class="even">
+<td>กราฟลำน้ำ</td>
+<td><strong>0</strong></td>
+<td>7</td>
+<td><strong>25 จาก 66</strong></td>
+</tr>
+</tbody>
+</table>
+<p><code>day26_tree_web.png</code> วางกราฟสองชิ้นของจุดเดียวกันข้างกัน (สเกลจริง พิกัดจริง) — ข้างบนสีทองคือบล็อกถนนสี่เหลี่ยมที่เดินวนได้ ข้างล่างสีฟ้าคือกิ่งน้ำที่แตกแขนงแล้วไม่กลับมา ตัวเลข μ ของสามจุดที่โชว์คือ <strong>374 / 315 / 313</strong> สำหรับถนน และ <strong>2 / 1 / 1</strong> สำหรับลำน้ำ</p>
+<p><strong>แต่มีข้อแม้น่าสนใจ</strong>: จุดที่กราฟน้ำมีวงวนมากที่สุดไม่ใช่ลำธารธรรมชาติ แต่คือ <em>คลองขุด</em> — 3 อันดับแรกคือ ซัมมิท กรีน วัลเล่ย์ เชียงใหม่ คันทรี คลับ (μ = 7), อุทยานดาราศาสตร์สิรินธร (μ = 5) และสวนสัตว์เปิดเขาเขียวฯ (μ = 4) คลองชลประทานถูกขุดเป็นตารางเพื่อส่งน้ำได้ทุกร่อง จึงมีวงวนเหมือนถนน ส่วนลำธารธรรมชาติยังคงเป็นกิ่งไม้ <strong>รูปทรงของเครือข่ายน้ำบอกได้ว่าน้ำนั้นเป็นของธรรมชาติหรือมนุษย์สร้างขึ้น</strong> นี่คือสิ่งที่ μ เล่าให้ฟัง โดยไม่ต้องรู้ชื่อสถานที่เลย</p>
+</section>
+<section id="ความคดเคยว-เดนตามนำไกลกวาเสนตรงกเทา" class="level2">
+<h2 class="anchored" data-anchor-id="ความคดเคยว-เดนตามนำไกลกวาเสนตรงกเทา">๒. ความคดเคี้ยว: เดินตามน้ำไกลกว่าเส้นตรงกี่เท่า</h2>
+<p>วัดจากเส้นผ่านศูนย์กลางของกราฟ (คู่โหนดที่ <em>ตามลำน้ำ</em> ไกลที่สุด) แล้วเทียบ ระยะตามน้ำกับระยะตรง นับเฉพาะจุดที่ปลายสองข้างห่างกันเกิน 1 กม. (62 จาก 66 จุด)</p>
+<ul>
+<li>มัธยฐาน <strong>1.6385 เท่า</strong> (Q75 = 2.813)</li>
+<li>สูงสุด <strong>15.841 เท่า</strong> — ญาติกา บูทีค: ตามลำน้ำ 16.797 กม. แต่เส้นตรงแค่ 1.060 กม.</li>
+<li>รองลงมา อุทยานดาราศาสตร์สิรินธร 14.530 เท่า (22.882 กม. ตามน้ำ / 1.575 กม. เส้นตรง)</li>
+<li>ระยะตามน้ำระหว่างปลายสองข้างมัธยฐาน 9.5475 กม. ขณะที่ระยะตรงมัธยฐาน 4.994 กม. (ทั้งสองค่าอยู่ในเพดานของจาน 5 กม. ตามที่ควร)</li>
+</ul>
+<p>ความแตกแขนงวัดด้วย <strong>Horton–Strahler order</strong>: มัธยฐาน <strong>2</strong> สูงสุด <strong>4</strong> (หมายเหตุสำคัญ: OSM แทบไม่มีแท็ก <code>direction</code> ในข้อมูลนี้ ผมจึง root ต้นไม้ด้วย <em>เรขาคณิต</em> คือปลายของเส้นผ่านศูนย์กลาง ไม่ใช่อุทกวิทยาจริง ลำดับที่ได้คือ “ความแตกแขนงของรูป” ไม่ใช่ลำดับ Strahler ที่นักอุทกศาสตร์ใช้ — เขียนกำกับไว้ทั้งในโค้ดและใน <code>defs</code>)</p>
+<p>สัดส่วน μ ของสองเครือข่ายยัง <em>ไปด้วยกัน</em> (rho = 0.5086, p = 9.13e-07) — จุดที่ถนนมีวงวน มักเป็นจุดที่คลองมีวงวนด้วย เพราะทั้งสองอย่างเกิดจากผังที่มนุษย์วาง ไม่ใช่เพราะวัดผิด</p>
+</section>
+<section id="นำอยใกลจดดฟามดแคไหน" class="level2">
+<h2 class="anchored" data-anchor-id="นำอยใกลจดดฟามดแคไหน">๓. น้ำอยู่ใกล้จุดดูฟ้ามืดแค่ไหน</h2>
+<ul>
+<li>พื้นที่น้ำในจาน 5 กม.: มัธยฐาน <strong>0.152%</strong> สูงสุด <strong>3.483%</strong> (อุทยานดาราศาสตร์สิรินธร) รวมพื้นที่น้ำทุกจาน 29.984 ตร.กม.</li>
+<li>แปลงน้ำที่ใหญ่ที่สุดที่ทับจาน (way 28339022) = <strong>1.908 ตร.กม.</strong> ชื่อใน OSM คือ “e Huai Huat”</li>
+<li>จุดที่น้ำเยอะเป็นอันดับสองคือ สิริน วิลล์ แม่ริม (3.370%) ซึ่งมีแปลงน้ำถึง <strong>269 ชิ้น</strong> ในจาน และแปลงใหญ่สุดคือ <strong>คลองชลประทาน</strong> — อีกครั้งที่ “น้ำ” รอบจุดดูฟ้าของไทยคือร่องน้ำที่คนขุด</li>
+<li>ระยะจากจุดทะเบียนไปเส้นน้ำใกล้สุด: มัธยฐาน <strong>792.7 ม.</strong> ไกลสุด <strong>4,143.2 ม.</strong> (ภูพร้อมดาว ฟาร์มสเตย์ — ยังอยู่ในจานแต่เกือบชิดขอบ)</li>
+<li><strong>17 จุดที่ไม่มีเส้นน้ำใน 5 กม. เลย</strong> เช่น อุทยานแห่งชาติเขาใหญ่ (เช่นเดียวกับที่ Day 24 พบ), อุทยานแห่งชาติขุนสถาน, เขตรักษาพันธุ์สัตว์ป่าภูเขียว, อุทยานแห่งชาติตาพระยา, ไร่องุ่นไวน์สองแห่ง และหอดูดาวเฉลิมพระเกียรติฯ นครราชสีมา</li>
+</ul>
+</section>
+<section id="นำหายไปจากแผนท-หรอไมมใครไป-map" class="level2">
+<h2 class="anchored" data-anchor-id="นำหายไปจากแผนท-หรอไมมใครไป-map">๔. น้ำหายไปจากแผนที่ หรือไม่มีใครไป map</h2>
+<p>คำถามนี้ตอบไม่ได้ด้วย OSM แหล่งเดียว เพราะ “ไม่มีใน OSM” แยกไม่ออกระหว่าง <em>ไม่มีของ</em> กับ <em>ไม่มีใคร map</em> ผมจึงเทียบกับ <strong>Natural Earth 10m rivers/lake centerlines</strong> ซึ่งคนละสำนัก คนละวิธีทำ (ในรัศมี 5 กม. เท่ากัน)</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>จำนวนจุด</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>มีทั้ง OSM และ Natural Earth</td>
+<td>13</td>
+</tr>
+<tr class="even">
+<td>OSM มี, Natural Earth ไม่มี</td>
+<td><strong>53</strong></td>
+</tr>
+<tr class="odd">
+<td>Natural Earth มี, OSM ไม่มี</td>
+<td><strong>0</strong></td>
+</tr>
+<tr class="even">
+<td>ไม่มีทั้งคู่</td>
+<td><strong>17</strong></td>
+</tr>
+</tbody>
+</table>
+<p>อ่านได้สองอย่าง และต้องอ่านให้ถูกทาง: <strong>53 จุดที่ OSM เห็นคนเดียว</strong> คือจุดที่ OSM ละเอียดกว่า (ลำธารเล็ก/คลองขุดที่ NE 10m ไม่เก็บ) ซึ่งเป็นเรื่องที่คาดหวังได้ ส่วน <strong>0 จุดที่ NE มีแต่ OSM ไม่มี</strong> แปลว่าใน 17 จุดที่ OSM ไร้เส้นน้ำ NE ก็ไร้ด้วย — และระยะจากจุดไปลำน้ำของ NE ใกล้สุด ของ 17 จุดนั้นคือ <strong>มัธยฐาน 85,995 ม.</strong> (เทียบกับ 38,052.6 ม. ในจุดที่ OSM มีน้ำ)</p>
+<p><strong>สรุปแบบซื่อสัตย์</strong>: 17 จุดที่ว่านั้น <em>น่าจะไม่มีน้ำจริง</em> ในรัศมี 5 กม. ไม่ใช่ถูกลืม map แต่ต้องพูดให้ตรงขอบเขต — NE 10m มีเฉพาะลำน้ำสายใหญ่ จึง <strong>ใช้ยืนยันว่า “ไม่มี” ได้ทางเดียว</strong> คือถ้า NE ก็ไม่มี แสดงว่าน่าจะไม่จริง ส่วน “ไม่มีใน NE แต่มีใน OSM” เกิดได้เสมอ (และเกิด 53 ครั้ง)</p>
+</section>
+<section id="นำถก-map-นอยกวาถนนแคไหน-ทงประเทศ" class="level2">
+<h2 class="anchored" data-anchor-id="นำถก-map-นอยกวาถนนแคไหน-ทงประเทศ">๕. น้ำถูก map น้อยกว่าถนนแค่ไหน (ทั้งประเทศ)</h2>
+<p>จากไฟล์เดียวกัน ทั้งประเทศมี way ทั้งหมด 5,303,991 เส้น ในนั้น</p>
+<ul>
+<li>ติดแท็ก <code>highway</code> = <strong>2,944,183</strong> way (ตรงกับที่ Day 24 รายงาน — ผู้ตัดสินในสคริปต์ assert ไว้)</li>
+<li>ติดแท็ก <code>waterway</code> = <strong>59,338</strong> way</li>
+<li>เป็นแปลงน้ำ (<code>natural=water</code>, <code>landuse=reservoir</code>, <code>waterway=riverbank</code> ฯลฯ) = <strong>98,821</strong> way</li>
+</ul>
+<p><strong>อัตราส่วนถนน : น้ำ = 49.6 : 1</strong> และใน 59,338 เส้นที่เป็นน้ำ 3 อันดับแรกคือ <code>canal</code> 18,762 · <code>stream</code> 17,598 · <code>river</code> 10,987 (ต่อด้วย <code>drain</code> 6,415, <code>ditch</code> 3,270, <code>dam</code> 1,450, <code>weir</code> 615, <code>lock_gate</code> 125) — ในจาน 5 กม. รอบจุดทะเบียนเจอคลาสแท็กรวม <strong>27 ค่า</strong> รวมทั้ง <code>waterfall</code>, <code>rapids</code>, <code>wetland</code>, <code>check_dam</code>, <code>floating_barrier</code></p>
+<p>ตัวเลขนี้ <em>วัดสองอย่างปนกัน</em>: ธรรมชาติสร้างลำธารน้อยกว่าถนนจริง และ mapper ไทย map ถนนมากกว่าน้ำมาก (Day 16 เคยชี้ว่าความหนาแน่นของ mapping ตามจำนวน mapper, ไม่ตามจำนวนของ) จำนวนโหนดของสองกราฟจึงไปด้วยกัน rho = 0.5528 (p = 6e-08) — “จุดที่น้ำเยอะ” มักเป็น “จุดที่ถนนเยอะ” ด้วย ซึ่งหมายความว่า <strong>เครือข่ายน้ำที่เราเห็นเป็นภาพสะท้อนของกิจกรรม mapping มากพอ ๆ กับสภาพภูมิประเทศ</strong></p>
+</section>
+<section id="นำกบความมด" class="level2">
+<h2 class="anchored" data-anchor-id="นำกบความมด">๖. น้ำกับความมืด</h2>
+<p>เอาสัดส่วนพื้นที่น้ำในจานไปเทียบกับ SQM ที่ทะเบียนบันทึก (มาก = มืดกว่า)</p>
+<ul>
+<li>rho(พื้นที่น้ำ, SQM) = <strong>−0.4156</strong> (p = 9.33e-05) → น้ำเยอะกว่า <em>มีแนวโน้ม</em> ท้องฟ้ามืดน้อยกว่า</li>
+<li>rho(ระยะไปเส้นน้ำ, SQM) = 0.1553 (p = 0.161) → <strong>ไม่มีนัยสำคัญ</strong></li>
+</ul>
+<p>ทิศทางของข้อแรกเข้ากันได้กับเหตุผลง่าย ๆ: ที่ที่มีน้ำร่องใหญ่คือที่ราบที่มีหมู่บ้าน มีนา มีไฟ ไม่ใช่ยอดดอย และ 3 จุดใน 17 จุดที่ “ไม่มีเส้นน้ำ” คือจุดที่ทะเบียนบันทึก SQM สูงสุดของ ทั้งประเทศ (21.42, 21.28, 21.06 — ไร่องุ่นไวน์ อัลซิดินี่, ไร่องุ่นไวน์กราน-มอนเต้, บ้านไร่ยายชะพลู)</p>
+<p>แต่ผมจะไม่เขียนว่า “น้ำทำให้ฟ้าสว่าง” เพราะ <strong>SQM ในทะเบียนเป็นตัวเลขที่คนกรอก</strong> (ค่าซ้ำกันเป็นก้อน 19/20/21 + ทศนิยมไม่กี่ค่า) และ Day 17 เคยเตือนไว้แล้วว่า อย่าให้สหสัมพันธ์หยาบ ๆ แบบนี้ปลอมเป็น causation — สิ่งที่โพสต์นี้ยืนยันได้มีแค่ “จุดที่ทะเบียนบันทึกว่ามืดกว่า มักเป็นจุดที่ OSM ไม่มีน้ำใกล้ ๆ” ซึ่งอาจเป็นเพราะ ทั้งสองอย่างเกิดจาก <em>ความห่างไกล</em> เหมือนกัน</p>
+</section>
+<section id="วาดวยคำศพท" class="level2">
+<h2 class="anchored" data-anchor-id="วาดวยคำศพท">ว่าด้วยคำศัพท์</h2>
+<ul>
+<li><strong>cyclomatic number (μ)</strong> — จำนวนวงวนอิสระของกราฟ คำนวณ μ = E − V + จำนวนหมู่ μ = 0 คือป่า (tree) ไม่มีทางเดินวนกลับ</li>
+<li><strong>Horton–Strahler order</strong> — วิธีให้ “ลำดับ” ของกิ่งน้ำ: ปลายน้ำ = 1, เมื่อกิ่งสองกิ่งลำดับเท่ากันมาบรรจบจึง +1 (ที่นี่ root ด้วยเรขาคณิต ไม่ใช่ทิศการไหล)</li>
+<li><strong>tortuosity</strong> — คำที่ผมใช้แปลความ “ความคดเคี้ยว” เป็นตัวเลข: ระยะตามเครือข่าย ÷ ระยะตรง</li>
+<li><strong>แปลงน้ำ (area water)</strong> — way ปิดที่มีแท็ก <code>natural=water</code>, <code>landuse=reservoir</code>, <code>waterway=riverbank</code> ฯลฯ ต่างจาก <code>waterway</code> แบบเส้น (line) ที่ไหลได้จริงในกราฟ</li>
+<li><strong>mpsas / SQM</strong> — mag/arcsec² หน่วยความสว่างท้องฟ้า <strong>ตัวเลขมาก = มืดกว่า</strong></li>
+</ul>
+</section>
+<section id="ขอจำกด" class="level2">
+<h2 class="anchored" data-anchor-id="ขอจำกด">ข้อจำกัด</h2>
+<ul>
+<li><strong>ตัวเลขทั้งหมดคือ “สิ่งที่ OSM map” ไม่ใช่ “สิ่งที่มีจริง”</strong> — อัตราส่วน 49.6 : 1 วัดทั้ง ธรรมชาติและกิจกรรมของ mapper พร้อมกัน แยกไม่ออกด้วยข้อมูลชุดนี้</li>
+<li><strong>μ และ tortuosity เป็นของหน้าต่าง 5 กม.</strong> ไม่ใช่ของลุ่มน้ำจริง: ปลายน้ำที่ไหลออกนอกจาน ถูกตัดทิ้งตามกติกาของ Day 24 ทำให้เครือข่ายขาดที่ขอบจานโดยเจตนา</li>
+<li><strong>Strahler root ด้วยเรขาคณิต</strong> เพราะไม่มีแท็ก <code>direction</code> — ลำดับที่ได้จึงใช้ <em>เทียบระหว่างจุด</em> ได้ แต่ไม่ใช่ค่าที่นักอุทกศาสตร์ใช้ในรายงาน</li>
+<li><strong>Natural Earth 10m มีเฉพาะลำน้ำสายใหญ่</strong> จึงตรวจได้ทางเดียว (ยืนยัน “ไม่มี”) เท่านั้น</li>
+<li><strong>พื้นที่น้ำคำนวณในระนาบ Equidistant Conic</strong> ไม่ใช่ geodesic — <code>Geod.geometry_area_perimeter</code> ใช้กับพิกัดเมตรไม่ได้ (ผมพลาดแบบนี้มาแล้วตอน Day 22) Day 22 วัดคลาดพื้นที่ของ projection นี้ไว้ที่ −0.3617% ซึ่งไม่มีผลต่อ “สัดส่วน” ที่รายงานตรงนี้</li>
+<li><strong>SQM เป็นค่าที่ทะเบียนบันทึก</strong> ไม่ใช่การวัดหน้างาน และหยาบเป็นจำนวนเต็ม — Day 17 เตือนแล้ว</li>
+<li>snapshot เดียวกับ Day 21–25 (21 พ.ย. 2569) คลองที่ขุดใหม่หลังวันนั้นไม่มีในนี้</li>
+</ul>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<ul>
+<li><a href="day26_water.png">day26_water.png</a> — แผนที่ 83 จุด + เส้นน้ำ/แปลงน้ำ + inset ขยาย “กิ่งน้ำทับบนตาข่ายถนน” ในจานเดียวกัน พร้อมตารางตัวเลข 14 บรรทัด</li>
+<li><a href="day26_tree_web.png">day26_tree_web.png</a> — ถนน (μ = 374/315/313) เทียบ ลำน้ำ (μ = 2/1/1) ของสามจุดที่กราฟน้ำใหญ่ที่สุด วาดบนพิกัดจริงสเกลจริง</li>
+<li><a href="day26_mu.png">day26_mu.png</a> — จำนวนจุดที่มี/ไม่มีวงวน, โหนดถนนเทียบโหนดน้ำ, Strahler distribution, และพื้นที่น้ำเทียบ SQM</li>
+<li><a href="day26_sources.png">day26_sources.png</a> — OSM เทียบ Natural Earth: 13 / 53 / 0 / 17 และการกระจายระยะไปลำน้ำของ NE</li>
+<li><a href="day26_sites.csv">day26_sites.csv</a> — ต่อจุด: กราฟน้ำ (V/E/μ/Strahler/เส้นผ่านศูนย์กลาง), พื้นที่น้ำ, ระยะ, ค่า SQM, และระยะจาก Natural Earth</li>
+<li><a href="day26_areas.csv">day26_areas.csv</a> — แปลงน้ำ 2,442 ชิ้นที่ทับจาน (way id, แท็ก, ชื่อ, พื้นที่)</li>
+<li><a href="day26_summary.csv">day26_summary.csv</a> — ตัวเลขหลัก 25 บรรทัดพร้อมหน่วย</li>
+<li><a href="day26_stats.json">day26_stats.json</a> — ต้นทางของตัวเลขทุกตัวในโพสต์นี้</li>
+<li><a href="../../notebooks/day26_water.html">โน้ตบุ๊กฉบับรันได้</a> — สร้างจาก <code>tools/day26_water.py</code> ไฟล์เดียว (<code>notebooks/day26_water.ipynb</code>) รันบน Colab จบใน ~36 วินาทีโดยไม่ต้องมี PBF 330 MB เพราะ export เป็น <code>data/day26_water.npz</code> (0.42 MB) + <code>data/day26_areas.json.gz</code> (0.24 MB) ไว้แล้ว</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

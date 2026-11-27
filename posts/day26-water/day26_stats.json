@@ -1,0 +1,322 @@
+{
+ "theme": {
+  "day": 26,
+  "name": "Water",
+  "prompt": "About 71% of the Earth's surface. That wet thing, you know?",
+  "read_from": "30daymapchallenge.com อ่านสด 27 พ.ย. 2569 (ไฟล์ scratch/chal26.html)"
+ },
+ "provenance": {
+  "pbf_md5": "db3958a037ce717c462101b86e2f75f3",
+  "pbf_read_utc": "2026-11-27 14:14:24 UTC",
+  "radius_m": 5000.0,
+  "made_by": "tools/collect_day26_water.py (pyosmium, locations=True)",
+  "same_extract_as": "Day 21–25",
+  "natural_earth": "ne_10m_rivers_lake_centerlines (10m, mirror ทางการ naciscdn)"
+ },
+ "country": {
+  "ways_in_file": 5303991,
+  "highway_ways": 2944183,
+  "waterway_ways": 59338,
+  "area_ways": 98821,
+  "road_to_water_ratio": 49.62,
+  "waterway_class_top": [
+   {
+    "cls": "canal",
+    "ways": 18762
+   },
+   {
+    "cls": "stream",
+    "ways": 17598
+   },
+   {
+    "cls": "river",
+    "ways": 10987
+   },
+   {
+    "cls": "drain",
+    "ways": 6415
+   },
+   {
+    "cls": "ditch",
+    "ways": 3270
+   },
+   {
+    "cls": "dam",
+    "ways": 1450
+   },
+   {
+    "cls": "weir",
+    "ways": 615
+   },
+   {
+    "cls": "lock_gate",
+    "ways": 125
+   }
+  ],
+  "classes_in_discs": [
+   "canal",
+   "river",
+   "stream",
+   "drain",
+   "dam",
+   "ditch",
+   "weir",
+   "tidal_channel",
+   "moat",
+   "brook",
+   "stream;waterfall",
+   "floodgate",
+   "tr",
+   "boatyard",
+   "dock",
+   "waterfall",
+   "lock_gate",
+   "wetland",
+   "artificial",
+   "check_dam",
+   "pressurised",
+   "rapids",
+   "sluice_gate",
+   "construction",
+   "floating_barrier",
+   "flowline",
+   "spillway"
+  ]
+ },
+ "discs": {
+  "node_slots": 56946,
+  "edges": 56550,
+  "sites_with_lines": 66,
+  "sites_without_lines": [
+   "อุทยานแห่งชาติขุนสถาน",
+   "ขุนเขา ตำนานไพร รีสอร์ท",
+   "เกาะพะลวยบีชบังกะโล",
+   "ภูคำหอม รีสอร์ท",
+   "ทุ่งโนนป่าก่อ เขตรักษาพันธุ์สัตว์ป่าภูสีฐาน",
+   "บ้านไร่นายเขียว",
+   "อุ่นฟ้าอิงดาวแคมป์ปิ้ง",
+   "อุทยานแห่งชาติตาพระยา",
+   "อุทยานแห่งชาติเขาใหญ่",
+   "มีลา การ์เดน รีทรีท คอทเทจ",
+   "อุทยานแห่งชาติป่าหินงาม",
+   "เขตรักษาพันธุ์สัตว์ป่าภูเขียว",
+   "ไร่องุ่นไวน์กราน-มอนเต้",
+   "บ้านไร่ยายชะพลู",
+   "หอดูดาวเฉลิมพระเกียรติฯ นครราชสีมา",
+   "ไร่องุ่นไวน์ อัลซิดินี่",
+   "โรงแรม เดอะเปียโน รีสอร์ท เขาใหญ่"
+  ],
+  "sites_with_area": 69,
+  "areas_touching": 1885,
+  "area_intersections": 2442,
+  "line_ways_touching": 970
+ },
+ "shape": {
+  "mu_road_median": 94.0,
+  "mu_water_median": 0.0,
+  "mu_road_max": 2375,
+  "mu_water_max": 7,
+  "sites_water_with_loop": 25,
+  "sites_road_with_loop": 77,
+  "strahler_median": 2.0,
+  "strahler_max": 4,
+  "leaf_frac_water_median": 0.0284,
+  "leaf_frac_road_median": 0.0466,
+  "diam_km_water_median": 9.5475,
+  "diam_km_water_max": 33.159,
+  "diam_straight_median": 4.994,
+  "tortuosity_median": 1.6385,
+  "tortuosity_q75": 2.813,
+  "tortuosity_max": 15.841,
+  "tortuosity_max_site": "ญาติกา บูทีค",
+  "tortuosity_measured": 62,
+  "rho_mu": {
+   "rho": 0.5086314497831785,
+   "p": 9.134133331308511e-07
+  }
+ },
+ "distance": {
+  "dist_line_median": 792.7,
+  "dist_line_max": 4143.2,
+  "dist_line_site": "ภูพร้อมดาว ฟาร์มสเตย์",
+  "dist_area_median": 711.1,
+  "sites_no_line": 17
+ },
+ "area": {
+  "pct_median": 0.152,
+  "pct_max": 3.483,
+  "pct_max_site": "อุทยานดาราศาสตร์สิรินธร",
+  "km2_total_in_discs": 29.98389,
+  "biggest_way": {
+   "way": 28339022,
+   "name": "e Huai Huat",
+   "km2": 1.90788
+  },
+  "unit": "สัดส่วนคำนวณในระนาบ Equidistant Conic (Day 22 วัดคลาดพื้นที่ −0.3617%)"
+ },
+ "sources": {
+  "both": 13,
+  "only_osm": 53,
+  "only_ne": 0,
+  "neither": 17,
+  "ne_dist_median_when_osm_missing": 85995.4,
+  "ne_dist_median_when_osm_has": 38052.6,
+  "threshold_m": 5000.0
+ },
+ "dark": {
+  "rho_water_sqm": -0.4156110845678052,
+  "p_water_sqm": 9.334343853731522e-05,
+  "rho_dist_sqm": 0.15533192633395618,
+  "p_dist_sqm": 0.16085357706330405,
+  "rho_nodes": 0.5527927246062899,
+  "p_nodes": 6.002247892065908e-08,
+  "sqm_note": "SQM ในทะเบียนเป็นจำนวนเต็ม 19–22 (มาก = มืดกว่า) — Day 17 เคยเตือน ว่าอย่าให้สหสัมพันธ์หยาบ ๆ แบบนี้ปลอมเป็น causation",
+  "rho_water_sqm_4dp": -0.4156,
+  "rho_dist_sqm_4dp": 0.1553,
+  "rho_nodes_4dp": 0.5528,
+  "rho_mu_4dp": 0.5086
+ },
+ "hero_sites": [
+  62,
+  59,
+  60
+ ],
+ "figures": [
+  "day26_water.png",
+  "day26_tree_web.png",
+  "day26_mu.png",
+  "day26_sources.png"
+ ],
+ "defs": {
+  "cyclomatic": "μ = E − V + จำนวนหมู่ (graph theory พื้นฐาน) = จำนวนวงวนอิสระของกราฟ; μ = 0 คือป่า (tree/forest) เดินแล้วไม่มีทางกลับมาที่เก่า",
+  "strahler": "Horton–Strahler order: ปลายน้ำ = 1, จุดรวมที่กิ่งสองกิ่งเท่ากันมาบรรจบ = +1 — ในข้อมูลนี้ OSM แทบไม่มีแท็ก direction จึง root ด้วยเรขาคณิต (ปลายเส้นผ่านศูนย์กลาง) ไม่ใช่อุทกวิทยาจริง",
+  "disc": "จานรัศมี 5,000 ม. รอบจุดทะเบียน พร้อมกติกาเก็บเฉพาะขอบที่ปลายทั้งสองอยู่ในจาน (นิยามเดียวกับ Day 24 ทุกประการ)",
+  "mpsas": "mag/arcsec² — ค่าความสว่างท้องฟ้า ยิ่งมากยิ่งมืด"
+ },
+ "limitations": [
+  "น้ำที่ OSM รู้จักเป็น *สิ่งที่คนไป map* ไม่ใช่สิ่งที่มีจริง: จำนวน way waterway 59,338 เทียบ highway 2,944,183 (อัตรา 49.6:1) ส่วนหนึ่งคือถนนมีคน map มากกว่า",
+  "Natural Earth 10m มีเฉพาะลำน้ำสายใหญ่ จึง *ตรวจได้ทางเดียว* คือ 'ถ้า NE ก็ไม่มี แสดงว่าน่าจะไม่จริง' — ใช้ยืนยันว่าไม่มี ไม่ได้ใช้พิสูจน์ว่ามี",
+  "μ ของกราฟน้ำถูกกดโดยกติกาตัดขอบที่ขอบจาน (ปลายน้ำที่ไหลออกนอกจานหายไป) จึงเป็นค่าของ *หน้าต่าง 5 กม.* ไม่ใช่ของลุ่มน้ำทั้งลุ่ม",
+  "Strahler root ด้วยเรขาคณิต (ไม่มีข้อมูลทิศการไหล) ลำดับที่ได้จึงเป็น 'ความแตกแขนง ของรูป' ไม่ใช่ลำดับอุทกวิทยาที่นักอุทกศาสตร์ใช้",
+  "พื้นที่น้ำคำนวณในระนาบ projection ไม่ใช่ geodesic (ใช้ Geod กับพิกัดเมตรไม่ได้) — Day 22 วัดคลาดพื้นที่ของ projection นี้ไว้ที่ −0.3617% ซึ่งไม่มีผลกับสัดส่วน",
+  "SQM เป็นค่าที่ *ทะเบียนบันทึก* (จำนวนเต็ม 19–22) ไม่ใช่การวัดจริงหน้างาน สหสัมพันธ์ rho −0.416 จึงเป็นข้อสังเกต ไม่ใช่หลักฐานว่าน้ำทำให้ฟ้าสว่าง"
+ ],
+ "examples": {
+  "hero": [
+   {
+    "name": "เดอะทีค รีสอร์ท",
+    "r_nodes": 9047.0,
+    "r_mu": 374.0,
+    "w_nodes": 3675.0,
+    "w_edges": 3668.0,
+    "w_mu": 2.0,
+    "w_strahler": 3.0,
+    "water_pct": 0.252
+   },
+   {
+    "name": "พูโตะ",
+    "r_nodes": 8506.0,
+    "r_mu": 315.0,
+    "w_nodes": 3645.0,
+    "w_edges": 3637.0,
+    "w_mu": 1.0,
+    "w_strahler": 3.0,
+    "water_pct": 0.19
+   },
+   {
+    "name": "บ้านสวนป่าโป่งดอย",
+    "r_nodes": 8467.0,
+    "r_mu": 313.0,
+    "w_nodes": 3630.0,
+    "w_edges": 3619.0,
+    "w_mu": 1.0,
+    "w_strahler": 3.0,
+    "water_pct": 0.19
+   }
+  ],
+  "tortuosity_top": [
+   {
+    "name": "ญาติกา บูทีค",
+    "w_diam_km": 16.797,
+    "w_diam_straight_km": 1.06,
+    "w_tortuosity": 15.841
+   },
+   {
+    "name": "อุทยานดาราศาสตร์สิรินธร",
+    "w_diam_km": 22.882,
+    "w_diam_straight_km": 1.575,
+    "w_tortuosity": 14.53
+   },
+   {
+    "name": "ซอมพอ วิลเลจ",
+    "w_diam_km": 15.413,
+    "w_diam_straight_km": 1.707,
+    "w_tortuosity": 9.032
+   }
+  ],
+  "water_pct_top": [
+   {
+    "name": "อุทยานดาราศาสตร์สิรินธร",
+    "water_pct": 3.483,
+    "n_areas": 208.0,
+    "biggest_name": "คลองชลประทาน"
+   },
+   {
+    "name": "สิริน วิลล์ แม่ริม เชียงใหม่",
+    "water_pct": 3.37,
+    "n_areas": 269.0,
+    "biggest_name": "คลองชลประทาน"
+   }
+  ],
+  "mu_water_loops": [
+   {
+    "name": "ซัมมิท กรีน วัลเล่ย์ เชียงใหม่ คันทรี คลับ",
+    "w_mu": 7.0,
+    "w_nodes": 3088.0,
+    "w_edges": 3070.0
+   },
+   {
+    "name": "อุทยานดาราศาสตร์สิรินธร",
+    "w_mu": 5.0,
+    "w_nodes": 2294.0,
+    "w_edges": 2254.0
+   },
+   {
+    "name": "สวนสัตว์เปิดเขาเขียว องค์การสวนสัตว์แห่งประเทศไทย ในพระบรมราชูปถัมภ์",
+    "w_mu": 4.0,
+    "w_nodes": 799.0,
+    "w_edges": 790.0
+   }
+  ],
+  "far_from_water": [
+   {
+    "name": "ภูพร้อมดาว ฟาร์มสเตย์",
+    "dist_line_m": 4143.2
+   }
+  ],
+  "no_water_darkest": [
+   {
+    "name": "ไร่องุ่นไวน์ อัลซิดินี่",
+    "sqm": 21.42
+   },
+   {
+    "name": "ไร่องุ่นไวน์กราน-มอนเต้",
+    "sqm": 21.28
+   },
+   {
+    "name": "บ้านไร่ยายชะพลู",
+    "sqm": 21.06
+   }
+  ],
+  "n_areas_max": 269,
+  "classes_in_discs": 27
+ },
+ "export": {
+  "water_npz_mb": 0.42,
+  "areas_gz_mb": 0.24,
+  "scan_seconds": 63,
+  "local_seconds": 14,
+  "colab_seconds": 36,
+  "note": "scan_seconds = เวลาสแกน PBF ของ collect_day26_water.py; colab_seconds = วัดจริงจาก DAY26_FORCE_COLAB=1 บนเครื่องเดียวกัน (0/146 คีย์ที่ต่างจากที่รันในเครื่อง)"
+ }
+}

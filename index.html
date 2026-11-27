@@ -87,7 +87,8 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
+      page: 25,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
@@ -170,7 +171,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(25)</span></div><div class="category" data-category="MzBEYXlNYXBDaGFsbGVuZ2U=">30DayMapChallenge <span class="quarto-category-count">(25)</span></div><div class="category" data-category="YWNjZXNzaWJpbGl0eQ==">accessibility <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWk=">ai <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWlyLXF1YWxpdHk=">air-quality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YXN0cm9ub215">astronomy <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YnVmZmVy">buffer <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2Ftcw==">cams <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2FydG9ncmFwaHk=">cartography <span class="quarto-category-count">(22)</span></div><div class="category" data-category="Y29sYWI=">colab <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sbGFib3JhdGl2ZQ==">collaborative <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YS1xdWFsaXR5">data-quality <span class="quarto-category-count">(4)</span></div><div class="category" data-category="ZGF0YS12aXo=">data-viz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGJzY2Fu">dbscan <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVt">dem <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Zm9vZA==">food <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2VvZGF0YS1xdWFsaXR5">geodata-quality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2VvZmFicmlr">geofabrik <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2VvbWV0cnk=">geometry <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z3JhcGgtdGhlb3J5">graph-theory <span class="quarto-category-count">(2)</span></div><div class="category" data-category="aDM=">h3 <span class="quarto-category-count">(8)</span></div><div class="category" data-category="aGFjaHVyZQ==">hachure <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGV4YWdvbnM=">hexagons <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5lcXVhbGl0eQ==">inequality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZXJhY3RpdmU=">interactive <span class="quarto-category-count">(1)</span></div><div class="category" data-category="amF2YXNjcmlwdA==">javascript <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGFuZC10ZW51cmU=">land-tenure <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGVhZmxldA==">leaflet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGVvbmlkcw==">leonids <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGlnaHQtcG9sbHV0aW9u">light-pollution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWV0ZW9yLXNob3dlcg==">meteor-shower <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWlzc2luZy1kYXRh">missing-data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmVhcmVzdC1uZWlnaGJvdXI=">nearest-neighbour <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV0d29yaw==">network <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV0d29ya3g=">networkx <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bm9pc2U=">noise <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bnVsbA==">null <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3BlbnN0cmVldG1hcA==">openstreetmap <span class="quarto-category-count">(5)</span></div><div class="category" data-category="b3ZlcnBhc3M=">overpass <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cG93ZXI=">power <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJvamVjdGlvbg==">projection <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJvbXB0aW5n">prompting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJveHk=">proxy <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHlwcm9q">pyproj <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cm91dGluZw==">routing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2NhbGU=">scale <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2Vuc2Vz">senses <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2V0LWNvdmVy">set-cover <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c291bmRzY2FwZQ==">soundscape <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGhhaWxhbmQ=">thailand <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGltZS1ib3hpbmc=">time-boxing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlzc290">tissot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dXJiYW4tcnVyYWw=">urban-rural <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dXRvcGlh">utopia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmVyaWZpY2F0aW9u">verification <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmlld3NoZWQ=">viewshed <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmludGFnZQ==">vintage <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2luZA==">wind <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(26)</span></div><div class="category" data-category="MzBEYXlNYXBDaGFsbGVuZ2U=">30DayMapChallenge <span class="quarto-category-count">(26)</span></div><div class="category" data-category="YWNjZXNzaWJpbGl0eQ==">accessibility <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWk=">ai <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWlyLXF1YWxpdHk=">air-quality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YXN0cm9ub215">astronomy <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YnVmZmVy">buffer <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2Ftcw==">cams <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2FydG9ncmFwaHk=">cartography <span class="quarto-category-count">(22)</span></div><div class="category" data-category="Y29sYWI=">colab <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sbGFib3JhdGl2ZQ==">collaborative <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YS1xdWFsaXR5">data-quality <span class="quarto-category-count">(4)</span></div><div class="category" data-category="ZGF0YS12aXo=">data-viz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGJzY2Fu">dbscan <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVt">dem <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Zm9vZA==">food <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2VvZGF0YS1xdWFsaXR5">geodata-quality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2VvZmFicmlr">geofabrik <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2VvbWV0cnk=">geometry <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z3JhcGgtdGhlb3J5">graph-theory <span class="quarto-category-count">(3)</span></div><div class="category" data-category="aDM=">h3 <span class="quarto-category-count">(8)</span></div><div class="category" data-category="aGFjaHVyZQ==">hachure <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGV4YWdvbnM=">hexagons <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aHlkcm9sb2d5">hydrology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5lcXVhbGl0eQ==">inequality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZXJhY3RpdmU=">interactive <span class="quarto-category-count">(1)</span></div><div class="category" data-category="amF2YXNjcmlwdA==">javascript <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGFuZC10ZW51cmU=">land-tenure <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGVhZmxldA==">leaflet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGVvbmlkcw==">leonids <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGlnaHQtcG9sbHV0aW9u">light-pollution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWV0ZW9yLXNob3dlcg==">meteor-shower <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWlzc2luZy1kYXRh">missing-data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmVhcmVzdC1uZWlnaGJvdXI=">nearest-neighbour <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV0d29yaw==">network <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV0d29ya3g=">networkx <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bm9pc2U=">noise <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bnVsbA==">null <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3BlbnN0cmVldG1hcA==">openstreetmap <span class="quarto-category-count">(6)</span></div><div class="category" data-category="b3ZlcnBhc3M=">overpass <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cG93ZXI=">power <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJvamVjdGlvbg==">projection <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJvbXB0aW5n">prompting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJveHk=">proxy <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHlwcm9q">pyproj <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cm91dGluZw==">routing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2NhbGU=">scale <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2Vuc2Vz">senses <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2V0LWNvdmVy">set-cover <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c291bmRzY2FwZQ==">soundscape <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGhhaWxhbmQ=">thailand <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGltZS1ib3hpbmc=">time-boxing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlzc290">tissot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dXJiYW4tcnVyYWw=">urban-rural <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dXRvcGlh">utopia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmVyaWZpY2F0aW9u">verification <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmlld3NoZWQ=">viewshed <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmludGFnZQ==">vintage <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2F0ZXI=">water <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2luZA==">wind <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
@@ -201,7 +202,44 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2dyYXBoLXRoZW9yeSUyQ29wZW5zdHJlZXRtYXAlMkNkYXRhLXZpeg==" data-listing-date-sort="1795539600000" data-listing-file-modified-sort="1795744178180" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="880">
+<div class="quarto-post image-right" data-index="0" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkN3YXRlciUyQ2dyYXBoLXRoZW9yeSUyQ29wZW5zdHJlZXRtYXAlMkNoeWRyb2xvZ3k=" data-listing-date-sort="1795626000000" data-listing-file-modified-sort="1795791608892" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="956">
+<div class="thumbnail"><a href="./posts/day26-water/index.html" class="no-external-icon">
+
+<img loading="lazy" src="./posts/day26-water/day26_water.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/day26-water/index.html" class="no-external-icon">Day 26 · Water — น้ำเป็นกิ่งไม้ ถนนเป็นตาข่าย: μ มัธยฐานของกราฟลำน้ำ 0 เทียบกราฟถนน 94 (สูงสุด 2,375) และ 17 จุดที่ทั้งสองแผนที่เห็นตรงกันว่าไม่มีน้ำ</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MzBEYXlNYXBDaGFsbGVuZ2U='); return false;">30DayMapChallenge</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d2F0ZXI='); return false;">water</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z3JhcGgtdGhlb3J5'); return false;">graph-theory</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('b3BlbnN0cmVldG1hcA=='); return false;">openstreetmap</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aHlkcm9sb2d5'); return false;">hydrology</div>
+
+</div>
+<div class="listing-description">
+<a href="./posts/day26-water/index.html" class="no-external-icon">
+<p>โจทย์ ‘About 71% of the Earth’s surface. That wet thing, you know?’ ผมสร้างกราฟสองชิ้นบนกติกาเดียวกันเป๊ะรอบจุดดูฟ้ามืด 83 จุด (จาน 5,000 ม. เก็บเฉพาะขอบที่ปลายทั้งสองอยู่ในจานของจุดเดียวกัน — นิยามเดียวกับ Day 24): กราฟถนน 413,758 โหนด-slot / 430,457 เส้นไม่ซ้ำ กับกราฟลำน้ำ 56,946 โหนด-slot / 56,550 ขอบ ผล: cyclomatic number μ = E − V + หมู่ มัธยฐาน ถนน 94 (สูงสุด 2,375) เทียบ ลำน้ำ 0 (สูงสุด 7) — มีวงวน 77 จาก 82 จุดถนน แต่เพียง 25 จาก 66 จุดของน้ำ และจุดที่น้ำมีวงวนคือ <em>คลองชลประทาน</em> ไม่ใช่ลำธารธรรมชาติ วัดความคดเคี้ยวจาก ระยะตามลำน้ำ ÷ ระยะตรง ระหว่างปลายสองข้างของเส้นผ่านศูนย์กลาง: มัธยฐาน 1.6385 สูงสุด 15.841 (ญาติกา บูทีค: 16.797 กม. ตามน้ำ เทียบ 1.060 กม. เส้นตรง) Horton–Strahler มัธยฐาน 2 สูงสุด 4 พื้นที่น้ำในจานมัธยฐาน 0.152% สูงสุด 3.483% (อุทยานดาราศาสตร์สิรินธร ซึ่งแปลงน้ำใหญ่สุดคือคลองชลประทาน) ระยะไปเส้นน้ำใกล้สุดมัธยฐาน 792.7 ม. ไกลสุด 4,143.2 ม. (ภูพร้อมดาว ฟาร์มสเตย์) และ 17 จุดที่ไม่มีเส้นน้ำใน 5 กม. เทียบกับ Natural Earth 10m: มีทั้งคู่ 13 · OSM เท่านั้น 53 · NE เท่านั้น 0 · ไม่มีทั้งคู่ 17 โดย 17 จุดนั้นอยู่ไกลจากลำน้ำของ NE มัธยฐาน 85,995 ม. ระดับประเทศ OSM Thailand มี way ติดแท็ก highway 2,944,183 เส้น แต่ waterway แค่ 59,338 เส้น = อัตราส่วน 49.6 : 1</p>
+</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/day26-water/index.html" class="no-external-icon">
+<div class="listing-date">
+26 พ.ย. 2569
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2dyYXBoLXRoZW9yeSUyQ29wZW5zdHJlZXRtYXAlMkNkYXRhLXZpeg==" data-listing-date-sort="1795539600000" data-listing-file-modified-sort="1795744178180" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="880">
 <div class="thumbnail"><a href="./posts/day25-is-this-a-map/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day25-is-this-a-map/day25_ladder.png" class="thumbnail-image">
@@ -238,7 +276,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNuZXR3b3JrJTJDZ3JhcGgtdGhlb3J5JTJDb3BlbnN0cmVldG1hcCUyQ25ldHdvcmt4" data-listing-date-sort="1795453200000" data-listing-file-modified-sort="1795532212002" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1053">
+<div class="quarto-post image-right" data-index="2" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNuZXR3b3JrJTJDZ3JhcGgtdGhlb3J5JTJDb3BlbnN0cmVldG1hcCUyQ25ldHdvcmt4" data-listing-date-sort="1795453200000" data-listing-file-modified-sort="1795532212002" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1053">
 <div class="thumbnail"><a href="./posts/day24-network/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day24-network/day24_networks.png" class="thumbnail-image">
@@ -275,7 +313,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNvcGVuc3RyZWV0bWFwJTJDdGhhaWxhbmQlMkNmb29kJTJDZ2VvZGF0YS1xdWFsaXR5" data-listing-date-sort="1795366800000" data-listing-file-modified-sort="1795448699127" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1394">
+<div class="quarto-post image-right" data-index="3" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNvcGVuc3RyZWV0bWFwJTJDdGhhaWxhbmQlMkNmb29kJTJDZ2VvZGF0YS1xdWFsaXR5" data-listing-date-sort="1795366800000" data-listing-file-modified-sort="1795448699127" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1394">
 <div class="thumbnail"><a href="./posts/day23-taste/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day23-taste/day23_lanna_map.png" class="thumbnail-image">
@@ -312,7 +350,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3Byb2plY3Rpb24lMkNweXByb2olMkN0aXNzb3QlMkNoMw==" data-listing-date-sort="1795280400000" data-listing-file-modified-sort="1795361642278" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1672">
+<div class="quarto-post image-right" data-index="4" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3Byb2plY3Rpb24lMkNweXByb2olMkN0aXNzb3QlMkNoMw==" data-listing-date-sort="1795280400000" data-listing-file-modified-sort="1795361642278" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1672">
 <div class="thumbnail"><a href="./posts/day22-projections/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day22-projections/day22_twelve.png" class="thumbnail-image">
@@ -351,7 +389,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNvcGVuc3RyZWV0bWFwJTJDZ2VvZmFicmlrJTJDZGF0YS1xdWFsaXR5JTJDb3ZlcnBhc3M=" data-listing-date-sort="1795194000000" data-listing-file-modified-sort="1795272226277" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1502">
+<div class="quarto-post image-right" data-index="5" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNvcGVuc3RyZWV0bWFwJTJDZ2VvZmFicmlrJTJDZGF0YS1xdWFsaXR5JTJDb3ZlcnBhc3M=" data-listing-date-sort="1795194000000" data-listing-file-modified-sort="1795272226277" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1502">
 <div class="thumbnail"><a href="./posts/day21-openstreetmap/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day21-openstreetmap/day21_two_sources.png" class="thumbnail-image">
@@ -388,7 +426,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2gzJTJDZ2VvbWV0cnklMkNoZXhhZ29ucw==" data-listing-date-sort="1795107600000" data-listing-file-modified-sort="1795191708820" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="608">
+<div class="quarto-post image-right" data-index="6" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2gzJTJDZ2VvbWV0cnklMkNoZXhhZ29ucw==" data-listing-date-sort="1795107600000" data-listing-file-modified-sort="1795191708820" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="608">
 <div class="thumbnail"><a href="./posts/day20-hexagons/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day20-hexagons/day20_bestagon.png" class="thumbnail-image">
@@ -425,7 +463,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2Fpci1xdWFsaXR5JTJDY2FtcyUyQ3dpbmQlMkNzZW5zZXM=" data-listing-date-sort="1795021200000" data-listing-file-modified-sort="1795188192747" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="752">
+<div class="quarto-post image-right" data-index="7" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2Fpci1xdWFsaXR5JTJDY2FtcyUyQ3dpbmQlMkNzZW5zZXM=" data-listing-date-sort="1795021200000" data-listing-file-modified-sort="1795188192747" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="752">
 <div class="thumbnail"><a href="./posts/day19-smell/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day19-smell/day19_smell.png" class="thumbnail-image">
@@ -464,7 +502,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2RhdGEtcXVhbGl0eSUyQ21pc3NpbmctZGF0YSUyQ251bGw=" data-listing-date-sort="1794934800000" data-listing-file-modified-sort="1795107253270" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="804">
+<div class="quarto-post image-right" data-index="8" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2RhdGEtcXVhbGl0eSUyQ21pc3NpbmctZGF0YSUyQ251bGw=" data-listing-date-sort="1794934800000" data-listing-file-modified-sort="1795107253270" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="804">
 <div class="thumbnail"><a href="./posts/day18-null/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day18-null/day18_null.png" class="thumbnail-image">
@@ -501,7 +539,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2xlb25pZHMlMkNtZXRlb3Itc2hvd2VyJTJDYXN0cm9ub215JTJDbGlnaHQtcG9sbHV0aW9u" data-listing-date-sort="1794848400000" data-listing-file-modified-sort="1794926580704" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="818">
+<div class="quarto-post image-right" data-index="9" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2xlb25pZHMlMkNtZXRlb3Itc2hvd2VyJTJDYXN0cm9ub215JTJDbGlnaHQtcG9sbHV0aW9u" data-listing-date-sort="1794848400000" data-listing-file-modified-sort="1794926580704" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="818">
 <div class="thumbnail"><a href="./posts/day17-light-dark/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day17-light-dark/day17_light_dark.png" class="thumbnail-image">
@@ -540,7 +578,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ29wZW5zdHJlZXRtYXAlMkNvdmVycGFzcyUyQ2NvbGxhYm9yYXRpdmU=" data-listing-date-sort="1794762000000" data-listing-file-modified-sort="1794879621264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="818">
+<div class="quarto-post image-right" data-index="10" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ29wZW5zdHJlZXRtYXAlMkNvdmVycGFzcyUyQ2NvbGxhYm9yYXRpdmU=" data-listing-date-sort="1794762000000" data-listing-file-modified-sort="1794879621264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="818">
 <div class="thumbnail"><a href="./posts/day16-collaborative-map/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day16-collaborative-map/day16_collaborative.png" class="thumbnail-image">
@@ -577,7 +615,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2gzJTJDbmVhcmVzdC1uZWlnaGJvdXIlMkNkYXRhLXF1YWxpdHk=" data-listing-date-sort="1794675600000" data-listing-file-modified-sort="1794668825608" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="784">
+<div class="quarto-post image-right" data-index="11" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2gzJTJDbmVhcmVzdC1uZWlnaGJvdXIlMkNkYXRhLXF1YWxpdHk=" data-listing-date-sort="1794675600000" data-listing-file-modified-sort="1794668825608" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="784">
 <div class="thumbnail"><a href="./posts/day15-inside-out/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day15-inside-out/day15_inside_out.png" class="thumbnail-image">
@@ -614,7 +652,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2gzJTJDc2NhbGUlMkNkYXRhLXF1YWxpdHk=" data-listing-date-sort="1794589200000" data-listing-file-modified-sort="1794664513801" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1013">
+<div class="quarto-post image-right" data-index="12" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2gzJTJDc2NhbGUlMkNkYXRhLXF1YWxpdHk=" data-listing-date-sort="1794589200000" data-listing-file-modified-sort="1794664513801" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1013">
 <div class="thumbnail"><a href="./posts/day14-borgesian-map/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day14-borgesian-map/day14_ladder.png" class="thumbnail-image">
@@ -651,7 +689,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2ludGVyYWN0aXZlJTJDbGVhZmxldCUyQ2phdmFzY3JpcHQ=" data-listing-date-sort="1794502800000" data-listing-file-modified-sort="1794724374073" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="554">
+<div class="quarto-post image-right" data-index="13" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2ludGVyYWN0aXZlJTJDbGVhZmxldCUyQ2phdmFzY3JpcHQ=" data-listing-date-sort="1794502800000" data-listing-file-modified-sort="1794724374073" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="554">
 <div class="thumbnail"><a href="./posts/day13-interactions/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day13-interactions/day13_interactions_preview.png" class="thumbnail-image">
@@ -688,7 +726,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3Bvd2VyJTJDbGFuZC10ZW51cmUlMkNoMw==" data-listing-date-sort="1794416400000" data-listing-file-modified-sort="1794452992520" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="597">
+<div class="quarto-post image-right" data-index="14" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3Bvd2VyJTJDbGFuZC10ZW51cmUlMkNoMw==" data-listing-date-sort="1794416400000" data-listing-file-modified-sort="1794452992520" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="597">
 <div class="thumbnail"><a href="./posts/day12-power/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day12-power/day12_power_preview.png" class="thumbnail-image">
@@ -725,7 +763,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3NvdW5kc2NhcGUlMkNub2lzZSUyQ3Byb3h5" data-listing-date-sort="1794330000000" data-listing-file-modified-sort="1794724340010" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="766">
+<div class="quarto-post image-right" data-index="15" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3NvdW5kc2NhcGUlMkNub2lzZSUyQ3Byb3h5" data-listing-date-sort="1794330000000" data-listing-file-modified-sort="1794724340010" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="766">
 <div class="thumbnail"><a href="./posts/day11-sound/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day11-sound/day11_sound_preview.png" class="thumbnail-image">
@@ -762,7 +800,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2FpJTJDcHJvbXB0aW5nJTJDdmVyaWZpY2F0aW9u" data-listing-date-sort="1794243600000" data-listing-file-modified-sort="1794270966684" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="862">
+<div class="quarto-post image-right" data-index="16" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2FpJTJDcHJvbXB0aW5nJTJDdmVyaWZpY2F0aW9u" data-listing-date-sort="1794243600000" data-listing-file-modified-sort="1794270966684" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="862">
 <div class="thumbnail"><a href="./posts/day10-prompting-only/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day10-prompting-only/day10_prompting_preview.png" class="thumbnail-image">
@@ -799,7 +837,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3VyYmFuLXJ1cmFsJTJDaW5lcXVhbGl0eSUyQ2gz" data-listing-date-sort="1794157200000" data-listing-file-modified-sort="1794270272526" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="768">
+<div class="quarto-post image-right" data-index="17" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3VyYmFuLXJ1cmFsJTJDaW5lcXVhbGl0eSUyQ2gz" data-listing-date-sort="1794157200000" data-listing-file-modified-sort="1794270272526" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="768">
 <div class="thumbnail"><a href="./posts/day09-urban-rural/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day09-urban-rural/day09_urban_rural_preview.png" class="thumbnail-image">
@@ -836,7 +874,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3V0b3BpYSUyQ3NldC1jb3ZlciUyQ2FjY2Vzc2liaWxpdHk=" data-listing-date-sort="1794070800000" data-listing-file-modified-sort="1794108880960" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="728">
+<div class="quarto-post image-right" data-index="18" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3V0b3BpYSUyQ3NldC1jb3ZlciUyQ2FjY2Vzc2liaWxpdHk=" data-listing-date-sort="1794070800000" data-listing-file-modified-sort="1794108880960" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="728">
 <div class="thumbnail"><a href="./posts/day08-utopia/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day08-utopia/day08_utopia_preview.png" class="thumbnail-image">
@@ -873,7 +911,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="18" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2J1ZmZlciUyQ3RpbWUtYm94aW5n" data-listing-date-sort="1793984400000" data-listing-file-modified-sort="1794107393657" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="571">
+<div class="quarto-post image-right" data-index="19" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2J1ZmZlciUyQ3RpbWUtYm94aW5n" data-listing-date-sort="1793984400000" data-listing-file-modified-sort="1794107393657" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="571">
 <div class="thumbnail"><a href="./posts/day07-10min/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day07-10min/day07_10min_preview.png" class="thumbnail-image">
@@ -908,7 +946,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="19" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3ZpbnRhZ2UlMkNoYWNodXJl" data-listing-date-sort="1793898000000" data-listing-file-modified-sort="1794107393657" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1298">
+<div class="quarto-post image-right" data-index="20" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3ZpbnRhZ2UlMkNoYWNodXJl" data-listing-date-sort="1793898000000" data-listing-file-modified-sort="1794107393657" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1298">
 <div class="thumbnail"><a href="./posts/day06-vintage/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day06-vintage/day06_vintage_preview.png" class="thumbnail-image">
@@ -943,7 +981,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="20" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3ZpZXdzaGVkJTJDZGVt" data-listing-date-sort="1793811600000" data-listing-file-modified-sort="1794107393658" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="874">
+<div class="quarto-post image-right" data-index="21" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3ZpZXdzaGVkJTJDZGVt" data-listing-date-sort="1793811600000" data-listing-file-modified-sort="1794107393658" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="874">
 <div class="thumbnail"><a href="./posts/day05-sight/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day05-sight/day05_sight_preview.png" class="thumbnail-image">
@@ -978,7 +1016,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="21" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2Ric2NhbiUyQ2gz" data-listing-date-sort="1793725200000" data-listing-file-modified-sort="1794107393658" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="792">
+<div class="quarto-post image-right" data-index="22" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2Ric2NhbiUyQ2gz" data-listing-date-sort="1793725200000" data-listing-file-modified-sort="1794107393658" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="792">
 <div class="thumbnail"><a href="./posts/day04-clusters/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day04-clusters/day04_clusters_preview.png" class="thumbnail-image">
@@ -1013,7 +1051,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="22" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2gz" data-listing-date-sort="1793638800000" data-listing-file-modified-sort="1794270966684" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="954">
+<div class="quarto-post image-right" data-index="23" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2gz" data-listing-date-sort="1793638800000" data-listing-file-modified-sort="1794270966684" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="954">
 <div class="thumbnail"><a href="./posts/day03-polygons/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day03-polygons/day03_polygons_preview.png" class="thumbnail-image">
@@ -1046,7 +1084,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="23" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3JvdXRpbmc=" data-listing-date-sort="1793552400000" data-listing-file-modified-sort="1794107315490" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="311">
+<div class="quarto-post image-right" data-index="24" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ3JvdXRpbmc=" data-listing-date-sort="1793552400000" data-listing-file-modified-sort="1794107315490" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="311">
 <div class="thumbnail"><a href="./posts/day02-lines/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/day02-lines/day02_lines_preview.png" class="thumbnail-image">
@@ -1079,10 +1117,10 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="24" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2NvbGFi" data-listing-date-sort="1793466000000" data-listing-file-modified-sort="1794107393655" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="508">
+<div class="quarto-post image-right" data-index="25" data-categories="MzBEYXlNYXBDaGFsbGVuZ2UlMkNjYXJ0b2dyYXBoeSUyQ2NvbGFi" data-listing-date-sort="1793466000000" data-listing-file-modified-sort="1794107393655" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="508">
 <div class="thumbnail"><a href="./posts/day01_points/index.html" class="no-external-icon">
 
-<img loading="lazy" src="./posts/day01_points/day01_points_darksky_thailand.png" class="thumbnail-image">
+<img loading="lazy" data-src="./posts/day01_points/day01_points_darksky_thailand.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
@@ -1114,6 +1152,9 @@ window.Quarto = {
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
