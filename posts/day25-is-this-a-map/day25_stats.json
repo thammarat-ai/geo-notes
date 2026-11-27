@@ -1,0 +1,1417 @@
+{
+ "theme": {
+  "day": 25,
+  "name": "Is this a map?",
+  "prompt": "Stretch the limits of maps and blend your map with an artwork or some creative data visualization. When does something become a map and when does it stop being one?",
+  "read_from": "30daymapchallenge.com อ่านสด 26 พ.ย. 2569 (ไฟล์ scratch/chal25.html)"
+ },
+ "provenance": {
+  "graph_file": "data/day25_graphs.npz",
+  "graph_bytes": 4432267,
+  "graph_sha256": "8098e884c4489d747cad6bca07b70e6a54a8defda2b6acf82d215a6f035e132a",
+  "pbf_md5": "db3958a037ce717c462101b86e2f75f3",
+  "pbf_read_utc": "2026-11-24 13:25:51 UTC",
+  "radius_m": 5000.0,
+  "made_by": "tools/collect_day25_export.py จาก cache/day24 (Day 24)"
+ },
+ "data": {
+  "sites_total": 83,
+  "sites_with_graph": 82,
+  "sites_without_graph": [
+   "อุทยานแห่งชาติเขาใหญ่"
+  ],
+  "node_slots": 413758,
+  "edge_records": 430464,
+  "edge_unique": 430457,
+  "duplicate_edge_records": 7,
+  "road_classes": 25,
+  "window_nodes": 1000,
+  "profile_bins": 12,
+  "ladder_rows": 97,
+  "metric_rows": 82,
+  "sites_rows": 82,
+  "notebook_cells_note": "ไฟล์เดียวรันจบ"
+ },
+ "method": {
+  "seed": 25,
+  "views": [
+   "map",
+   "hop",
+   "draw",
+   "tag"
+  ],
+  "view_label": {
+   "map": "แผนที่ (เมตรจริง)",
+   "hop": "โครงสร้างล้วน (จำนวนก้าว)",
+   "draw": "ภาพวาด (ไม้บรรทัดทาบรูป)",
+   "tag": "ป้ายหมายเลข (ไม่มีข้อมูลเชิงพื้นที่)"
+  },
+  "core": "จับคู่ข้ามสื่อ (cross-media matching): ข้อมูลชุดเดียวกันสามสื่อ เมตรจริง / จำนวนก้าว / ไม้บรรทัดบนภาพที่วาดใหม่ จับคู่ผ่านโปรไฟล์การเติบโต 12 ขั้นที่ normalize ด้วย P95 ของตัวเอง",
+  "pools": {
+   "all": 82,
+   "sizeblind_median": 13,
+   "sizeblind_min": 1,
+   "sizeblind_max": 19,
+   "far_median": 60
+  },
+  "b_permutation": 20000,
+  "b_bootstrap": 2000,
+  "n_sources": 30,
+  "max_pairs": 4000,
+  "rule": "k=1, แต้มที่เท่ากันแตกด้วยเลขสุ่ม, ถือว่าผ่านเมื่อ p<0.05 และ แม่นกว่าสุ่ม 3 เท่า (ตั้งก่อนเห็นผล)"
+ },
+ "discarded_design": {
+  "what": "split-half leave-one-out แบบที่ออกแบบไว้ตอนแรก",
+  "why": "แบ่งข้อมูลเครือข่ายให้ไม่ทับกัน ทำให้วัดโครงสร้างไม่ได้ (กราฟขาดเป็นผุยผง) หรือทำให้สองซีกอยู่คนละพื้นที่ (รูปทรงเทียบกันไม่ได้)",
+  "median_reachable_nodes_after_split": {
+   "edge": 4,
+   "chain": 3,
+   "halfplane": 909,
+   "full": 1000
+  },
+  "note": "ตัวเลขในช่อง full คือมัธยฐานของกราฟเต็ม (ถูก cap ที่ 1,000) ใช้วัด edge/chain/halfplane แบบเดียวกันบนจุด subset 14 จุดแรก"
+ },
+ "ladder": {
+  "radial1/map>map/all": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0122,
+   "ratio": 82.0,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial1/map>map/sizeblind": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.1022,
+   "ratio": 9.79,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial1/map>map/far": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0177,
+   "ratio": 56.63,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial1/map>hop/all": {
+   "top1": 0.0122,
+   "top3": 0.0854,
+   "chance": 0.0122,
+   "ratio": 1.0,
+   "p": 0.6317184140792961,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/map>hop/sizeblind": {
+   "top1": 0.1842,
+   "top3": 0.3158,
+   "chance": 0.1022,
+   "ratio": 1.8,
+   "p": 0.018249087545622718,
+   "ci": [
+    0.1053,
+    0.2763
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/map>hop/far": {
+   "top1": 0.0366,
+   "top3": 0.122,
+   "chance": 0.0177,
+   "ratio": 2.07,
+   "p": 0.17879106044697765,
+   "ci": [
+    0.0,
+    0.0854
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/map>draw/all": {
+   "top1": 0.0244,
+   "top3": 0.0976,
+   "chance": 0.0122,
+   "ratio": 2.0,
+   "p": 0.2624868756562172,
+   "ci": [
+    0.0,
+    0.061
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/map>draw/sizeblind": {
+   "top1": 0.0921,
+   "top3": 0.2632,
+   "chance": 0.1022,
+   "ratio": 0.9,
+   "p": 0.6683665816709164,
+   "ci": [
+    0.0263,
+    0.1579
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/map>draw/far": {
+   "top1": 0.0488,
+   "top3": 0.1098,
+   "chance": 0.0177,
+   "ratio": 2.76,
+   "p": 0.05949702514874256,
+   "ci": [
+    0.0122,
+    0.0976
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/map>tag/all": {
+   "top1": 0.0,
+   "top3": 0.0,
+   "chance": 0.0122,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/map>tag/sizeblind": {
+   "top1": 0.0658,
+   "top3": 0.2237,
+   "chance": 0.1022,
+   "ratio": 0.64,
+   "p": 0.9060546972651368,
+   "ci": [
+    0.0132,
+    0.1316
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/map>tag/far": {
+   "top1": 0.0,
+   "top3": 0.0,
+   "chance": 0.0177,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/hop>map/all": {
+   "top1": 0.0122,
+   "top3": 0.0366,
+   "chance": 0.0122,
+   "ratio": 1.0,
+   "p": 0.6386680665966702,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/hop>map/sizeblind": {
+   "top1": 0.0789,
+   "top3": 0.2895,
+   "chance": 0.1022,
+   "ratio": 0.77,
+   "p": 0.8029098545072746,
+   "ci": [
+    0.0263,
+    0.1447
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/hop>map/far": {
+   "top1": 0.0244,
+   "top3": 0.0732,
+   "chance": 0.0177,
+   "ratio": 1.38,
+   "p": 0.4262786860656967,
+   "ci": [
+    0.0,
+    0.061
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/hop>hop/all": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0122,
+   "ratio": 82.0,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial1/hop>hop/sizeblind": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.1022,
+   "ratio": 9.79,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial1/hop>hop/far": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0177,
+   "ratio": 56.63,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial1/hop>draw/all": {
+   "top1": 0.0,
+   "top3": 0.0122,
+   "chance": 0.0122,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/hop>draw/sizeblind": {
+   "top1": 0.0921,
+   "top3": 0.3684,
+   "chance": 0.1022,
+   "ratio": 0.9,
+   "p": 0.6730663466826659,
+   "ci": [
+    0.0263,
+    0.1579
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/hop>draw/far": {
+   "top1": 0.0,
+   "top3": 0.0122,
+   "chance": 0.0177,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/hop>tag/all": {
+   "top1": 0.0,
+   "top3": 0.0122,
+   "chance": 0.0122,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/hop>tag/sizeblind": {
+   "top1": 0.0789,
+   "top3": 0.2105,
+   "chance": 0.1022,
+   "ratio": 0.77,
+   "p": 0.8066096695165241,
+   "ci": [
+    0.0263,
+    0.1447
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/hop>tag/far": {
+   "top1": 0.0,
+   "top3": 0.0244,
+   "chance": 0.0177,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/draw>map/all": {
+   "top1": 0.0,
+   "top3": 0.0366,
+   "chance": 0.0122,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/draw>map/sizeblind": {
+   "top1": 0.0658,
+   "top3": 0.2763,
+   "chance": 0.1022,
+   "ratio": 0.64,
+   "p": 0.9025048747562622,
+   "ci": [
+    0.0132,
+    0.1316
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/draw>map/far": {
+   "top1": 0.0122,
+   "top3": 0.061,
+   "chance": 0.0177,
+   "ratio": 0.69,
+   "p": 0.7698115094245288,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/draw>hop/all": {
+   "top1": 0.0122,
+   "top3": 0.0488,
+   "chance": 0.0122,
+   "ratio": 1.0,
+   "p": 0.6342182890855457,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/draw>hop/sizeblind": {
+   "top1": 0.0658,
+   "top3": 0.3421,
+   "chance": 0.1022,
+   "ratio": 0.64,
+   "p": 0.9032048397580121,
+   "ci": [
+    0.0132,
+    0.1316
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/draw>hop/far": {
+   "top1": 0.0244,
+   "top3": 0.061,
+   "chance": 0.0177,
+   "ratio": 1.38,
+   "p": 0.4225788710564472,
+   "ci": [
+    0.0,
+    0.061
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/draw>draw/all": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0122,
+   "ratio": 82.0,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial1/draw>draw/sizeblind": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.1022,
+   "ratio": 9.79,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial1/draw>draw/far": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0177,
+   "ratio": 56.63,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial1/draw>tag/all": {
+   "top1": 0.0,
+   "top3": 0.0244,
+   "chance": 0.0122,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/draw>tag/sizeblind": {
+   "top1": 0.0526,
+   "top3": 0.3026,
+   "chance": 0.1022,
+   "ratio": 0.52,
+   "p": 0.9614519274036298,
+   "ci": [
+    0.0132,
+    0.1053
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/draw>tag/far": {
+   "top1": 0.0,
+   "top3": 0.0488,
+   "chance": 0.0177,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/tag>map/all": {
+   "top1": 0.0122,
+   "top3": 0.0244,
+   "chance": 0.0122,
+   "ratio": 1.0,
+   "p": 0.6367681615919204,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/tag>map/sizeblind": {
+   "top1": 0.0921,
+   "top3": 0.2632,
+   "chance": 0.1022,
+   "ratio": 0.9,
+   "p": 0.6730163491825408,
+   "ci": [
+    0.0263,
+    0.1579
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/tag>map/far": {
+   "top1": 0.0244,
+   "top3": 0.0488,
+   "chance": 0.0177,
+   "ratio": 1.38,
+   "p": 0.42777861106944653,
+   "ci": [
+    0.0,
+    0.061
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/tag>hop/all": {
+   "top1": 0.0122,
+   "top3": 0.0122,
+   "chance": 0.0122,
+   "ratio": 1.0,
+   "p": 0.6335183240837958,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/tag>hop/sizeblind": {
+   "top1": 0.0658,
+   "top3": 0.3026,
+   "chance": 0.1022,
+   "ratio": 0.64,
+   "p": 0.9034048297585121,
+   "ci": [
+    0.0132,
+    0.1316
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/tag>hop/far": {
+   "top1": 0.0122,
+   "top3": 0.0244,
+   "chance": 0.0177,
+   "ratio": 0.69,
+   "p": 0.7715114244287785,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/tag>draw/all": {
+   "top1": 0.0122,
+   "top3": 0.0488,
+   "chance": 0.0122,
+   "ratio": 1.0,
+   "p": 0.631968401579921,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/tag>draw/sizeblind": {
+   "top1": 0.1447,
+   "top3": 0.3553,
+   "chance": 0.1022,
+   "ratio": 1.42,
+   "p": 0.13964301784910754,
+   "ci": [
+    0.0658,
+    0.2237
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/tag>draw/far": {
+   "top1": 0.0244,
+   "top3": 0.061,
+   "chance": 0.0177,
+   "ratio": 1.38,
+   "p": 0.42212889355532224,
+   "ci": [
+    0.0,
+    0.061
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial1/tag>tag/all": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0122,
+   "ratio": 82.0,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial1/tag>tag/sizeblind": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.1022,
+   "ratio": 9.79,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial1/tag>tag/far": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0177,
+   "ratio": 56.63,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial5/map>map/all": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0122,
+   "ratio": 82.0,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial5/map>map/sizeblind": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.1022,
+   "ratio": 9.79,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial5/map>map/far": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0177,
+   "ratio": 56.63,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial5/map>hop/all": {
+   "top1": 0.1341,
+   "top3": 0.1707,
+   "chance": 0.0122,
+   "ratio": 11.0,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    0.0732,
+    0.2073
+   ],
+   "trivial": false,
+   "verdict": true
+  },
+  "radial5/map>hop/sizeblind": {
+   "top1": 0.25,
+   "top3": 0.5395,
+   "chance": 0.1022,
+   "ratio": 2.45,
+   "p": 0.000199990000499975,
+   "ci": [
+    0.1579,
+    0.3553
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/map>hop/far": {
+   "top1": 0.1341,
+   "top3": 0.1707,
+   "chance": 0.0177,
+   "ratio": 7.6,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    0.061,
+    0.2073
+   ],
+   "trivial": false,
+   "verdict": true
+  },
+  "radial5/map>draw/all": {
+   "top1": 0.0244,
+   "top3": 0.0732,
+   "chance": 0.0122,
+   "ratio": 2.0,
+   "p": 0.2672366381680916,
+   "ci": [
+    0.0,
+    0.061
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/map>draw/sizeblind": {
+   "top1": 0.0658,
+   "top3": 0.3289,
+   "chance": 0.1022,
+   "ratio": 0.64,
+   "p": 0.903254837258137,
+   "ci": [
+    0.0132,
+    0.1316
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/map>draw/far": {
+   "top1": 0.0488,
+   "top3": 0.0732,
+   "chance": 0.0177,
+   "ratio": 2.76,
+   "p": 0.05719714014299285,
+   "ci": [
+    0.0122,
+    0.0976
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/map>tag/all": {
+   "top1": 0.0,
+   "top3": 0.0366,
+   "chance": 0.0122,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/map>tag/sizeblind": {
+   "top1": 0.0658,
+   "top3": 0.3026,
+   "chance": 0.1022,
+   "ratio": 0.64,
+   "p": 0.904104794760262,
+   "ci": [
+    0.0132,
+    0.1316
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/map>tag/far": {
+   "top1": 0.0122,
+   "top3": 0.0366,
+   "chance": 0.0177,
+   "ratio": 0.69,
+   "p": 0.7717114144292785,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/hop>map/all": {
+   "top1": 0.1463,
+   "top3": 0.2073,
+   "chance": 0.0122,
+   "ratio": 12.0,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    0.0732,
+    0.2317
+   ],
+   "trivial": false,
+   "verdict": true
+  },
+  "radial5/hop>map/sizeblind": {
+   "top1": 0.3421,
+   "top3": 0.5789,
+   "chance": 0.1022,
+   "ratio": 3.35,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    0.2368,
+    0.4474
+   ],
+   "trivial": false,
+   "verdict": true
+  },
+  "radial5/hop>map/far": {
+   "top1": 0.1463,
+   "top3": 0.2317,
+   "chance": 0.0177,
+   "ratio": 8.29,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    0.0732,
+    0.2195
+   ],
+   "trivial": false,
+   "verdict": true
+  },
+  "radial5/hop>hop/all": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0122,
+   "ratio": 82.0,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial5/hop>hop/sizeblind": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.1022,
+   "ratio": 9.79,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial5/hop>hop/far": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0177,
+   "ratio": 56.63,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial5/hop>draw/all": {
+   "top1": 0.0244,
+   "top3": 0.0488,
+   "chance": 0.0122,
+   "ratio": 2.0,
+   "p": 0.2622368881555922,
+   "ci": [
+    0.0,
+    0.061
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/hop>draw/sizeblind": {
+   "top1": 0.1447,
+   "top3": 0.3947,
+   "chance": 0.1022,
+   "ratio": 1.42,
+   "p": 0.1423928803559822,
+   "ci": [
+    0.0789,
+    0.2237
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/hop>draw/far": {
+   "top1": 0.0366,
+   "top3": 0.0732,
+   "chance": 0.0177,
+   "ratio": 2.07,
+   "p": 0.17739113044347782,
+   "ci": [
+    0.0,
+    0.0854
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/hop>tag/all": {
+   "top1": 0.0,
+   "top3": 0.0122,
+   "chance": 0.0122,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/hop>tag/sizeblind": {
+   "top1": 0.0921,
+   "top3": 0.2895,
+   "chance": 0.1022,
+   "ratio": 0.9,
+   "p": 0.6738163091845407,
+   "ci": [
+    0.0395,
+    0.1579
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/hop>tag/far": {
+   "top1": 0.0,
+   "top3": 0.0488,
+   "chance": 0.0177,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/draw>map/all": {
+   "top1": 0.0366,
+   "top3": 0.0732,
+   "chance": 0.0122,
+   "ratio": 3.0,
+   "p": 0.08104594770261488,
+   "ci": [
+    0.0,
+    0.0732
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/draw>map/sizeblind": {
+   "top1": 0.1711,
+   "top3": 0.4211,
+   "chance": 0.1022,
+   "ratio": 1.67,
+   "p": 0.039648017599120046,
+   "ci": [
+    0.0921,
+    0.2632
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/draw>map/far": {
+   "top1": 0.0488,
+   "top3": 0.0976,
+   "chance": 0.0177,
+   "ratio": 2.76,
+   "p": 0.05729713514324284,
+   "ci": [
+    0.0122,
+    0.0976
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/draw>hop/all": {
+   "top1": 0.0366,
+   "top3": 0.0854,
+   "chance": 0.0122,
+   "ratio": 3.0,
+   "p": 0.0775961201939903,
+   "ci": [
+    0.0,
+    0.0854
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/draw>hop/sizeblind": {
+   "top1": 0.1711,
+   "top3": 0.3816,
+   "chance": 0.1022,
+   "ratio": 1.67,
+   "p": 0.04294785260736963,
+   "ci": [
+    0.0921,
+    0.2632
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/draw>hop/far": {
+   "top1": 0.0488,
+   "top3": 0.0976,
+   "chance": 0.0177,
+   "ratio": 2.76,
+   "p": 0.056597170141492924,
+   "ci": [
+    0.0122,
+    0.0976
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/draw>draw/all": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0122,
+   "ratio": 82.0,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial5/draw>draw/sizeblind": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.1022,
+   "ratio": 9.79,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial5/draw>draw/far": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0177,
+   "ratio": 56.63,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial5/draw>tag/all": {
+   "top1": 0.0122,
+   "top3": 0.0732,
+   "chance": 0.0122,
+   "ratio": 1.0,
+   "p": 0.6360181990900455,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/draw>tag/sizeblind": {
+   "top1": 0.1316,
+   "top3": 0.3158,
+   "chance": 0.1022,
+   "ratio": 1.29,
+   "p": 0.23813809309534523,
+   "ci": [
+    0.0658,
+    0.2105
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/draw>tag/far": {
+   "top1": 0.0122,
+   "top3": 0.0976,
+   "chance": 0.0177,
+   "ratio": 0.69,
+   "p": 0.7661116944152793,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/tag>map/all": {
+   "top1": 0.0122,
+   "top3": 0.0366,
+   "chance": 0.0122,
+   "ratio": 1.0,
+   "p": 0.6363181840907954,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/tag>map/sizeblind": {
+   "top1": 0.1184,
+   "top3": 0.2895,
+   "chance": 0.1022,
+   "ratio": 1.16,
+   "p": 0.3728313584320784,
+   "ci": [
+    0.0526,
+    0.1974
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/tag>map/far": {
+   "top1": 0.0122,
+   "top3": 0.0488,
+   "chance": 0.0177,
+   "ratio": 0.69,
+   "p": 0.7637118144092795,
+   "ci": [
+    0.0,
+    0.0366
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/tag>hop/all": {
+   "top1": 0.0,
+   "top3": 0.0366,
+   "chance": 0.0122,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/tag>hop/sizeblind": {
+   "top1": 0.0658,
+   "top3": 0.2895,
+   "chance": 0.1022,
+   "ratio": 0.64,
+   "p": 0.9023048847557622,
+   "ci": [
+    0.0132,
+    0.1316
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/tag>hop/far": {
+   "top1": 0.0,
+   "top3": 0.0366,
+   "chance": 0.0177,
+   "ratio": 0.0,
+   "p": 1.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/tag>draw/all": {
+   "top1": 0.0244,
+   "top3": 0.0366,
+   "chance": 0.0122,
+   "ratio": 2.0,
+   "p": 0.2626868656567172,
+   "ci": [
+    0.0,
+    0.061
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/tag>draw/sizeblind": {
+   "top1": 0.1053,
+   "top3": 0.3158,
+   "chance": 0.1022,
+   "ratio": 1.03,
+   "p": 0.5184740762961851,
+   "ci": [
+    0.0395,
+    0.1711
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/tag>draw/far": {
+   "top1": 0.0244,
+   "top3": 0.0366,
+   "chance": 0.0177,
+   "ratio": 1.38,
+   "p": 0.4290285485725714,
+   "ci": [
+    0.0,
+    0.061
+   ],
+   "trivial": false,
+   "verdict": false
+  },
+  "radial5/tag>tag/all": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0122,
+   "ratio": 82.0,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial5/tag>tag/sizeblind": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.1022,
+   "ratio": 9.79,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  },
+  "radial5/tag>tag/far": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "chance": 0.0177,
+   "ratio": 56.63,
+   "p": 4.999750012499375e-05,
+   "ci": [
+    1.0,
+    1.0
+   ],
+   "trivial": true,
+   "verdict": false
+  }
+ },
+ "control": {
+  "swap_gallery": {
+   "top1": 0.0122,
+   "chance": 0.0122,
+   "ratio": 1.0,
+   "passed": true,
+   "n_tested": 82
+  }
+ },
+ "metric": {
+  "n": 82,
+  "rho_hop_km": {
+   "median": 0.8026,
+   "q25": 0.7191,
+   "q75": 0.8703,
+   "min": 0.3936,
+   "max": 0.9785
+  },
+  "stretch": {
+   "median": 1.383,
+   "p90_of_medians": 2.7932,
+   "min": 1.115,
+   "max": 1.825
+  },
+  "draw_residual_m": {
+   "median": 1652.65,
+   "q25": 1445.725,
+   "q75": 2272.425
+  },
+  "draw_rel": {
+   "median": 0.9728,
+   "q25": 0.8312,
+   "q75": 1.159
+  },
+  "draw_r2_median": -0.6243,
+  "draw_rho_pair_median": 0.1656,
+  "reach_frac_median": 0.9718,
+  "ball_nodes_median": 36.0,
+  "ball_km_max_median": 0.4765,
+  "unit": "ต่อจุดดูฟ้ามืด (มัธยฐาน/ควอร์ไทล์ข้าม 82 จุด) ไม่ใช่ต่อโหนดถนน"
+ },
+ "gallery": {
+  "moran_i": 0.2579,
+  "moran_p": 0.0033,
+  "n_tiles": 82,
+  "tile_box_m": 26000.0,
+  "colour": "log10 จำนวนโหนดถนนต่อจุด"
+ },
+ "hero_site": {
+  "idx": 46,
+  "name": "บ่อแสนวิลล่า",
+  "nodes": 2707,
+  "rule": "จุดที่ worst_cut_keep = 0 จาก Day 24 และกราฟใหญ่ที่สุด"
+ },
+ "cross_day": {
+  "day24_rebuild_max_diff": {
+   "nodes": 0.0,
+   "edges": 0.0,
+   "components": 0.0,
+   "bridges": 0.0,
+   "deadend_ratio": 0.0,
+   "avg_deg": 0.0,
+   "access_dist_m": 0.0
+  },
+  "day24_components_mean": 8.671,
+  "day24_bridges_sum": 157625,
+  "day24_deadend_median": 0.0466,
+  "day7_link": "โปรไฟล์การเติบโตแบบไร้หน่วย = เวอร์ชันไม่มีไมล์ของ isochrone 10 นาที",
+  "day21_link": "จาน 5,000 ม. และระยะทางเข้าถึงใช้นิยามเดียวกับ Day 21/24"
+ },
+ "figures": [
+  "day25_ladder.png",
+  "day25_gallery.png",
+  "day25_metric.png",
+  "day25_controls.png"
+ ],
+ "defs": {
+  "growth_profile": "สัดส่วนโหนดที่อยู่ภายในรัศมี 12 ระดับ โดยรัศมีวัดเป็นเศษส่วนของ P95 ของตัวมันเอง (จึงไร้หน่วยและเทียบข้ามสื่อได้)",
+  "cross_media": "การที่ภาพจากสื่อหนึ่ง (เช่นจำนวนก้าว) จับคู่กับหอภาพของอีกสื่อหนึ่ง (เช่นเมตรจริง) แล้วถูกว่าเป็นสถานที่เดียวกัน",
+  "trivial": "คู่ที่ถามและตอบเป็นสื่อเดียวกัน ผลต้องเป็น 100% โดยสร้าง ใช้เป็น positive control",
+  "hop_km": "spearman rho (สหสัมพันธ์อันดับ) ระหว่างจำนวนก้าวที่ต้องเดินบนกราฟ กับระยะตรง (geodesic) ของคู่โหนด",
+  "stretch": "ระยะที่เดินทางจริงตามถนน หารด้วยระยะเส้นตรง (มากกว่า 1 = อ้อม)",
+  "draw_residual": "เอาภาพที่วาดจากความเชื่อมโยงอย่างเดียว Procrustes-fit ทับพิกัดจริง แล้ววัดระยะเพี้ยนมัธยฐานเป็นเมตร (และเทียบเป็นเศษของขนาดภาพ)",
+  "worst_cut_keep": "ตัวเลขจาก Day 24: ลบจุดตัดหนึ่งจุดแล้วเหลือเครือข่ายให้ใช้เท่าไร (0 = หายหมด)",
+  "Moran": "ค่าทางสถิติวัดว่าจุดที่อยู่ใกล้กันบนแผนที่ มีสี (จำนวนโหนด) ใกล้เคียงกันแค่ไหน"
+ },
+ "limitations": [
+  "โปรไฟล์การเติบโตเป็นลายเซ็นที่ผมออกแบบเอง (12 ขั้น, normalize ด้วย P95) ผลที่ได้จึงเป็น *ขอบเขตล่าง* ของข้อมูลที่สื่อหนึ่งเก็บไว้ ไม่ใช่ค่าสูงสุดที่เป็นไปได้",
+  "ทุกสื่อคำนวณบนหน้าต่างร่วม 1,000 โหนดแรกจากจุดเข้าถึง กราฟที่ใหญ่กว่านั้น (ใหญ่สุด 31,150 โหนด) จึงถูกตัดเหลือเฉพาะส่วนที่เดินถึง",
+  "สื่อ 'ภาพวาด' ใช้ spring_layout ซึ่งไม่มีเหตุผลใดจะคงทิศทาง/สัดส่วนจริง จึงไม่แปลกที่ผลจะต่ำ — แต่ตัวเลขที่ต่ำคือคำตอบของโจทย์ ไม่ใช่ข้อผิดพลาด",
+  "จาน 5,000 ม. ตัดถนนที่ยื่นเข้ามา ทำให้บางโหนดเดินไปไม่ถึง (มัธยฐานเข้าถึงได้ 97.2%) components ที่ >1 บางส่วนจึงเป็นผลของกรอบการศึกษา ไม่ใช่ความขาดจริงของถนน",
+  "การทดสอบนี้ไม่ใช้ข้อมูล 'เวลา' หรือ 'คนวาด' เลย — ถ้าใช้ snapshot คนละเดือน จะได้การแบ่งที่สะอาดกว่านี้ (บันทึกไว้เป็นงานของวันถัดไปถ้าจำเป็น)"
+ ]
+}

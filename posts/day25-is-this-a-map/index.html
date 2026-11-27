@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="th" xml:lang="th"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="โจทย์ ‘Stretch the limits of maps and blend your map with an artwork or some creative data visualization. When does something become a map and when does it stop being one?’ ผมเอากราฟถนนของ 82 จุดดูฟ้ามืดไทย (ข้อมูลชุดเดียวกับ Day 24: 413,758 node-slot · 430,464 บันทึกขอบ → 430,457 เส้นไม่ซ้ำ · จาน 5,000 ม.) มาแสดงเป็นสามสื่อของสถานที่เดียวกัน คือ แผนที่ (เมตรจริง) โครงสร้างล้วน (จำนวนก้าว) และภาพวาด (spring layout แล้วเอาไม้บรรทัดทาบรูป) พร้อมป้ายหมายเลขเป็นตัวคุม ผลการจับคู่ข้ามสื่อ (ลายเซ็นห้าจุดเริ่มต้น, chance 1/82 = 1.22%): hop→map 14.63% (12 เท่า, p = 0.00005, CI 7.32–23.17%) ผ่านเกณฑ์ทั้งสามฐานผู้สมัคร ส่วน draw→map 3.66% (3 เท่า, p = 0.081) ไม่ผ่าน แกนที่สอง: spearman rho ระหว่างจำนวนก้าวกับระยะจริงมัธยฐาน 0.8026, ถนนพาอ้อม 1.383 เท่า, และภาพที่วาดใหม่ตำแหน่งเพี้ยนมัธยฐาน 1,652.65 เมตร = 0.9728 เท่าของขนาดภาพเอง (R² −0.6243)">
+
+<title>Day 25 · Is this a map? — สามสื่อของสถานที่เดียวกัน: โครงสร้างล้วนจับคู่กับแผนที่ได้ 14.6% (12 เท่าของการสุ่ม) แต่ภาพที่วาดใหม่จับได้แค่ 3.7% (ไม่ผ่านเกณฑ์) – Geo Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-351285e4f36a746a233153dc098ffc69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geo Notes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">หน้าแรก</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">เกี่ยวกับผู้เขียน</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#ขอมล-กราฟถนน-82-จด-ในไฟลเดยว-4.43-mb" id="toc-ขอมล-กราฟถนน-82-จด-ในไฟลเดยว-4.43-mb" class="nav-link active" data-scroll-target="#ขอมล-กราฟถนน-82-จด-ในไฟลเดยว-4.43-mb">๐. ข้อมูล: กราฟถนน 82 จุด ในไฟล์เดียว 4.43 MB</a></li>
+  <li><a href="#สามสอของสถานทเดยวกน" id="toc-สามสอของสถานทเดยวกน" class="nav-link" data-scroll-target="#สามสอของสถานทเดยวกน">๑. สามสื่อของสถานที่เดียวกัน</a></li>
+  <li><a href="#ผลหลก-เมทรกซจบคขามสอ" id="toc-ผลหลก-เมทรกซจบคขามสอ" class="nav-link" data-scroll-target="#ผลหลก-เมทรกซจบคขามสอ">๒. ผลหลัก: เมทริกซ์จับคู่ข้ามสื่อ</a></li>
+  <li><a href="#แกนทสอง-ระยะทางยงแปลวาระยะทางอยไหม" id="toc-แกนทสอง-ระยะทางยงแปลวาระยะทางอยไหม" class="nav-link" data-scroll-target="#แกนทสอง-ระยะทางยงแปลวาระยะทางอยไหม">๓. แกนที่สอง: ระยะทางยังแปลว่าระยะทางอยู่ไหม</a></li>
+  <li><a href="#งานศลป-ลายนวมอ-82-แผน" id="toc-งานศลป-ลายนวมอ-82-แผน" class="nav-link" data-scroll-target="#งานศลป-ลายนวมอ-82-แผน">๔. งานศิลป์: ลายนิ้วมือ 82 แผ่น</a></li>
+  <li><a href="#สงทผมเปลยนกลางทาง-และทำไม" id="toc-สงทผมเปลยนกลางทาง-และทำไม" class="nav-link" data-scroll-target="#สงทผมเปลยนกลางทาง-และทำไม">๕. สิ่งที่ผมเปลี่ยนกลางทาง (และทำไม)</a></li>
+  <li><a href="#วาดวยคำศพท" id="toc-วาดวยคำศพท" class="nav-link" data-scroll-target="#วาดวยคำศพท">ว่าด้วยคำศัพท์</a></li>
+  <li><a href="#ขอจำกด" id="toc-ขอจำกด" class="nav-link" data-scroll-target="#ขอจำกด">ข้อจำกัด</a></li>
+  <li><a href="#ไฟลประกอบ" id="toc-ไฟลประกอบ" class="nav-link" data-scroll-target="#ไฟลประกอบ">ไฟล์ประกอบ</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 25 · Is this a map? — สามสื่อของสถานที่เดียวกัน: โครงสร้างล้วนจับคู่กับแผนที่ได้ 14.6% (12 เท่าของการสุ่ม) แต่ภาพที่วาดใหม่จับได้แค่ 3.7% (ไม่ผ่านเกณฑ์)</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">30DayMapChallenge</div>
+    <div class="quarto-category">cartography</div>
+    <div class="quarto-category">graph-theory</div>
+    <div class="quarto-category">openstreetmap</div>
+    <div class="quarto-category">data-viz</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    โจทย์ ‘Stretch the limits of maps and blend your map with an artwork or some creative data visualization. When does something become a map and when does it stop being one?’ ผมเอากราฟถนนของ 82 จุดดูฟ้ามืดไทย (ข้อมูลชุดเดียวกับ Day 24: 413,758 node-slot · 430,464 บันทึกขอบ → 430,457 เส้นไม่ซ้ำ · จาน 5,000 ม.) มาแสดงเป็นสามสื่อของสถานที่เดียวกัน คือ แผนที่ (เมตรจริง) โครงสร้างล้วน (จำนวนก้าว) และภาพวาด (spring layout แล้วเอาไม้บรรทัดทาบรูป) พร้อมป้ายหมายเลขเป็นตัวคุม ผลการจับคู่ข้ามสื่อ (ลายเซ็นห้าจุดเริ่มต้น, chance 1/82 = 1.22%): hop→map 14.63% (12 เท่า, p = 0.00005, CI 7.32–23.17%) ผ่านเกณฑ์ทั้งสามฐานผู้สมัคร ส่วน draw→map 3.66% (3 เท่า, p = 0.081) ไม่ผ่าน แกนที่สอง: spearman rho ระหว่างจำนวนก้าวกับระยะจริงมัธยฐาน 0.8026, ถนนพาอ้อม 1.383 เท่า, และภาพที่วาดใหม่ตำแหน่งเพี้ยนมัธยฐาน 1,652.65 เมตร = 0.9728 เท่าของขนาดภาพเอง (R² −0.6243)
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">25 พฤศจิกายน 2569</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/thammarat-ai/geo-notes/blob/main/notebooks/day25_fingerprint.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>โจทย์ทางการวันนี้คือ <strong>“Stretch the limits of maps and blend your map with an artwork or some creative data visualization. When does something become a map and when does it stop being one?”</strong> (หัวข้อ <em>Is this a map?</em> — ดึงข้อความมาจากหน้า 30daymapchallenge.com อ่านสดวันที่ 26 พ.ย. และเก็บสำเนาไว้ที่ <code>scratch/chal25.html</code>)</p>
+<p>โจทย์ไม่ได้ขอแค่ “ทำให้สวย” แต่ขอ <strong>เส้นแบ่ง</strong> ผมจึงไม่อยากตอบด้วยปรัชญา คำตอบของโพสต์นี้ เป็นตัวเลขที่วัดได้ และคำถามที่ผมใช้แทนโจทย์คือ:</p>
+<blockquote class="blockquote">
+<p>ถ้าเอาข้อมูลเดิมมาแสดงเป็นสามแบบ — แผนที่ / โครงสร้างล้วน / ภาพวาด — แบบไหนยัง “ชี้ที่เดียวกัน” ได้ และแบบไหนเลิกเป็นแผนที่ตั้งแต่เมื่อไหร่</p>
+</blockquote>
+<section id="ขอมล-กราฟถนน-82-จด-ในไฟลเดยว-4.43-mb" class="level2">
+<h2 class="anchored" data-anchor-id="ขอมล-กราฟถนน-82-จด-ในไฟลเดยว-4.43-mb">๐. ข้อมูล: กราฟถนน 82 จุด ในไฟล์เดียว 4.43 MB</h2>
+<p>Day 24 สแกน Geofabrik Thailand extract (md5 <code>db3958a0…</code>) แล้วเก็บกราฟถนนในจาน 5,000 ม. รอบจุดทะเบียน 83 แห่งไว้ในแคชของเครื่อง — ปัญหาของวันนั้นคือ <strong>ไฟล์แคชไม่ได้อยู่ในรีโป</strong> คนที่กดปุ่ม Colab จึงรันต่อไม่ได้ถ้าไม่มี PBF 330 MB</p>
+<p>วันนี้ผม export มันออกมาเป็นไฟล์เดียว: <code>data/day25_graphs.npz</code> ขนาด 4.43 MB (<code>tools/collect_day25_export.py</code>) เก็บ 413,758 node-slot และ 430,464 บันทึกขอบ ซึ่งยุบเป็น 430,457 เส้นไม่ซ้ำ (มีคู่โหนดเดิมซ้ำกัน 7 บันทึกทั้งประเทศ) ครอบคลุม <strong>82 จุด</strong> จุดที่ไม่มีถนนใน 5 กม. เลยคือ <em>อุทยานแห่งชาติเขาใหญ่</em> เช่นเดียวกับ Day 21/24</p>
+<p>ผู้ตัดสินคนแรกของโพสต์นี้คือ <strong>ตัวเลขต้องกลับมาเหมือนเดิม</strong>: สร้างกราฟจาก npz ใหม่ แล้วเทียบกับ <code>day24_roads.csv</code> ทุก 82 จุด ใน 7 คอลัมน์ (nodes / edges / components / bridges / deadend_ratio / avg_deg / access_dist_m) ผลต่างสูงสุด = 0 ทุกคอลัมน์ และได้ components เฉลี่ย 8.67 · bridges รวม 157,625 · dead-end มัธยฐาน 4.66% ตรงกับ Day 24</p>
+</section>
+<section id="สามสอของสถานทเดยวกน" class="level2">
+<h2 class="anchored" data-anchor-id="สามสอของสถานทเดยวกน">๑. สามสื่อของสถานที่เดียวกัน</h2>
+<p>ทุกจุดถูกตัดเหลือ “หน้าต่างร่วม” 1,000 โหนดแรกที่เดินถึงจากจุดเข้าถึง (เพื่อให้จุด 895 โหนด กับจุด 31,150 โหนดเทียบกันได้) แล้วสร้างสามสื่อจากโหนดชุดเดียวกัน</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>สื่อ</th>
+<th>สิ่งที่ดู</th>
+<th>หน่วย</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>map</strong></td>
+<td>พิกัดจริงของโหนด (เมตรในระบบ projection ของซีรีส์)</td>
+<td>มีหน่วยวัดระยะ</td>
+</tr>
+<tr class="even">
+<td><strong>hop</strong></td>
+<td>เดินจากจุดหนึ่งไปอีจุดหนึ่งกี่ก้าว</td>
+<td>ไร้หน่วย</td>
+</tr>
+<tr class="odd">
+<td><strong>draw</strong></td>
+<td>วาดใหม่จากความเชื่อมโยงอย่างเดียว (spring layout) แล้วทาบไม้บรรทัดบนรูป</td>
+<td>ไร้หน่วย</td>
+</tr>
+<tr class="even">
+<td><strong>tag</strong></td>
+<td>ป้ายหมายเลขสุ่มที่ไม่ได้มาจากข้อมูลเชิงพื้นที่เลย</td>
+<td>ระบุตัวตนได้ 100% แต่ไร้ความหมายเชิงที่ทาง</td>
+</tr>
+</tbody>
+</table>
+<p>ลายเซ็นที่ใช้จับคู่คือ <strong>โปรไฟล์การเติบโต</strong>: สัดส่วนโหนดที่อยู่ภายในรัศมี 12 ระดับ โดยรัศมี normalize ด้วย P95 ของตัวมันเอง จึงไร้หน่วยและเทียบข้ามสื่อได้ ทำสองแบบ — <code>radial1</code> (จุดเริ่มต้นเดียว = จุดเข้าถึง) กับ <code>radial5</code> (ห้าจุดเริ่มต้นต่อสถานที่)</p>
+<p>กติกาที่ตั้งไว้ <strong>ก่อนรัน</strong>: ผู้สมัคร k=1 · แต้มที่เท่ากันแตกด้วยเลขสุ่ม · ถือว่า “ยังจับคู่ได้” เมื่อ p &lt; 0.05 <strong>และ</strong>แม่นกว่าการสุ่มอย่างน้อย 3 เท่า · seed = 25 ทุกจุด</p>
+</section>
+<section id="ผลหลก-เมทรกซจบคขามสอ" class="level2">
+<h2 class="anchored" data-anchor-id="ผลหลก-เมทรกซจบคขามสอ">๒. ผลหลัก: เมทริกซ์จับคู่ข้ามสื่อ</h2>
+<p>chance ของฐาน “ทุกจุด” คือ 1/82 = <strong>1.22%</strong> (ตารางเต็มมีทุกคู่ทุกฐานใน <code>day25_ladder.csv</code>)</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ถาม → ตอบ</th>
+<th>ลายเซ็นจุดเดียว</th>
+<th>ลายเซ็นห้าจุด</th>
+<th>ผ่านเกณฑ์?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>hop → map</td>
+<td>1.22% (1 เท่า)</td>
+<td><strong>14.63% (12 เท่า)</strong></td>
+<td>✅ p = 0.00005, CI 7.32–23.17%</td>
+</tr>
+<tr class="even">
+<td>map → hop</td>
+<td>1.22% (1 เท่า)</td>
+<td><strong>13.41% (11 เท่า)</strong></td>
+<td>✅ p = 0.00005</td>
+</tr>
+<tr class="odd">
+<td>draw → map</td>
+<td>0.00%</td>
+<td>3.66% (3 เท่า)</td>
+<td>❌ p = 0.081</td>
+</tr>
+<tr class="even">
+<td>draw → hop</td>
+<td>1.22%</td>
+<td>3.66% (3 เท่า)</td>
+<td>❌ p = 0.078</td>
+</tr>
+<tr class="odd">
+<td>tag → map</td>
+<td>1.22%</td>
+<td>1.22% (1 เท่า)</td>
+<td>❌ (ตามที่ควรเป็น)</td>
+</tr>
+<tr class="even">
+<td>สลับหอภาพ (control)</td>
+<td>–</td>
+<td>1.22% = chance พอดี</td>
+<td>✅ ไม่มีสัญญาณปลอม</td>
+</tr>
+</tbody>
+</table>
+<p>สามอย่างที่สำคัญในตารางนี้</p>
+<p><strong>หนึ่ง ลายเซ็นจุดเดียวแทบไม่มีพลัง</strong> (ทุกคู่ตกไปอยู่ที่ chance) การถามว่า “จากจุดเข้าถึง โตขึ้นเร็วแค่ไหน” เป็นคำถามที่ทุกจานถนน 5 กม. ในไทยตอบคล้ายกันหมด ต้องถามจากห้าจุด จึงเริ่มแยกที่ออก — นี่เป็นบทเรียนเรื่อง <em>การออกแบบลายเซ็น</em> ไม่ใช่เรื่องข้อมูล</p>
+<p><strong>สอง โครงสร้างล้วนยังจับคู่กับแผนที่ได้</strong> 14.63%แม่นกว่าสุ่ม 12 เท่า และ <strong>ผ่านทั้งสามฐานผู้สมัคร</strong>: ฐาน “ขนาดใกล้เคียงกัน” (ผู้สมัครมัธยฐาน 13 จุด, chance 10.22%) ได้ 34.21% = 3.35 เท่า ฐาน “คนละภาค” (ผู้สมัครมัธยฐาน 60 จุด) ได้ 14.63% = 8.29 เท่า แปลว่าไม่ใช่เพราะ “จุดใหญ่หน้าตาเหมือนกัน” และไม่ใช่เพราะ “ถนนภาคเดียวกันคล้ายกัน”</p>
+<p><strong>สาม ภาพวาดจับคู่กับแผนที่ไม่ผ่านเกณฑ์</strong> 3.66% คิดเป็น 3 เท่าของ chance ซึ่ง <em>พอดี</em> กับเกณฑ์ แต่ p = 0.081 ซึ่งไม่ต่ำกว่า 0.05 ที่ตั้งไว้ และในฐานคนละภาคได้ 4.88% (2.76 เท่า, p = 0.057) กล่าวคือ <strong>เมื่อคุณลบเมตรทิ้งแล้วเหลือแค่ “รูปที่วาดให้สวย” ข้อมูลที่จับคู่กลับไปยังแผนที่ แทบไม่เหลือ</strong> — นี่คือเส้นแบ่งที่ผมตามหา</p>
+<p>และ <strong>ป้ายหมายเลข</strong> คือเครื่องเตือนใจ: มันระบุสถานที่ได้ 100% ในระบบของมันเอง แต่จับคู่กับแผนที่ได้แค่ chance ตรง ๆ การ “ชี้ได้” จึงไม่ใช่ความเป็นแผนที่ — ความเป็นแผนที่อยู่ที่ว่า <strong>ระยะทางยังแปลว่าระยะทางไหม</strong> ซึ่งคือตอนถัดไป</p>
+</section>
+<section id="แกนทสอง-ระยะทางยงแปลวาระยะทางอยไหม" class="level2">
+<h2 class="anchored" data-anchor-id="แกนทสอง-ระยะทางยงแปลวาระยะทางอยไหม">๓. แกนที่สอง: ระยะทางยังแปลว่าระยะทางอยู่ไหม</h2>
+<p>วัดบนกราฟจริง 82 จุด (ต่อจุด ไม่ใช่ต่อโหนด)</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ตัววัด</th>
+<th>มัธยฐาน</th>
+<th>ช่วง</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>spearman rho ระหว่าง “จำนวนก้าว” กับ “ระยะตรง (เมตร)”</td>
+<td><strong>0.8026</strong></td>
+<td>0.3936 – 0.9785</td>
+</tr>
+<tr class="even">
+<td>ถนนพาอ้อมกี่เท่าของเส้นตรง (Dijkstra น้ำหนักเมตร / geodesic)</td>
+<td><strong>1.383</strong></td>
+<td>1.115 – 1.825</td>
+</tr>
+<tr class="odd">
+<td>ภาพวาดที่ Procrustes-fit ทับพิกัดจริง: เศษเหลื่อมมัธยฐาน</td>
+<td><strong>1,652.65 ม.</strong></td>
+<td>Q25 1,445.73 · Q75 2,272.43</td>
+</tr>
+<tr class="even">
+<td>เศษเหลือเทียบเป็น “เท่าของขนาดภาพเอง”</td>
+<td><strong>0.9728</strong></td>
+<td>–</td>
+</tr>
+<tr class="odd">
+<td>R² ของการ fit นั้น</td>
+<td><strong>−0.6243</strong></td>
+<td>–</td>
+</tr>
+<tr class="even">
+<td>spearman rho ของ “ระยะคู่” ในภาพ เทียบกับระยะจริง</td>
+<td><strong>0.1656</strong></td>
+<td>–</td>
+</tr>
+<tr class="odd">
+<td>สัดส่วนโหนดที่เดินเข้าถึงได้จากจุดเข้าถึง</td>
+<td><strong>97.18%</strong></td>
+<td>อีก 2.8% เดินไปไม่ถึง</td>
+</tr>
+<tr class="even">
+<td>โหนดภายใน 12 ก้าวจากจุดเข้าถึง</td>
+<td><strong>36.0</strong></td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<p>อ่านรวมกัน: <strong>จำนวนก้าวยังบอก ระยะทางได้ดีมาก (rho 0.80)</strong> นี่คือเหตุผลที่แผนที่โครงข่าย แบบไม่มีสเกล (เช่นแผนที่ไม่กี่สถานี) ยัง “ใช้ได้” และยังมีลักษณะของแผนที่อยู่ แต่ <strong>ภาพที่วาดจากความเชื่อมโยงอย่างเดียววัดอะไรไม่ได้เลย</strong> — ตำแหน่งคลาดเฉลี่ย 1.65 กม. ซึ่งเกือบเท่ากับขนาดของสิ่งที่ถูกวาดทั้งภาพ (0.97 เท่า) และ R² ติดลบ แปลว่า “ค่าเฉลี่ยของภาพ” ยังทำนายตำแหน่งได้ดีกว่าตัวภาพเอง</p>
+<p>คำตอบของโจทย์วันนี้จึงไม่ใช่เส้นแบ่งที่ความสวยงาม แต่เป็นเส้นแบ่งที่ <strong>หน่วยวัด</strong>: ตราบใดที่ระยะทางระหว่างสองสิ่งยังเรียงตามจริงได้ สิ่งนั้นยัง “ทำหน้าที่อย่างแผนที่” พอคุณเหลือแค่ “รูปแบบ” ที่วัดไม่ได้ มันคือภาพวาด — สวยได้ แต่ไม่ใช่แผนที่</p>
+</section>
+<section id="งานศลป-ลายนวมอ-82-แผน" class="level2">
+<h2 class="anchored" data-anchor-id="งานศลป-ลายนวมอ-82-แผน">๔. งานศิลป์: ลายนิ้วมือ 82 แผ่น</h2>
+<p>แผ่นภาพด้านขวาของ <code>day25_gallery.png</code> คือภาพวาดจากความเชื่อมโยงอย่างเดียวของทั้ง 82 จุด วางไว้บนตำแหน่งจริงโดยไม่มี basemap ไม่มีสเกล ไม่มีคำอธิบาย สี = log จำนวนโหนดถนน (คือ “OSM รู้จักที่นี่มากแค่ไหน” จาก Day 16/21)</p>
+<p>การจัดวางแบบแรก (ตามตำแหน่งจริง) ให้ <strong>Moran I = 0.2579, p = 0.0033</strong> จากการสลับที่ 300 ครั้ง แปลว่า “สถานที่ที่ใกล้กัน มีปริมาณข้อมูลใกล้เคียงกัน” ยังอ่านออกจากรูป ส่วนแบบที่สอง (สลับช่องแบบสุ่ม) ทำลายข้อมูลเชิงพื้นที่นั้นทิ้ง — ภาพชุดเดียวกันกลายเป็นงานภาพนามธรรมล้วน ๆ นี่คือ “artwork” ที่โจทย์ขอ และเป็นหลักฐานว่าสิ่งที่ทำให้มันยังเป็นแผนที่คือ <strong>ตำแหน่งของแผ่นภาพ ไม่ใช่ตัวแผ่นภาพ</strong></p>
+</section>
+<section id="สงทผมเปลยนกลางทาง-และทำไม" class="level2">
+<h2 class="anchored" data-anchor-id="สงทผมเปลยนกลางทาง-และทำไม">๕. สิ่งที่ผมเปลี่ยนกลางทาง (และทำไม)</h2>
+<p>โพสต์นี้เปลี่ยนวิธีทดสอบถึงสามรอบระหว่างทาง ผมคิดว่าควรบันทึกไว้เพราะทุกครั้งที่เปลี่ยน เป็นเพราะตัวเลขบอก ไม่ใช่เพราะรู้สึก</p>
+<p><strong>หนึ่ง leave-one-out ใช้ไม่ได้โดยนิยาม</strong> แผนเดิมคือ “กันตัวเองออกจากหอภาพแล้วให้ทาย” แต่ถ้าหนึ่งสถานที่มีภาพเดียว การกันตัวเองออกจากการแข่งขันทำให้คำตอบที่ถูกไม่มีอยู่ในรายการ ผลคือความแม่นเป็น 0 โดยไม่เกี่ยวกับข้อมูลเลย → เปลี่ยนเป็น <strong>split-half</strong> (แบ่งข้อมูลเป็นสองซีก)</p>
+<p><strong>สอง split-half ก็ใช้ไม่ได้กับเครือข่ายเชิงพื้นที่</strong> ผมลองสามแบบแล้ววัดจริง (ค่าอยู่ใน <code>discarded_design</code> ของ stats): สุ่มรายขอบเหลือชิ้นที่เดินถึงมัธยฐาน <strong>4 โหนด</strong> แบ่งตามท่อนถนนเหลือ <strong>3 โหนด</strong> (กราฟขาดเป็นผุยผงทั้งที่ขอบครึ่งหนึ่งยังอยู่) แบ่งด้วยเส้นผ่านศูนย์กลางได้ 909 โหนด แต่สองซีกอยู่ <em>คนละพื้นที่</em> ของจาน จึงเทียบ “รูปทรง” กันไม่ได้ → เลิกใช้ แล้วเปลี่ยนคำถามเป็นสิ่งที่โจทย์ถามจริง คือ <em>จับคู่ข้ามสื่อ</em> ซึ่งข้อมูลชุดเดียวกันทั้งสามสื่อ (ไม่มีการแบ่งจึงไม่มี leakage)</p>
+<p><strong>สาม บั๊กสองตัวที่ตัวควบคุมจับได้</strong> (ก) ผมคำนวณ flat index ผิดใน null simulation ทำให้ “การสุ่ม” ชนะเกณฑ์ทุกขั้น (p = 1.0 ทั้งคอลัมน์) — ตอนนี้มีการ assert ว่า ค่าเฉลี่ยของการสุ่มต้องตรงกับ chance เชิงวิเคราะห์ (&lt; 0.005) ทุกครั้ง (ข) กติกา “เสมอ = แพ้” ที่ผมตั้งไว้ตอนแรก กดค่า chance ของขั้นที่ข้อมูลหยาบ (เช่นค่าคุณภาพท้องฟ้าที่ซ้ำกันทั้งประเทศ) จน negative control ดูชนะการสุ่มแบบปลอม ๆ → เปลี่ยนเป็นแตกเสมอด้วยเลขสุ่ม ซึ่งคงค่า chance = 1/จำนวนผู้สมัครไว้ได้จริง</p>
+<p><strong>สี่ ตัวควบคุมที่ทำงาน</strong> “สลับหอภาพ” (ให้คำตอบเป็นโปรไฟล์ของสถานที่อื่นแบบสุ่ม) ได้ 1.22% = chance พอดี และ “ป้ายหมายเลข” ได้ 1.22% เช่นกัน — ทั้งสองยืนยันว่าเมทริกซ์ในข้อ ๒ ไม่ได้มีสัญญาณปลอมซ่อนอยู่</p>
+</section>
+<section id="วาดวยคำศพท" class="level2">
+<h2 class="anchored" data-anchor-id="วาดวยคำศพท">ว่าด้วยคำศัพท์</h2>
+<ul>
+<li><strong>ความเป็นแผนที่</strong> — ผมใช้คำนี้เป็น nominalisation ธรรมดาของ <em>map-ness</em> ไม่มีศัพท์มาตรฐานไทย และผมไม่ได้อ้างทฤษฎีใด ๆ มันคือชื่อของ “สิ่งที่เราวัดในโพสต์นี้”</li>
+<li><strong>โปรไฟล์การเติบโต</strong> — คำที่ผมตั้งเองให้ cumulative distribution ของระยะทางจากจุดหนึ่ง (หรือจากห้าจุด) โดยหารด้วยรัศมีของตัวมันเองเพื่อให้ไร้หน่วย</li>
+<li><strong>spring layout</strong> — อัลกอริทึมวาดกราฟที่มองโหนดเป็นมวล ขอบเป็นสปริง แล้วจัดตำแหน่ง ให้สปริงตึงที่สุด ผลที่ได้ “ดูเป็นแผนที่” แต่ไม่มีหน่วยวัดใด ๆ</li>
+<li><strong>Procrustes-fit</strong> — การย้าย/หมุน/ขยายภาพหนึ่งให้ทับอีกภาพใกล้ที่สุด เพื่อวัดว่า “เหลือเศษเท่าไร”</li>
+<li><strong>Moran I</strong> — ค่าทางสถิติที่บอกว่าสิ่งที่อยู่ใกล้กันบนแผนที่ มีค่า (ที่นี่คือจำนวนโหนด) ใกล้เคียงกันไหม</li>
+<li><strong>spearman rho</strong> — สหสัมพันธ์แบบ “เรียงอันดับ” ไม่สนใจขนาดตัวเลข ใช้ดูว่าสองการวัด ให้ลำดับเดียวกันไหม</li>
+</ul>
+</section>
+<section id="ขอจำกด" class="level2">
+<h2 class="anchored" data-anchor-id="ขอจำกด">ข้อจำกัด</h2>
+<ul>
+<li>โปรไฟล์การเติบโตเป็นลายเซ็นที่ผมออกแบบเอง ผลที่ได้จึงเป็น <strong>ขอบเขตล่าง</strong> ของข้อมูลที่สื่อหนึ่งเก็บไว้ ไม่ใช่ค่าสูงสุดที่เป็นไปได้ (คนออกแบบลายเซ็นเก่งกว่านี้อาจได้มากกว่า)</li>
+<li><code>draw</code> ใช้ spring_layout ซึ่งไม่มีเหตุผลใดจะคงทิศทางหรือสัดส่วนจริง ตัวเลขที่ต่ำของมันคือ <em>คำตอบของโจทย์</em> ไม่ใช่ข้อผิดพลาดของวิธี</li>
+<li>ทุกสื่อคำนวณบนหน้าต่าง 1,000 โหนดแรกจากจุดเข้าถึง กราฟที่ใหญกว่านั้น (ใหญ่สุด 31,150 โหนด) จึงถูกตัดเหลือเฉพาะส่วนที่เดินถึง</li>
+<li>จาน 5,000 ม. ตัดถนนที่ยื่นเข้ามา ทำให้ 2.8% ของโหนด (มัธยฐานต่อจุด) เดินไปไม่ถึง components ที่มากกว่า 1 บางส่วนจึงเป็นผลของกรอบการศึกษา ไม่ใช่ความขาดจริงของถนน</li>
+<li>ตัวเลขทั้งหมดเป็น “ต่อจุดดูฟ้ามืด” (82 จุด) ไม่ใช่ต่อโหนดถนน และ snapshot เดียวกับ Day 21–24 (21 พ.ย. 2569) — ถนนที่เพิ่มหลังวันนั้นไม่มีอยู่ในนี้</li>
+</ul>
+</section>
+<section id="ไฟลประกอบ" class="level2">
+<h2 class="anchored" data-anchor-id="ไฟลประกอบ">ไฟล์ประกอบ</h2>
+<ul>
+<li><a href="day25_ladder.png">day25_ladder.png</a> — เมทริกซ์จับคู่ข้ามสื่อ + สามสื่อของจุดเดียว</li>
+<li><a href="day25_gallery.png">day25_gallery.png</a> — ลายนิ้วมือ 82 แผ่น: วางตามจริง vs สลับช่อง</li>
+<li><a href="day25_metric.png">day25_metric.png</a> — ก้าวเทียบระยะจริง, ความอ้อมของถนน, เศษของการวาด</li>
+<li><a href="day25_controls.png">day25_controls.png</a> — ทุกคู่จับคู่ × สามฐานผู้สมัคร + ตัวควบคุม</li>
+<li><a href="day25_ladder.csv">day25_ladder.csv</a> — 97 แถว (2 ลายเซ็น × 16 คู่ × 3 ฐาน + ตัวควบคุม)</li>
+<li><a href="day25_metric.csv">day25_metric.csv</a> — ตัววัดเชิงระยะทางต่อจุด</li>
+<li><a href="day25_sites.csv">day25_sites.csv</a> — ต่อจุด: โครงสร้าง + ตัววัด + ผลจับคู่แต่ละคู่</li>
+<li><a href="day25_stats.json">day25_stats.json</a> — ต้นทางของตัวเลขทุกตัวในโพสต์นี้</li>
+<li><a href="../../notebooks/day25_fingerprint.html">โน้ตบุ๊กฉบับรันได้</a> — สร้างจาก <code>tools/day25_fingerprint.py</code> ไฟล์เดียว (<code>notebooks/day25_fingerprint.ipynb</code>) รันบน Colab จบโดยไม่ต้องมีไฟล์ PBF 330 MB</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thammarat-ai\.github\.io\/geo-notes");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 · สร้างด้วย <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
