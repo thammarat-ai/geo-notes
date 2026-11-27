@@ -1,0 +1,53 @@
+{
+ "source": "cache/day24/*.npz สร้างโดย tools/collect_day24_roads.py (Day 24)",
+ "pbf": "Geofabrik thailand-latest.osm.pbf",
+ "pbf_bytes": 330640775,
+ "pbf_md5": "db3958a037ce717c462101b86e2f75f3",
+ "pbf_last_modified": "2026-11-21 01:00 GMT (อ่านจาก HTTP header วันเก็บ 24 พ.ย. 2569)",
+ "read_utc": "2026-11-24 13:25:51 UTC",
+ "radius_m": 5000.0,
+ "edge_rule": "เก็บเฉพาะขอบที่ปลายทั้งสองอยู่ในจานของจุดเดียวกัน = ตัดถนนที่ วิ่งมาจากนอกจาน (กราฟจึงขาดที่ขอบจานโดยเจตนา)",
+ "node_slots": 413758,
+ "edges": 430464,
+ "sites_covered": 82,
+ "sites_without_roads": [
+  51
+ ],
+ "classes": [
+  "unclassified",
+  "trunk",
+  "secondary",
+  "residential",
+  "service",
+  "primary_link",
+  "tertiary",
+  "primary",
+  "footway",
+  "track",
+  "steps",
+  "cycleway",
+  "secondary_link",
+  "path",
+  "trunk_link",
+  "road",
+  "services",
+  "tertiary_link",
+  "pedestrian",
+  "raceway",
+  "construction",
+  "rest_area",
+  "motorway",
+  "motorway_link",
+  "escape"
+ ],
+ "ways_in_file": 5303991,
+ "highway_ways": 2944183,
+ "ways_touching_discs": 41440,
+ "encoding": {
+  "latlon": "int32 = องศา x 1e7 (~1.1 ซม.)",
+  "max_rounding_error_deg": 0.0
+ },
+ "sha256": "8098e884c4489d747cad6bca07b70e6a54a8defda2b6acf82d215a6f035e132a",
+ "bytes": 4432267,
+ "made_utc": "2026-11-26 12:16:15 UTC"
+}
